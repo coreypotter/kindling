@@ -1,5 +1,5 @@
 /*
- * Theme Name: OceanWP RTL CSS
+ * Theme Name: Kindling RTL CSS
  * Description: Adds support for languages written in a Right To Left (RTL) direction.
  */
 
@@ -10,7 +10,7 @@ body { direction: rtl; unicode-bidi: embed; }
 
 /* Float right */
 .col,
-.oceanwp-row .col,
+.kindling-row .col,
 .top-bar-left { float: right }
 
 /* Float left */
@@ -52,7 +52,7 @@ blockquote { padding-right: 20px; padding-left: 0; border-right-width: 3px; bord
 #site-header.top-header .header-top .left { float: right; }
 #site-header.top-header .header-top .right { float: left; }
 #site-header.top-header #site-navigation-wrap { right: -15px !important; left: auto !important; }
-#site-header.top-header #oceanwp-mobile-menu-icon { right: -15px; left: auto; }
+#site-header.top-header #kindling-mobile-menu-icon { right: -15px; left: auto; }
 
 /* Full Screen header */
 #site-header.full_screen-header #site-navigation-wrap { right: auto; left: 0; }
@@ -99,10 +99,10 @@ blockquote { padding-right: 20px; padding-left: 0; border-right-width: 3px; bord
 .transparent-header.left-menu #site-logo { padding-left: 20px; padding-right: 0; }
 
 /* Social menu */
-#oceanwp-social-menu { float: left; }
-#oceanwp-social-menu.simple-social { right: auto; left: -8px; }
-#oceanwp-social-menu.social-with-style { right: auto; left: -2px; }
-#oceanwp-social-menu ul li { float: right; }
+#kindling-social-menu { float: left; }
+#kindling-social-menu.simple-social { right: auto; left: -8px; }
+#kindling-social-menu.social-with-style { right: auto; left: -2px; }
+#kindling-social-menu ul li { float: right; }
 
 /*------------------------------------*
 	Mobile Navigation
@@ -174,15 +174,15 @@ span.required { margin-right: 3px; margin-left: 0; }
 .widget-title { border-width: 0 3px 0 0; padding-right: 15px; padding-left: 0; }
 
 /* About me */
-.oceanwp-about-me .oceanwp-about-me-social li { margin-right: 6px; margin-left: 0; }
-.oceanwp-about-me .oceanwp-about-me-social li:first-child { margin-right: 0; }
+.kindling-about-me .kindling-about-me-social li { margin-right: 6px; margin-left: 0; }
+.kindling-about-me .kindling-about-me-social li:first-child { margin-right: 0; }
 
 /* Contact info */
 .contact-info-widget i { float: right; margin-left: 15px; margin-right: 0; }
 
 /* Custom links */
-.custom-links-widget .oceanwp-custom-links li a::before { margin-left: 10px; margin-right: 0; }
-.custom-links-widget .oceanwp-custom-links li a:hover { margin-right: 8px; margin-left: 0; }
+.custom-links-widget .kindling-custom-links li a::before { margin-left: 10px; margin-right: 0; }
+.custom-links-widget .kindling-custom-links li a:hover { margin-right: 8px; margin-left: 0; }
 
 /* Flickr */
 .flickr_badge_image { float: right; margin: 0 0 10px 4%; }
@@ -192,12 +192,12 @@ span.required { margin-right: 3px; margin-left: 0; }
 p.flickr_stream_wrap a { background-position: right center; padding-right: 25px; padding-left: 0; }
 
 /* MailChimp */
-.oceanwp-newsletter-form-wrap button { left: 15px; right: auto; }
+.kindling-newsletter-form-wrap button { left: 15px; right: auto; }
 
 /* Posts thumbnails */
-.oceanwp-recent-posts .recent-posts-thumbnail { float: right; margin-left: 10px; margin-right: 0; }
-.oceanwp-recent-posts .recent-posts-info .sep { padding-right: 3px; padding-left: 0; }
-.oceanwp-recent-posts .recent-posts-date { margin-left: 8px; margin-right: 0; }
+.kindling-recent-posts .recent-posts-thumbnail { float: right; margin-left: 10px; margin-right: 0; }
+.kindling-recent-posts .recent-posts-info .sep { padding-right: 3px; padding-left: 0; }
+.kindling-recent-posts .recent-posts-date { margin-left: 8px; margin-right: 0; }
 
 /*------------------------------------*
 	Pagination
@@ -207,7 +207,7 @@ ul.page-numbers { text-align: left; }
 /*------------------------------------*
 	Modal
 *------------------------------------*/
-.oceanwp-modal .oceanwp-close-modal { left: 0; right: auto; }
+.kindling-modal .kindling-close-modal { left: 0; right: auto; }
 
 /*------------------------------------*
 	Footer
@@ -261,8 +261,8 @@ ul.page-numbers { text-align: left; }
 .woocommerce ul.products li.product .added_to_cart:after { display: none; }
 
 /* Store > ordering & sorting */
-.woocommerce .oceanwp-grid-list { float: right; margin: 0 0 0 20px; }
-.woocommerce .oceanwp-grid-list a:last-child { margin-right: 10px; margin-left: 0; }
+.woocommerce .kindling-grid-list { float: right; margin: 0 0 0 20px; }
+.woocommerce .kindling-grid-list a:last-child { margin-right: 10px; margin-left: 0; }
 
 .woocommerce .woocommerce-ordering { float: right; }
 
@@ -406,9 +406,9 @@ p.stars span a:after { right: 0; left: auto; }
 
 /* Account page */
 .woocommerce #customer_login .form-row label[for="rememberme"],
-.woocommerce .oceanwp-loginform-wrap .form-row label[for="rememberme"] { margin: 0 15px 0 0; }
+.woocommerce .kindling-loginform-wrap .form-row label[for="rememberme"] { margin: 0 15px 0 0; }
 .woocommerce #customer_login .lost_password,
-.woocommerce .oceanwp-loginform-wrap .lost_password { float: left; }
+.woocommerce .kindling-loginform-wrap .lost_password { float: left; }
 
 /* Header shop widget dropdown */
 #current-shop-items-dropdown { left: 0; right: auto; }
@@ -417,8 +417,8 @@ p.stars span a:after { right: 0; left: auto; }
 /*------------------------------------*
 	Responsive
 *------------------------------------*/
-#oceanwp-mobile-menu-icon { float: left; left: -15px; right: auto !important; }
-#oceanwp-mobile-menu-icon a i { padding-left: 6px; padding-right: 0 !important; }
+#kindling-mobile-menu-icon { float: left; left: -15px; right: auto !important; }
+#kindling-mobile-menu-icon a i { padding-left: 6px; padding-right: 0 !important; }
 
 /*--------------------------------------------------------------
 All Devices Under 992px
@@ -427,7 +427,7 @@ All Devices Under 992px
 	
 	/* account page */
 	.woocommerce #customer_login .form-row label[for="rememberme"],
-	.woocommerce .oceanwp-loginform-wrap .form-row label[for="rememberme"] { margin: 0 4px 0 0; }
+	.woocommerce .kindling-loginform-wrap .form-row label[for="rememberme"] { margin: 0 4px 0 0; }
 
 }
 
@@ -453,6 +453,6 @@ Phone Portrait
 @media only screen and (max-width: 480px) {
 
 	/* shop toolbar */
-	.woocommerce .oceanwp-grid-list { margin: 0 0 0 10px; }
+	.woocommerce .kindling-grid-list { margin: 0 0 0 10px; }
 
 }

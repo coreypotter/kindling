@@ -1,7 +1,7 @@
 {
-  "name": "oceanwp",
+  "name": "kindling",
   "version": "1.0.0",
-  "description": "OceanWP ... ...",
+  "description": "Kindling ... ...",
   "main": "Gruntfile.js",
   "dependencies": {},
   "devDependencies": {
