@@ -1,8 +1,8 @@
 <?php
 /**
- * Customizer Control: oceanwp-radio-image.
+ * Customizer Control: kindling-radio-image.
  *
- * @package     OceanWP WordPress theme
+ * @package     Kindling WordPress theme
  * @subpackage  Controls
  * @see   		https://github.com/aristath/kirki
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Radio image control
  */
-class OceanWP_Customizer_Radio_Image_Control extends WP_Customize_Control {
+class Kindling_Customizer_Radio_Image_Control extends WP_Customize_Control {
 
 	/**
 	 * The control type.
@@ -25,7 +25,7 @@ class OceanWP_Customizer_Radio_Image_Control extends WP_Customize_Control {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'oceanwp-radio-image';
+	public $type = 'kindling-radio-image';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -33,8 +33,8 @@ class OceanWP_Customizer_Radio_Image_Control extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'oceanwp-radio-image', OCEANWP_INC_DIR_URI . 'customizer/controls/radio-image/radio-image.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_style( 'oceanwp-radio-image-css', OCEANWP_INC_DIR_URI . 'customizer/controls/radio-image/radio-image.css', null );
+		wp_enqueue_script( 'kindling-radio-image', KINDLING_INC_DIR_URI . 'customizer/controls/radio-image/radio-image.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_style( 'kindling-radio-image-css', KINDLING_INC_DIR_URI . 'customizer/controls/radio-image/radio-image.css', null );
 	}
 
 	/**

@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['oceanwp-range'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kindling-range'] = wp.customize.Control.extend({
 
 	ready: function() {
 
@@ -16,7 +16,7 @@ wp.customize.controlConstructor['oceanwp-range'] = wp.customize.Control.extend({
 		jQuery( 'input[type=range]' ).on( 'mousedown', function() {
 
 			range 			= jQuery( this );
-			range_input 	= range.parent().children( '.oceanwp-range-input' );
+			range_input 	= range.parent().children( '.kindling-range-input' );
 			value 			= range.attr( 'value' );
 
 			range_input.val( value );
@@ -28,9 +28,9 @@ wp.customize.controlConstructor['oceanwp-range'] = wp.customize.Control.extend({
 
 		} );
 
-		var oceanwp_range_input_number_timeout;
+		var kindling_range_input_number_timeout;
 
-		function oceanwp_autocorrect_range_input_number( input_number, timeout ) {
+		function kindling_autocorrect_range_input_number( input_number, timeout ) {
 
 			var range_input 	= input_number,
 				range 			= range_input.parent().find( 'input[type="range"]' ),
@@ -40,9 +40,9 @@ wp.customize.controlConstructor['oceanwp-range'] = wp.customize.Control.extend({
 				min 			= parseFloat( range_input.attr( 'min') ),
 				max 			= parseFloat( range_input.attr( 'max') );
 
-			clearTimeout( oceanwp_range_input_number_timeout );
+			clearTimeout( kindling_range_input_number_timeout );
 
-			oceanwp_range_input_number_timeout = setTimeout( function() {
+			kindling_range_input_number_timeout = setTimeout( function() {
 
 				if ( isNaN( value ) ) {
 					range_input.val( reset );
@@ -73,18 +73,18 @@ wp.customize.controlConstructor['oceanwp-range'] = wp.customize.Control.extend({
 		}
 
 		// Change the text value
-		jQuery( 'input.oceanwp-range-input' ).on( 'change keyup', function() {
+		jQuery( 'input.kindling-range-input' ).on( 'change keyup', function() {
 
-			oceanwp_autocorrect_range_input_number( jQuery( this ), 1000);
+			kindling_autocorrect_range_input_number( jQuery( this ), 1000);
 
 		} ).on( 'focusout', function() {
 
-			oceanwp_autocorrect_range_input_number( jQuery( this ), 0);
+			kindling_autocorrect_range_input_number( jQuery( this ), 0);
 
 		} );
 
 		// Handle the reset button
-		jQuery( '.oceanwp-reset-slider' ).on('click', function() {
+		jQuery( '.kindling-reset-slider' ).on('click', function() {
 
 			this_input 		= jQuery( this ).closest( 'label' ).find( 'input' );
 			input_default 	= this_input.data( 'reset_value' );

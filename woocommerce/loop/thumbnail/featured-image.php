@@ -2,7 +2,7 @@
 /**
  * Image Swap style thumbnail
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Return placeholder if there isn't a thumbnail defined.
 if ( ! has_post_thumbnail() ) {
-    oceanwp_woo_placeholder_img();
+    kindling_woo_placeholder_img();
     return;
 }
 
@@ -42,7 +42,7 @@ else { ?>
 
 	<div class="woo-entry-image clr">
 		<a href="<?php the_permalink(); ?>" class="woocommerce-LoopProduct-link">
-    		<?php echo '<img src="'. wc_placeholder_img_src() .'" alt="'. esc_html__( 'Placeholder Image', 'oceanwp' ) .'" class="woo-entry-image-main" />'; ?>
+    		<?php echo '<img src="'. wc_placeholder_img_src() .'" alt="'. esc_html__( 'Placeholder Image', 'kindling' ) .'" class="woo-entry-image-main" />'; ?>
     	</a>
 	</div><!-- .woo-entry-image -->
 <?php } ?>

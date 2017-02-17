@@ -2,7 +2,7 @@
 /**
  * The template for displaying the page subheading
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Display subheading if there is one
-if ( $subheading = oceanwp_get_page_subheading() ) : ?>
+if ( $subheading = kindling_get_page_subheading() ) : ?>
 
 	<div class="clr page-subheading">
 		<?php echo do_shortcode( $subheading ); ?>

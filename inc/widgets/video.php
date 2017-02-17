@@ -2,7 +2,7 @@
 /**
  * Video widget.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_Video_Widget' ) ) {
-	class OceanWP_Video_Widget extends WP_Widget {
+if ( ! class_exists( 'Kindling_Video_Widget' ) ) {
+	class Kindling_Video_Widget extends WP_Widget {
 
 		/**
 		 * Register widget with WordPress.
@@ -20,11 +20,11 @@ if ( ! class_exists( 'OceanWP_Video_Widget' ) ) {
 		 */
 		public function __construct() {
 			parent::__construct(
-				'ocean_video',
-				esc_html__( '&raquo; Video', 'oceanwp' ),
+				'kindling_video',
+				esc_html__( '&raquo; Video', 'kindling' ),
 				array(
-					'classname'   => 'widget-oceanwp-video video-widget',
-					'description' => esc_html__( 'Easily to display any type of video.', 'oceanwp' ),
+					'classname'   => 'widget-kindling-video video-widget',
+					'description' => esc_html__( 'Easily to display any type of video.', 'kindling' ),
 					'customize_selective_refresh' => true,
 				)
 			);
@@ -61,12 +61,12 @@ if ( ! class_exists( 'OceanWP_Video_Widget' ) ) {
 						) );
 					echo '</p>';
 				} else { 
-					esc_html_e( 'You forgot to enter a video URL.', 'oceanwp' );
+					esc_html_e( 'You forgot to enter a video URL.', 'kindling' );
 				}
 				
 				// Show video description if field isn't empty
 				if ( $description ) {
-					echo '<div class="oceanwp-video-widget-description">'. do_shortcode( $description ) .'</div>';
+					echo '<div class="kindling-video-widget-description">'. do_shortcode( $description ) .'</div>';
 				}
 
 			// After widget WP hook
@@ -105,26 +105,26 @@ if ( ! class_exists( 'OceanWP_Video_Widget' ) ) {
 
 			// Parse arguments
 			$instance = wp_parse_args((array) $instance, array(
-				'title'             => esc_attr__( 'Video', 'oceanwp' ),
+				'title'             => esc_attr__( 'Video', 'kindling' ),
 				'video_url'         => '',
 				'video_description' => '',
 			) ); ?>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'oceanwp' ); ?>:</label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'kindling' ); ?>:</label>
 				<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 			</p>
 
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'video_url' ) ); ?>">
-				<?php esc_html_e( 'Video URL ', 'oceanwp' ); ?></label>
+				<?php esc_html_e( 'Video URL ', 'kindling' ); ?></label>
 				<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'video_url' ) ); ?>" type="text" value="<?php echo esc_attr( esc_url( $instance['video_url'] ) ); ?>" />
-				<span style="display:block;padding:5px 0" class="description"><?php esc_html_e( 'Enter in a video URL that is compatible with WordPress\'s built-in oEmbed feature.', 'oceanwp' ); ?> <a href="http://codex.wordpress.org/Embeds" target="_blank"><?php esc_html_e( 'Learn More', 'oceanwp' ); ?></a></span>
+				<span style="display:block;padding:5px 0" class="description"><?php esc_html_e( 'Enter in a video URL that is compatible with WordPress\'s built-in oEmbed feature.', 'kindling' ); ?> <a href="http://codex.wordpress.org/Embeds" target="_blank"><?php esc_html_e( 'Learn More', 'kindling' ); ?></a></span>
 			</p>
 
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'video_description' ) ); ?>">
-				<?php esc_html_e( 'Description', 'oceanwp' ); ?></label>
+				<?php esc_html_e( 'Description', 'kindling' ); ?></label>
 				<textarea rows="15" id="<?php echo $this->get_field_id( 'video_description' ); ?>" name="<?php echo $this->get_field_name( 'video_description' ); ?>" class="widefat" style="height: 100px;"><?php if( !empty( $instance['video_description'] ) ) { echo $instance['video_description']; } ?></textarea>
 			</p>
 
@@ -134,4 +134,4 @@ if ( ! class_exists( 'OceanWP_Video_Widget' ) ) {
 
 	}
 }
-register_widget( 'OceanWP_Video_Widget' );
+register_widget( 'Kindling_Video_Widget' );

@@ -7,7 +7,7 @@
  * Allows plugins to use their own update API.
  * 
  */
-class OceanWP_Plugin_Updater {
+class Kindling_Plugin_Updater {
 	
     private $api_data		= array();
     private $name			= '';
@@ -18,7 +18,7 @@ class OceanWP_Plugin_Updater {
 	private $item_id		= '';
 	private $item_shortname	= '';
 	private $license_key	= '';
-	private $api_url		= 'https://oceanwp.org/';
+	private $api_url		= 'https://kindling.org/';
     
 	/**
 	 * Class constructor.
@@ -33,7 +33,7 @@ class OceanWP_Plugin_Updater {
 	 */
 	function __construct( $_file, $_item, $_version, $_author, $_optname = null, $_api_url = null ) {
 		
-		global $oceanwp_options;
+		global $kindling_options;
 
 		if( is_numeric( $_item ) ) {
 			$this->item_id    = absint( $_item );
@@ -44,15 +44,15 @@ class OceanWP_Plugin_Updater {
 		$this->slug				= basename( $this->file, '.php' );
 		$this->name				= plugin_basename( $this->file );
 		$this->item_name		= $_item;
-		$this->item_shortname	= 'oceanwp_' . preg_replace( '/[^a-zA-Z0-9_\s]/', '', str_replace( ' ', '_', strtolower( $this->item_name ) ) );
+		$this->item_shortname	= 'kindling_' . preg_replace( '/[^a-zA-Z0-9_\s]/', '', str_replace( ' ', '_', strtolower( $this->item_name ) ) );
 		$this->version 			= $_version;
 		$this->author			= $_author;
 	
 		//Get license options
-		$oceanwp_options	= get_option( 'oceanwp_options' );
+		$kindling_options	= get_option( 'kindling_options' );
 
 		// Get Licence ke
-		$this->license_key  = isset($oceanwp_options['licenses'][$this->item_shortname.'_license_key']) ? $oceanwp_options['licenses'][$this->item_shortname.'_license_key'] : '';
+		$this->license_key  = isset($kindling_options['licenses'][$this->item_shortname.'_license_key']) ? $kindling_options['licenses'][$this->item_shortname.'_license_key'] : '';
 		
 		// Set up hooks.
 		$this->init();
@@ -68,28 +68,28 @@ class OceanWP_Plugin_Updater {
 	public function init() {
 
 		// Add filter to enable license tab
-		add_filter( 'oceanwp_licence_tab_enable', '__return_true' );
+		add_filter( 'kindling_licence_tab_enable', '__return_true' );
 
 		// Display help text at the top of the Licenses tab
-		add_action( 'oceanwp_licenses_tab_top', array( $this, 'oceanwp_license_help_text' ) );
+		add_action( 'kindling_licenses_tab_top', array( $this, 'kindling_license_help_text' ) );
 
 		// Register settings
-		add_action( 'oceanwp_licenses_tab_fields', array( $this, 'oceanwp_add_settings_fields' ) );
+		add_action( 'kindling_licenses_tab_fields', array( $this, 'kindling_add_settings_fields' ) );
 
 		// Activate license key on settings save
-		add_action( 'admin_init', array( $this, 'oceanwp_activate_license' ) );
+		add_action( 'admin_init', array( $this, 'kindling_activate_license' ) );
 
 		// Deactivate license key
-		add_action( 'admin_init', array( $this, 'oceanwp_deactivate_license' ) );
+		add_action( 'admin_init', array( $this, 'kindling_deactivate_license' ) );
 
 		// Updater
-		add_action( 'admin_init', array( $this, 'oceanwp_auto_updater' ), 0 );
+		add_action( 'admin_init', array( $this, 'kindling_auto_updater' ), 0 );
 
 		// admin notices
-		//add_action( 'admin_notices', array( $this, 'oceanwp_notices' ) );
+		//add_action( 'admin_notices', array( $this, 'kindling_notices' ) );
 
 		// Show changelog
-		add_action( 'admin_init', array( $this, 'oceanwp_show_changelog' ) );
+		add_action( 'admin_init', array( $this, 'kindling_show_changelog' ) );
 	}
 
 
@@ -100,7 +100,7 @@ class OceanWP_Plugin_Updater {
 	 * @param   string   $curr_tab
 	 * @return  void
 	 */
-	public function oceanwp_license_help_text() {
+	public function kindling_license_help_text() {
 
 		static $has_ran;
 
@@ -109,8 +109,8 @@ class OceanWP_Plugin_Updater {
 		}
 
 		echo '<p>' . sprintf(
-			__( 'Enter your extension license keys here to receive updates for purchased extensions. If your license key has expired, please <a href="%s" target="_blank" title="License renewal FAQ">renew your license</a>.', 'oceanwp' ),
-			'http://docs.oceanwp.org/article/26-license-renewal'
+			__( 'Enter your extension license keys here to receive updates for purchased extensions. If your license key has expired, please <a href="%s" target="_blank" title="License renewal FAQ">renew your license</a>.', 'kindling' ),
+			'http://docs.kindling.org/article/26-license-renewal'
 		) . '</p>';
 
 		$has_ran = true;
@@ -124,7 +124,7 @@ class OceanWP_Plugin_Updater {
 	 * @param array   $settings
 	 * @return  array
 	 */
-	public function oceanwp_add_settings_fields() {
+	public function kindling_add_settings_fields() {
 		
 		//Get license details
 		$license_details	= get_option( 'edd_license_details' );
@@ -132,13 +132,13 @@ class OceanWP_Plugin_Updater {
 		<tr>
 			<th>
 				<label for="<?php echo $this->item_shortname; ?>_license_key">
-					<?php echo sprintf( __( '%s License Key', 'oceanwp' ), $this->item_name ); ?>
+					<?php echo sprintf( __( '%s License Key', 'kindling' ), $this->item_name ); ?>
 				</label>
 			</th>
 			<td>
-				<input type="text" id="<?php echo $this->item_shortname; ?>_license_key" name="oceanwp_options[licenses][<?php echo $this->item_shortname; ?>_license_key]" class="regular-text" value="<?php echo $this->license_key; ?>" />
+				<input type="text" id="<?php echo $this->item_shortname; ?>_license_key" name="kindling_options[licenses][<?php echo $this->item_shortname; ?>_license_key]" class="regular-text" value="<?php echo $this->license_key; ?>" />
 				<?php if ( 'valid' == get_option( $this->item_shortname . '_license_active' ) ) { ?>
-				<input type="submit" class="button-secondary" name="oceanwp_<?php echo $this->item_shortname; ?>_license_key_deactivate" value="Deactivate License">
+				<input type="submit" class="button-secondary" name="kindling_<?php echo $this->item_shortname; ?>_license_key_deactivate" value="Deactivate License">
 				<?php }
 
 				//Get needed details
@@ -147,30 +147,30 @@ class OceanWP_Plugin_Updater {
 
 				//Message for notice expiry
 				if( $expire_date != 'lifetime' && $expire_date != '' ) {
-					echo '<div class="oceanwp_msg">'. sprintf( 'Your license key expires on %s.', date_i18n( 'F j, Y', strtotime($expire_date) ), 'oceanwp' ) .'</div>';
+					echo '<div class="kindling_msg">'. sprintf( 'Your license key expires on %s.', date_i18n( 'F j, Y', strtotime($expire_date) ), 'kindling' ) .'</div>';
 				}
 
 				//Message for errors
 				if ( !empty( $license_details[ $this->item_shortname ]->error ) ) {
 
 					//Get error message and dispay
-					$err_msg	= $this->oceanwp_error_messages( $license_details[$this->item_shortname] );
+					$err_msg	= $this->kindling_error_messages( $license_details[$this->item_shortname] );
 					if( !empty( $err_msg ) ) {
-						echo '<div class="oceanwp_error">'. $err_msg .'</div>';						
+						echo '<div class="kindling_error">'. $err_msg .'</div>';						
 					}
 
 				} elseif ( $diff_days <= 2 && $diff_days > 0 ) {//Check license expire in two days
-					echo '<div class="oceanwp_error">'. sprintf( __( 'Your license will expire after %s days.', 'oceanwp' ), $diff_days ) .'</div>';
+					echo '<div class="kindling_error">'. sprintf( __( 'Your license will expire after %s days.', 'kindling' ), $diff_days ) .'</div>';
 				}
 				?>
 				<style type="text/css">
-					.oceanwp_msg {
+					.kindling_msg {
 					  color: #585e5e;
 					  font-size: 14px;
 					  font-weight: bold;
 					  padding: 10px 0 0;
 					}
-					div.oceanwp_error {
+					div.kindling_error {
 					  background: #f9e8e3 none repeat scroll 0 0;
 					  border-left: 4px solid #dc3232;
 					  color: #544d4d;
@@ -190,13 +190,13 @@ class OceanWP_Plugin_Updater {
 	 * @access  public
 	 * @return  void
 	 */
-    public function oceanwp_activate_license() {
+    public function kindling_activate_license() {
     	
-    	if ( !isset( $_POST['oceanwp_options'] ) || !isset( $_POST['oceanwp_licensekey_activateall'] ) ) {
+    	if ( !isset( $_POST['kindling_options'] ) || !isset( $_POST['kindling_licensekey_activateall'] ) ) {
 			return;
 		}
 		
-		if ( !isset( $_POST['oceanwp_options']['licenses'][ $this->item_shortname . '_license_key'] ) ) {
+		if ( !isset( $_POST['kindling_options']['licenses'][ $this->item_shortname . '_license_key'] ) ) {
 			return;
 		}
 		
@@ -208,19 +208,19 @@ class OceanWP_Plugin_Updater {
 		}*/
 		
 		/*if( ! wp_verify_nonce( $_REQUEST[ $this->item_shortname . '_license_key-nonce'], $this->item_shortname . '_license_key-nonce' ) ) {
-			wp_die( __( 'Nonce verification failed', 'oceanwp' ), __( 'Error', 'oceanwp' ), array( 'response' => 403 ) );
+			wp_die( __( 'Nonce verification failed', 'kindling' ), __( 'Error', 'kindling' ), array( 'response' => 403 ) );
 		}*/
 		
 		/*if ( 'valid' === get_option( $this->item_shortname . '_license_active' ) ) {
 			return;
 		}*/
 		
-		$license = sanitize_text_field( $_POST['oceanwp_options']['licenses'][ $this->item_shortname . '_license_key'] );
+		$license = sanitize_text_field( $_POST['kindling_options']['licenses'][ $this->item_shortname . '_license_key'] );
 
 		if( trim( $license ) == '' ) {
 
 			//Remove license data and update it
-			$this->oceanwp_delete_response( $this->item_shortname );
+			$this->kindling_delete_response( $this->item_shortname );
 			return;
 		}
 		
@@ -257,7 +257,7 @@ class OceanWP_Plugin_Updater {
 
 		//Check license response data exists and update
 		if( !empty( $license_data ) ) {
-			$this->oceanwp_update_response( $this->item_shortname, $license_data );
+			$this->kindling_update_response( $this->item_shortname, $license_data );
 		}
 
 		if( !(bool) $license_data->success ) {
@@ -273,22 +273,22 @@ class OceanWP_Plugin_Updater {
 	 * @access  public
 	 * @return  void
 	 */
-    public function oceanwp_deactivate_license() {
+    public function kindling_deactivate_license() {
     	
-    	if ( !isset( $_POST['oceanwp_options'] ) ) {
+    	if ( !isset( $_POST['kindling_options'] ) ) {
 			return;
 		}
 		
-		if ( !isset( $_POST['oceanwp_options']['licenses'][ $this->item_shortname . '_license_key'] ) ) {
+		if ( !isset( $_POST['kindling_options']['licenses'][ $this->item_shortname . '_license_key'] ) ) {
 			return;
 		}
 		
 		/*if( ! wp_verify_nonce( $_REQUEST[ $this->item_shortname . '_license_key-nonce'], $this->item_shortname . '_license_key-nonce' ) ) {
-			wp_die( __( 'Nonce verification failed', 'oceanwp' ), __( 'Error', 'oceanwp' ), array( 'response' => 403 ) );
+			wp_die( __( 'Nonce verification failed', 'kindling' ), __( 'Error', 'kindling' ), array( 'response' => 403 ) );
 		}*/
 		
 		// Run on deactivate button press
-		if ( isset( $_POST[ 'oceanwp_'.$this->item_shortname.'_license_key_deactivate'] ) ) {
+		if ( isset( $_POST[ 'kindling_'.$this->item_shortname.'_license_key_deactivate'] ) ) {
 			
 			// Data to send to the API
 			$api_params = array(
@@ -324,7 +324,7 @@ class OceanWP_Plugin_Updater {
 				delete_transient( 'edd_license_error' );
 
 				//Remove license data and update it
-				$this->oceanwp_delete_response( $this->item_shortname );
+				$this->kindling_delete_response( $this->item_shortname );
 			}
 		}
     }
@@ -335,7 +335,7 @@ class OceanWP_Plugin_Updater {
 	 * @access  private
 	 * @return  void
 	 */
-    public function oceanwp_auto_updater() {
+    public function kindling_auto_updater() {
     	
     	if ( 'valid' !== get_option( $this->item_shortname . '_license_active' ) ) {
 			return;
@@ -354,9 +354,9 @@ class OceanWP_Plugin_Updater {
 		}
 		
 		// require filter applies
-		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'oceanwp_check_update' ) );
-		add_filter( 'plugins_api', array( $this, 'oceanwp_plugins_api_filter' ), 10, 3 );
-		add_action( 'after_plugin_row_' . $this->name, array( $this, 'oceanwp_show_update_notification' ), 10, 2 );
+		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'kindling_check_update' ) );
+		add_filter( 'plugins_api', array( $this, 'kindling_plugins_api_filter' ), 10, 3 );
+		add_action( 'after_plugin_row_' . $this->name, array( $this, 'kindling_show_update_notification' ), 10, 2 );
     }
     
     /**
@@ -372,7 +372,7 @@ class OceanWP_Plugin_Updater {
      * @param array   $_transient_data Update array build by WordPress.
      * @return array Modified update array with custom plugin data.
      */
-    public function oceanwp_check_update( $_transient_data ) {
+    public function kindling_check_update( $_transient_data ) {
     	
     	global $pagenow;
     	
@@ -414,7 +414,7 @@ class OceanWP_Plugin_Updater {
      * @param object  $_args
      * @return object $_data
      */
-    public function oceanwp_plugins_api_filter( $_data, $_action = '', $_args = null ) {
+    public function kindling_plugins_api_filter( $_data, $_action = '', $_args = null ) {
     	
 		if ( $_action != 'plugin_information' ) {
 			return $_data;
@@ -448,7 +448,7 @@ class OceanWP_Plugin_Updater {
      * @param string  $file
      * @param array   $plugin
      */
-    public function oceanwp_show_update_notification() {
+    public function kindling_show_update_notification() {
     	
     	if( ! current_user_can( 'update_plugins' ) ) {
             return;
@@ -463,7 +463,7 @@ class OceanWP_Plugin_Updater {
         }*/
 
         // Remove our filter on the site transient
-        remove_filter( 'pre_set_site_transient_update_plugins', array( $this, 'oceanwp_check_update' ), 10 );
+        remove_filter( 'pre_set_site_transient_update_plugins', array( $this, 'kindling_check_update' ), 10 );
 
         $update_cache = get_site_transient( 'update_plugins' );
 
@@ -496,7 +496,7 @@ class OceanWP_Plugin_Updater {
         }
 
         // Restore our filter
-        add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'oceanwp_check_update' ) );
+        add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'kindling_check_update' ) );
 
         if ( ! empty( $update_cache->response[ $this->name ] ) && version_compare( $this->version, $version_info->new_version, '<' ) ) {
 
@@ -508,14 +508,14 @@ class OceanWP_Plugin_Updater {
 
             if ( empty( $version_info->download_link ) ) {
                 printf(
-                    __( 'There is a new version of %1$s available. <a target="_blank" class="thickbox" href="%2$s">View version %3$s details</a>.', 'oceanwp' ),
+                    __( 'There is a new version of %1$s available. <a target="_blank" class="thickbox" href="%2$s">View version %3$s details</a>.', 'kindling' ),
                     esc_html( $version_info->name ),
                     esc_url( $changelog_link ),
                     esc_html( $version_info->new_version )
                 );
             } else {
                 printf(
-                    __( 'There is a new version of %1$s available. <a target="_blank" class="thickbox" href="%2$s">View version %3$s details</a> or <a href="%4$s">update now</a>.', 'oceanwp' ),
+                    __( 'There is a new version of %1$s available. <a target="_blank" class="thickbox" href="%2$s">View version %3$s details</a> or <a href="%4$s">update now</a>.', 'kindling' ),
                     esc_html( $version_info->name ),
                     esc_url( $changelog_link ),
                     esc_html( $version_info->new_version ),
@@ -585,7 +585,7 @@ class OceanWP_Plugin_Updater {
 	 * @access  private
 	 * @return  void
 	 */
-	public function oceanwp_show_changelog() {
+	public function kindling_show_changelog() {
     	
 		if( empty( $_REQUEST['edd_sl_action'] ) || 'view_plugin_changelog' != $_REQUEST['edd_sl_action'] ) {
 			return;
@@ -600,7 +600,7 @@ class OceanWP_Plugin_Updater {
 		}
 		
 		if( ! current_user_can( 'update_plugins' ) ) {
-			wp_die( __( 'You do not have permission to install plugin updates', 'oceanwp' ), __( 'Error', 'oceanwp' ), array( 'response' => 403 ) );
+			wp_die( __( 'You do not have permission to install plugin updates', 'kindling' ), __( 'Error', 'kindling' ), array( 'response' => 403 ) );
 		}
 		
 		$response = $this->api_request( 'plugin_latest_version', array( 'slug' => $_REQUEST['slug'] ) );
@@ -617,7 +617,7 @@ class OceanWP_Plugin_Updater {
 	 * @access  public
 	 * @return  void
 	 */
-    public function oceanwp_update_response( $item_shortname, $license_data ) {
+    public function kindling_update_response( $item_shortname, $license_data ) {
 
 		//Build license data and update it
 		$license_details	= get_option( 'edd_license_details' );
@@ -632,7 +632,7 @@ class OceanWP_Plugin_Updater {
 	 * @access  public
 	 * @return  void
 	 */
-    public function oceanwp_delete_response( $item_shortname ) {
+    public function kindling_delete_response( $item_shortname ) {
 
 		//Remove license data and update it
 		$license_details	= get_option( 'edd_license_details' );
@@ -649,26 +649,26 @@ class OceanWP_Plugin_Updater {
 	 * @access  public
 	 * @return  void
 	 */
-    public function oceanwp_error_messages( $license_error ) {
+    public function kindling_error_messages( $license_error ) {
 
     	$message	= '';
 		if( ! empty( $license_error->error ) ) {
 			switch( $license_error->error ) {
 
 				case 'item_name_mismatch' :
-					$message = __( 'This license does not belong to the product you have entered it for.', 'oceanwp' );
+					$message = __( 'This license does not belong to the product you have entered it for.', 'kindling' );
 					break;
 
 				case 'no_activations_left' :
-					$message = __( 'This license does not have any activations left', 'oceanwp' );
+					$message = __( 'This license does not have any activations left', 'kindling' );
 					break;
 
 				case 'expired' :
-					$message = __( 'Your license key is expired. Please renew it.', 'oceanwp' );
+					$message = __( 'Your license key is expired. Please renew it.', 'kindling' );
 					break;
 
 				default :
-					$message = sprintf( __( 'There was a problem activating your license key, please try again or contact support. Error code: %s', 'oceanwp' ), $license_error->error );
+					$message = sprintf( __( 'There was a problem activating your license key, please try again or contact support. Error code: %s', 'kindling' ), $license_error->error );
 					break;
 			}
 		}
@@ -682,9 +682,9 @@ class OceanWP_Plugin_Updater {
 	 * @access  public
 	 * @return  void
 	 */
-    public function oceanwp_notices() {
+    public function kindling_notices() {
 
-    	if( ! isset( $_GET['page'] ) || 'oceanwp-panel' !== $_GET['page'] ) {
+    	if( ! isset( $_GET['page'] ) || 'kindling-panel' !== $_GET['page'] ) {
 			return;
 		}
 
@@ -698,19 +698,19 @@ class OceanWP_Plugin_Updater {
 			switch( $license_error->error ) {
 				
 				case 'item_name_mismatch' :
-					$message = __( 'This license does not belong to the product you have entered it for.', 'oceanwp' );
+					$message = __( 'This license does not belong to the product you have entered it for.', 'kindling' );
 					break;
 					
 				case 'no_activations_left' :
-					$message = __( 'This license does not have any activations left', 'oceanwp' );
+					$message = __( 'This license does not have any activations left', 'kindling' );
 					break;
 					
 				case 'expired' :
-					$message = __( 'This license key is expired. Please renew it.', 'oceanwp' );
+					$message = __( 'This license key is expired. Please renew it.', 'kindling' );
 					break;
 					
 				default :
-					$message = sprintf( __( 'There was a problem activating your license key, please try again or contact support. Error code: %s', 'oceanwp' ), $license_error->error );
+					$message = sprintf( __( 'There was a problem activating your license key, please try again or contact support. Error code: %s', 'kindling' ), $license_error->error );
 					break;
 			}
 		}

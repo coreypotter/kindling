@@ -2,15 +2,15 @@
 /**
  * Displays the post header
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-// Return if quote format
+# Return if quote format
 if ( 'quote' == get_post_format() ) {
 	return;
 } ?>

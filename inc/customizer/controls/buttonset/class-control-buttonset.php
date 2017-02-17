@@ -1,8 +1,8 @@
 <?php
 /**
- * Customizer Control: oceanwp-buttonset.
+ * Customizer Control: kindling-buttonset.
  *
- * @package     OceanWP WordPress theme
+ * @package     Kindling Theme
  * @subpackage  Controls
  * @see   		https://github.com/aristath/kirki
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Buttonset control
  */
-class OceanWP_Customizer_Buttonset_Control extends WP_Customize_Control {
+class Kindling_Customizer_Buttonset_Control extends WP_Customize_Control {
 
 	/**
 	 * The control type.
@@ -25,7 +25,7 @@ class OceanWP_Customizer_Buttonset_Control extends WP_Customize_Control {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'oceanwp-buttonset';
+	public $type = 'kindling-buttonset';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -33,8 +33,8 @@ class OceanWP_Customizer_Buttonset_Control extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'oceanwp-buttonset', OCEANWP_INC_DIR_URI . 'customizer/controls/buttonset/buttonset.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_style( 'oceanwp-buttonset-css', OCEANWP_INC_DIR_URI . 'customizer/controls/buttonset/buttonset.css', null );
+		wp_enqueue_script( 'kindling-buttonset', KINDLING_INC_DIR_URI . 'customizer/controls/buttonset/buttonset.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_style( 'kindling-buttonset-css', KINDLING_INC_DIR_URI . 'customizer/controls/buttonset/buttonset.css', null );
 	}
 
 	/**

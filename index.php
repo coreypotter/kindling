@@ -7,87 +7,67 @@
  * It is used to display a page when nothing more specific matches a query.
  * For example, it puts together the home page when no home.php file exists.
  *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ * Learn more: http:#codex.wordpress.org/Template_Hierarchy
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 get_header(); ?>
 
-	<?php do_action( 'ocean_before_content_wrap' ); ?>
+<?php do_action( 'kindling_before_content_wrap' ); ?>
+<div id="content-wrap" class="container clr">
 
-	<div id="content-wrap" class="container clr">
+	<?php do_action( 'kindling_before_primary' ); ?>
+	<div id="primary" class="content-area clr">
 
-		<?php do_action( 'ocean_before_primary' ); ?>
+		<?php do_action( 'kindling_before_content' ); ?>
+		<div id="content" class="site-content clr">
 
-		<div id="primary" class="content-area clr">
-
-			<?php do_action( 'ocean_before_content' ); ?>
-
-			<div id="content" class="site-content clr">
-
-				<?php do_action( 'ocean_before_content_inner' ); ?>
+			<?php do_action( 'kindling_before_content_inner' );
+			# Check if posts exist
+			if ( have_posts() ) : ?>
+			
+				<div id="blog-entries" class="<?php kindling_blog_wrap_classes(); ?>">
+					<?php
+					# Define counter for clearing floats
+					$kindling_count = 0;
+					
+					# Loop through posts
+					while ( have_posts() ) : the_post();
+						# Add to counter
+						$kindling_count++;
+						
+						# Get post entry content
+						get_template_part( 'partials/entry/layout' ); 
+						
+						# Reset counter to clear floats
+						if ( kindling_blog_entry_columns() == $kindling_count ) {
+							$kindling_count=0;
+						}
+					endwhile; ?>
+				</div><!-- #blog-entries -->
 
 				<?php
-				// Check if posts exist
-				if ( have_posts() ) : ?>
+				# Display post pagination
+				kindling_blog_pagination();
+				
+			# No posts found
+			else :
+				# Display no post found notice
+				get_template_part( 'partials/none' );
+			endif;
+			
+			do_action( 'kindling_after_content_inner' ); ?>
 
-					<div id="blog-entries" class="<?php oceanwp_blog_wrap_classes(); ?>">
+		</div><!-- #content -->
+		<?php do_action( 'kindling_after_content' ); ?>
 
-						<?php
-						// Define counter for clearing floats
-						$oceanwp_count = 0; ?>
+	</div><!-- #primary -->
+	<?php do_action( 'kindling_after_primary' ); ?>
 
-						<?php
-						// Loop through posts
-						while ( have_posts() ) : the_post(); ?>
+	<?php get_sidebar(); ?>
 
-							<?php
-							// Add to counter
-							$oceanwp_count++; ?>
-
-							<?php
-							// Get post entry content
-							get_template_part( 'partials/entry/layout' ); ?>
-
-							<?php
-							// Reset counter to clear floats
-							if ( oceanwp_blog_entry_columns() == $oceanwp_count ) {
-								$oceanwp_count=0;
-							} ?>
-
-						<?php endwhile; ?>
-
-					</div><!-- #blog-entries -->
-
-					<?php
-					// Display post pagination
-					oceanwp_blog_pagination(); ?>
-
-				<?php
-				// No posts found
-				else : ?>
-
-					<?php
-					// Display no post found notice
-					get_template_part( 'partials/none' ); ?>
-
-				<?php endif; ?>
-
-				<?php do_action( 'ocean_after_content_inner' ); ?>
-
-			</div><!-- #content -->
-
-			<?php do_action( 'ocean_after_content' ); ?>
-
-		</div><!-- #primary -->
-
-		<?php do_action( 'ocean_after_primary' ); ?>
-
-		<?php get_sidebar(); ?>
-
-	</div><!-- #content-wrap -->
-
-	<?php do_action( 'ocean_after_content_wrap' ); ?>
+</div><!-- #content-wrap -->
+<?php do_action( 'kindling_after_content_wrap' ); ?>
 
 <?php get_footer(); ?>

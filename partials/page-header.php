@@ -2,7 +2,7 @@
 /**
  * The template for displaying the page header.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Return if page header is disabled
-if ( ! oceanwp_has_page_header() ) {
+if ( ! kindling_has_page_header() ) {
 	return;
 }
 
@@ -19,7 +19,7 @@ if ( ! oceanwp_has_page_header() ) {
 $classes = array( 'page-header' );
 
 // Get header style
-$style = oceanwp_page_header_style();
+$style = kindling_page_header_style();
 
 // Add classes for title style
 if ( $style ) {
@@ -29,28 +29,28 @@ if ( $style ) {
 // Turn into space seperated list
 $classes = implode( ' ', $classes ) ?>
 
-<?php do_action( 'ocean_before_page_header' ); ?>
+<?php do_action( 'kindling_before_page_header' ); ?>
 
 <header class="<?php echo esc_attr( $classes ); ?>">
 
-	<?php do_action( 'ocean_before_page_header_inner' ); ?>
+	<?php do_action( 'kindling_before_page_header_inner' ); ?>
 
 	<div class="container clr page-header-inner">
 
-		<h1 class="page-header-title oceanwp-clr" itemprop="headline"><?php echo oceanwp_title(); ?></h1>
+		<h1 class="page-header-title kindling-clr" itemprop="headline"><?php echo kindling_title(); ?></h1>
 
 		<?php get_template_part( 'partials/page-header-subheading' ); ?>
 
-		<?php if ( function_exists( 'oceanwp_breadcrumb_trail' ) ) {
-			oceanwp_breadcrumb_trail();
+		<?php if ( function_exists( 'kindling_breadcrumb_trail' ) ) {
+			kindling_breadcrumb_trail();
 		} ?>
 
 	</div><!-- .page-header-inner -->
 
-	<?php oceanwp_page_header_overlay(); ?>
+	<?php kindling_page_header_overlay(); ?>
 
-	<?php do_action( 'ocean_after_page_header_inner' ); ?>
+	<?php do_action( 'kindling_after_page_header_inner' ); ?>
 
 </header><!-- .page-header -->
 
-<?php do_action( 'ocean_after_page_header' ); ?>
+<?php do_action( 'kindling_after_page_header' ); ?>

@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['oceanwp-sortable'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kindling-sortable'] = wp.customize.Control.extend({
 
 	ready: function() {
 

@@ -2,25 +2,25 @@
 /**
  * Topbar social profiles
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Get social options array
-$social_options = oceanwp_social_options();
+# Get social options array
+$social_options = kindling_social_options();
 
-// Return if $social_options array is empty
+# Return if $social_options array is empty
 if ( empty( $social_options ) ) {
 	return;
 }
 
-// Add classes based on topbar style
+# Add classes based on topbar style
 $classes = '';
-$topbar_style = get_theme_mod( 'ocean_top_bar_style', 'one' );
+$topbar_style = get_theme_mod( 'kindling_top_bar_style', 'one' );
 if ( 'one' == $topbar_style ) {
 	$classes = 'top-bar-right';
 } elseif ( 'two' == $topbar_style ) {
@@ -29,8 +29,8 @@ if ( 'one' == $topbar_style ) {
 	$classes = 'top-bar-centered';
 }
 
-// Display Social alternative
-if ( $social_alt = oceanwp_top_bar_social_alt() ) : ?>
+# Display Social alternative
+if ( $social_alt = kindling_top_bar_social_alt() ) : ?>
 
 	<div id="top-bar-social-alt" class="clr <?php echo $classes; ?>">
 		<?php echo do_shortcode( $social_alt ); ?>
@@ -39,13 +39,13 @@ if ( $social_alt = oceanwp_top_bar_social_alt() ) : ?>
 <?php return; endif; ?>
 
 <?php
-// Return if there aren't any profiles defined and define var
-if ( ! $profiles = get_theme_mod( 'ocean_top_bar_social_profiles' ) ) {
+# Return if there aren't any profiles defined and define var
+if ( ! $profiles = get_theme_mod( 'kindling_top_bar_social_profiles' ) ) {
 	return;
 }
 
-// Get theme mods
-$link_target = get_theme_mod( 'ocean_top_bar_social_target', 'blank' );
+# Get theme mods
+$link_target = get_theme_mod( 'kindling_top_bar_social_target', 'blank' );
 $link_target = ( 'blank' == $link_target || '_blank' == $link_target ) ? ' target="_blank"' : ''; ?>
 
 <div id="top-bar-social" class="clr <?php echo $classes; ?>">
@@ -53,22 +53,22 @@ $link_target = ( 'blank' == $link_target || '_blank' == $link_target ) ? ' targe
 	<ul>
 
 		<?php
-		// Loop through social options
+		# Loop through social options
 		foreach ( $social_options as $key => $val ) {
 
-			// Get URL from the theme mods
+			# Get URL from the theme mods
 			$url = isset( $profiles[$key] ) ? $profiles[$key] : '';
 
-			// Display if there is a value defined
+			# Display if there is a value defined
 			if ( $url ) {
 
-				// Escape URL except for the following keys
+				# Escape URL except for the following keys
 				if ( ! in_array( $key, array( 'skype', 'email' ) ) ) {
 					$url = esc_url( $url );
 				}
 
-				// Display link
-				echo '<li class="oceanwp-'. $key .'">';
+				# Display link
+				echo '<li class="kindling-'. $key .'">';
 
 					echo '<a href="'. $url .'" title="'. $val['label'] .'" '. $link_target .'>';
 
@@ -78,9 +78,9 @@ $link_target = ( 'blank' == $link_target || '_blank' == $link_target ) ? ' targe
 
 				echo '</li>';
 
-			} // End url check
+			} # End url check
 
-		} // End loop ?>
+		} # End loop ?>
 
 	</ul>
 

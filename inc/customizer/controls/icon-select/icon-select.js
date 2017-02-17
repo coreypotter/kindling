@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['oceanwp-icon'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kindling-icon'] = wp.customize.Control.extend({
 
 	ready: function() {
 

@@ -2,31 +2,31 @@
 /**
  * Header menu template part.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Header style
-$header_style = get_theme_mod( 'ocean_header_style', 'minimal' );
+# Header style
+$header_style = get_theme_mod( 'kindling_header_style', 'minimal' );
 
-// Menu Location
-$menu_location = apply_filters( 'ocean_main_menu_location', 'main_menu' );
+# Menu Location
+$menu_location = apply_filters( 'kindling_main_menu_location', 'main_menu' );
 
-// Multisite global menu
-$ms_global_menu = apply_filters( 'ocean_ms_global_menu', false );
+# Multisite global menu
+$ms_global_menu = apply_filters( 'kindling_ms_global_menu', false );
 
-// Display menu if defined
+# Display menu if defined
 if ( has_nav_menu( $menu_location ) || $ms_global_menu ) : 
 
-	// Get classes for the header menu
-	$wrap_classes  = oceanwp_header_menu_classes( 'wrapper' );
-	$inner_classes = oceanwp_header_menu_classes( 'inner' );
+	# Get classes for the header menu
+	$wrap_classes  = kindling_header_menu_classes( 'wrapper' );
+	$inner_classes = kindling_header_menu_classes( 'inner' );
 
-	// Get menu classes
+	# Get menu classes
 	$menu_classes  = 'main-menu ';
 	if ( 'full_screen' == $header_style ) {
 		$menu_classes  .= 'fs-dropdown-menu';
@@ -34,7 +34,7 @@ if ( has_nav_menu( $menu_location ) || $ms_global_menu ) :
 		$menu_classes  .= 'dropdown-menu sf-menu';
 	}
 
-	// Menu arguments
+	# Menu arguments
 	$menu_args = array(
 		'theme_location' => $menu_location,
 		'menu_class'     => $menu_classes,
@@ -42,77 +42,77 @@ if ( has_nav_menu( $menu_location ) || $ms_global_menu ) :
 		'fallback_cb'    => false,
 		'link_before'    => '<span>',
 		'link_after'     => '</span>',
-		'walker'         => new OceanWP_Custom_Nav_Walker(),
+		'walker'         => new Kindling_Custom_Nav_Walker(),
 	);
 
-	// Check if custom menu
-	if ( $menu = oceanwp_header_custom_menu() ) {
+	# Check if custom menu
+	if ( $menu = kindling_header_custom_menu() ) {
 		$menu_args['menu']  = $menu;
 	}
 
-	do_action( 'ocean_before_nav' );
+	do_action( 'kindling_before_nav' );
 
-	// If is not full screen header style
+	# If is not full screen header style
 	if ( 'full_screen' != $header_style ) { ?>
 		<div id="site-navigation-wrap" class="<?php echo $wrap_classes; ?>">
 	<?php } ?>
 
-		<?php do_action( 'ocean_before_nav_inner' ); ?>
+		<?php do_action( 'kindling_before_nav_inner' ); ?>
 
-		<nav id="site-navigation" class="<?php echo $inner_classes; ?>" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+		<nav id="site-navigation" class="<?php echo $inner_classes; ?>" itemscope="itemscope" itemtype="http:#schema.org/SiteNavigationElement">
 
 			<?php
-			// Display global multisite menu
+			# Display global multisite menu
 			if ( is_multisite() && $ms_global_menu ) :
 				
 				switch_to_blog( 1 );  
 				wp_nav_menu( $menu_args );
 				restore_current_blog();
 
-			// Display this site's menu
+			# Display this site's menu
 			else :
 
 				wp_nav_menu( $menu_args );
 
 			endif;
 
-			// If is not top menu header style
+			# If is not top menu header style
 			if ( 'top' != $header_style
 				&& 'full_screen' != $header_style ) {
 
-				// Header search
-				if ( 'drop_down' == oceanwp_menu_search_style() ) {
+				# Header search
+				if ( 'drop_down' == kindling_menu_search_style() ) {
 					get_template_part( 'partials/header/search-dropdown' );
-				} else if ( 'header_replace' == oceanwp_menu_search_style() ) {
+				} else if ( 'header_replace' == kindling_menu_search_style() ) {
 					get_template_part( 'partials/header/search-replace' );
-				} else if ( 'overlay' == oceanwp_menu_search_style() ) {
+				} else if ( 'overlay' == kindling_menu_search_style() ) {
 					get_template_part( 'partials/header/search-overlay' );
 				}
 
 			}
 
-			// WooCommerce cart
-			if ( 'drop_down' == oceanwp_menu_cart_style()
+			# WooCommerce cart
+			if ( 'drop_down' == kindling_menu_cart_style()
 				&& 'full_screen' != $header_style ) {
 				get_template_part( 'partials/cart/cart-dropdown' );
 			}
 
-			// Social links if full screen header style
+			# Social links if full screen header style
 			if ( 'full_screen' == $header_style
-				&& true == get_theme_mod( 'ocean_menu_social', false ) ) {
+				&& true == get_theme_mod( 'kindling_menu_social', false ) ) {
 				get_template_part( 'partials/header/social' );
 			} ?>
 
 		</nav><!-- #site-navigation -->
 
-		<?php do_action( 'ocean_after_nav_inner' ); ?>
+		<?php do_action( 'kindling_after_nav_inner' ); ?>
 
 	<?php
-	// If is not full screen header style
+	# If is not full screen header style
 	if ( 'full_screen' != $header_style ) { ?>
 		</div><!-- #site-navigation-wrap -->
 	<?php } ?>
 
-	<?php do_action( 'ocean_after_nav' ); ?>
+	<?php do_action( 'kindling_after_nav' ); ?>
 
 <?php endif; ?>

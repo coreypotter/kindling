@@ -209,7 +209,7 @@ function megaMenu() {
             
         }
         
-        if ( oceanwpLocalize.isRTL ) {
+        if ( kindlingLocalize.isRTL ) {
             $j( this ).css( {
                 'right': - left,
                 'marginRight': dropdowntMarginLeft
@@ -241,7 +241,7 @@ function menuSearch() {
 	"use strict"
 
 	/* Menu Search > Dropdown */
-	if ( 'drop_down' == oceanwpLocalize.menuSearchStyle ) {
+	if ( 'drop_down' == kindlingLocalize.menuSearchStyle ) {
 
 		var $searchDropdownToggle = $j( 'a.search-dropdown-toggle' ),
 			$searchDropdownForm   = $j( '#searchform-dropdown' );
@@ -277,7 +277,7 @@ function menuSearch() {
 	}
 	
 	/* Menu Search > Header Replace */
-	else if ( 'header_replace' == oceanwpLocalize.menuSearchStyle ) {
+	else if ( 'header_replace' == kindlingLocalize.menuSearchStyle ) {
 
 		// Show
 		var $header = $j( '#site-header' );
@@ -368,7 +368,7 @@ function menuSearch() {
 	}
 	
 	/* Menu Search > Overlay */
-	else if ( 'overlay' == oceanwpLocalize.menuSearchStyle ) {
+	else if ( 'overlay' == kindlingLocalize.menuSearchStyle ) {
 
 		var $searchOverlayToggle 	= $j( 'a.search-overlay-toggle' ),
 			$searchOverlay 			= $j( '#searchform-overlay' );
@@ -446,7 +446,7 @@ function menuCart() {
 	}
 
 	// Drop-down
-	if ( 'drop_down' == oceanwpLocalize.wooCartStyle ) {
+	if ( 'drop_down' == kindlingLocalize.wooCartStyle ) {
 
 		// Display cart dropdown
 		$j( '.toggle-cart-widget' ).click( function( event ) {
@@ -476,14 +476,14 @@ MOBILE SCRIPT
 function mobileMenu( event ) {
 	"use strict"
 
-	if ( typeof oceanwpLocalize.sidrSource !== 'undefined' ) {
+	if ( typeof kindlingLocalize.sidrSource !== 'undefined' ) {
 
 		// Add sidr
 		$j( '.mobile-menu' ).sidr( {
 			name     : 'sidr',							// Name for the 'sidr'
-			source   : oceanwpLocalize.sidrSource,		// Override the source of the content
-			side     : oceanwpLocalize.sidrSide,     	// Accepts 'left' or 'right'
-			displace : oceanwpLocalize.sidrDisplace, 	// Displace the body content or not
+			source   : kindlingLocalize.sidrSource,		// Override the source of the content
+			side     : kindlingLocalize.sidrSide,     	// Accepts 'left' or 'right'
+			displace : kindlingLocalize.sidrDisplace, 	// Displace the body content or not
 			speed    : 300,            					// Accepts standard jQuery effects speeds (i.e. fast, normal or milliseconds)
 			renaming : true,							// The ids and classes will be prepended with a prefix when loading existent content
 			onOpen   : function() {
@@ -498,7 +498,7 @@ function mobileMenu( event ) {
 				var $sidrDropdownTarget = $j( '.sidr-class-dropdown-toggle' );
 
 				// Check localization
-				if ( oceanwpLocalize.sidrDropdownTarget == 'li' ) {
+				if ( kindlingLocalize.sidrDropdownTarget == 'li' ) {
 					$sidrDropdownTarget = $j( '.sidr-class-sf-with-ul' );
 				}
 
@@ -506,7 +506,7 @@ function mobileMenu( event ) {
 				$sidrDropdownTarget.on( 'click', function( event ) {
 
 					// Define toggle vars
-					if ( oceanwpLocalize.sidrDropdownTarget == 'li' ) {
+					if ( kindlingLocalize.sidrDropdownTarget == 'li' ) {
 						var $toggleParentLi = $j( this ).parent( 'li' );
 					} else {
 						var $toggleParentLink = $j( this ).parent( 'a' ),
@@ -531,11 +531,11 @@ function mobileMenu( event ) {
 				} );
 
 				// Add light overlay to content
-				$j( 'body' ).append( '<div class="oceanwp-sidr-overlay"></div>' );
-				$j( '.oceanwp-sidr-overlay' ).fadeIn( 300 );
+				$j( 'body' ).append( '<div class="kindling-sidr-overlay"></div>' );
+				$j( '.kindling-sidr-overlay' ).fadeIn( 300 );
 
 				// Close sidr when clicking overlay
-				$j( '.oceanwp-sidr-overlay' ).on( 'click', function() {
+				$j( '.kindling-sidr-overlay' ).on( 'click', function() {
 					$j.sidr( 'close', 'sidr' );
 					return false;
 				} );
@@ -554,7 +554,7 @@ function mobileMenu( event ) {
 				$j( '.sidr-class-menu-item-has-children.active' ).removeClass( 'active' ).children( 'ul' ).hide();
 				
 				// FadeOut overlay
-				$j( '.oceanwp-sidr-overlay' ).fadeOut( 300, function() {
+				$j( '.kindling-sidr-overlay' ).fadeOut( 300, function() {
 					$j( this ).remove();
 				} );
 			}
@@ -676,7 +676,7 @@ CUSTOM SELECT
 function customSelects() {
 	"use strict"
 
-	$j( oceanwpLocalize.customSelects ).customSelect( {
+	$j( kindlingLocalize.customSelects ).customSelect( {
 		customClass: 'theme-select'
 	} );
 
@@ -688,45 +688,45 @@ WOOCOMMERCE GRID LIST VIEW
 function wooGridList() {
 	"use strict"
 
-	var oceanwpCookie = Cookies.noConflict();
+	var kindlingCookie = Cookies.noConflict();
 
 	if ( $j( 'body' ).hasClass( 'has-grid-list' ) ) {
 
-		$j( '#oceanwp-grid' ).on( 'click', function() {
+		$j( '#kindling-grid' ).on( 'click', function() {
 			$j( this ).addClass( 'active' );
-			$j( '#oceanwp-list' ).removeClass( 'active' );
-			oceanwpCookie.set( 'gridcookie', 'grid', { path: '' } );
+			$j( '#kindling-list' ).removeClass( 'active' );
+			kindlingCookie.set( 'gridcookie', 'grid', { path: '' } );
 			$j( '.archive.woocommerce ul.products' ).fadeOut( 300, function() {
 				$j( this ).addClass( 'grid' ).removeClass( 'list' ).fadeIn( 300 );
 			} );
 			return false;
 		} );
 
-		$j( '#oceanwp-list' ).on( 'click', function() {
+		$j( '#kindling-list' ).on( 'click', function() {
 			$j( this ).addClass( 'active' );
-			$j( '#oceanwp-grid' ).removeClass( 'active' );
-			oceanwpCookie.set( 'gridcookie', 'list', { path: '' } );
+			$j( '#kindling-grid' ).removeClass( 'active' );
+			kindlingCookie.set( 'gridcookie', 'list', { path: '' } );
 			$j( '.archive.woocommerce ul.products' ).fadeOut( 300, function() {
 				$j( this ).addClass( 'list' ).removeClass( 'grid' ).fadeIn( 300 );
 			} );
 			return false;
 		} );
 
-		if ( oceanwpCookie.get( 'gridcookie' ) == 'grid' ) {
-	        $j( '.oceanwp-grid-list #oceanwp-grid' ).addClass( 'active' );
-	        $j( '.oceanwp-grid-list #oceanwp-list' ).removeClass( 'active' );
+		if ( kindlingCookie.get( 'gridcookie' ) == 'grid' ) {
+	        $j( '.kindling-grid-list #kindling-grid' ).addClass( 'active' );
+	        $j( '.kindling-grid-list #kindling-list' ).removeClass( 'active' );
 	        $j( '.archive.woocommerce ul.products' ).addClass( 'grid' ).removeClass( 'list' );
 	    }
 
-	    if ( oceanwpCookie.get( 'gridcookie' ) == 'list' ) {
-	        $j( '.oceanwp-grid-list #oceanwp-list' ).addClass( 'active' );
-	        $j( '.oceanwp-grid-list #oceanwp-grid' ).removeClass( 'active' );
+	    if ( kindlingCookie.get( 'gridcookie' ) == 'list' ) {
+	        $j( '.kindling-grid-list #kindling-list' ).addClass( 'active' );
+	        $j( '.kindling-grid-list #kindling-grid' ).removeClass( 'active' );
 	        $j( '.archive.woocommerce ul.products' ).addClass( 'list' ).removeClass( 'grid' );
 	    }
 
 	} else {
 
-		oceanwpCookie.remove( 'gridcookie', { path: '' } );
+		kindlingCookie.remove( 'gridcookie', { path: '' } );
 
 	}
 
@@ -805,7 +805,7 @@ function autoLightbox() {
 			&& ! $j( this ).hasClass( 'woo-lightbox' )
 			&& ! $j( this ).hasClass( 'woo-thumbnail' ) ) {
 
-			$j( this ).addClass( 'oceanwp-lightbox' );
+			$j( this ).addClass( 'kindling-lightbox' );
 		    
 		}
 
@@ -828,7 +828,7 @@ function initLightbox( $context ) {
 
 	// Lightbox
 	$j( 'body .site-content, body .entry' ).Chocolat( {
-        imageSelector   : '.oceanwp-lightbox'
+        imageSelector   : '.kindling-lightbox'
     } );
 
     // Gallery lightbox
@@ -859,7 +859,7 @@ function infiniteScrollInit() {
 		loading : {
 			msg         : null,
 			finishedMsg : null,
-			msgText     : '<div class="infinite-scroll-loader">'+ oceanwpInfiniteScroll.msgText +'</div>',
+			msgText     : '<div class="infinite-scroll-loader">'+ kindlingInfiniteScroll.msgText +'</div>',
 		},
 		navSelector  : 'div.infinite-scroll-nav',
 		nextSelector : 'div.infinite-scroll-nav div.older-posts a',
@@ -885,7 +885,7 @@ function infiniteScrollInit() {
 			} );
 
 			// Add trigger
-			$container.trigger( 'oceanwpinfiniteScrollLoaded' );
+			$container.trigger( 'kindlinginfiniteScrollLoaded' );
 
 			// Re-run functions
 			initCarousel( $newElems );
@@ -928,7 +928,7 @@ function masonryGrids() {
 			$this.isotope( {
 				itemSelector       : '.isotope-entry',
 				transformsEnabled  : true,
-				isOriginLeft       : oceanwpLocalize.isRTL ? false : true,
+				isOriginLeft       : kindlingLocalize.isRTL ? false : true,
 				transitionDuration : $transitionDuration + 's'
 			} );
 		} );
@@ -971,7 +971,7 @@ RECENT POSTS WIDGET
 function postsWidget() {
 	"use strict"
 
-	$j( '.oceanwp-recent-posts li' ).each( function() {
+	$j( '.kindling-recent-posts li' ).each( function() {
 
 		var $this = $j( this );
 
@@ -1041,7 +1041,7 @@ function getTopbarHeight() {
 
 	var $topbarHeight = 0;
 
-	if ( $j( '#top-bar-wrap' ).hasClass( 'oceanwp-top-bar-sticky' )
+	if ( $j( '#top-bar-wrap' ).hasClass( 'kindling-top-bar-sticky' )
 		&& $j( '#top-bar-wrap' ).length ) {
 		$topbarHeight = parseInt( $j( '#top-bar-wrap' ).outerHeight() );
 	}

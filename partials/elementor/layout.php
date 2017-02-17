@@ -2,10 +2,10 @@
 /**
  * Outputs correct library layout
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 } ?>

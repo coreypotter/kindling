@@ -2,15 +2,15 @@
 /**
  * Full Screen Header Style
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 } ?>
 
-<?php do_action( 'ocean_before_header_inner' ); ?>
+<?php do_action( 'kindling_before_header_inner' ); ?>
 
 <div id="site-header-inner" class="container clr">
 
@@ -36,4 +36,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 </div><!-- #site-header-inner -->
 
-<?php do_action( 'ocean_after_header_inner' ); ?>
+<?php do_action( 'kindling_after_header_inner' ); ?>

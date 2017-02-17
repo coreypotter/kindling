@@ -2,7 +2,7 @@
 /**
  * Instagram Widget.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
-	class OceanWP_Instagram_Widget extends WP_Widget {
+if ( ! class_exists( 'Kindling_Instagram_Widget' ) ) {
+	class Kindling_Instagram_Widget extends WP_Widget {
 
 		/**
 		 * Register widget with WordPress.
@@ -21,27 +21,27 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 		public function __construct() {
 			
 			parent::__construct(
-	            'ocean_instagram',
-	            $name = __( '&raquo; Instagram', 'oceanwp' ),
+	            'kindling_instagram',
+	            $name = __( '&raquo; Instagram', 'kindling' ),
 	            array(
-	                'classname'		=> 'widget-oceanwp-instagram instagram-widget',
-					'description'	=> esc_html__( 'Displays Instagram photos.', 'oceanwp' ),
+	                'classname'		=> 'widget-kindling-instagram instagram-widget',
+					'description'	=> esc_html__( 'Displays Instagram photos.', 'kindling' ),
 					'customize_selective_refresh' => true,
 	            )
 	        );
 
 			// Add new Image Size
-			add_image_size( 'oceanwp_insta_square', 640, 640, true );
+			add_image_size( 'kindling_insta_square', 640, 640, true );
 
-	        add_action( 'admin_enqueue_scripts', array( $this, 'oceanwp_instagram_js' ) );
+	        add_action( 'admin_enqueue_scripts', array( $this, 'kindling_instagram_js' ) );
 
 		}
 
 	    /**
 	     * Upload the Javascripts for the media uploader
 	     */
-	    function oceanwp_instagram_js() {
-	        wp_enqueue_script( 'oceanwp-insta-admin-script', OCEANWP_INC_DIR_URI .'widgets/js/insta-admin.js', array( 'jquery' ) );
+	    function kindling_instagram_js() {
+	        wp_enqueue_script( 'kindling-insta-admin-script', OCEANWP_INC_DIR_URI .'widgets/js/insta-admin.js', array( 'jquery' ) );
 
 	    }
 		
@@ -118,212 +118,212 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 		 */
 		function form( $instance ) {
 			$instance = wp_parse_args( (array) $instance, array(
-				'title' 			=> __('Instagram','oceanwp'),
+				'title' 			=> __('Instagram','kindling'),
 				'search_for'       	=> 'username',
-				'username'         	=> __('adidas','oceanwp'),
+				'username'         	=> __('adidas','kindling'),
 				'hashtag'          	=> '',
 				'blocked_users'    	=> '',
 				'number' 			=> 10,
 				'refresh_hour'     	=> 5,
-				'display_header'    => __('No','oceanwp'),
-				'display_p_picture'	=> __('Yes','oceanwp'),
-				'picture_radius'   	=> __('Rounded','oceanwp'),
+				'display_header'    => __('No','kindling'),
+				'display_p_picture'	=> __('Yes','kindling'),
+				'picture_radius'   	=> __('Rounded','kindling'),
 				'display_name'     	=> '',
 				'description'     	=> '',
-				'header_position'   => __('Before','oceanwp'),
-				'header_align'   	=> __('Left','oceanwp'),
+				'header_position'   => __('Before','kindling'),
+				'header_align'   	=> __('Left','kindling'),
 				'columns' 			=> '',
-				'margin' 			=> __('Yes','oceanwp'),
-				'image_size'       	=> 'oceanwp_insta_square',
+				'margin' 			=> __('Yes','kindling'),
+				'image_size'       	=> 'kindling_insta_square',
 				'orderby'          	=> 'rand',
 				'images_link'      	=> 'image_url',
 				'custom_url'       	=> '',
 				'target' 			=> 'blank',
-				'follow' 			=> __('Follow Us','oceanwp'),
+				'follow' 			=> __('Follow Us','kindling'),
 			)); ?>
 
-			<div class="oceanwp-container">
+			<div class="kindling-container">
 
 				<p>
-					<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title', 'oceanwp'); ?></label>			
+					<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title', 'kindling'); ?></label>			
 					<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $instance['title']; ?>" />
 				</p>
 
 				<p>
-					<strong><?php _e( 'Search Instagram for:', 'oceanwp' ); ?></strong>
-					<span class="oceanwp-search-for-container">
-						<label class="oceanwp-seach-for">
+					<strong><?php _e( 'Search Instagram for:', 'kindling' ); ?></strong>
+					<span class="kindling-search-for-container">
+						<label class="kindling-seach-for">
 							<input type="radio" id="<?php echo $this->get_field_id( 'search_for' ); ?>" name="<?php echo $this->get_field_name( 'search_for' ); ?>" value="username" <?php checked( 'username', $instance['search_for'] ); ?> />
-							<?php _e( 'Username:', 'oceanwp' ); ?>
+							<?php _e( 'Username:', 'kindling' ); ?>
 						</label>
 						<input id="<?php echo $this->get_field_id( 'username' ); ?>" class="inline-field-text" name="<?php echo $this->get_field_name( 'username' ); ?>" type="text" value="<?php echo $instance['username']; ?>" />
 					</span>
 
-					<span class="oceanwp-search-for-container">
-						<label class="oceanwp-seach-for">
+					<span class="kindling-search-for-container">
+						<label class="kindling-seach-for">
 							<input type="radio" id="<?php echo $this->get_field_id( 'search_for' ); ?>" name="<?php echo $this->get_field_name( 'search_for' ); ?>" value="hashtag" <?php checked( 'hashtag', $instance['search_for'] ); ?> />
-							<?php _e( 'Hashtag:', 'oceanwp' ); ?>
+							<?php _e( 'Hashtag:', 'kindling' ); ?>
 						</label>
-						<input id="<?php echo $this->get_field_id( 'hashtag' ); ?>" class="inline-field-text" placeholder="<?php _e('without # sign', 'oceanwp'); ?>" name="<?php echo $this->get_field_name( 'hashtag' ); ?>" type="text" value="<?php echo $instance['hashtag']; ?>" />
+						<input id="<?php echo $this->get_field_id( 'hashtag' ); ?>" class="inline-field-text" placeholder="<?php _e('without # sign', 'kindling'); ?>" name="<?php echo $this->get_field_name( 'hashtag' ); ?>" type="text" value="<?php echo $instance['hashtag']; ?>" />
 					</span>
 				</p>
 
 		        <p class="<?php if ( 'hashtag' != $instance['search_for'] ) echo 'hidden'; ?>">
-		            <label for="<?php echo $this->get_field_id( 'blocked_users' ); ?>"><?php _e( 'Block Users', 'oceanwp' ); ?>:</label>
+		            <label for="<?php echo $this->get_field_id( 'blocked_users' ); ?>"><?php _e( 'Block Users', 'kindling' ); ?>:</label>
 					<input class="widefat" id="<?php echo $this->get_field_id( 'blocked_users' ); ?>" name="<?php echo $this->get_field_name( 'blocked_users' ); ?>" type="text" value="<?php echo $instance['blocked_users']; ?>" />
-					<small><?php _e( 'Enter usernames separated by commas whose images you don\'t want to show', 'oceanwp' ); ?></small>
+					<small><?php _e( 'Enter usernames separated by commas whose images you don\'t want to show', 'kindling' ); ?></small>
 		        </p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number Images To Show:', 'oceanwp' ); ?>
+					<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number Images To Show:', 'kindling' ); ?>
 						<input class="small-text" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" min="0" value="<?php echo $instance['number']; ?>" />
 					</label>
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id( 'refresh_hour' ); ?>"><?php _e( 'Check New Images Every:', 'oceanwp' ); ?>
+					<label for="<?php echo $this->get_field_id( 'refresh_hour' ); ?>"><?php _e( 'Check New Images Every:', 'kindling' ); ?>
 						<input class="small-text" id="<?php echo $this->get_field_id( 'refresh_hour' ); ?>" name="<?php echo $this->get_field_name( 'refresh_hour' ); ?>" type="number" min="0" value="<?php echo $instance['refresh_hour']; ?>" />
-						<span><?php _e('hours', 'oceanwp'); ?></span>
+						<span><?php _e('hours', 'kindling'); ?></span>
 					</label>
 				</p>
 
-				<p class="oceanwp-left">
-					<label for="<?php echo $this->get_field_id('columns'); ?>"><?php _e('Images Style:', 'oceanwp'); ?></label>
-					<select class='oceanwp-widget-select widefat' name="<?php echo $this->get_field_name('columns'); ?>" id="<?php echo $this->get_field_id('columns'); ?>">
-						<option value="style-one" <?php if($instance['columns'] == 'style-one') { ?>selected="selected"<?php } ?>><?php _e( 'Style 1', 'oceanwp' ); ?></option>
-						<option value="style-two" <?php if($instance['columns'] == 'style-two') { ?>selected="selected"<?php } ?>><?php _e( 'Style 2', 'oceanwp' ); ?></option>
-						<option value="style-three" <?php if($instance['columns'] == 'style-three') { ?>selected="selected"<?php } ?>><?php _e( 'Style 3', 'oceanwp' ); ?></option>
-						<option value="style-four" <?php if($instance['columns'] == 'style-four') { ?>selected="selected"<?php } ?>><?php _e( 'Style 4', 'oceanwp' ); ?></option>
-						<option value="two-columns" <?php if($instance['columns'] == 'two-columns') { ?>selected="selected"<?php } ?>><?php _e( '2 Columns', 'oceanwp' ); ?></option>
-						<option value="three-columns" <?php if($instance['columns'] == 'three-columns') { ?>selected="selected"<?php } ?>><?php _e( '3 Columns', 'oceanwp' ); ?></option>
-						<option value="four-columns" <?php if($instance['columns'] == 'four-columns') { ?>selected="selected"<?php } ?>><?php _e( '4 Columns', 'oceanwp' ); ?></option>
-						<option value="five-columns" <?php if($instance['columns'] == 'five-columns') { ?>selected="selected"<?php } ?>><?php _e( '5 Columns', 'oceanwp' ); ?></option>
-						<option value="six-columns" <?php if($instance['columns'] == 'six-columns') { ?>selected="selected"<?php } ?>><?php _e( '6 Columns', 'oceanwp' ); ?></option>
-						<option value="seven-columns" <?php if($instance['columns'] == 'seven-columns') { ?>selected="selected"<?php } ?>><?php _e( '7 Columns', 'oceanwp' ); ?></option>
-						<option value="eight-columns" <?php if($instance['columns'] == 'eight-columns') { ?>selected="selected"<?php } ?>><?php _e( '8 Columns', 'oceanwp' ); ?></option>
-						<option value="nine-columns" <?php if($instance['columns'] == 'nine-columns') { ?>selected="selected"<?php } ?>><?php _e( '9 Columns', 'oceanwp' ); ?></option>
-						<option value="ten-columns" <?php if($instance['columns'] == 'ten-columns') { ?>selected="selected"<?php } ?>><?php _e( '10 Columns', 'oceanwp' ); ?></option>
+				<p class="kindling-left">
+					<label for="<?php echo $this->get_field_id('columns'); ?>"><?php _e('Images Style:', 'kindling'); ?></label>
+					<select class='kindling-widget-select widefat' name="<?php echo $this->get_field_name('columns'); ?>" id="<?php echo $this->get_field_id('columns'); ?>">
+						<option value="style-one" <?php if($instance['columns'] == 'style-one') { ?>selected="selected"<?php } ?>><?php _e( 'Style 1', 'kindling' ); ?></option>
+						<option value="style-two" <?php if($instance['columns'] == 'style-two') { ?>selected="selected"<?php } ?>><?php _e( 'Style 2', 'kindling' ); ?></option>
+						<option value="style-three" <?php if($instance['columns'] == 'style-three') { ?>selected="selected"<?php } ?>><?php _e( 'Style 3', 'kindling' ); ?></option>
+						<option value="style-four" <?php if($instance['columns'] == 'style-four') { ?>selected="selected"<?php } ?>><?php _e( 'Style 4', 'kindling' ); ?></option>
+						<option value="two-columns" <?php if($instance['columns'] == 'two-columns') { ?>selected="selected"<?php } ?>><?php _e( '2 Columns', 'kindling' ); ?></option>
+						<option value="three-columns" <?php if($instance['columns'] == 'three-columns') { ?>selected="selected"<?php } ?>><?php _e( '3 Columns', 'kindling' ); ?></option>
+						<option value="four-columns" <?php if($instance['columns'] == 'four-columns') { ?>selected="selected"<?php } ?>><?php _e( '4 Columns', 'kindling' ); ?></option>
+						<option value="five-columns" <?php if($instance['columns'] == 'five-columns') { ?>selected="selected"<?php } ?>><?php _e( '5 Columns', 'kindling' ); ?></option>
+						<option value="six-columns" <?php if($instance['columns'] == 'six-columns') { ?>selected="selected"<?php } ?>><?php _e( '6 Columns', 'kindling' ); ?></option>
+						<option value="seven-columns" <?php if($instance['columns'] == 'seven-columns') { ?>selected="selected"<?php } ?>><?php _e( '7 Columns', 'kindling' ); ?></option>
+						<option value="eight-columns" <?php if($instance['columns'] == 'eight-columns') { ?>selected="selected"<?php } ?>><?php _e( '8 Columns', 'kindling' ); ?></option>
+						<option value="nine-columns" <?php if($instance['columns'] == 'nine-columns') { ?>selected="selected"<?php } ?>><?php _e( '9 Columns', 'kindling' ); ?></option>
+						<option value="ten-columns" <?php if($instance['columns'] == 'ten-columns') { ?>selected="selected"<?php } ?>><?php _e( '10 Columns', 'kindling' ); ?></option>
 					</select>
 				</p>
 
-				<p class="oceanwp-right">
-					<label for="<?php echo $this->get_field_id('margin'); ?>"><?php _e('Margin:', 'oceanwp'); ?></label>
-					<select class='oceanwp-widget-select widefat' name="<?php echo $this->get_field_name('margin'); ?>" id="<?php echo $this->get_field_id('margin'); ?>">
-						<option value="margin" <?php if($instance['margin'] == 'margin') { ?>selected="selected"<?php } ?>><?php _e( 'Margin', 'oceanwp' ); ?></option>
-						<option value="no-margin" <?php if($instance['margin'] == 'no-margin') { ?>selected="selected"<?php } ?>><?php _e( 'No Margin', 'oceanwp' ); ?></option>
+				<p class="kindling-right">
+					<label for="<?php echo $this->get_field_id('margin'); ?>"><?php _e('Margin:', 'kindling'); ?></label>
+					<select class='kindling-widget-select widefat' name="<?php echo $this->get_field_name('margin'); ?>" id="<?php echo $this->get_field_id('margin'); ?>">
+						<option value="margin" <?php if($instance['margin'] == 'margin') { ?>selected="selected"<?php } ?>><?php _e( 'Margin', 'kindling' ); ?></option>
+						<option value="no-margin" <?php if($instance['margin'] == 'no-margin') { ?>selected="selected"<?php } ?>><?php _e( 'No Margin', 'kindling' ); ?></option>
 					</select>
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id( 'image_size' ); ?>"><strong><?php _e( 'Image format', 'oceanwp' ); ?></strong></label>
+					<label for="<?php echo $this->get_field_id( 'image_size' ); ?>"><strong><?php _e( 'Image format', 'kindling' ); ?></strong></label>
 					<select class="widefat" id="<?php echo $this->get_field_id( 'image_size' ); ?>" name="<?php echo $this->get_field_name( 'image_size' ); ?>">
-						<option value="oceanwp_insta_square" <?php echo ($instance['image_size'] == 'oceanwp_insta_square') ? ' selected="selected"' : ''; ?>><?php _e( 'Square - Cropped', 'oceanwp' ); ?></option>
-						<option value="full" <?php echo ($instance['image_size'] == 'full') ? ' selected="selected"' : ''; ?>><?php _e( 'Original - No Crop', 'oceanwp' ); ?></option>
+						<option value="kindling_insta_square" <?php echo ($instance['image_size'] == 'kindling_insta_square') ? ' selected="selected"' : ''; ?>><?php _e( 'Square - Cropped', 'kindling' ); ?></option>
+						<option value="full" <?php echo ($instance['image_size'] == 'full') ? ' selected="selected"' : ''; ?>><?php _e( 'Original - No Crop', 'kindling' ); ?></option>
 					</select>
-					<small><?php _e( '<strong>Square - Cropped</strong> - images in 640x640 pixels. <br/><strong>Original - No Crop</strong> - original image size.', 'oceanwp' ); ?></small>
+					<small><?php _e( '<strong>Square - Cropped</strong> - images in 640x640 pixels. <br/><strong>Original - No Crop</strong> - original image size.', 'kindling' ); ?></small>
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><strong><?php _e( 'Order by', 'oceanwp' ); ?></strong>
+					<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><strong><?php _e( 'Order by', 'kindling' ); ?></strong>
 						<select class="widefat" name="<?php echo $this->get_field_name( 'orderby' ); ?>" id="<?php echo $this->get_field_id( 'orderby' ); ?>">
-							<option value="date-ASC" <?php selected( $instance['orderby'], 'date-ASC', true); ?>><?php _e( 'Date - Ascending', 'oceanwp' ); ?></option>
-							<option value="date-DESC" <?php selected( $instance['orderby'], 'date-DESC', true); ?>><?php _e( 'Date - Descending', 'oceanwp' ); ?></option>
-							<option value="popular-ASC" <?php selected( $instance['orderby'], 'popular-ASC', true); ?>><?php _e( 'Popularity - Ascending', 'oceanwp' ); ?></option>
-							<option value="popular-DESC" <?php selected( $instance['orderby'], 'popular-DESC', true); ?>><?php _e( 'Popularity - Descending', 'oceanwp' ); ?></option>
-							<option value="rand" <?php selected( $instance['orderby'], 'rand', true); ?>><?php _e( 'Random', 'oceanwp' ); ?></option>
+							<option value="date-ASC" <?php selected( $instance['orderby'], 'date-ASC', true); ?>><?php _e( 'Date - Ascending', 'kindling' ); ?></option>
+							<option value="date-DESC" <?php selected( $instance['orderby'], 'date-DESC', true); ?>><?php _e( 'Date - Descending', 'kindling' ); ?></option>
+							<option value="popular-ASC" <?php selected( $instance['orderby'], 'popular-ASC', true); ?>><?php _e( 'Popularity - Ascending', 'kindling' ); ?></option>
+							<option value="popular-DESC" <?php selected( $instance['orderby'], 'popular-DESC', true); ?>><?php _e( 'Popularity - Descending', 'kindling' ); ?></option>
+							<option value="rand" <?php selected( $instance['orderby'], 'rand', true); ?>><?php _e( 'Random', 'kindling' ); ?></option>
 						</select>  
 					</label>
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id( 'images_link' ); ?>"><strong><?php _e( 'Link To', 'oceanwp' ); ?></strong>
+					<label for="<?php echo $this->get_field_id( 'images_link' ); ?>"><strong><?php _e( 'Link To', 'kindling' ); ?></strong>
 						<select class="widefat" name="<?php echo $this->get_field_name( 'images_link' ); ?>" id="<?php echo $this->get_field_id( 'images_link' ); ?>">
-							<option value="image_url" <?php selected( $instance['images_link'], 'image_url', true); ?>><?php _e( 'Instagram Image', 'oceanwp' ); ?></option>
-							<option class="<?php if ( 'hashtag' == $instance['search_for'] ) echo 'hidden'; ?>" value="user_url" <?php selected( $instance['images_link'], 'user_url', true); ?>><?php _e( 'Instagram Profile', 'oceanwp' ); ?></option>
-							<option value="custom_url" <?php selected( $instance['images_link'], 'custom_url', true ); ?>><?php _e( 'Custom Link', 'oceanwp' ); ?></option>
-							<option value="none" <?php selected( $instance['images_link'], 'none', true); ?>><?php _e( 'None', 'oceanwp' ); ?></option>
+							<option value="image_url" <?php selected( $instance['images_link'], 'image_url', true); ?>><?php _e( 'Instagram Image', 'kindling' ); ?></option>
+							<option class="<?php if ( 'hashtag' == $instance['search_for'] ) echo 'hidden'; ?>" value="user_url" <?php selected( $instance['images_link'], 'user_url', true); ?>><?php _e( 'Instagram Profile', 'kindling' ); ?></option>
+							<option value="custom_url" <?php selected( $instance['images_link'], 'custom_url', true ); ?>><?php _e( 'Custom Link', 'kindling' ); ?></option>
+							<option value="none" <?php selected( $instance['images_link'], 'none', true); ?>><?php _e( 'None', 'kindling' ); ?></option>
 						</select>
 					</label>
 				</p>
 
 				<p class="<?php if ( 'custom_url' != $instance['images_link'] ) echo 'hidden'; ?>">
-					<label for="<?php echo $this->get_field_id( 'custom_url' ); ?>"><?php _e( 'Custom Link:', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id( 'custom_url' ); ?>"><?php _e( 'Custom Link:', 'kindling'); ?></label>
 					<input class="widefat" id="<?php echo $this->get_field_id( 'custom_url' ); ?>" name="<?php echo $this->get_field_name( 'custom_url' ); ?>" type="text" value="<?php echo $instance['custom_url']; ?>" />
-					<small><?php _e('Use this field only if the above option is set to <strong>Custom Link</strong>', 'oceanwp'); ?></small>
+					<small><?php _e('Use this field only if the above option is set to <strong>Custom Link</strong>', 'kindling'); ?></small>
 				</p>
 
-				<div class="oceanwp-header-wrap <?php if ( 'hashtag' == $instance['search_for'] ) echo 'hidden'; ?>">
-					<div class="oceanwp-header-options oceanwp-clr">
-						<h4 class="oceanwp-header-title"><?php _e( 'Header Options', 'oceanwp'); ?></h4>
+				<div class="kindling-header-wrap <?php if ( 'hashtag' == $instance['search_for'] ) echo 'hidden'; ?>">
+					<div class="kindling-header-options kindling-clr">
+						<h4 class="kindling-header-title"><?php _e( 'Header Options', 'kindling'); ?></h4>
 						<p>
-							<label for="<?php echo $this->get_field_id('display_header'); ?>"><?php _e('Display Header:', 'oceanwp'); ?></label>
-							<select class='oceanwp-widget-select widefat' name="<?php echo $this->get_field_name('display_header'); ?>" id="<?php echo $this->get_field_id('display_header'); ?>">
-								<option value="no" <?php if($instance['display_header'] == 'no') { ?>selected="selected"<?php } ?>><?php _e( 'No', 'oceanwp' ); ?></option>
-								<option value="yes" <?php if($instance['display_header'] == 'yes') { ?>selected="selected"<?php } ?>><?php _e( 'Yes', 'oceanwp' ); ?></option>
+							<label for="<?php echo $this->get_field_id('display_header'); ?>"><?php _e('Display Header:', 'kindling'); ?></label>
+							<select class='kindling-widget-select widefat' name="<?php echo $this->get_field_name('display_header'); ?>" id="<?php echo $this->get_field_id('display_header'); ?>">
+								<option value="no" <?php if($instance['display_header'] == 'no') { ?>selected="selected"<?php } ?>><?php _e( 'No', 'kindling' ); ?></option>
+								<option value="yes" <?php if($instance['display_header'] == 'yes') { ?>selected="selected"<?php } ?>><?php _e( 'Yes', 'kindling' ); ?></option>
 							</select>
 						</p>
 
-						<div class="oceanwp-display-header-options <?php if ( 'yes' != $instance['display_header'] ) echo 'hidden'; ?>">
+						<div class="kindling-display-header-options <?php if ( 'yes' != $instance['display_header'] ) echo 'hidden'; ?>">
 							<p>
-								<label for="<?php echo $this->get_field_id('display_p_picture'); ?>"><?php _e('Display Profile Picture:', 'oceanwp'); ?></label>
-								<select class='oceanwp-widget-select widefat' name="<?php echo $this->get_field_name('display_p_picture'); ?>" id="<?php echo $this->get_field_id('display_p_picture'); ?>">
-									<option value="yes" <?php if($instance['display_p_picture'] == 'yes') { ?>selected="selected"<?php } ?>><?php _e( 'Yes', 'oceanwp' ); ?></option>
-									<option value="no" <?php if($instance['display_p_picture'] == 'no') { ?>selected="selected"<?php } ?>><?php _e( 'No', 'oceanwp' ); ?></option>
+								<label for="<?php echo $this->get_field_id('display_p_picture'); ?>"><?php _e('Display Profile Picture:', 'kindling'); ?></label>
+								<select class='kindling-widget-select widefat' name="<?php echo $this->get_field_name('display_p_picture'); ?>" id="<?php echo $this->get_field_id('display_p_picture'); ?>">
+									<option value="yes" <?php if($instance['display_p_picture'] == 'yes') { ?>selected="selected"<?php } ?>><?php _e( 'Yes', 'kindling' ); ?></option>
+									<option value="no" <?php if($instance['display_p_picture'] == 'no') { ?>selected="selected"<?php } ?>><?php _e( 'No', 'kindling' ); ?></option>
 								</select>
 							</p>
 
 							<p>
-								<label for="<?php echo $this->get_field_id('picture_radius'); ?>"><?php _e( 'Picture Radius:', 'oceanwp' ); ?></label>
-								<select class='oceanwp-widget-select widefat' name="<?php echo $this->get_field_name('picture_radius'); ?>" id="<?php echo $this->get_field_id('picture_radius'); ?>">
-									<option value="rounded" <?php if($instance['picture_radius'] == 'rounded') { ?>selected="selected"<?php } ?>><?php _e( 'Rounded', 'oceanwp' ); ?></option>
-									<option value="square" <?php if($instance['picture_radius'] == 'square') { ?>selected="selected"<?php } ?>><?php _e( 'Square', 'oceanwp'); ?></option>
+								<label for="<?php echo $this->get_field_id('picture_radius'); ?>"><?php _e( 'Picture Radius:', 'kindling' ); ?></label>
+								<select class='kindling-widget-select widefat' name="<?php echo $this->get_field_name('picture_radius'); ?>" id="<?php echo $this->get_field_id('picture_radius'); ?>">
+									<option value="rounded" <?php if($instance['picture_radius'] == 'rounded') { ?>selected="selected"<?php } ?>><?php _e( 'Rounded', 'kindling' ); ?></option>
+									<option value="square" <?php if($instance['picture_radius'] == 'square') { ?>selected="selected"<?php } ?>><?php _e( 'Square', 'kindling'); ?></option>
 								</select>
 							</p>
 
 							<p>
-								<label for="<?php echo $this->get_field_id( 'display_name' ); ?>"><?php _e( 'Display Name:', 'oceanwp' ); ?>
-									<input class="widefat" id="<?php echo $this->get_field_id( 'display_name' ); ?>" name="<?php echo $this->get_field_name( 'display_name' ); ?>" type="text" placeholder="<?php _e( 'Default is username', 'oceanwp' ); ?>" value="<?php echo $instance['display_name']; ?>" />
+								<label for="<?php echo $this->get_field_id( 'display_name' ); ?>"><?php _e( 'Display Name:', 'kindling' ); ?>
+									<input class="widefat" id="<?php echo $this->get_field_id( 'display_name' ); ?>" name="<?php echo $this->get_field_name( 'display_name' ); ?>" type="text" placeholder="<?php _e( 'Default is username', 'kindling' ); ?>" value="<?php echo $instance['display_name']; ?>" />
 								</label>
 							</p>
 
 							<p>
-								<label for="<?php echo $this->get_field_id('description'); ?>"><?php _e('Description:', 'oceanwp'); ?></label>
+								<label for="<?php echo $this->get_field_id('description'); ?>"><?php _e('Description:', 'kindling'); ?></label>
 								<textarea rows="15" id="<?php echo $this->get_field_id( 'description' ); ?>" name="<?php echo $this->get_field_name( 'description' ); ?>" class="widefat" style="height: 100px;"><?php if (  !empty( $instance['description'] ) ) { echo $instance['description']; } ?></textarea>
 							</p>
 
-							<p class="oceanwp-left">
-								<label for="<?php echo $this->get_field_id('header_position'); ?>"><?php _e( 'Position:', 'oceanwp' ); ?></label>
-								<select class='oceanwp-widget-select widefat' name="<?php echo $this->get_field_name('header_position'); ?>" id="<?php echo $this->get_field_id('header_position'); ?>">
-									<option value="before" <?php if($instance['header_position'] == 'before') { ?>selected="selected"<?php } ?>><?php _e( 'Before Images', 'oceanwp' ); ?></option>
-									<option value="after" <?php if($instance['header_position'] == 'after') { ?>selected="selected"<?php } ?>><?php _e( 'After Images', 'oceanwp'); ?></option>
+							<p class="kindling-left">
+								<label for="<?php echo $this->get_field_id('header_position'); ?>"><?php _e( 'Position:', 'kindling' ); ?></label>
+								<select class='kindling-widget-select widefat' name="<?php echo $this->get_field_name('header_position'); ?>" id="<?php echo $this->get_field_id('header_position'); ?>">
+									<option value="before" <?php if($instance['header_position'] == 'before') { ?>selected="selected"<?php } ?>><?php _e( 'Before Images', 'kindling' ); ?></option>
+									<option value="after" <?php if($instance['header_position'] == 'after') { ?>selected="selected"<?php } ?>><?php _e( 'After Images', 'kindling'); ?></option>
 								</select>
 							</p>
 
-							<p class="oceanwp-right">
-								<label for="<?php echo $this->get_field_id('header_align'); ?>"><?php _e( 'Align:', 'oceanwp' ); ?></label>
-								<select class='oceanwp-widget-select widefat' name="<?php echo $this->get_field_name('header_align'); ?>" id="<?php echo $this->get_field_id('header_align'); ?>">
-									<option value="left" <?php if($instance['header_align'] == 'left') { ?>selected="selected"<?php } ?>><?php _e( 'Left', 'oceanwp' ); ?></option>
-									<option value="right" <?php if($instance['header_align'] == 'right') { ?>selected="selected"<?php } ?>><?php _e( 'Right', 'oceanwp'); ?></option>
-									<option value="center" <?php if($instance['header_align'] == 'center') { ?>selected="selected"<?php } ?>><?php _e( 'Center', 'oceanwp'); ?></option>
+							<p class="kindling-right">
+								<label for="<?php echo $this->get_field_id('header_align'); ?>"><?php _e( 'Align:', 'kindling' ); ?></label>
+								<select class='kindling-widget-select widefat' name="<?php echo $this->get_field_name('header_align'); ?>" id="<?php echo $this->get_field_id('header_align'); ?>">
+									<option value="left" <?php if($instance['header_align'] == 'left') { ?>selected="selected"<?php } ?>><?php _e( 'Left', 'kindling' ); ?></option>
+									<option value="right" <?php if($instance['header_align'] == 'right') { ?>selected="selected"<?php } ?>><?php _e( 'Right', 'kindling'); ?></option>
+									<option value="center" <?php if($instance['header_align'] == 'center') { ?>selected="selected"<?php } ?>><?php _e( 'Center', 'kindling'); ?></option>
 								</select>
 							</p>
 						</div>
 					</div>
 				</div>
 
-				<p class="oceanwp-left">
-					<label for="<?php echo $this->get_field_id('target'); ?>"><?php _e( 'Button Target:', 'oceanwp' ); ?></label>
-					<select class='oceanwp-widget-select widefat' name="<?php echo $this->get_field_name('target'); ?>" id="<?php echo $this->get_field_id('target'); ?>">
-						<option value="blank" <?php if($instance['target'] == 'blank') { ?>selected="selected"<?php } ?>><?php _e( 'Blank', 'oceanwp' ); ?></option>
-						<option value="self" <?php if($instance['target'] == 'self') { ?>selected="selected"<?php } ?>><?php _e( 'Self', 'oceanwp'); ?></option>
+				<p class="kindling-left">
+					<label for="<?php echo $this->get_field_id('target'); ?>"><?php _e( 'Button Target:', 'kindling' ); ?></label>
+					<select class='kindling-widget-select widefat' name="<?php echo $this->get_field_name('target'); ?>" id="<?php echo $this->get_field_id('target'); ?>">
+						<option value="blank" <?php if($instance['target'] == 'blank') { ?>selected="selected"<?php } ?>><?php _e( 'Blank', 'kindling' ); ?></option>
+						<option value="self" <?php if($instance['target'] == 'self') { ?>selected="selected"<?php } ?>><?php _e( 'Self', 'kindling'); ?></option>
 					</select>
-					<small><?php _e( 'Same or new window', 'oceanwp' ); ?></small>
+					<small><?php _e( 'Same or new window', 'kindling' ); ?></small>
 				</p>
 
-				<p class="oceanwp-right">
-					<label for="<?php echo $this->get_field_id('follow'); ?>"><?php _e( 'Button Text:', 'oceanwp' ); ?></label>
+				<p class="kindling-right">
+					<label for="<?php echo $this->get_field_id('follow'); ?>"><?php _e( 'Button Text:', 'kindling' ); ?></label>
 					<input class="widefat" id="<?php echo $this->get_field_id('follow'); ?>" name="<?php echo $this->get_field_name('follow'); ?>" type="text" value="<?php echo $instance['follow']; ?>" />
-					<small><?php _e( 'Leave empty for no button', 'oceanwp' ); ?></small>
+					<small><?php _e( 'Leave empty for no button', 'kindling' ); ?></small>
 				</p>
 
 				<div style="clear:both;"></div>
@@ -331,17 +331,17 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 			</div>
 
 			<style type="text/css">
-				.oceanwp-clr:after { content:"";display:block;visibility:hidden;clear:both;zoom:1;height:0 }
-				.oceanwp-search-for-container {display: block; margin-bottom: 6px;}
-				.oceanwp-seach-for {display: inline-block; width: 90px; vertical-align: middle;}
-				.oceanwp-left,.oceanwp-right{min-height: 48px;}
-				.oceanwp-left{float: left;width: 48%;}
-				.oceanwp-right{float: right;width: 48%;}
-				.oceanwp-header-wrap .oceanwp-header-options {border: 1px solid #cfcfcf;padding: 10px;margin: 25px 0 0;}
-				.oceanwp-header-wrap .oceanwp-header-title {margin: -22px 0 0 0;background-color: #fff;width: 100px;padding: 3px 10px;border: 1px solid #cfcfcf;text-align: center;}
-				.oceanwp-header-wrap .oceanwp-header-heading {display: inline-block;width: 100%;margin: 8px 0 10px;}
+				.kindling-clr:after { content:"";display:block;visibility:hidden;clear:both;zoom:1;height:0 }
+				.kindling-search-for-container {display: block; margin-bottom: 6px;}
+				.kindling-seach-for {display: inline-block; width: 90px; vertical-align: middle;}
+				.kindling-left,.kindling-right{min-height: 48px;}
+				.kindling-left{float: left;width: 48%;}
+				.kindling-right{float: right;width: 48%;}
+				.kindling-header-wrap .kindling-header-options {border: 1px solid #cfcfcf;padding: 10px;margin: 25px 0 0;}
+				.kindling-header-wrap .kindling-header-title {margin: -22px 0 0 0;background-color: #fff;width: 100px;padding: 3px 10px;border: 1px solid #cfcfcf;text-align: center;}
+				.kindling-header-wrap .kindling-header-heading {display: inline-block;width: 100%;margin: 8px 0 10px;}
 				@media only screen and (max-width: 767px) {
-					.oceanwp-left,.oceanwp-right{float: none;width: 100%;}
+					.kindling-left,.kindling-right{float: none;width: 100%;}
 				}
 			</style>
 
@@ -367,7 +367,7 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 			$header_align 		= isset( $args['header_align'] ) ? $args['header_align'] : '';
 			$columns 			= isset( $args['columns'] ) ? $args['columns'] : '';
 			$margin 			= isset( $args['margin'] ) ? $args['margin'] : '';
-			$image_size       	= isset( $args['image_size'] ) ? $args['image_size'] : 'oceanwp_insta_square';
+			$image_size       	= isset( $args['image_size'] ) ? $args['image_size'] : 'kindling_insta_square';
 			$orderby          	= isset( $args['orderby'] ) ? $args['orderby'] : 'rand';
 			$images_link      	= isset( $args['images_link'] ) ? $args['images_link'] : 'local_image_url';
 			$custom_url       	= isset( $args['custom_url'] ) ? $args['custom_url'] : '';
@@ -425,26 +425,26 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 				}				
 			
 				if ( 'style-four' == $columns ) {
-					$output .= '<div class="oceanwp-style-four-wrap">';
+					$output .= '<div class="kindling-style-four-wrap">';
 				}
 
 				if ( 'style-four' == $columns ) {
-					$output .= '<div class="oceanwp-instagram-bar"><a class="instagram-logo" href="https://www.instagram.com/' . esc_attr( $username ) . '/" target="_blank" rel="nofollow"></a></div>';
+					$output .= '<div class="kindling-instagram-bar"><a class="instagram-logo" href="https://www.instagram.com/' . esc_attr( $username ) . '/" target="_blank" rel="nofollow"></a></div>';
 				}
 
 				if ( $display_header != 'no' && $header_position == 'before' ) {
-					$output .= '<div class="oceanwp-instagram-header oceanwp-before oceanwp-'. esc_attr( $header_align ) .' clr">';
+					$output .= '<div class="kindling-instagram-header kindling-before kindling-'. esc_attr( $header_align ) .' clr">';
 
 						if ( $display_p_picture == 'yes' ) {
-							$output .= '<div class="oceanwp-instagram-avatar '. esc_attr( $picture_radius ) .'">';
+							$output .= '<div class="kindling-instagram-avatar '. esc_attr( $picture_radius ) .'">';
 								$output .= '<a href="https://www.instagram.com/'. esc_attr( $username ) .'/" target="_blank" rel="nofollow">';
 									$output .= '<img src="'. esc_url( $profile_picture ) .'" alt="'. esc_attr( $username ) .'">';
-									$output .= '<span class="oceanwp-instagram-follow"><span>Follow</span></span>';
+									$output .= '<span class="kindling-instagram-follow"><span>Follow</span></span>';
 								$output .= '</a>';
 							$output .= '</div>';
 						}
 
-						$output .= '<div class="oceanwp-instagram-info">';
+						$output .= '<div class="kindling-instagram-info">';
 						
 							if ( $display_name == '' ) {
 								$name = $username;
@@ -452,10 +452,10 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 								$name = $display_name;
 							}
 
-							$output .= '<h3 class="oceanwp-instagram-username"><a href="https://www.instagram.com/'. esc_attr( $username ) .'/" target="_blank" rel="nofollow">'. $name .'</a></h3>';
+							$output .= '<h3 class="kindling-instagram-username"><a href="https://www.instagram.com/'. esc_attr( $username ) .'/" target="_blank" rel="nofollow">'. $name .'</a></h3>';
 							
 							if ( $description != '' ) {
-								$output .= '<p class="oceanwp-instagram-desc">'. do_shortcode( $description ) .'</p>';
+								$output .= '<p class="kindling-instagram-desc">'. do_shortcode( $description ) .'</p>';
 							}
 
 						$output .= '</div>';
@@ -463,7 +463,7 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 					$output .= '</div>';
 				}
 
-				$output .= '<ul class="oceanwp-instagram-pics clr '. esc_attr( $columns ) .' '. esc_attr( $margin ) .'">';
+				$output .= '<ul class="kindling-instagram-pics clr '. esc_attr( $columns ) .' '. esc_attr( $margin ) .'">';
 
 					foreach ( $images_data as $image_data ) {
 						
@@ -475,7 +475,7 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 							$template_args['link_to'] = $custom_url;
 						}
 
-						if ( $image_size == 'oceanwp_insta_square' ) {
+						if ( $image_size == 'kindling_insta_square' ) {
 							$template_args['image'] = $image_data['url_thumbnail'];
 						} elseif( $image_size == 'full' ) {
 							$template_args['image'] = $image_data['url'];
@@ -493,18 +493,18 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 				$output .= '</ul>';
 
 				if ( $display_header != 'no' && $header_position == 'after' ) {
-					$output .= '<div class="oceanwp-instagram-header oceanwp-after oceanwp-'. esc_attr( $header_align ) .' clr">';
+					$output .= '<div class="kindling-instagram-header kindling-after kindling-'. esc_attr( $header_align ) .' clr">';
 
 						if ( $display_p_picture == 'yes' ) {
-							$output .= '<div class="oceanwp-instagram-avatar">';
+							$output .= '<div class="kindling-instagram-avatar">';
 								$output .= '<a href="https://www.instagram.com/'. esc_attr( $username ) .'/" target="_blank" rel="nofollow">';
 									$output .= '<img src="'. esc_url( $profile_picture ) .'" alt="'. esc_attr( $username ) .'">';
-									$output .= '<span class="oceanwp-instagram-follow"><span>Follow</span></span>';
+									$output .= '<span class="kindling-instagram-follow"><span>Follow</span></span>';
 								$output .= '</a>';
 							$output .= '</div>';
 						}
 
-						$output .= '<div class="oceanwp-instagram-info">';
+						$output .= '<div class="kindling-instagram-info">';
 						
 							if ( $display_name == '' ) {
 								$name = $username;
@@ -512,10 +512,10 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 								$name = $display_name;
 							}
 
-							$output .= '<h3 class="oceanwp-instagram-username"><a href="https://www.instagram.com/'. esc_attr( $username ) .'/" target="_blank" rel="nofollow">'. $name .'</a></h3>';
+							$output .= '<h3 class="kindling-instagram-username"><a href="https://www.instagram.com/'. esc_attr( $username ) .'/" target="_blank" rel="nofollow">'. $name .'</a></h3>';
 							
 							if ( $description != '' ) {
-								$output .= '<p class="oceanwp-instagram-desc">'. do_shortcode( $description ) .'</p>';
+								$output .= '<p class="kindling-instagram-desc">'. do_shortcode( $description ) .'</p>';
 							}
 
 						$output .= '</div>';
@@ -524,7 +524,7 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 				}
 
 				if ( $follow != '' ) {
-					$output .= '<p class="oceanwp-instagram-link clr"><a href="https://www.instagram.com/'. esc_attr( $username ) .'/" rel="me" target="_'. esc_attr( $target ) .'">'. esc_attr( $follow ) .'</a></p>';
+					$output .= '<p class="kindling-instagram-link clr"><a href="https://www.instagram.com/'. esc_attr( $username ) .'/" rel="me" target="_'. esc_attr( $target ) .'">'. esc_attr( $follow ) .'</a></p>';
 				}
 
 				if ( 'style-four' == $columns ) {
@@ -532,7 +532,7 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 				}
 
 			} else {
-				$output .= __( 'No images found! <br> Try some other hashtag or username', 'oceanwp' );
+				$output .= __( 'No images found! <br> Try some other hashtag or username', 'kindling' );
 			}
 
 			return $output;
@@ -588,10 +588,10 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 				$blocked_users = $search_for['blocked_users'];
 				$blocked_users_array = $this->get_ids_from_usernames( $blocked_users );
 			} else {
-				return __( 'Nothing to search for', 'oceanwp');
+				return __( 'Nothing to search for', 'kindling');
 			}
 			
-			$opt_name  = 'oceanwp_insta_' . md5( $search . '_' . $search_string );
+			$opt_name  = 'kindling_insta_' . md5( $search . '_' . $search_string );
 			$instaData = get_transient( $opt_name );
 			$user_opt  = (array) get_option( $opt_name );
 
@@ -648,7 +648,7 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 						}
 						
 						if ( empty( $entry_data ) ) {
-							return __( 'No images found', 'oceanwp');
+							return __( 'No images found', 'kindling');
 						}
 
 						foreach ( $entry_data as $current => $result ) {
@@ -713,7 +713,7 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 		function get_ids_from_usernames( $usernames ) {
 			
 			$users = explode( ',', trim( $usernames ) );
-			$user_ids = (array) get_transient( 'oceanwp_insta_user_ids' );
+			$user_ids = (array) get_transient( 'kindling_insta_user_ids' );
 			$return_ids = array();
 
 			if ( is_array( $users ) && !empty( $users ) ) {
@@ -762,7 +762,7 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 								
 								$user_ids[$user] = $user_id;
 						
-								set_transient( 'oceanwp_insta_user_ids', $user_ids );
+								set_transient( 'kindling_insta_user_ids', $user_ids );
 							}
 						}
 					}
@@ -848,4 +848,4 @@ if ( ! class_exists( 'OceanWP_Instagram_Widget' ) ) {
 
 	}
 }
-register_widget( 'OceanWP_Instagram_Widget' );
+register_widget( 'Kindling_Instagram_Widget' );

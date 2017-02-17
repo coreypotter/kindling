@@ -2,19 +2,19 @@
 /**
  * Displays post entry read more
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Text
-$text = esc_html__( 'Continue Reading', 'oceanwp' );
+# Text
+$text = esc_html__( 'Continue Reading', 'kindling' );
 
-// Apply filters for child theming
-$text = apply_filters( 'ocean_post_readmore_link_text', $text );
+# Apply filters for child theming
+$text = apply_filters( 'kindling_post_readmore_link_text', $text );
 
 if ( 'post' == get_post_type() ) : ?>
 

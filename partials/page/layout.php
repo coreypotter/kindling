@@ -2,10 +2,10 @@
 /**
  * Outputs correct page layout
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 } ?>
@@ -13,10 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 <article class="single-page-article clr">
 
 	<?php
-	// Get page entry
+	# Get page entry
 	get_template_part( 'partials/page/article' );
 
-	// Display comments
+	# Display comments
 	comments_template(); ?>
 
 </article>

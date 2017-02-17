@@ -2,7 +2,7 @@
 /**
  * About Me Widget.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -11,8 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Start class
-if ( ! class_exists( 'OceanWP_About_Me_Widget' ) ) {
-	class OceanWP_About_Me_Widget extends WP_Widget {
+if ( ! class_exists( 'Kindling_About_Me_Widget' ) ) {
+	class Kindling_About_Me_Widget extends WP_Widget {
 
 		/**
 		 * Register widget with WordPress.
@@ -22,7 +22,7 @@ if ( ! class_exists( 'OceanWP_About_Me_Widget' ) ) {
 		public function __construct() {
 
 			// Declare social services array
-			$this->social_services_array = apply_filters( 'ocean_about_me_widget_profiles', array(
+			$this->social_services_array = apply_filters( 'kindling_about_me_widget_profiles', array(
 				'facebook'		=> array(
 					'name'		=> 'Facebook',
 					'url'		=> ''
@@ -55,11 +55,11 @@ if ( ! class_exists( 'OceanWP_About_Me_Widget' ) ) {
 
 			// Start up widget
 			parent::__construct(
-				'ocean_about_me',
-				esc_html__( '&raquo; About Me', 'oceanwp' ),
+				'kindling_about_me',
+				esc_html__( '&raquo; About Me', 'kindling' ),
 				array(
-					'classname'   => 'widget-oceanwp-about-me about-me-widget',
-					'description' => esc_html__( 'Adds a about me widget.', 'oceanwp' ),
+					'classname'   => 'widget-kindling-about-me about-me-widget',
+					'description' => esc_html__( 'Adds a about me widget.', 'kindling' ),
 					'customize_selective_refresh' => true,
 				)
 			);
@@ -110,9 +110,9 @@ if ( ! class_exists( 'OceanWP_About_Me_Widget' ) ) {
 					echo $args['before_title'] . $title . $args['after_title'];
 				} ?>
 
-				<div class="oceanwp-about-me">
+				<div class="kindling-about-me">
 
-					<div class="oceanwp-about-me-avatar clr">
+					<div class="kindling-about-me-avatar clr">
 
 						<?php
 						// Display the avatar
@@ -122,21 +122,21 @@ if ( ! class_exists( 'OceanWP_About_Me_Widget' ) ) {
 
 						// Display the name
 						if ( $name ) :?>
-							<h3 class="oceanwp-about-me-name"><?php echo esc_attr( $name ); ?></h3>
+							<h3 class="kindling-about-me-name"><?php echo esc_attr( $name ); ?></h3>
 						<?php endif; ?>
 
-					</div><!-- .oceanwp-about-me-avatar -->
+					</div><!-- .kindling-about-me-avatar -->
 
 					<?php
 					// Display the text
 					if ( $text ) : ?>
-						<div class="oceanwp-about-me-text clr"><?php echo do_shortcode( $text ); ?></div>
+						<div class="kindling-about-me-text clr"><?php echo do_shortcode( $text ); ?></div>
 					<?php endif;
 
 					// Display the social
 					if ( $social_services ) : ?>
 
-						<ul class="oceanwp-about-me-social style-<?php echo esc_attr( $social_style ); ?>">
+						<ul class="kindling-about-me-social style-<?php echo esc_attr( $social_style ); ?>">
 							<?php
 							// Original Array
 							$social_services_array = $this->social_services_array;
@@ -198,9 +198,9 @@ if ( ! class_exists( 'OceanWP_About_Me_Widget' ) ) {
 		 */
 		function form( $instance ) {
 			$instance = wp_parse_args( ( array ) $instance, array(
-				'title'       		=> esc_html__( 'About Me', 'oceanwp' ),
+				'title'       		=> esc_html__( 'About Me', 'kindling' ),
 				'avatar' 			=> OCEANWP_THEME_URI . '/assets/img/about-avatar.png',
-				'name'  			=> esc_html__( 'John Doe', 'oceanwp' ),
+				'name'  			=> esc_html__( 'John Doe', 'kindling' ),
 				'text' 				=> 'Lorem ipsum ex vix illud nonummy novumtatio et his. At vix patrioque scribentur at fugitertissi ext scriptaset verterem molestiae.',
 				'social_style' 		=> 'color',
 				'target' 			=> 'blank',
@@ -208,52 +208,52 @@ if ( ! class_exists( 'OceanWP_About_Me_Widget' ) ) {
 			) ); ?>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'oceanwp' ); ?>:</label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'kindling' ); ?>:</label> 
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 			</p>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'avatar' ) ); ?>"><?php esc_html_e( 'Image URL', 'oceanwp' ); ?>:</label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'avatar' ) ); ?>"><?php esc_html_e( 'Image URL', 'kindling' ); ?>:</label> 
 				<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'avatar' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'avatar' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['avatar'] ); ?>" style="margin-bottom:10px;" />
-				<input class="oceanwp-widget-upload-button button button-secondary" type="button" value="<?php esc_html_e( 'Upload Image', 'oceanwp' ); ?>" />
+				<input class="kindling-widget-upload-button button button-secondary" type="button" value="<?php esc_html_e( 'Upload Image', 'kindling' ); ?>" />
 			</p>
 
 			<p>
-			    <label for="<?php echo $this->get_field_id( 'name' ); ?>"><?php esc_html_e('Name:', 'oceanwp') ?></label>
+			    <label for="<?php echo $this->get_field_id( 'name' ); ?>"><?php esc_html_e('Name:', 'kindling') ?></label>
 			    <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'name' ); ?>" name="<?php echo $this->get_field_name( 'name' ); ?>" value="<?php echo esc_attr( $instance['name'] ); ?>" />
 			</p>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>"><?php esc_html_e( 'Description:','oceanwp' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>"><?php esc_html_e( 'Description:','kindling' ); ?></label>
 				<textarea rows="15" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="widefat" style="height: 100px;"><?php if( !empty( $instance['text'] ) ) { echo $instance['text']; } ?></textarea>
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id('social_style'); ?>"><?php esc_html_e('Social Style:', 'oceanwp'); ?></label>
+				<label for="<?php echo $this->get_field_id('social_style'); ?>"><?php esc_html_e('Social Style:', 'kindling'); ?></label>
 				<br />
 				<select class='widget-select widefat' name="<?php echo $this->get_field_name('social_style'); ?>" id="<?php echo $this->get_field_id('social_style'); ?>">
-					<option value="color" <?php selected( $instance['social_style'], 'color' ) ?>><?php esc_html_e( 'Color', 'oceanwp' ); ?></option>
-					<option value="light" <?php selected( $instance['social_style'], 'light' ) ?>><?php esc_html_e( 'Light', 'oceanwp' ); ?></option>
-					<option value="dark" <?php selected( $instance['social_style'], 'dark' ) ?>><?php esc_html_e( 'Dark', 'oceanwp' ); ?></option>
+					<option value="color" <?php selected( $instance['social_style'], 'color' ) ?>><?php esc_html_e( 'Color', 'kindling' ); ?></option>
+					<option value="light" <?php selected( $instance['social_style'], 'light' ) ?>><?php esc_html_e( 'Light', 'kindling' ); ?></option>
+					<option value="dark" <?php selected( $instance['social_style'], 'dark' ) ?>><?php esc_html_e( 'Dark', 'kindling' ); ?></option>
 				</select>
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id('target'); ?>"><?php esc_html_e( 'Social Link Target:', 'oceanwp' ); ?></label>
+				<label for="<?php echo $this->get_field_id('target'); ?>"><?php esc_html_e( 'Social Link Target:', 'kindling' ); ?></label>
 				<br />
 				<select class='widget-select widefat' name="<?php echo $this->get_field_name('target'); ?>" id="<?php echo $this->get_field_id('target'); ?>">
-					<option value="blank" <?php selected( $instance['target'], 'blank' ) ?>><?php esc_html_e( 'Blank', 'oceanwp' ); ?></option>
-					<option value="self" <?php selected( $instance['target'], 'self' ) ?>><?php esc_html_e( 'Self', 'oceanwp' ); ?></option>
+					<option value="blank" <?php selected( $instance['target'], 'blank' ) ?>><?php esc_html_e( 'Blank', 'kindling' ); ?></option>
+					<option value="self" <?php selected( $instance['target'], 'self' ) ?>><?php esc_html_e( 'Self', 'kindling' ); ?></option>
 				</select>
 			</p>
 
 			<?php
 			$field_id_services   = $this->get_field_id( 'social_services' );
 			$field_name_services = $this->get_field_name( 'social_services' ); ?>
-			<h3 style="margin-top:20px;margin-bottom:0;"><?php esc_html_e( 'Social Links','oceanwp' ); ?></h3>
-			<ul id="<?php echo esc_attr( $field_id_services ); ?>" class="oceanwp-about-me-widget-services-list">
+			<h3 style="margin-top:20px;margin-bottom:0;"><?php esc_html_e( 'Social Links','kindling' ); ?></h3>
+			<ul id="<?php echo esc_attr( $field_id_services ); ?>" class="kindling-about-me-widget-services-list">
 				<input type="hidden" id="<?php echo esc_attr( $field_name_services ); ?>" value="<?php echo esc_attr( $field_name_services ); ?>">
-				<input type="hidden" id="<?php echo esc_attr( wp_create_nonce( 'oceanwp_fontawesome_social_widget_nonce' ) ); ?>">
+				<input type="hidden" id="<?php echo esc_attr( wp_create_nonce( 'kindling_fontawesome_social_widget_nonce' ) ); ?>">
 				<?php
 				// Social array
 				$social_services_array = $this->social_services_array;
@@ -279,7 +279,7 @@ if ( ! class_exists( 'OceanWP_About_Me_Widget' ) ) {
 					$( document ).ready( function() {
 						var _custom_media = true,
 							_orig_send_attachment = wp.media.editor.send.attachment;
-						$( '.oceanwp-widget-upload-button' ).click(function(e) {
+						$( '.kindling-widget-upload-button' ).click(function(e) {
 							var send_attachment_bkp	= wp.media.editor.send.attachment,
 								button = $(this),
 								id = button.prev();
@@ -307,41 +307,41 @@ if ( ! class_exists( 'OceanWP_About_Me_Widget' ) ) {
 
 	}
 }
-register_widget( 'OceanWP_About_Me_Widget' );
+register_widget( 'Kindling_About_Me_Widget' );
 
 // Widget Styles
-if ( ! function_exists( 'oceanwp_about_me_widget_style' ) ) {
-	function oceanwp_about_me_widget_style() { ?>
+if ( ! function_exists( 'kindling_about_me_widget_style' ) ) {
+	function kindling_about_me_widget_style() { ?>
 		<style>
-		.oceanwp-about-me-widget-services-list { padding-top: 10px; }
-		.oceanwp-about-me-widget-services-list li { cursor: move; background: #fafafa; padding: 10px; border: 1px solid #e5e5e5; margin-bottom: 10px; }
-		.oceanwp-about-me-widget-services-list li p { margin: 0 }
-		.oceanwp-about-me-widget-services-list li label { margin-bottom: 3px; display: block; color: #222; }
-		.oceanwp-about-me-widget-services-list li label span.fa { margin-right: 10px }
-		.oceanwp-about-me-widget-services-list .placeholder { border: 1px dashed #e3e3e3 }
-		.oceanwp-widget-select { width: 100% }
+		.kindling-about-me-widget-services-list { padding-top: 10px; }
+		.kindling-about-me-widget-services-list li { cursor: move; background: #fafafa; padding: 10px; border: 1px solid #e5e5e5; margin-bottom: 10px; }
+		.kindling-about-me-widget-services-list li p { margin: 0 }
+		.kindling-about-me-widget-services-list li label { margin-bottom: 3px; display: block; color: #222; }
+		.kindling-about-me-widget-services-list li label span.fa { margin-right: 10px }
+		.kindling-about-me-widget-services-list .placeholder { border: 1px dashed #e3e3e3 }
+		.kindling-widget-select { width: 100% }
 		</style>
 	<?php
 	}
 }
 
 // Widget AJAX functions
-function oceanwp_about_me_widget_scripts() {
+function kindling_about_me_widget_scripts() {
 	global $pagenow;
 	if ( is_admin() && $pagenow == "widgets.php" ) {
-		add_action( 'admin_head', 'oceanwp_about_me_widget_style' );
-		add_action( 'admin_footer', 'add_new_oceanwp_about_me_ajax_trigger' );
-		function add_new_oceanwp_about_me_ajax_trigger() { ?>
+		add_action( 'admin_head', 'kindling_about_me_widget_style' );
+		add_action( 'admin_footer', 'add_new_kindling_about_me_ajax_trigger' );
+		function add_new_kindling_about_me_ajax_trigger() { ?>
 			<script type="text/javascript" >
 				jQuery(document).ready(function($) {
 					jQuery(document).ajaxSuccess(function(e, xhr, settings) {
-						var widget_id_base = 'ocean_about_me';
+						var widget_id_base = 'kindling_about_me';
 						if ( settings.data.search( 'action=save-widget' ) != -1 && settings.data.search( 'id_base=' + widget_id_base) != -1 ) {
-							oceanwpSortServices();
+							kindlingSortServices();
 						}
 					} );
-					function oceanwpSortServices() {
-						jQuery( '.oceanwp-about-me-widget-services-list' ).each( function() {
+					function kindlingSortServices() {
+						jQuery( '.kindling-about-me-widget-services-list' ).each( function() {
 							var id = jQuery(this).attr( 'id' );
 							$( '#'+ id ).sortable( {
 								placeholder : "placeholder",
@@ -349,11 +349,11 @@ function oceanwp_about_me_widget_scripts() {
 							} );
 						} );
 					}
-					oceanwpSortServices();
+					kindlingSortServices();
 				} );
 			</script>
 		<?php
 		}
 	}
 }
-add_action( 'admin_init', 'oceanwp_about_me_widget_scripts' );
+add_action( 'admin_init', 'kindling_about_me_widget_scripts' );

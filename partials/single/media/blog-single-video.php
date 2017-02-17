@@ -2,23 +2,23 @@
 /**
  * Blog single video format media
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Return if Ocean Extra is not active
-if ( ! class_exists( 'Ocean_Extra' ) ) {
+# Return if Kindling Extra is not active
+if ( ! class_exists( 'Kindling_Extra' ) ) {
 	return;
 }
 
-// Get post video
-$video = oceanwp_get_post_video_html();
+# Get post video
+$video = kindling_get_post_video_html();
 
-// Display video if one exists and it's not a password protected post
+# Display video if one exists and it's not a password protected post
 if ( $video && ! post_password_required() ) : ?>
 
 	<div id="post-media" class="thumbnail clr">
@@ -32,7 +32,7 @@ if ( $video && ! post_password_required() ) : ?>
 	</div><!-- #post-media -->
 
 <?php
-// Else display post thumbnail
+# Else display post thumbnail
 else : ?>
 
 	<?php get_template_part( 'partials/single/media/blog-single' ); ?>

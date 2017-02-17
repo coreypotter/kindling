@@ -1,20 +1,20 @@
 <?php
 /**
- * OceanWP Customizer Class
+ * Kindling Customizer Class
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_Customizer' ) ) :
+if ( ! class_exists( 'Kindling_Customizer' ) ) :
 
 	/**
-	 * The OceanWP Customizer class
+	 * The Kindling Customizer class
 	 */
-	class OceanWP_Customizer {
+	class Kindling_Customizer {
 
 		/**
 		 * Setup class.
@@ -40,7 +40,7 @@ if ( ! class_exists( 'OceanWP_Customizer' ) ) :
 		public function custom_controls( $wp_customize ) {
 
 			// Path
-			$dir = OCEANWP_INC_DIR . 'customizer/controls/';
+			$dir = KINDLING_INC_DIR . 'customizer/controls/';
 
 			// Add the controls
 			require_once( $dir . 'buttonset/class-control-buttonset.php' );
@@ -55,16 +55,16 @@ if ( ! class_exists( 'OceanWP_Customizer' ) ) :
 			require_once( $dir . 'typography/class-control-typography.php' );
 
 			// Register the controls
-			$wp_customize->register_control_type( 'OceanWP_Customizer_Buttonset_Control' );
-			$wp_customize->register_control_type( 'OceanWP_Customizer_Color_Control' );
-			$wp_customize->register_control_type( 'OceanWP_Customizer_Dropdown_Pages' );
-			$wp_customize->register_control_type( 'OceanWP_Customizer_Heading_Control' );
-			$wp_customize->register_control_type( 'OceanWP_Customizer_Icon_Select_Control' );
-			$wp_customize->register_control_type( 'OceanWP_Customize_Multicheck_Control' );
-			$wp_customize->register_control_type( 'OceanWP_Customizer_Range_Control' );
-			$wp_customize->register_control_type( 'OceanWP_Customizer_Radio_Image_Control' );
-			$wp_customize->register_control_type( 'OceanWP_Customizer_Sortable_Control' );
-			$wp_customize->register_control_type( 'OceanWP_Customizer_Typography_Control' );
+			$wp_customize->register_control_type( 'Kindling_Customizer_Buttonset_Control' );
+			$wp_customize->register_control_type( 'Kindling_Customizer_Color_Control' );
+			$wp_customize->register_control_type( 'Kindling_Customizer_Dropdown_Pages' );
+			$wp_customize->register_control_type( 'Kindling_Customizer_Heading_Control' );
+			$wp_customize->register_control_type( 'Kindling_Customizer_Icon_Select_Control' );
+			$wp_customize->register_control_type( 'Kindling_Customize_Multicheck_Control' );
+			$wp_customize->register_control_type( 'Kindling_Customizer_Range_Control' );
+			$wp_customize->register_control_type( 'Kindling_Customizer_Radio_Image_Control' );
+			$wp_customize->register_control_type( 'Kindling_Customizer_Sortable_Control' );
+			$wp_customize->register_control_type( 'Kindling_Customizer_Typography_Control' );
 
 		}
 
@@ -74,7 +74,7 @@ if ( ! class_exists( 'OceanWP_Customizer' ) ) :
 		 * @since 1.0.0
 		 */
 		public function controls_helpers() {
-			require_once( OCEANWP_INC_DIR .'customizer/customizer-helpers.php' );
+			require_once( KINDLING_INC_DIR .'customizer/customizer-helpers.php' );
 		}
 
 		/**
@@ -103,10 +103,10 @@ if ( ! class_exists( 'OceanWP_Customizer' ) ) :
 			$wp_customize->remove_setting( 'background_image' );
 
 			// Move custom logo setting
-			$wp_customize->get_control( 'custom_logo' )->section = 'ocean_header_logo';
+			$wp_customize->get_control( 'custom_logo' )->section = 'kindling_header_logo';
 
 			// Move custom css setting
-			$wp_customize->get_control( 'custom_css' )->section = 'ocean_custom_code_panel';
+			$wp_customize->get_control( 'custom_css' )->section = 'kindling_custom_code_panel';
 
 		}
 
@@ -118,7 +118,7 @@ if ( ! class_exists( 'OceanWP_Customizer' ) ) :
 		public function register_options() {
 			
 			// Var
-			$dir = OCEANWP_INC_DIR .'customizer/settings/';
+			$dir = KINDLING_INC_DIR .'customizer/settings/';
 
 			// Options
 			if ( get_theme_mod( 'oe_general_panel_enable', true ) ) {
@@ -153,7 +153,7 @@ if ( ! class_exists( 'OceanWP_Customizer' ) ) :
 				require_once( $dir .'footer-bottom.php' );
 			}
 
-			if ( OCEANWP_WOOCOMMERCE_ACTIVE
+			if ( KINDLING_WOOCOMMERCE_ACTIVE
 				&& get_theme_mod( 'oe_woocommerce_panel_enable', true ) ) {
 				require_once( $dir .'woocommerce.php' );
 			}
@@ -169,7 +169,7 @@ if ( ! class_exists( 'OceanWP_Customizer' ) ) :
 		 * @since 1.0.0
 		 */
 		public function customize_preview_init() {
-			wp_enqueue_script( 'oceanwp-customize-preview', OCEANWP_THEME_URI . '/inc/customizer/assets/js/customize-preview.js', array( 'customize-preview' ), OCEANWP_THEME_VERSION, true );
+			wp_enqueue_script( 'kindling-customize-preview', KINDLING_THEME_URI . '/inc/customizer/assets/js/customize-preview.js', array( 'customize-preview' ), KINDLING_THEME_VERSION, true );
 		}
 
 		/**
@@ -178,12 +178,12 @@ if ( ! class_exists( 'OceanWP_Customizer' ) ) :
 		 * @since 1.0.0
 		 */
 		public function custom_customize_enqueue() {
-			wp_enqueue_style( 'font-awesome', OCEANWP_CSS_DIR_URI .'devs/font-awesome.min.css' );
-			wp_enqueue_style( 'oceanwp-general-css', OCEANWP_INC_DIR_URI . 'customizer/controls/general.css' );
+			wp_enqueue_style( 'font-awesome', KINDLING_CSS_DIR_URI .'devs/font-awesome.min.css' );
+			wp_enqueue_style( 'kindling-general-css', KINDLING_INC_DIR_URI . 'customizer/controls/general.css' );
 		}
 
 	}
 
 endif;
 
-return new OceanWP_Customizer();
+return new Kindling_Customizer();

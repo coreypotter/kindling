@@ -2,16 +2,16 @@
 /**
  * Sidebar Customizer Options
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_Sidebar_Customizer' ) ) :
+if ( ! class_exists( 'Kindling_Sidebar_Customizer' ) ) :
 
-	class OceanWP_Sidebar_Customizer {
+	class Kindling_Sidebar_Customizer {
 
 		/**
 		 * Setup class.
@@ -21,7 +21,7 @@ if ( ! class_exists( 'OceanWP_Sidebar_Customizer' ) ) :
 		public function __construct() {
 
 			add_action( 'customize_register', 	array( $this, 'customizer_options' ) );
-			add_filter( 'ocean_head_css', 		array( $this, 'head_css' ) );
+			add_filter( 'kindling_head_css', 		array( $this, 'head_css' ) );
 
 		}
 
@@ -35,52 +35,52 @@ if ( ! class_exists( 'OceanWP_Sidebar_Customizer' ) ) :
 			/**
 			 * Section
 			 */
-			$section = 'ocean_sidebar_section';
+			$section = 'kindling_sidebar_section';
 			$wp_customize->add_section( $section , array(
-				'title' 			=> esc_html__( 'Sidebar', 'oceanwp' ),
+				'title' 			=> esc_html__( 'Sidebar', 'kindling' ),
 				'priority' 			=> 210,
 			) );
 
 			/**
 			 * Sidebar Background
 			 */
-			$wp_customize->add_setting( 'ocean_sidebar_bg', array(
+			$wp_customize->add_setting( 'kindling_sidebar_bg', array(
 				'transport' 			=> 'postMessage',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_sidebar_bg', array(
-				'label'	   				=> esc_html__( 'Background Color', 'oceanwp' ),
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_sidebar_bg', array(
+				'label'	   				=> esc_html__( 'Background Color', 'kindling' ),
 				'section'  				=> $section,
-				'settings' 				=> 'ocean_sidebar_bg',
+				'settings' 				=> 'kindling_sidebar_bg',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Sidebar Padding
 			 */
-			$wp_customize->add_setting( 'ocean_sidebar_padding', array(
+			$wp_customize->add_setting( 'kindling_sidebar_padding', array(
 				'transport' 			=> 'postMessage',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_sidebar_padding', array(
-				'label'	   				=> esc_html__( 'Padding', 'oceanwp' ),
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_sidebar_padding', array(
+				'label'	   				=> esc_html__( 'Padding', 'kindling' ),
 				'type' 					=> 'text',
 				'section'  				=> $section,
-				'settings' 				=> 'ocean_sidebar_padding',
+				'settings' 				=> 'kindling_sidebar_padding',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Widgets Heading
 			 */
-			$wp_customize->add_setting( 'ocean_widgets_heading', array(
+			$wp_customize->add_setting( 'kindling_widgets_heading', array(
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Heading_Control( $wp_customize, 'ocean_widgets_heading', array(
-				'label'    				=> esc_html__( 'Widgets', 'oceanwp' ),
+			$wp_customize->add_control( new Kindling_Customizer_Heading_Control( $wp_customize, 'kindling_widgets_heading', array(
+				'label'    				=> esc_html__( 'Widgets', 'kindling' ),
 				'section'  				=> $section,
 				'priority' 				=> 10,
 			) ) );
@@ -88,47 +88,47 @@ if ( ! class_exists( 'OceanWP_Sidebar_Customizer' ) ) :
 			/**
 			 * Widgets Background
 			 */
-			$wp_customize->add_setting( 'ocean_widgets_bg', array(
+			$wp_customize->add_setting( 'kindling_widgets_bg', array(
 				'transport' 			=> 'postMessage',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_widgets_bg', array(
-				'label'	   				=> esc_html__( 'Background Color', 'oceanwp' ),
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_widgets_bg', array(
+				'label'	   				=> esc_html__( 'Background Color', 'kindling' ),
 				'section'  				=> $section,
-				'settings' 				=> 'ocean_widgets_bg',
+				'settings' 				=> 'kindling_widgets_bg',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Widgets Padding
 			 */
-			$wp_customize->add_setting( 'ocean_widgets_padding', array(
+			$wp_customize->add_setting( 'kindling_widgets_padding', array(
 				'transport' 			=> 'postMessage',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_widgets_padding', array(
-				'label'	   				=> esc_html__( 'Padding', 'oceanwp' ),
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_widgets_padding', array(
+				'label'	   				=> esc_html__( 'Padding', 'kindling' ),
 				'type' 					=> 'text',
 				'section'  				=> $section,
-				'settings' 				=> 'ocean_widgets_padding',
+				'settings' 				=> 'kindling_widgets_padding',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Widgets Margin Bottom
 			 */
-			$wp_customize->add_setting( 'ocean_widgets_margin_bottom', array(
+			$wp_customize->add_setting( 'kindling_widgets_margin_bottom', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '40',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_widgets_margin_bottom', array(
-				'label'	   				=> esc_html__( 'Margin Bottom (px)', 'oceanwp' ),
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_widgets_margin_bottom', array(
+				'label'	   				=> esc_html__( 'Margin Bottom (px)', 'kindling' ),
 				'section'  				=> $section,
-				'settings' 				=> 'ocean_widgets_margin_bottom',
+				'settings' 				=> 'kindling_widgets_margin_bottom',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
@@ -140,16 +140,16 @@ if ( ! class_exists( 'OceanWP_Sidebar_Customizer' ) ) :
 			/**
 			 * Widgets Titles Margin Bottom
 			 */
-			$wp_customize->add_setting( 'ocean_widgets_titles_margin_bottom', array(
+			$wp_customize->add_setting( 'kindling_widgets_titles_margin_bottom', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '20',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_widgets_titles_margin_bottom', array(
-				'label'	   				=> esc_html__( 'Titles Margin Bottom (px)', 'oceanwp' ),
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_widgets_titles_margin_bottom', array(
+				'label'	   				=> esc_html__( 'Titles Margin Bottom (px)', 'kindling' ),
 				'section'  				=> $section,
-				'settings' 				=> 'ocean_widgets_titles_margin_bottom',
+				'settings' 				=> 'kindling_widgets_titles_margin_bottom',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
@@ -168,12 +168,12 @@ if ( ! class_exists( 'OceanWP_Sidebar_Customizer' ) ) :
 		public static function head_css( $output ) {
 		
 			// Global vars
-			$sidebar_bg 					= get_theme_mod( 'ocean_sidebar_bg' );
-			$sidebar_padding 				= get_theme_mod( 'ocean_sidebar_padding' );
-			$widgets_bg 					= get_theme_mod( 'ocean_widgets_bg' );
-			$widgets_padding 				= get_theme_mod( 'ocean_widgets_padding' );
-			$widgets_margin_bottom 			= get_theme_mod( 'ocean_widgets_margin_bottom', '40' );
-			$widgets_titles_margin_bottom 	= get_theme_mod( 'ocean_widgets_titles_margin_bottom', '20' );
+			$sidebar_bg 					= get_theme_mod( 'kindling_sidebar_bg' );
+			$sidebar_padding 				= get_theme_mod( 'kindling_sidebar_padding' );
+			$widgets_bg 					= get_theme_mod( 'kindling_widgets_bg' );
+			$widgets_padding 				= get_theme_mod( 'kindling_widgets_padding' );
+			$widgets_margin_bottom 			= get_theme_mod( 'kindling_widgets_margin_bottom', '40' );
+			$widgets_titles_margin_bottom 	= get_theme_mod( 'kindling_widgets_titles_margin_bottom', '20' );
 
 			// Define css var
 			$css = '';
@@ -222,4 +222,4 @@ if ( ! class_exists( 'OceanWP_Sidebar_Customizer' ) ) :
 
 endif;
 
-return new OceanWP_Sidebar_Customizer();
+return new Kindling_Sidebar_Customizer();

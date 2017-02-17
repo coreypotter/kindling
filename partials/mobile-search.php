@@ -2,7 +2,7 @@
 /**
  * Mobile search template.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div id="mobile-menu-search" class="clr">
 	<form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" class="mobile-searchform">
-		<input type="search" name="s" autocomplete="off" placeholder="<?php echo esc_attr( apply_filters( 'ocean_mobile_searchform_placeholder', __( 'Search', 'oceanwp' ) ) ); ?>" />
+		<input type="search" name="s" autocomplete="off" placeholder="<?php echo esc_attr( apply_filters( 'kindling_mobile_searchform_placeholder', __( 'Search', 'kindling' ) ) ); ?>" />
 		<button type="submit" class="searchform-submit">
 			<span class="icon icon-magnifier"></span>
 		</button>

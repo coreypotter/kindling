@@ -2,7 +2,7 @@
 /**
  * Initial functions.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-class OceanWP_Nav_Walker {
+class Kindling_Nav_Walker {
 
 	/**
 	 * Constructor.
@@ -66,52 +66,52 @@ class OceanWP_Nav_Walker {
 	    <p class="field-nolink description description-wide">
 	    	<label for="edit-menu-item-nolink-<?php echo esc_attr( $item->ID ); ?>">
 	    	<input type="checkbox" id="edit-menu-item-nolink-<?php echo esc_attr( $item->ID ); ?>" class="code edit-menu-item-nolink" value="nolink" name="menu-item-nolink[<?php echo esc_attr( $item->ID ); ?>]"<?php checked( $item->nolink, 'nolink' ); ?> />
-	    		<?php esc_html_e( 'Disable link', 'oceanwp' ); ?>
+	    		<?php esc_html_e( 'Disable link', 'kindling' ); ?>
 	    	</label>
 		</p>
 		<?php if( $item->object == 'category' ){ ?>
 	        <p class="field-category_post description description-wide">
 	        	<label for="edit-menu-item-category_post-<?php echo esc_attr( $item->ID ); ?>">
 	        		<input type="checkbox" id="edit-menu-item-category_post-<?php echo esc_attr( $item->ID ); ?>" class="code edit-menu-item-category_post" value="category_post" name="menu-item-category_post[<?php echo esc_attr( $item->ID ); ?>]"<?php checked( $item->category_post, 'category_post' ); ?> />
-	        		<?php esc_html_e( 'Display Latest Posts', 'oceanwp' ); ?>
+	        		<?php esc_html_e( 'Display Latest Posts', 'kindling' ); ?>
 	        	</label>
 			</p>
 		<?php } ?>
 		<p class="field-megamenu description description-wide">
 	        <label for="edit-menu-item-megamenu-<?php echo esc_attr( $item->ID ); ?>">
 		        <input type="checkbox" id="edit-menu-item-megamenu-<?php echo esc_attr( $item->ID ); ?>" class="code edit-menu-item-megamenu" value="megamenu" name="menu-item-megamenu[<?php echo esc_attr( $item->ID ); ?>]"<?php checked( $item->megamenu, 'megamenu' ); ?> />
-		        <?php esc_html_e( 'Enable megamenu', 'oceanwp' );    ?>
+		        <?php esc_html_e( 'Enable megamenu', 'kindling' );    ?>
 	        </label>
 	    </p>
 		<p class="field-megamenu-auto-width description description-wide">
 	        <label for="edit-menu-item-megamenu_auto_width-<?php echo esc_attr( $item->ID ); ?>">
 		        <input type="checkbox" id="edit-menu-item-megamenu_auto_width-<?php echo esc_attr( $item->ID ); ?>" class="code edit-menu-item-megamenu_auto_width" value="megamenu_auto_width" name="menu-item-megamenu_auto_width[<?php echo esc_attr( $item->ID ); ?>]"<?php checked( $item->megamenu_auto_width, 'megamenu_auto_width' ); ?> />
-		        <?php esc_html_e( 'Megamenu auto width?', 'oceanwp' );    ?>
+		        <?php esc_html_e( 'Megamenu auto width?', 'kindling' );    ?>
 	        </label>
 	    </p>
 	    <p class="field-megamenu-columns description description-wide">
 	        <label for="edit-menu-item-megamenu_col-<?php echo esc_attr( $item->ID ); ?>">
-	            <?php esc_html_e( 'Megamenu columns (from 2 to 6)', 'oceanwp' ); ?><br />
+	            <?php esc_html_e( 'Megamenu columns (from 2 to 6)', 'kindling' ); ?><br />
 	            <input type="number" id="edit-menu-item-megamenu_col-<?php echo esc_attr( $item->ID ); ?>" class="widefat code edit-menu-item-custom" name="menu-item-megamenu_col[<?php echo esc_attr( $item->ID ); ?>]" min="2" max="6" value="<?php echo esc_attr( $item->megamenu_col ); ?>" />
 	        </label>
 	    </p>                   
 	    <p class="field-megamenu-heading description description-wide">
 	        <label for="edit-menu-item-megamenu_heading-<?php echo esc_attr( $item->ID ); ?>">
 		        <input type="checkbox" id="edit-menu-item-megamenu_heading-<?php echo esc_attr( $item->ID ); ?>" value="megamenu_heading" name="menu-item-megamenu_heading[<?php echo esc_attr( $item->ID ); ?>]"<?php checked( $item->megamenu_heading, 'megamenu_heading' ); ?> />
-		        <?php esc_html_e( 'Hide Mega menu heading?', 'oceanwp' ); ?>
+		        <?php esc_html_e( 'Hide Mega menu heading?', 'kindling' ); ?>
 	        </label>
 	    </p>
 		<p class="field-icon description description-wide">
 	        <label for="edit-menu-item-icon-<?php echo esc_attr( $item->ID ); ?>">
-	            <?php esc_html_e( 'Enter Icon Class', 'oceanwp' ); ?> Font Awesome - Simple Line Icons<br />
+	            <?php esc_html_e( 'Enter Icon Class', 'kindling' ); ?> Font Awesome - Simple Line Icons<br />
 	            <input type="text" id="edit-menu-item-icon-<?php echo esc_attr( $item->ID ); ?>" class="widefat edit-menu-item-icon" name="menu-item-icon[<?php echo esc_attr( $item->ID ); ?>]" value="<?php echo esc_attr( $item->icon ); ?>" />
 	        </label>
 	    </p>
 	    <p class="field-megamenu-widgetarea description description-wide">
 			<label for="edit-menu-item-megamenu_widgetarea-<?php echo esc_attr( $item->ID ); ?>">
-				<?php esc_html_e( 'Mega Menu Widget Area', 'oceanwp' ); ?>
+				<?php esc_html_e( 'Mega Menu Widget Area', 'kindling' ); ?>
 				<select id="edit-menu-item-megamenu_widgetarea-<?php echo esc_attr( $item->ID ); ?>" class="widefat code edit-menu-item-custom" name="menu-item-megamenu_widgetarea[<?php echo esc_attr( $item->ID ); ?>]">
-					<option value="0"><?php esc_html_e( 'Select Widget Area', 'oceanwp' ); ?></option>
+					<option value="0"><?php esc_html_e( 'Select Widget Area', 'kindling' ); ?></option>
 					<?php global $wp_registered_sidebars;
 					if ( ! empty( $wp_registered_sidebars ) && is_array( $wp_registered_sidebars ) ) :
 						foreach ( $wp_registered_sidebars as $sidebar ) : ?>
@@ -160,4 +160,4 @@ class OceanWP_Nav_Walker {
 
 }
 
-new OceanWP_Nav_Walker();
+new Kindling_Nav_Walker();

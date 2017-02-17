@@ -2,9 +2,11 @@
 /**
  * The Header for our theme.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
-?><!DOCTYPE html>
+?>
+
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -15,32 +17,29 @@
 
 <body <?php body_class(); ?> itemscope="itemscope" itemtype="http://schema.org/WebPage">
 
-	<?php do_action( 'ocean_before_outer_wrap' ); ?>
-
+	<?php do_action( 'kindling_before_outer_wrap' ); ?>
 	<div id="outer-wrap" class="site clr">
 
-		<?php do_action( 'ocean_before_wrap' ); ?>
-
+		<?php do_action( 'kindling_before_wrap' ); ?>
 		<div id="wrap" class="clr">
 
-			<?php
-			// Check if the top bar is enabled
-			if ( oceanwp_display_topbar() ) {
+			<?php 
+			# Top Bar
+			if ( kindling_display_topbar() ) {
 				get_template_part( 'partials/topbar/layout' );
 			}
 
-			// Check if the header is enabled
-			if ( oceanwp_display_header() ) {
+			# Header
+			if ( kindling_display_header() ) {
 				get_template_part( 'partials/header/layout' );
 			} ?>
 
-			<?php do_action( 'ocean_before_main' ); ?>
-			
-			<main id="main" class="site-main clr" <?php echo oceanwp_main_schema_markup(); ?>>
+			<?php do_action( 'kindling_before_main' ); ?>
+			<main id="main" class="site-main clr" <?php echo kindling_main_schema_markup(); ?>>
 
 				<?php
 				// Display shortcode if there is one
-				if ( $shortcode = oceanwp_has_shortcode() ) :
+				if ( $shortcode = kindling_has_shortcode() ) :
 					echo do_shortcode( $shortcode );
 				endif; ?>
 

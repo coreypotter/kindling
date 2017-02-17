@@ -2,7 +2,7 @@
 /**
  * Displays next/previous links
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly

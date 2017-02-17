@@ -1,8 +1,8 @@
 <?php
 /**
- * Customizer Control: oceanwp-dropdown-pages.
+ * Customizer Control: kindling-dropdown-pages.
  *
- * @package     OceanWP WordPress theme
+ * @package     Kindling Theme
  * @subpackage  Controls
  * @see   		https://github.com/aristath/kirki
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Dropdown pages control
  */
-class OceanWP_Customizer_Dropdown_Pages extends WP_Customize_Control {
+class Kindling_Customizer_Dropdown_Pages extends WP_Customize_Control {
 
 	/**
 	 * The control type.
@@ -25,7 +25,7 @@ class OceanWP_Customizer_Dropdown_Pages extends WP_Customize_Control {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'oceanwp-dropdown-pages';
+	public $type = 'kindling-dropdown-pages';
 
 	/**
 	 * Render the control's content.
@@ -49,7 +49,7 @@ class OceanWP_Customizer_Dropdown_Pages extends WP_Customize_Control {
 			array(
 				'name'              => '_customize-dropdown-pages-' . $this->id,
 				'echo'              => 0,
-				'show_option_none'  => '&mdash; '. esc_html__( 'Select', 'oceanwp' ) .' &mdash;',
+				'show_option_none'  => '&mdash; '. esc_html__( 'Select', 'kindling' ) .' &mdash;',
 				'option_none_value' => '',
 				'selected'          => $this->value(),
 			)

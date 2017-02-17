@@ -2,23 +2,23 @@
 /**
  * Blog single audio format media
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Return if Ocean Extra is not active
-if ( ! class_exists( 'Ocean_Extra' ) ) {
+# Return if Kindling Extra is not active
+if ( ! class_exists( 'Kindling_Extra' ) ) {
 	return;
 }
 
-// Get audio html
-$audio = oceanwp_get_post_audio_html();
+# Get audio html
+$audio = kindling_get_post_audio_html();
 
-// Display audio if audio exists and the post isn't protected
+# Display audio if audio exists and the post isn't protected
 if ( $audio && ! post_password_required()  ) : ?>
 
 	<div id="post-media" class="thumbnail clr">
@@ -26,7 +26,7 @@ if ( $audio && ! post_password_required()  ) : ?>
 	</div>
 
 <?php
-// Else display post thumbnail
+# Else display post thumbnail
 else : ?>
 
 	<?php get_template_part( 'partials/single/media/blog-single' ); ?>

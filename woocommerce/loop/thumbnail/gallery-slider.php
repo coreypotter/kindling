@@ -2,7 +2,7 @@
 /**
  * Gallery Style WooCommerce
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Return dummy image if no featured image is defined
 if ( ! has_post_thumbnail() ) {
-	oceanwp_woo_placeholder_img();
+	kindling_woo_placeholder_img();
 	return;
 }
 
@@ -39,7 +39,7 @@ if ( $attachment_ids ) : ?>
 
 		if ( has_post_thumbnail() ) : ?>
 
-			<div class="oceanwp-slider-slide">
+			<div class="kindling-slider-slide">
 				<a href="<?php the_permalink(); ?>" class="woocommerce-LoopProduct-link">
 					<?php
 					echo wp_get_attachment_image( $thumbnail_id, 'shop_catalog', '', array(
@@ -63,7 +63,7 @@ if ( $attachment_ids ) : ?>
 				// Only display the first 5 images
 				if ( $count < 5 ) : ?>
 
-					<div class="oceanwp-slider-slide">
+					<div class="kindling-slider-slide">
 						<a href="<?php the_permalink(); ?>" class="woocommerce-LoopProduct-link">
 							<?php
 							echo wp_get_attachment_image( $attachment_id, 'shop_catalog', '', array(

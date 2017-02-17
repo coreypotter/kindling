@@ -2,15 +2,15 @@
 /**
  * Blog single link format media
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Return if there isn't a thumbnail defined
+# Return if there isn't a thumbnail defined
 if ( ! has_post_thumbnail() ) {
 	return;
 } ?>
@@ -18,7 +18,7 @@ if ( ! has_post_thumbnail() ) {
 <div class="thumbnail">
 
 	<?php
-	// Display post thumbnail
+	# Display post thumbnail
 	the_post_thumbnail( 'full', array(
 		'alt'		=> get_the_title(),
 		'itemprop' 	=> 'image',
@@ -26,7 +26,7 @@ if ( ! has_post_thumbnail() ) {
 
 	<div class="link-entry clr">
 
-		<a href="<?php echo esc_url( get_post_meta( get_the_ID(), 'ocean_link_format', true ) ); ?>" target="_<?php echo esc_attr( get_post_meta( get_the_ID(), 'ocean_link_format_target', true ) ); ?>"><i class="icon-link"></i></a>
+		<a href="<?php echo esc_url( get_post_meta( get_the_ID(), 'kindling_link_format', true ) ); ?>" target="_<?php echo esc_attr( get_post_meta( get_the_ID(), 'kindling_link_format_target', true ) ); ?>"><i class="icon-link"></i></a>
 		
 	</div>
 

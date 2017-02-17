@@ -2,11 +2,11 @@
 /**
  * Custom wp_nav_menu walker.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-if ( ! class_exists( 'OceanWP_Custom_Nav_Walker' ) ) {
-	class OceanWP_Custom_Nav_Walker extends Walker_Nav_Menu {
+if ( ! class_exists( 'Kindling_Custom_Nav_Walker' ) ) {
+	class Kindling_Custom_Nav_Walker extends Walker_Nav_Menu {
 
 		/**
 		 * Middle logo menu breaking point
@@ -37,7 +37,7 @@ if ( ! class_exists( 'OceanWP_Custom_Nav_Walker' ) ) {
 	        // Megamenu columns
 	        $col = ! empty( $this->megamenu_col ) ? ( 'col-'. $this->megamenu_col .'' ) : 'col-2';
 
-	        if( $depth === 0 && $this->megamenu != '' && 'full_screen' != oceanwp_header_style() ) {
+	        if( $depth === 0 && $this->megamenu != '' && 'full_screen' != kindling_header_style() ) {
 	        	$output .= "\n$indent<ul class=\"megamenu ". $col ." sub-menu\">\n";
 	         } else {
 	         	$output .= "\n$indent<ul class=\"sub-menu\">\n";
@@ -57,13 +57,13 @@ if ( ! class_exists( 'OceanWP_Custom_Nav_Walker' ) ) {
 			global $wp_query;
 			$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
-			if ( 'center' == oceanwp_header_style() ) {
+			if ( 'center' == kindling_header_style() ) {
 				if ( ! isset( $this->break_point ) ) {
 
 					$menu_elements 		= wp_get_nav_menu_items( $args->menu );
 		      		$top_level_elements = 0;
-		      		$is_search_icon 	= oceanwp_menu_search_style();
-					$is_cart_icon 		= oceanwp_menu_cart_style();
+		      		$is_search_icon 	= kindling_menu_search_style();
+					$is_cart_icon 		= kindling_menu_cart_style();
 
 					foreach ( $menu_elements as $menu_element ) {
 						if ( '0' === $menu_element->menu_item_parent ) {
@@ -208,7 +208,7 @@ if ( ! class_exists( 'OceanWP_Custom_Nav_Walker' ) ) {
 		public function end_el( &$output, $item, $depth = 0, $args = array() ) {
 
 			// Header style
-			$header_style = oceanwp_header_style();
+			$header_style = kindling_header_style();
 
 			// If is center header
 			if ( 'center' == $header_style ) {
@@ -342,7 +342,7 @@ if ( ! class_exists( 'OceanWP_Custom_Nav_Walker' ) ) {
 
 			// Define vars
 			$id_field     = $this->db_fields['id'];
-			$header_style = oceanwp_header_style();
+			$header_style = kindling_header_style();
 
 			if ( is_object( $args[0] ) )
 			   $args[0]->has_children = ! empty( $children_elements[ $element->$id_field ] );
@@ -352,7 +352,7 @@ if ( ! class_exists( 'OceanWP_Custom_Nav_Walker' ) ) {
 				|| $element->category_post != '' && $element->object == 'category'
 				&& 'full_screen' != $header_style && 'center' != $header_style ) {
 				$element->classes[] = 'dropdown';
-				if ( true == get_theme_mod( 'ocean_menu_arrow_down', true ) ) {
+				if ( true == get_theme_mod( 'kindling_menu_arrow_down', true ) ) {
 					$element->title .= ' <span class="nav-arrow fa fa-angle-down"></span>';
 				}
 			}
@@ -360,7 +360,7 @@ if ( ! class_exists( 'OceanWP_Custom_Nav_Walker' ) ) {
 			// Right/Left Arrows
 			if ( ! empty( $children_elements[$element->$id_field] ) && ( $depth > 0 ) ) {
 				$element->classes[] = 'dropdown';
-				if ( true == get_theme_mod( 'ocean_menu_arrow_side', true ) ) {
+				if ( true == get_theme_mod( 'kindling_menu_arrow_side', true ) ) {
 					if ( is_rtl() ) {
 						$element->title .= '<span class="nav-arrow fa fa-angle-left"></span>';
 					} else {

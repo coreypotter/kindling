@@ -2,27 +2,27 @@
 /**
  * Single post layout
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } ?>
 
-<article id="post-<?php the_ID(); ?>" itemprop="blogPost" itemscope="itemscope" itemtype="http://schema.org/BlogPosting">
+<article id="post-<?php the_ID(); ?>" itemprop="blogPost" itemscope="itemscope" itemtype="http:#schema.org/BlogPosting">
 
 	<?php
-	// Get posts format
+	# Get posts format
 	$format = get_post_format();
 
-	// Get elements
-	$elements = oceanwp_blog_single_elements_positioning();
+	# Get elements
+	$elements = kindling_blog_single_elements_positioning();
 
-	// Loop through elements
+	# Loop through elements
 	foreach ( $elements as $element ) {
 
-		// Featured Image
+		# Featured Image
 		if ( 'featured_image' == $element
 			&& ! post_password_required() ) {
 
@@ -32,64 +32,64 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		}
 
-		// Title
+		# Title
 		if ( 'title' == $element ) {
 
 			get_template_part( 'partials/single/header' );
 
 		}
 
-		// Meta
+		# Meta
 		if ( 'meta' == $element ) {
 
 			get_template_part( 'partials/single/meta' );
 
 		}
 
-		// Content
+		# Content
 		if ( 'content' == $element ) {
 
 			get_template_part( 'partials/single/content' );
 
 		}
 
-		// Tags
+		# Tags
 		if ( 'tags' == $element ) {
 
 			get_template_part( 'partials/single/tags' );
 
 		}
 
-		// Social Share
+		# Social Share
 		if ( 'social_share' == $element
-			&& class_exists( 'Ocean_Extra' ) ) {
+			&& class_exists( 'Kindling_Extra' ) ) {
 
-			do_action( 'ocean_social_share' );
+			do_action( 'kindling_social_share' );
 
 		}
 
-		// Next/Prev
+		# Next/Prev
 		if ( 'next_prev' == $element ) {
 
 			get_template_part( 'partials/single/next-prev' );
 
 		}
 
-		// Author Box
+		# Author Box
 		if ( 'author_box' == $element ) {
 
 			get_template_part( 'partials/single/author-bio' );
 
 		}
 
-		// Related Posts
+		# Related Posts
 		if ( 'related_posts' == $element ) {
 
 			get_template_part( 'partials/single/related-posts' );
 
 		}
 
-		// Comments
+		# Comments
 		if ( 'single_comments' == $element ) {
 
 			comments_template();

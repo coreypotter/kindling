@@ -2,32 +2,34 @@
 /**
  * Recommends plugins for use with the theme via the TGMA Script
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-function oceanwp_tgmpa_register() {
-
-	// Get array of recommended plugins
+function fyp_register_required_plugins() {
+	# Plugins to Nag for Install
 	$plugins = array(
-		
+		# Elementor
 		array(
-			'name'				=> 'Ocean Extra',
-			'slug'				=> 'ocean-extra', 
-			'required'			=> false,
-			'force_activation'	=> false,
+			'name'              => 'Elementor Page Builder',
+			'slug'              => 'elementor',
+			'required'          => false,
+			'force_activation'  => false,
 		),
-		
+		# The SEO Framework
+		array(
+			'name'              => 'The SEO Framework',
+			'slug'              => 'autodescription',
+			'required'          => false,
+			'force_activation'  => false,
+		),
 	);
-
-	// Register notice
-	tgmpa( $plugins, array(
-		'id'           => 'oceanwp_theme',
-		'domain'       => 'oceanwp',
+	$config = array(
+		'id'           => 'kindling',
 		'menu'         => 'install-required-plugins',
 		'has_notices'  => true,
-		'is_automatic' => true,
 		'dismissable'  => true,
-	) );
-
+		'is_automatic' => false,
+	);
+	tgmpa( $plugins, $config );
 }
-add_action( 'tgmpa_register', 'oceanwp_tgmpa_register' );
+add_action( 'tgmpa_register', 'fyp_register_required_plugins' );

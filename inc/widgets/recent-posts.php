@@ -2,7 +2,7 @@
 /**
  * Recent Posts Widget.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_Recent_Posts_Thumbnails_Widget' ) ) {
-	class OceanWP_Recent_Posts_Thumbnails_Widget extends WP_Widget {
+if ( ! class_exists( 'Kindling_Recent_Posts_Thumbnails_Widget' ) ) {
+	class Kindling_Recent_Posts_Thumbnails_Widget extends WP_Widget {
 
 		/**
 		 * Register widget with WordPress.
@@ -20,17 +20,17 @@ if ( ! class_exists( 'OceanWP_Recent_Posts_Thumbnails_Widget' ) ) {
 		 */
 		public function __construct() {
 			parent::__construct(
-				'ocean_recent_posts',
-				esc_html__( '&raquo; Recent Posts', 'oceanwp' ),
+				'kindling_recent_posts',
+				esc_html__( '&raquo; Recent Posts', 'kindling' ),
 				array(
-					'classname'   => 'widget-oceanwp-recent-posts recent-posts-widget',
-					'description' => esc_html__( 'Shows a listing of your recent or random posts.', 'oceanwp' ),
+					'classname'   => 'widget-kindling-recent-posts recent-posts-widget',
+					'description' => esc_html__( 'Shows a listing of your recent or random posts.', 'kindling' ),
 					'customize_selective_refresh' => true,
 				)
 			);
 
 			$this->defaults = array(
-				'title'      => esc_html__( 'Recent Posts', 'oceanwp' ),
+				'title'      => esc_html__( 'Recent Posts', 'kindling' ),
 				'number'     => '3',
 				'post_type'  => 'post',
 				'taxonomy'   => '',
@@ -65,7 +65,7 @@ if ( ! class_exists( 'OceanWP_Recent_Posts_Thumbnails_Widget' ) ) {
 					echo $args['before_title'] . $title . $args['after_title'];
 				} ?>
 
-				<ul class="oceanwp-recent-posts clr">
+				<ul class="kindling-recent-posts clr">
 
 					<?php
 					// Query args
@@ -108,11 +108,11 @@ if ( ! class_exists( 'OceanWP_Recent_Posts_Thumbnails_Widget' ) ) {
 					}
 
 					// Query posts
-					$oceanwp_query = new WP_Query( $query_args );
+					$kindling_query = new WP_Query( $query_args );
 
-					if ( $oceanwp_query->have_posts() ) :
+					if ( $kindling_query->have_posts() ) :
 
-						while ( $oceanwp_query->have_posts() ) : $oceanwp_query->the_post(); ?>
+						while ( $kindling_query->have_posts() ) : $kindling_query->the_post(); ?>
 
 							<li class="clr">
 
@@ -137,7 +137,7 @@ if ( ! class_exists( 'OceanWP_Recent_Posts_Thumbnails_Widget' ) ) {
 
 										<div class="recent-posts-info clr">
 											<div class="recent-posts-date"><?php echo get_the_date(); ?><span class="sep">/</span></div>
-											<div class="recent-posts-comments"><a href="<?php comments_link(); ?>"><?php comments_number( esc_html__( '0 Comments', 'oceanwp' ), esc_html__( '1 Comment',  'oceanwp' ), esc_html__( '% Comments', 'oceanwp' ) ); ?></a></div>
+											<div class="recent-posts-comments"><a href="<?php comments_link(); ?>"><?php comments_number( esc_html__( '0 Comments', 'kindling' ), esc_html__( '1 Comment',  'kindling' ), esc_html__( '% Comments', 'kindling' ) ); ?></a></div>
 										</div>
 
 									</div>
@@ -151,7 +151,7 @@ if ( ! class_exists( 'OceanWP_Recent_Posts_Thumbnails_Widget' ) ) {
 					<?php else : ?>
 
 						<p class="not-found">
-							<?php esc_html_e('No posts found.', 'oceanwp'); ?>
+							<?php esc_html_e('No posts found.', 'kindling'); ?>
 						</p>
 
 					<?php endif; ?>
@@ -202,20 +202,20 @@ if ( ! class_exists( 'OceanWP_Recent_Posts_Thumbnails_Widget' ) ) {
 			extract( wp_parse_args( ( array ) $instance, $this->defaults ) ); ?>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'oceanwp' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'kindling' ); ?></label> 
 				<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 			</p>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number', 'oceanwp' ); ?></label> 
+				<label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php esc_html_e( 'Number', 'kindling' ); ?></label> 
 				<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" type="text" value="<?php echo esc_attr( $number ); ?>" />
 			</p>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'post_type' ) ); ?>"><?php esc_html_e( 'Post Type', 'oceanwp' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'post_type' ) ); ?>"><?php esc_html_e( 'Post Type', 'kindling' ); ?></label>
 				<br />
-				<select class='oceanwp-select' name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" style="width:100%;">
-					<option value="post" <?php selected( $post_type, 'post' ); ?>><?php esc_html_e( 'Post', 'oceanwp' ); ?></option>
+				<select class='kindling-select' name="<?php echo esc_attr( $this->get_field_name( 'post_type' ) ); ?>" style="width:100%;">
+					<option value="post" <?php selected( $post_type, 'post' ); ?>><?php esc_html_e( 'Post', 'kindling' ); ?></option>
 					<?php
 					// Get Post Types
 					$args = array(
@@ -234,10 +234,10 @@ if ( ! class_exists( 'OceanWP_Recent_Posts_Thumbnails_Widget' ) ) {
 			</p>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'taxonomy' ) ); ?>"><?php esc_html_e( 'Query By Taxonomy', 'oceanwp' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'taxonomy' ) ); ?>"><?php esc_html_e( 'Query By Taxonomy', 'kindling' ); ?></label>
 				<br />
-				<select class='oceanwp-select' name="<?php echo esc_attr( $this->get_field_name( 'taxonomy' ) ); ?>" style="width:100%;">
-					<option value="" <?php if ( ! $taxonomy ) { ?>selected="selected"<?php } ?>><?php esc_html_e( 'No', 'oceanwp' ); ?></option>
+				<select class='kindling-select' name="<?php echo esc_attr( $this->get_field_name( 'taxonomy' ) ); ?>" style="width:100%;">
+					<option value="" <?php if ( ! $taxonomy ) { ?>selected="selected"<?php } ?>><?php esc_html_e( 'No', 'kindling' ); ?></option>
 					<?php
 					// Get Taxonomies
 					$get_taxonomies = get_taxonomies( array(
@@ -250,34 +250,34 @@ if ( ! class_exists( 'OceanWP_Recent_Posts_Thumbnails_Widget' ) ) {
 			</p>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'terms' ) ); ?>"><?php esc_html_e( 'Terms', 'oceanwp' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'terms' ) ); ?>"><?php esc_html_e( 'Terms', 'kindling' ); ?></label>
 				<br />
 				<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'terms' ) ); ?>" type="text" value="<?php echo esc_attr( $terms ); ?>" />
-				<small><?php esc_html_e( 'Enter the term slugs to query by seperated by a "comma"', 'oceanwp' ); ?></small>
+				<small><?php esc_html_e( 'Enter the term slugs to query by seperated by a "comma"', 'kindling' ); ?></small>
 			</p>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>"><?php esc_html_e( 'Order', 'oceanwp' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>"><?php esc_html_e( 'Order', 'kindling' ); ?></label>
 				<br />
-				<select class='oceanwp-select' name="<?php echo esc_attr( $this->get_field_name( 'order' ) ); ?>" style="width:100%;">
-					<option value="DESC" <?php selected( $order, 'DESC', true ); ?>><?php esc_html_e( 'Descending', 'oceanwp' ); ?></option>
-					<option value="ASC" <?php selected( $order, 'ASC', true ); ?>><?php esc_html_e( 'Ascending', 'oceanwp' ); ?></option>
+				<select class='kindling-select' name="<?php echo esc_attr( $this->get_field_name( 'order' ) ); ?>" style="width:100%;">
+					<option value="DESC" <?php selected( $order, 'DESC', true ); ?>><?php esc_html_e( 'Descending', 'kindling' ); ?></option>
+					<option value="ASC" <?php selected( $order, 'ASC', true ); ?>><?php esc_html_e( 'Ascending', 'kindling' ); ?></option>
 				</select>
 			</p>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>"><?php esc_html_e( 'Order By', 'oceanwp' ); ?>:</label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>"><?php esc_html_e( 'Order By', 'kindling' ); ?>:</label>
 				<br />
-				<select class='oceanwp-select' name="<?php echo esc_attr( $this->get_field_name( 'orderby' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>" style="width:100%;">
+				<select class='kindling-select' name="<?php echo esc_attr( $this->get_field_name( 'orderby' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>" style="width:100%;">
 				<?php
 				// Orderby options
 				$orderby_array = array (
-					'date'          => esc_html__( 'Date', 'oceanwp' ),
-					'title'         => esc_html__( 'Title', 'oceanwp' ),
-					'modified'      => esc_html__( 'Modified', 'oceanwp' ),
-					'author'        => esc_html__( 'Author', 'oceanwp' ),
-					'rand'          => esc_html__( 'Random', 'oceanwp' ),
-					'comment_count' => esc_html__( 'Comment Count', 'oceanwp' ),
+					'date'          => esc_html__( 'Date', 'kindling' ),
+					'title'         => esc_html__( 'Title', 'kindling' ),
+					'modified'      => esc_html__( 'Modified', 'kindling' ),
+					'author'        => esc_html__( 'Author', 'kindling' ),
+					'rand'          => esc_html__( 'Random', 'kindling' ),
+					'comment_count' => esc_html__( 'Comment Count', 'kindling' ),
 				);
 				foreach ( $orderby_array as $key => $value ) { ?>
 					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $orderby, $key ); ?>>
@@ -293,4 +293,4 @@ if ( ! class_exists( 'OceanWP_Recent_Posts_Thumbnails_Widget' ) ) {
 
 	}
 }
-register_widget( 'OceanWP_Recent_Posts_Thumbnails_Widget' );
+register_widget( 'Kindling_Recent_Posts_Thumbnails_Widget' );

@@ -2,7 +2,7 @@
 /**
  * Number of products on shop page
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -14,7 +14,7 @@ if ( is_single() || ! have_posts() ) {
     return;
 }
 
-$products_per_page = get_theme_mod( 'ocean_woo_shop_posts_per_page', '12' );
+$products_per_page = get_theme_mod( 'kindling_woo_shop_posts_per_page', '12' );
 
 $num_prod = ( isset( $_GET['products-per-page'] ) ) ? $_GET['products-per-page'] : $products_per_page;
 
@@ -48,7 +48,7 @@ if ( isset( $obj->term_id ) ) {
  * @since 1.0.8
  * @param string $link The old query url
  */
-$link = apply_filters( 'ocean_num_products_link', $link );
+$link = apply_filters( 'kindling_num_products_link', $link );
 
 if( ! empty( $_GET ) ) {
     foreach( $_GET as $key => $value ){
@@ -57,8 +57,8 @@ if( ! empty( $_GET ) ) {
 } ?>
 
 <ul class="result-count">
-    <li class="view-title"><?php esc_html_e( 'View:', 'oceanwp' ) ?></li>
+    <li class="view-title"><?php esc_html_e( 'View:', 'kindling' ) ?></li>
     <li><a class="view-first<?php if ( $num_prod == $num_prod_x1 ) echo ' active'; ?>" href="<?php echo esc_url( add_query_arg( 'products-per-page', $num_prod_x1, $link  ) ) ?>"><?php echo $num_prod_x1 ?></a></li>
     <li><a class="view-second<?php if ( $num_prod == $num_prod_x2 ) echo ' active'; ?>" href="<?php echo esc_url( add_query_arg( 'products-per-page', $num_prod_x2, $link  ) ) ?>"><?php echo $num_prod_x2 ?></a></li>
-    <li><a class="view-all<?php if ( $num_prod == 'all' ) echo ' active'; ?>" href="<?php echo esc_url( add_query_arg( 'products-per-page', 'all', $link  ) ) ?>"><?php esc_html_e( 'All', 'oceanwp' ) ?></a></li>
+    <li><a class="view-all<?php if ( $num_prod == 'all' ) echo ' active'; ?>" href="<?php echo esc_url( add_query_arg( 'products-per-page', 'all', $link  ) ) ?>"><?php esc_html_e( 'All', 'kindling' ) ?></a></li>
 </ul>

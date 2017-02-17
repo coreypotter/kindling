@@ -1,8 +1,8 @@
 <?php
 /**
- * Customizer Control: oceanwp-range.
+ * Customizer Control: kindling-range.
  *
- * @package     OceanWP WordPress theme
+ * @package     Kindling WordPress theme
  * @subpackage  Controls
  * @since       1.0
  */
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Range control
  */
-class OceanWP_Customizer_Range_Control extends WP_Customize_Control {
+class Kindling_Customizer_Range_Control extends WP_Customize_Control {
 
 	/**
 	 * The control type.
@@ -23,7 +23,7 @@ class OceanWP_Customizer_Range_Control extends WP_Customize_Control {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'oceanwp-range';
+	public $type = 'kindling-range';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -31,8 +31,8 @@ class OceanWP_Customizer_Range_Control extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'oceanwp-range', OCEANWP_INC_DIR_URI . 'customizer/controls/range/range.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_style( 'oceanwp-range-css', OCEANWP_INC_DIR_URI . 'customizer/controls/range/range.css', null );
+		wp_enqueue_script( 'kindling-range', KINDLING_INC_DIR_URI . 'customizer/controls/range/range.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_style( 'kindling-range-css', KINDLING_INC_DIR_URI . 'customizer/controls/range/range.css', null );
 	}
 
 	/**
@@ -81,8 +81,8 @@ class OceanWP_Customizer_Range_Control extends WP_Customize_Control {
 			<# } #>
 			<div class="wrapper">
 				<input type="range" {{{ data.inputAttrs }}} value="{{ data.value }}" {{{ data.link }}} data-reset_value="{{ data.default }}" />
-				<input type="number" {{{ data.inputAttrs }}} class="oceanwp-range-input" value="{{ data.value }}" />
-				<span class="oceanwp-reset-slider"><span class="dashicons dashicons-image-rotate"></span></span>
+				<input type="number" {{{ data.inputAttrs }}} class="kindling-range-input" value="{{ data.value }}" />
+				<span class="kindling-reset-slider"><span class="dashicons dashicons-image-rotate"></span></span>
 			</div>
 		</label>
 		<?php

@@ -2,10 +2,10 @@
 /**
  * Site header search overlay
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } ?>
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="container clr">
 		<form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>" class="header-searchform">
 			<input type="search" name="s" autocomplete="off" value="" />
-			<label><?php echo esc_html_e( 'Type your text and hit enter to search', 'oceanwp' ); ?><span><i></i><i></i><i></i></span></label>
+			<label><?php echo esc_html_e( 'Type your text and hit enter to search', 'kindling' ); ?><span><i></i><i></i><i></i></span></label>
 		</form>
 	</div>
 </div><!-- #searchform-overlay -->

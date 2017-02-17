@@ -1,8 +1,8 @@
 <?php
 /**
- * Customizer Control: oceanwp-sortable.
+ * Customizer Control: kindling-sortable.
  *
- * @package     OceanWP WordPress theme
+ * @package     Kindling WordPress theme
  * @subpackage  Controls
  * @see   		https://github.com/aristath/kirki
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Sortable control
  */
-class OceanWP_Customizer_Sortable_Control extends WP_Customize_Control {
+class Kindling_Customizer_Sortable_Control extends WP_Customize_Control {
 
 	/**
 	 * The control type.
@@ -25,7 +25,7 @@ class OceanWP_Customizer_Sortable_Control extends WP_Customize_Control {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'oceanwp-sortable';
+	public $type = 'kindling-sortable';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -33,8 +33,8 @@ class OceanWP_Customizer_Sortable_Control extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'oceanwp-sortable', OCEANWP_INC_DIR_URI . 'customizer/controls/sortable/sortable.js', array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable' ), false, true );
-		wp_enqueue_style( 'oceanwp-sortable-css', OCEANWP_INC_DIR_URI . 'customizer/controls/sortable/sortable.css', null );
+		wp_enqueue_script( 'kindling-sortable', KINDLING_INC_DIR_URI . 'customizer/controls/sortable/sortable.js', array( 'jquery', 'customize-base', 'jquery-ui-core', 'jquery-ui-sortable' ), false, true );
+		wp_enqueue_style( 'kindling-sortable-css', KINDLING_INC_DIR_URI . 'customizer/controls/sortable/sortable.css', null );
 	}
 
 	/**
@@ -75,7 +75,7 @@ class OceanWP_Customizer_Sortable_Control extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<label class='oceanwp-sortable'>
+		<label class='kindling-sortable'>
 			<span class="customize-control-title">
 				{{{ data.label }}}
 			</span>
@@ -85,7 +85,7 @@ class OceanWP_Customizer_Sortable_Control extends WP_Customize_Control {
 
 			<ul class="sortable">
 				<# _.each( data.value, function( choiceID ) { #>
-					<li {{{ data.inputAttrs }}} class='oceanwp-sortable-item' data-value='{{ choiceID }}'>
+					<li {{{ data.inputAttrs }}} class='kindling-sortable-item' data-value='{{ choiceID }}'>
 						<i class='dashicons dashicons-menu'></i>
 						<i class="dashicons dashicons-visibility visibility"></i>
 						{{{ data.choices[ choiceID ] }}}
@@ -93,7 +93,7 @@ class OceanWP_Customizer_Sortable_Control extends WP_Customize_Control {
 				<# }); #>
 				<# _.each( data.choices, function( choiceLabel, choiceID ) { #>
 					<# if ( -1 === data.value.indexOf( choiceID ) ) { #>
-						<li {{{ data.inputAttrs }}} class='oceanwp-sortable-item invisible' data-value='{{ choiceID }}'>
+						<li {{{ data.inputAttrs }}} class='kindling-sortable-item invisible' data-value='{{ choiceID }}'>
 							<i class='dashicons dashicons-menu'></i>
 							<i class="dashicons dashicons-visibility visibility"></i>
 							{{{ data.choices[ choiceID ] }}}

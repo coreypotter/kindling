@@ -2,10 +2,10 @@
 /**
  * Post single content
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } ?>
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php the_content();
 
 	wp_link_pages( array(
-		'before'      => '<div class="page-links">' . __( 'Pages:', 'oceanwp' ),
+		'before'      => '<div class="page-links">' . __( 'Pages:', 'kindling' ),
 		'after'       => '</div>',
 		'link_before' => '<span class="page-number">',
 		'link_after'  => '</span>',

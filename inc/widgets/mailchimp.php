@@ -2,7 +2,7 @@
 /**
  * MailChimp Widget.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_MailChimp_Widget' ) ) {
-	class OceanWP_MailChimp_Widget extends WP_Widget {
+if ( ! class_exists( 'Kindling_MailChimp_Widget' ) ) {
+	class Kindling_MailChimp_Widget extends WP_Widget {
 
 		/**
 		 * Register widget with WordPress.
@@ -20,11 +20,11 @@ if ( ! class_exists( 'OceanWP_MailChimp_Widget' ) ) {
 		 */
 		public function __construct() {
 			parent::__construct(
-				'ocean_mailchimp',
-				esc_html__( '&raquo; MailChimp', 'oceanwp' ),
+				'kindling_mailchimp',
+				esc_html__( '&raquo; MailChimp', 'kindling' ),
 				array(
-					'classname'   => 'widget-oceanwp-mailchimp mailchimp-widget',
-					'description' => esc_html__( 'Displays mailchimp subscription form.', 'oceanwp' ),
+					'classname'   => 'widget-kindling-mailchimp mailchimp-widget',
+					'description' => esc_html__( 'Displays mailchimp subscription form.', 'kindling' ),
 					'customize_selective_refresh' => true,
 				)
 			);
@@ -77,13 +77,13 @@ if ( ! class_exists( 'OceanWP_MailChimp_Widget' ) ) {
 					echo $args['before_title'] . $title . $args['after_title'];
 				} ?>
 
-				<div class="oceanwp-newsletter-form clr">
+				<div class="kindling-newsletter-form clr">
 
-					<div class="oceanwp-newsletter-form-wrap">
+					<div class="kindling-newsletter-form-wrap">
 
 						<?php if ( $subscribe_text ) { ?>
 
-							<div class="oceanwp-mail-text"><?php echo do_shortcode( $subscribe_text ); ?></div>
+							<div class="kindling-mail-text"><?php echo do_shortcode( $subscribe_text ); ?></div>
 							
 						<?php } ?>
 
@@ -101,9 +101,9 @@ if ( ! class_exists( 'OceanWP_MailChimp_Widget' ) ) {
 
 			            </form>
 
-			        </div><!--.oceanwp-newsletter-form-wrap-->
+			        </div><!--.kindling-newsletter-form-wrap-->
 
-			    </div><!-- .oceanwp-newsletter-form -->
+			    </div><!-- .kindling-newsletter-form -->
 
 			<?php
 			// After widget WP hook
@@ -146,48 +146,48 @@ if ( ! class_exists( 'OceanWP_MailChimp_Widget' ) ) {
 
 			// Parse arguments
 			$instance = wp_parse_args( (array) $instance, array(
-				'title'             => esc_attr__( 'Newsletter', 'oceanwp' ),
-				'subscribe_text' 	=> esc_html__('Get all latest content delivered to your email a few times a month. Updates and news about all categories will send to you.', 'oceanwp'),
+				'title'             => esc_attr__( 'Newsletter', 'kindling' ),
+				'subscribe_text' 	=> esc_html__('Get all latest content delivered to your email a few times a month. Updates and news about all categories will send to you.', 'kindling'),
 				'mailchimpaction' 	=> '//domain.us1.list-manage.com/subscribe/post?u=numbers_go_here',
 				'width' 			=> '',
 				'height' 			=> '',
-				'placeholder' 		=> esc_html__('Your Email', 'oceanwp'),
-				'submit_text' 		=> esc_html__('Go', 'oceanwp'),
+				'placeholder' 		=> esc_html__('Your Email', 'kindling'),
+				'submit_text' 		=> esc_html__('Go', 'kindling'),
 			) ); ?>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'oceanwp' ); ?>:</label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'kindling' ); ?>:</label>
 				<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 			</p>
 
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'subscribe_text' ) ); ?>">
-				<?php esc_html_e( 'Text', 'oceanwp' ); ?></label>
+				<?php esc_html_e( 'Text', 'kindling' ); ?></label>
 				<textarea rows="15" id="<?php echo $this->get_field_id( 'subscribe_text' ); ?>" name="<?php echo $this->get_field_name( 'subscribe_text' ); ?>" class="widefat" style="height: 100px;"><?php if( !empty( $instance['subscribe_text'] ) ) { echo $instance['subscribe_text']; } ?></textarea>
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id('mailchimpaction'); ?>"><?php esc_html_e('MailChimp Form Action', 'oceanwp'); ?></label>
+				<label for="<?php echo $this->get_field_id('mailchimpaction'); ?>"><?php esc_html_e('MailChimp Form Action', 'kindling'); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('mailchimpaction'); ?>" name="<?php echo $this->get_field_name( 'mailchimpaction' ); ?>" type="text" value="<?php echo esc_url( $instance['mailchimpaction'] ); ?>" />
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id('width'); ?>"><?php esc_html_e('Input Width (px)', 'oceanwp'); ?></label>
+				<label for="<?php echo $this->get_field_id('width'); ?>"><?php esc_html_e('Input Width (px)', 'kindling'); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('width' ); ?>" name="<?php echo $this->get_field_name( 'width' ); ?>" type="text" value="<?php echo esc_attr( $instance['width'] ); ?>" />
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id('height'); ?>"><?php esc_html_e('Input Height (px)', 'oceanwp'); ?></label>
+				<label for="<?php echo $this->get_field_id('height'); ?>"><?php esc_html_e('Input Height (px)', 'kindling'); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('height' ); ?>" name="<?php echo $this->get_field_name( 'height' ); ?>" type="text" value="<?php echo esc_attr( $instance['height'] ); ?>" />
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id('placeholder'); ?>"><?php esc_html_e('Placeholder', 'oceanwp'); ?></label>
+				<label for="<?php echo $this->get_field_id('placeholder'); ?>"><?php esc_html_e('Placeholder', 'kindling'); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('placeholder' ); ?>" name="<?php echo $this->get_field_name( 'placeholder' ); ?>" type="text" value="<?php echo esc_attr( $instance['placeholder'] ); ?>" />
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id('submit_text'); ?>"><?php esc_html_e('Submit Text', 'oceanwp'); ?></label>
+				<label for="<?php echo $this->get_field_id('submit_text'); ?>"><?php esc_html_e('Submit Text', 'kindling'); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('submit_text' ); ?>" name="<?php echo $this->get_field_name( 'submit_text' ); ?>" type="text" value="<?php echo esc_attr( $instance['submit_text'] ); ?>" />
 			</p>
 
@@ -197,4 +197,4 @@ if ( ! class_exists( 'OceanWP_MailChimp_Widget' ) ) {
 
 	}
 }
-register_widget( 'OceanWP_MailChimp_Widget' );
+register_widget( 'Kindling_MailChimp_Widget' );

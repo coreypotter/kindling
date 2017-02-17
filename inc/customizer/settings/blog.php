@@ -2,16 +2,16 @@
 /**
  * Blog Customizer Options
  *
- * @package Ocean WordPress theme
+ * @package Kindling Theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_Blog_Customizer' ) ) :
+if ( ! class_exists( 'Kindling_Blog_Customizer' ) ) :
 
-	class OceanWP_Blog_Customizer {
+	class Kindling_Blog_Customizer {
 
 		/**
 		 * Setup class.
@@ -34,17 +34,17 @@ if ( ! class_exists( 'OceanWP_Blog_Customizer' ) ) :
 			/**
 			 * Panel
 			 */
-			$panel = 'ocean_blog';
+			$panel = 'kindling_blog';
 			$wp_customize->add_panel( $panel , array(
-				'title' 			=> esc_html__( 'Blog', 'oceanwp' ),
+				'title' 			=> esc_html__( 'Blog', 'kindling' ),
 				'priority' 			=> 210,
 			) );
 
 			/**
 			 * Section
 			 */
-			$wp_customize->add_section( 'ocean_blog_entries', array(
-				'title' 			=> esc_html__( 'Blog Entries', 'oceanwp' ),
+			$wp_customize->add_section( 'kindling_blog_entries', array(
+				'title' 			=> esc_html__( 'Blog Entries', 'kindling' ),
 				'priority' 			=> 10,
 				'panel' 			=> $panel,
 			) );
@@ -52,81 +52,81 @@ if ( ! class_exists( 'OceanWP_Blog_Customizer' ) ) :
 			/**
 			 * Archives & Entries Layout
 			 */
-			$wp_customize->add_setting( 'ocean_blog_archives_layout', array(
+			$wp_customize->add_setting( 'kindling_blog_archives_layout', array(
 				'default'           	=> 'right-sidebar',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Radio_Image_Control( $wp_customize, 'ocean_blog_archives_layout', array(
-				'label'	   				=> esc_html__( 'Archives & Entries Layout', 'oceanwp' ),
-				'section'  				=> 'ocean_blog_entries',
-				'settings' 				=> 'ocean_blog_archives_layout',
+			$wp_customize->add_control( new Kindling_Customizer_Radio_Image_Control( $wp_customize, 'kindling_blog_archives_layout', array(
+				'label'	   				=> esc_html__( 'Archives & Entries Layout', 'kindling' ),
+				'section'  				=> 'kindling_blog_entries',
+				'settings' 				=> 'kindling_blog_archives_layout',
 				'priority' 				=> 10,
 				'choices' 				=> array(
-					'right-sidebar'  	=> OCEANWP_INC_DIR_URI . 'customizer/assets/img/2cr.png',
-					'left-sidebar' 		=> OCEANWP_INC_DIR_URI . 'customizer/assets/img/2cl.png',
-					'full-width'  		=> OCEANWP_INC_DIR_URI . 'customizer/assets/img/1c.png',
+					'right-sidebar'  	=> KINDLING_INC_DIR_URI . 'customizer/assets/img/2cr.png',
+					'left-sidebar' 		=> KINDLING_INC_DIR_URI . 'customizer/assets/img/2cl.png',
+					'full-width'  		=> KINDLING_INC_DIR_URI . 'customizer/assets/img/1c.png',
 				),
 			) ) );
 
 			/**
 			 * Blog Style
 			 */
-			$wp_customize->add_setting( 'ocean_blog_style', array(
+			$wp_customize->add_setting( 'kindling_blog_style', array(
 				'default'           	=> 'large-entry',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_blog_style', array(
-				'label'	   				=> esc_html__( 'Blog Style', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_blog_style', array(
+				'label'	   				=> esc_html__( 'Blog Style', 'kindling' ),
 				'type' 					=> 'select',
-				'section'  				=> 'ocean_blog_entries',
-				'settings' 				=> 'ocean_blog_style',
+				'section'  				=> 'kindling_blog_entries',
+				'settings' 				=> 'kindling_blog_style',
 				'priority' 				=> 10,
 				'choices' 				=> array(
-					'large-entry'  		=> esc_html__( 'Large Image', 'oceanwp' ),
-					'grid-entry' 		=> esc_html__( 'Grid', 'oceanwp' ),
+					'large-entry'  		=> esc_html__( 'Large Image', 'kindling' ),
+					'grid-entry' 		=> esc_html__( 'Grid', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Blog Grid Images Size
 			 */
-			$wp_customize->add_setting( 'ocean_blog_grid_images_size', array(
+			$wp_customize->add_setting( 'kindling_blog_grid_images_size', array(
 				'default'           	=> 'medium',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_blog_grid_images_size', array(
-				'label'	   				=> esc_html__( 'Images Size', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_blog_grid_images_size', array(
+				'label'	   				=> esc_html__( 'Images Size', 'kindling' ),
 				'type' 					=> 'select',
-				'section'  				=> 'ocean_blog_entries',
-				'settings' 				=> 'ocean_blog_grid_images_size',
+				'section'  				=> 'kindling_blog_entries',
+				'settings' 				=> 'kindling_blog_grid_images_size',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_grid_blog_style',
+				'active_callback' 		=> 'kindling_cac_grid_blog_style',
 				'choices' 				=> array(
-					'thumbnail' 		=> esc_html__( 'Thumbnail', 'oceanwp' ),
-					'medium' 			=> esc_html__( 'Medium', 'oceanwp' ),
-					'medium_large' 		=> esc_html__( 'Medium Large', 'oceanwp' ),
-					'large' 			=> esc_html__( 'Large', 'oceanwp' ),
+					'thumbnail' 		=> esc_html__( 'Thumbnail', 'kindling' ),
+					'medium' 			=> esc_html__( 'Medium', 'kindling' ),
+					'medium_large' 		=> esc_html__( 'Medium Large', 'kindling' ),
+					'large' 			=> esc_html__( 'Large', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Blog Grid Columns
 			 */
-			$wp_customize->add_setting( 'ocean_blog_grid_columns', array(
+			$wp_customize->add_setting( 'kindling_blog_grid_columns', array(
 				'default'           	=> '2',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_blog_grid_columns', array(
-				'label'	   				=> esc_html__( 'Grid Columns', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_blog_grid_columns', array(
+				'label'	   				=> esc_html__( 'Grid Columns', 'kindling' ),
 				'type' 					=> 'select',
-				'section'  				=> 'ocean_blog_entries',
-				'settings' 				=> 'ocean_blog_grid_columns',
+				'section'  				=> 'kindling_blog_entries',
+				'settings' 				=> 'kindling_blog_grid_columns',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_grid_blog_style',
+				'active_callback' 		=> 'kindling_cac_grid_blog_style',
 				'choices' 				=> array(
 					'2' => '2',
 					'3' => '3',
@@ -139,110 +139,110 @@ if ( ! class_exists( 'OceanWP_Blog_Customizer' ) ) :
 			/**
 			 * Blog Grid Style
 			 */
-			$wp_customize->add_setting( 'ocean_blog_grid_style', array(
+			$wp_customize->add_setting( 'kindling_blog_grid_style', array(
 				'default'           	=> 'fit-rows',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_blog_grid_style', array(
-				'label'	   				=> esc_html__( 'Grid Style', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_blog_grid_style', array(
+				'label'	   				=> esc_html__( 'Grid Style', 'kindling' ),
 				'type' 					=> 'select',
-				'section'  				=> 'ocean_blog_entries',
-				'settings' 				=> 'ocean_blog_grid_style',
+				'section'  				=> 'kindling_blog_entries',
+				'settings' 				=> 'kindling_blog_grid_style',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_grid_blog_style',
+				'active_callback' 		=> 'kindling_cac_grid_blog_style',
 				'choices' 				=> array(
-					'fit-rows' 			=> esc_html__( 'Fit Rows', 'oceanwp' ),
-					'masonry' 			=> esc_html__( 'Masonry', 'oceanwp' ),
+					'fit-rows' 			=> esc_html__( 'Fit Rows', 'kindling' ),
+					'masonry' 			=> esc_html__( 'Masonry', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Blog Grid Equal Heights
 			 */
-			$wp_customize->add_setting( 'ocean_blog_grid_equal_heights', array(
+			$wp_customize->add_setting( 'kindling_blog_grid_equal_heights', array(
 				'default'           	=> false,
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_blog_grid_equal_heights', array(
-				'label'	   				=> esc_html__( 'Equal Heights', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_blog_grid_equal_heights', array(
+				'label'	   				=> esc_html__( 'Equal Heights', 'kindling' ),
 				'type' 					=> 'checkbox',
-				'section'  				=> 'ocean_blog_entries',
-				'settings' 				=> 'ocean_blog_grid_equal_heights',
+				'section'  				=> 'kindling_blog_entries',
+				'settings' 				=> 'kindling_blog_grid_equal_heights',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_blog_supports_equal_heights',
+				'active_callback' 		=> 'kindling_cac_blog_supports_equal_heights',
 			) ) );
 
 			/**
 			 * Blog Pagination Style
 			 */
-			$wp_customize->add_setting( 'ocean_blog_pagination_style', array(
+			$wp_customize->add_setting( 'kindling_blog_pagination_style', array(
 				'default'           	=> 'standard',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_blog_pagination_style', array(
-				'label'	   				=> esc_html__( 'Blog Pagination Style', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_blog_pagination_style', array(
+				'label'	   				=> esc_html__( 'Blog Pagination Style', 'kindling' ),
 				'type' 					=> 'select',
-				'section'  				=> 'ocean_blog_entries',
-				'settings' 				=> 'ocean_blog_pagination_style',
+				'section'  				=> 'kindling_blog_entries',
+				'settings' 				=> 'kindling_blog_pagination_style',
 				'priority' 				=> 10,
 				'choices' 				=> array(
-					'standard' 			=> esc_html__( 'Standard', 'oceanwp' ),
-					'infinite_scroll' 	=> esc_html__( 'Infinite Scroll', 'oceanwp' ),
-					'next_prev' 		=> esc_html__( 'Next/Prev', 'oceanwp' ),
+					'standard' 			=> esc_html__( 'Standard', 'kindling' ),
+					'infinite_scroll' 	=> esc_html__( 'Infinite Scroll', 'kindling' ),
+					'next_prev' 		=> esc_html__( 'Next/Prev', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Blog Entries Elements Positioning
 			 */
-			$wp_customize->add_setting( 'ocean_blog_entry_elements_positioning', array(
+			$wp_customize->add_setting( 'kindling_blog_entry_elements_positioning', array(
 				'default'           	=> array( 'featured_image', 'title', 'meta', 'content', 'read_more' ),
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Sortable_Control( $wp_customize, 'ocean_blog_entry_elements_positioning', array(
-				'label'	   				=> esc_html__( 'Elements Positioning', 'oceanwp' ),
-				'section'  				=> 'ocean_blog_entries',
-				'settings' 				=> 'ocean_blog_entry_elements_positioning',
+			$wp_customize->add_control( new Kindling_Customizer_Sortable_Control( $wp_customize, 'kindling_blog_entry_elements_positioning', array(
+				'label'	   				=> esc_html__( 'Elements Positioning', 'kindling' ),
+				'section'  				=> 'kindling_blog_entries',
+				'settings' 				=> 'kindling_blog_entry_elements_positioning',
 				'priority' 				=> 10,
 				'choices' 				=> array(
-					'featured_image'    => esc_html__( 'Featured Image', 'oceanwp' ),
-					'title'       		=> esc_html__( 'Title', 'oceanwp' ),
-					'meta' 				=> esc_html__( 'Meta', 'oceanwp' ),
-					'content' 			=> esc_html__( 'Content', 'oceanwp' ),
-					'read_more'   		=> esc_html__( 'Read More', 'oceanwp' ),
+					'featured_image'    => esc_html__( 'Featured Image', 'kindling' ),
+					'title'       		=> esc_html__( 'Title', 'kindling' ),
+					'meta' 				=> esc_html__( 'Meta', 'kindling' ),
+					'content' 			=> esc_html__( 'Content', 'kindling' ),
+					'read_more'   		=> esc_html__( 'Read More', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Blog Entries Meta
 			 */
-			$wp_customize->add_setting( 'ocean_blog_entry_meta', array(
+			$wp_customize->add_setting( 'kindling_blog_entry_meta', array(
 				'default'           	=> array( 'author', 'date', 'categories', 'comments' ),
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Sortable_Control( $wp_customize, 'ocean_blog_entry_meta', array(
-				'label'	   				=> esc_html__( 'Meta', 'oceanwp' ),
-				'section'  				=> 'ocean_blog_entries',
-				'settings' 				=> 'ocean_blog_entry_meta',
+			$wp_customize->add_control( new Kindling_Customizer_Sortable_Control( $wp_customize, 'kindling_blog_entry_meta', array(
+				'label'	   				=> esc_html__( 'Meta', 'kindling' ),
+				'section'  				=> 'kindling_blog_entries',
+				'settings' 				=> 'kindling_blog_entry_meta',
 				'priority' 				=> 10,
 				'choices' 				=> array(
-					'author'     		=> esc_html__( 'Author', 'oceanwp' ),
-					'date'       		=> esc_html__( 'Date', 'oceanwp' ),
-					'categories' 		=> esc_html__( 'Categories', 'oceanwp' ),
-					'comments'   		=> esc_html__( 'Comments', 'oceanwp' ),
+					'author'     		=> esc_html__( 'Author', 'kindling' ),
+					'date'       		=> esc_html__( 'Date', 'kindling' ),
+					'categories' 		=> esc_html__( 'Categories', 'kindling' ),
+					'comments'   		=> esc_html__( 'Comments', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Section
 			 */
-			$wp_customize->add_section( 'ocean_single_post', array(
-				'title' 			=> esc_html__( 'Single Post', 'oceanwp' ),
+			$wp_customize->add_section( 'kindling_single_post', array(
+				'title' 			=> esc_html__( 'Single Post', 'kindling' ),
 				'priority' 			=> 10,
 				'panel' 			=> $panel,
 			) );
@@ -250,180 +250,180 @@ if ( ! class_exists( 'OceanWP_Blog_Customizer' ) ) :
 			/**
 			 * Single Layout
 			 */
-			$wp_customize->add_setting( 'ocean_blog_single_layout', array(
+			$wp_customize->add_setting( 'kindling_blog_single_layout', array(
 				'default'           	=> 'right-sidebar',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Radio_Image_Control( $wp_customize, 'ocean_blog_single_layout', array(
-				'label'	   				=> esc_html__( 'Layout', 'oceanwp' ),
-				'section'  				=> 'ocean_single_post',
-				'settings' 				=> 'ocean_blog_single_layout',
+			$wp_customize->add_control( new Kindling_Customizer_Radio_Image_Control( $wp_customize, 'kindling_blog_single_layout', array(
+				'label'	   				=> esc_html__( 'Layout', 'kindling' ),
+				'section'  				=> 'kindling_single_post',
+				'settings' 				=> 'kindling_blog_single_layout',
 				'priority' 				=> 10,
 				'choices' 				=> array(
-					'right-sidebar'  	=> OCEANWP_INC_DIR_URI . 'customizer/assets/img/2cr.png',
-					'left-sidebar' 		=> OCEANWP_INC_DIR_URI . 'customizer/assets/img/2cl.png',
-					'full-width'  		=> OCEANWP_INC_DIR_URI . 'customizer/assets/img/1c.png',
+					'right-sidebar'  	=> KINDLING_INC_DIR_URI . 'customizer/assets/img/2cr.png',
+					'left-sidebar' 		=> KINDLING_INC_DIR_URI . 'customizer/assets/img/2cl.png',
+					'full-width'  		=> KINDLING_INC_DIR_URI . 'customizer/assets/img/1c.png',
 				),
 			) ) );
 
 			/**
 			 * Page Header Title
 			 */
-			$wp_customize->add_setting( 'ocean_blog_single_page_header_title', array(
+			$wp_customize->add_setting( 'kindling_blog_single_page_header_title', array(
 				'default'           	=> 'blog',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_blog_single_page_header_title', array(
-				'label'	   				=> esc_html__( 'Page Header Title', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_blog_single_page_header_title', array(
+				'label'	   				=> esc_html__( 'Page Header Title', 'kindling' ),
 				'type' 					=> 'select',
-				'section'  				=> 'ocean_single_post',
-				'settings' 				=> 'ocean_blog_single_page_header_title',
+				'section'  				=> 'kindling_single_post',
+				'settings' 				=> 'kindling_blog_single_page_header_title',
 				'priority' 				=> 10,
 				'choices' 				=> array(
-					'blog' 				=> esc_html__( 'Blog','oceanwp' ),
-					'post-title' 		=> esc_html__( 'Post Title', 'oceanwp' ),
+					'blog' 				=> esc_html__( 'Blog','kindling' ),
+					'post-title' 		=> esc_html__( 'Post Title', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Add Container Featured Image In Page Header
 			 */
-			$wp_customize->add_setting( 'ocean_blog_single_featured_image_title', array(
+			$wp_customize->add_setting( 'kindling_blog_single_featured_image_title', array(
 				'default'           	=> false,
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_blog_single_featured_image_title', array(
-				'label'	   				=> esc_html__( 'Featured Image In Page Header', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_blog_single_featured_image_title', array(
+				'label'	   				=> esc_html__( 'Featured Image In Page Header', 'kindling' ),
 				'type' 					=> 'checkbox',
-				'section'  				=> 'ocean_single_post',
-				'settings' 				=> 'ocean_blog_single_featured_image_title',
+				'section'  				=> 'kindling_single_post',
+				'settings' 				=> 'kindling_blog_single_featured_image_title',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Blog Single Page Header Background Image Height
 			 */
-			$wp_customize->add_setting( 'ocean_blog_single_title_bg_image_height', array(
+			$wp_customize->add_setting( 'kindling_blog_single_title_bg_image_height', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '400',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_blog_single_title_bg_image_height', array(
-				'label'	   				=> esc_html__( 'Page Header Height (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_single_post',
-				'settings' 				=> 'ocean_blog_single_title_bg_image_height',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_blog_single_title_bg_image_height', array(
+				'label'	   				=> esc_html__( 'Page Header Height (px)', 'kindling' ),
+				'section'  				=> 'kindling_single_post',
+				'settings' 				=> 'kindling_blog_single_title_bg_image_height',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
 			        'max'   => 800,
 			        'step'  => 1,
 			    ),
-				'active_callback' 		=> 'oceanwp_cac_has_blog_single_title_bg_image',
+				'active_callback' 		=> 'kindling_cac_has_blog_single_title_bg_image',
 			) ) );
 
 			/**
 			 * Blog Single Page Header Background Image Overlay Opacity
 			 */
-			$wp_customize->add_setting( 'ocean_blog_single_title_bg_image_overlay_opacity', array(
+			$wp_customize->add_setting( 'kindling_blog_single_title_bg_image_overlay_opacity', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '0.5',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_blog_single_title_bg_image_overlay_opacity', array(
-				'label'	   				=> esc_html__( 'Overlay Opacity', 'oceanwp' ),
-				'section'  				=> 'ocean_single_post',
-				'settings' 				=> 'ocean_blog_single_title_bg_image_overlay_opacity',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_blog_single_title_bg_image_overlay_opacity', array(
+				'label'	   				=> esc_html__( 'Overlay Opacity', 'kindling' ),
+				'section'  				=> 'kindling_single_post',
+				'settings' 				=> 'kindling_blog_single_title_bg_image_overlay_opacity',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
 			        'max'   => 1,
 			        'step'  => 0.1,
 			    ),
-				'active_callback' 		=> 'oceanwp_cac_has_blog_single_title_bg_image',
+				'active_callback' 		=> 'kindling_cac_has_blog_single_title_bg_image',
 			) ) );
 
 			/**
 			 * Blog Single Page Header Background Image Overlay Color
 			 */
-			$wp_customize->add_setting( 'ocean_blog_single_title_bg_image_overlay_color', array(
+			$wp_customize->add_setting( 'kindling_blog_single_title_bg_image_overlay_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#000000',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_blog_single_title_bg_image_overlay_color', array(
-				'label'	   				=> esc_html__( 'Overlay Color', 'oceanwp' ),
-				'section'  				=> 'ocean_single_post',
-				'settings' 				=> 'ocean_blog_single_title_bg_image_overlay_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_blog_single_title_bg_image_overlay_color', array(
+				'label'	   				=> esc_html__( 'Overlay Color', 'kindling' ),
+				'section'  				=> 'kindling_single_post',
+				'settings' 				=> 'kindling_blog_single_title_bg_image_overlay_color',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_blog_single_title_bg_image',
+				'active_callback' 		=> 'kindling_cac_has_blog_single_title_bg_image',
 			) ) );
 
 			/**
 			 * Blog Single Elements Positioning
 			 */
-			$wp_customize->add_setting( 'ocean_blog_single_elements_positioning', array(
+			$wp_customize->add_setting( 'kindling_blog_single_elements_positioning', array(
 				'default' 				=> array( 'featured_image', 'title', 'meta', 'content', 'tags', 'social_share', 'next_prev', 'author_box', 'related_posts', 'single_comments' ),
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Sortable_Control( $wp_customize, 'ocean_blog_single_elements_positioning', array(
-				'label'	   				=> esc_html__( 'Elements Positioning', 'oceanwp' ),
-				'section'  				=> 'ocean_single_post',
-				'settings' 				=> 'ocean_blog_single_elements_positioning',
+			$wp_customize->add_control( new Kindling_Customizer_Sortable_Control( $wp_customize, 'kindling_blog_single_elements_positioning', array(
+				'label'	   				=> esc_html__( 'Elements Positioning', 'kindling' ),
+				'section'  				=> 'kindling_single_post',
+				'settings' 				=> 'kindling_blog_single_elements_positioning',
 				'priority' 				=> 10,
 				'choices' 				=> array(
-					'featured_image'    => esc_html__( 'Featured Image', 'oceanwp' ),
-					'title'       		=> esc_html__( 'Title', 'oceanwp' ),
-					'meta' 				=> esc_html__( 'Meta', 'oceanwp' ),
-					'content' 			=> esc_html__( 'Content', 'oceanwp' ),
-					'tags' 				=> esc_html__( 'Tags', 'oceanwp' ),
-					'social_share'   	=> esc_html__( 'Social Share', 'oceanwp' ),
-					'next_prev'     	=> esc_html__( 'Next/Prev Links', 'oceanwp' ),
-					'author_box'       	=> esc_html__( 'Author Box', 'oceanwp' ),
-					'related_posts' 	=> esc_html__( 'Related Posts', 'oceanwp' ),
-					'single_comments'   => esc_html__( 'Comments', 'oceanwp' ),
+					'featured_image'    => esc_html__( 'Featured Image', 'kindling' ),
+					'title'       		=> esc_html__( 'Title', 'kindling' ),
+					'meta' 				=> esc_html__( 'Meta', 'kindling' ),
+					'content' 			=> esc_html__( 'Content', 'kindling' ),
+					'tags' 				=> esc_html__( 'Tags', 'kindling' ),
+					'social_share'   	=> esc_html__( 'Social Share', 'kindling' ),
+					'next_prev'     	=> esc_html__( 'Next/Prev Links', 'kindling' ),
+					'author_box'       	=> esc_html__( 'Author Box', 'kindling' ),
+					'related_posts' 	=> esc_html__( 'Related Posts', 'kindling' ),
+					'single_comments'   => esc_html__( 'Comments', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Blog Single Meta
 			 */
-			$wp_customize->add_setting( 'ocean_blog_single_meta', array(
+			$wp_customize->add_setting( 'kindling_blog_single_meta', array(
 				'default'           	=> array( 'author', 'date', 'categories', 'comments' ),
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Sortable_Control( $wp_customize, 'ocean_blog_single_meta', array(
-				'label'	   				=> esc_html__( 'Meta', 'oceanwp' ),
-				'section'  				=> 'ocean_single_post',
-				'settings' 				=> 'ocean_blog_single_meta',
+			$wp_customize->add_control( new Kindling_Customizer_Sortable_Control( $wp_customize, 'kindling_blog_single_meta', array(
+				'label'	   				=> esc_html__( 'Meta', 'kindling' ),
+				'section'  				=> 'kindling_single_post',
+				'settings' 				=> 'kindling_blog_single_meta',
 				'priority' 				=> 10,
 				'choices' 				=> array(
-					'author'     		=> esc_html__( 'Author', 'oceanwp' ),
-					'date'       		=> esc_html__( 'Date', 'oceanwp' ),
-					'categories' 		=> esc_html__( 'Categories', 'oceanwp' ),
-					'comments'   		=> esc_html__( 'Comments', 'oceanwp' ),
+					'author'     		=> esc_html__( 'Author', 'kindling' ),
+					'date'       		=> esc_html__( 'Date', 'kindling' ),
+					'categories' 		=> esc_html__( 'Categories', 'kindling' ),
+					'comments'   		=> esc_html__( 'Comments', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Related Posts Count
 			 */
-			$wp_customize->add_setting( 'ocean_blog_related_count', array(
+			$wp_customize->add_setting( 'kindling_blog_related_count', array(
 				'default' 				=> '3',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_blog_related_count', array(
-				'label'	   				=> esc_html__( 'Related Posts Count', 'oceanwp' ),
-				'section'  				=> 'ocean_single_post',
-				'settings' 				=> 'ocean_blog_related_count',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_blog_related_count', array(
+				'label'	   				=> esc_html__( 'Related Posts Count', 'kindling' ),
+				'section'  				=> 'kindling_single_post',
+				'settings' 				=> 'kindling_blog_related_count',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 2,
@@ -435,15 +435,15 @@ if ( ! class_exists( 'OceanWP_Blog_Customizer' ) ) :
 			/**
 			 * Related Posts Columns
 			 */
-			$wp_customize->add_setting( 'ocean_blog_related_columns', array(
+			$wp_customize->add_setting( 'kindling_blog_related_columns', array(
 				'default' 				=> '3',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_blog_related_columns', array(
-				'label'	   				=> esc_html__( 'Related Posts Columns', 'oceanwp' ),
-				'section'  				=> 'ocean_single_post',
-				'settings' 				=> 'ocean_blog_related_columns',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_blog_related_columns', array(
+				'label'	   				=> esc_html__( 'Related Posts Columns', 'kindling' ),
+				'section'  				=> 'kindling_single_post',
+				'settings' 				=> 'kindling_blog_related_columns',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 1,
@@ -458,4 +458,4 @@ if ( ! class_exists( 'OceanWP_Blog_Customizer' ) ) :
 
 endif;
 
-return new OceanWP_Blog_Customizer();
+return new Kindling_Blog_Customizer();

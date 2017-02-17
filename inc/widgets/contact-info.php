@@ -2,7 +2,7 @@
 /**
  * Contact Info Widget.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_Contact_Info_Widget' ) ) {
-	class OceanWP_Contact_Info_Widget extends WP_Widget {
+if ( ! class_exists( 'Kindling_Contact_Info_Widget' ) ) {
+	class Kindling_Contact_Info_Widget extends WP_Widget {
 
 		/**
 		 * Register widget with WordPress.
@@ -20,11 +20,11 @@ if ( ! class_exists( 'OceanWP_Contact_Info_Widget' ) ) {
 		 */
 		public function __construct() {
 			parent::__construct(
-				'ocean_contact_info',
-				esc_html__( '&raquo; Contact Info', 'oceanwp' ),
+				'kindling_contact_info',
+				esc_html__( '&raquo; Contact Info', 'kindling' ),
 				array(
-					'classname'   => 'widget-oceanwp-contact-info contact-info-widget',
-					'description' => esc_html__( 'Adds support for contact info.', 'oceanwp' ),
+					'classname'   => 'widget-kindling-contact-info contact-info-widget',
+					'description' => esc_html__( 'Adds support for contact info.', 'kindling' ),
 					'customize_selective_refresh' => true,
 				)
 			);
@@ -82,9 +82,9 @@ if ( ! class_exists( 'OceanWP_Contact_Info_Widget' ) ) {
 					if ( $address ) {
 						echo '<li class="address">';
 							echo '<i class="'. esc_attr( $address_icon ) .'"></i>';
-							echo '<div class="oceanwp-info-wrap">';
-								echo '<span class="oceanwp-contact-title">'. esc_attr( $address_text ) .'</span>';
-								echo '<span class="oceanwp-contact-text">'. esc_attr( $address ) .'</span>';
+							echo '<div class="kindling-info-wrap">';
+								echo '<span class="kindling-contact-title">'. esc_attr( $address_text ) .'</span>';
+								echo '<span class="kindling-contact-text">'. esc_attr( $address ) .'</span>';
 							echo '</div>';
 						echo '</li>';
 					}
@@ -92,9 +92,9 @@ if ( ! class_exists( 'OceanWP_Contact_Info_Widget' ) ) {
 					if ( $phone ) {
 						echo '<li class="phone">';
 							echo '<i class="'. esc_attr( $phone_icon ) .'"></i>';
-							echo '<div class="oceanwp-info-wrap">';
-								echo '<span class="oceanwp-contact-title">'. esc_attr( $phone_text ) .'</span>';
-								echo '<span class="oceanwp-contact-text">'. esc_attr( $phone ) .'</span>';
+							echo '<div class="kindling-info-wrap">';
+								echo '<span class="kindling-contact-title">'. esc_attr( $phone_text ) .'</span>';
+								echo '<span class="kindling-contact-text">'. esc_attr( $phone ) .'</span>';
 							echo '</div>';
 						echo '</li>';
 					}
@@ -102,9 +102,9 @@ if ( ! class_exists( 'OceanWP_Contact_Info_Widget' ) ) {
 					if ( $mobile ) {
 						echo '<li class="mobile">';
 							echo '<i class="'. esc_attr( $mobile_icon ) .'"></i>';
-							echo '<div class="oceanwp-info-wrap">';
-								echo '<span class="oceanwp-contact-title">'. esc_attr( $mobile_text ) .'</span>';
-								echo '<span class="oceanwp-contact-text">'. esc_attr( $mobile ) .'</span>';
+							echo '<div class="kindling-info-wrap">';
+								echo '<span class="kindling-contact-title">'. esc_attr( $mobile_text ) .'</span>';
+								echo '<span class="kindling-contact-text">'. esc_attr( $mobile ) .'</span>';
 							echo '</div>';
 						echo '</li>';
 					}
@@ -112,9 +112,9 @@ if ( ! class_exists( 'OceanWP_Contact_Info_Widget' ) ) {
 					if ( $fax ) {
 						echo '<li class="fax">';
 							echo '<i class="'. esc_attr( $fax_icon ) .'"></i>';
-							echo '<div class="oceanwp-info-wrap">';
-								echo '<span class="oceanwp-contact-title">'. esc_attr( $fax_text ) .'</span>';
-								echo '<span class="oceanwp-contact-text">'. esc_attr( $fax ) .'</span>';
+							echo '<div class="kindling-info-wrap">';
+								echo '<span class="kindling-contact-title">'. esc_attr( $fax_text ) .'</span>';
+								echo '<span class="kindling-contact-text">'. esc_attr( $fax ) .'</span>';
 							echo '</div>';
 						echo '</li>';
 					}
@@ -122,9 +122,9 @@ if ( ! class_exists( 'OceanWP_Contact_Info_Widget' ) ) {
 					if ( $email ) {
 						echo '<li class="email">';
 							echo '<i class="'. esc_attr( $email_icon ) .'"></i>';
-							echo '<div class="oceanwp-info-wrap">';
-								echo '<span class="oceanwp-contact-title">'. esc_attr( $email_text ) .'</span>';
-								echo '<span class="oceanwp-contact-text">';
+							echo '<div class="kindling-info-wrap">';
+								echo '<span class="kindling-contact-title">'. esc_attr( $email_text ) .'</span>';
+								echo '<span class="kindling-contact-text">';
 									echo '<a href="mailto:'. antispambot( $email ) .'">';
 										if($emailtxt) {
 											echo esc_attr( $emailtxt );
@@ -140,9 +140,9 @@ if ( ! class_exists( 'OceanWP_Contact_Info_Widget' ) ) {
 					if ( $web ) {
 						echo '<li class="web">';
 							echo '<i class="'. esc_attr( $web_icon ) .'"></i>';
-							echo '<div class="oceanwp-info-wrap">';
-								echo '<span class="oceanwp-contact-title">'. esc_attr( $web_text ) .'</span>';
-								echo '<span class="oceanwp-contact-text">';
+							echo '<div class="kindling-info-wrap">';
+								echo '<span class="kindling-contact-title">'. esc_attr( $web_text ) .'</span>';
+								echo '<span class="kindling-contact-text">';
 									echo '<a href="'. esc_url( $web ) .'">';
 										if($webtxt) {
 											echo esc_attr( $webtxt );
@@ -157,11 +157,11 @@ if ( ! class_exists( 'OceanWP_Contact_Info_Widget' ) ) {
 
 					if ( $skype ) {
 						echo '<li class="skype">';
-							echo '<a href="skype:'. esc_attr( $skype ) .'?call" target="_self" class="oceanwp-skype-button">';
+							echo '<a href="skype:'. esc_attr( $skype ) .'?call" target="_self" class="kindling-skype-button">';
 								if($skypetxt) {
 									echo esc_attr( $skypetxt );
 								} else {
-									esc_html__('Skype', 'oceanwp');
+									esc_html__('Skype', 'kindling');
 								}
 							echo '</a>';
 						echo '</li>';
@@ -225,176 +225,176 @@ if ( ! class_exists( 'OceanWP_Contact_Info_Widget' ) ) {
 
 			// Parse arguments
 			$instance = wp_parse_args( (array) $instance, array(
-				'title'         => esc_attr__( 'Contact Info', 'oceanwp' ),
+				'title'         => esc_attr__( 'Contact Info', 'kindling' ),
 				'text' 			=> 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, aspernatur, velit. Adipisci, animi, molestiae, neque voluptatum non voluptas atque aperiam.',
-				'address_icon'  => esc_attr__( 'icon-location-pin', 'oceanwp' ),
-				'address_text'  => esc_attr__( 'Address:', 'oceanwp' ),
-				'address'       => esc_attr__( 'Street Name, FL 54785', 'oceanwp' ),
-				'phone_icon'  	=> esc_attr__( 'icon-phone', 'oceanwp' ),
-				'phone_text'  	=> esc_attr__( 'Phone:', 'oceanwp' ),
+				'address_icon'  => esc_attr__( 'icon-location-pin', 'kindling' ),
+				'address_text'  => esc_attr__( 'Address:', 'kindling' ),
+				'address'       => esc_attr__( 'Street Name, FL 54785', 'kindling' ),
+				'phone_icon'  	=> esc_attr__( 'icon-phone', 'kindling' ),
+				'phone_text'  	=> esc_attr__( 'Phone:', 'kindling' ),
 				'phone' 		=> '621-254-2147',
-				'mobile_icon'  	=> esc_attr__( 'icon-screen-smartphone', 'oceanwp' ),
-				'mobile_text'  	=> esc_attr__( 'Mobile:', 'oceanwp' ),
+				'mobile_icon'  	=> esc_attr__( 'icon-screen-smartphone', 'kindling' ),
+				'mobile_text'  	=> esc_attr__( 'Mobile:', 'kindling' ),
 				'mobile' 		=> '621-254-2147',
-				'fax_icon'  	=> esc_attr__( 'icon-printer', 'oceanwp' ),
-				'fax_text'  	=> esc_attr__( 'Fax:', 'oceanwp' ),
+				'fax_icon'  	=> esc_attr__( 'icon-printer', 'kindling' ),
+				'fax_text'  	=> esc_attr__( 'Fax:', 'kindling' ),
 				'fax' 			=> '621-254-2147',
-				'email_icon'  	=> esc_attr__( 'icon-envelope', 'oceanwp' ),
-				'email_text'  	=> esc_attr__( 'Email:', 'oceanwp' ),
+				'email_icon'  	=> esc_attr__( 'icon-envelope', 'kindling' ),
+				'email_text'  	=> esc_attr__( 'Email:', 'kindling' ),
 				'email' 		=> 'contact@support.com',
 				'emailtxt' 		=> 'contact@support.com',
-				'web_icon'  	=> esc_attr__( 'icon-link', 'oceanwp' ),
-				'web_text'  	=> esc_attr__( 'Website:', 'oceanwp' ),
+				'web_icon'  	=> esc_attr__( 'icon-link', 'kindling' ),
+				'web_text'  	=> esc_attr__( 'Website:', 'kindling' ),
 				'web' 			=> '#',
 				'webtxt' 		=> 'yourwebsite.com',
 				'skype' 		=> 'YourUsername',
-				'skypetxt' 		=> esc_html__( 'Skype Call Us', 'oceanwp' ),
+				'skypetxt' 		=> esc_html__( 'Skype Call Us', 'kindling' ),
 			) ); ?>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'oceanwp' ); ?>:</label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'kindling' ); ?>:</label>
 				<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 			</p>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>"><?php esc_html_e( 'Text', 'oceanwp' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'text' ) ); ?>"><?php esc_html_e( 'Text', 'kindling' ); ?></label>
 				<textarea rows="15" id="<?php echo $this->get_field_id( 'text' ); ?>" name="<?php echo $this->get_field_name( 'text' ); ?>" class="widefat" style="height: 100px;"><?php if( !empty( $instance['text'] ) ) { echo $instance['text']; } ?></textarea>
 			</p>
 
-			<div class="oceanwp-infos">
-				<h2><?php esc_html_e('Address:', 'oceanwp'); ?></h2>
+			<div class="kindling-infos">
+				<h2><?php esc_html_e('Address:', 'kindling'); ?></h2>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('address_icon'); ?>"><?php esc_html_e('Icon Class', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('address_icon'); ?>"><?php esc_html_e('Icon Class', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('address_icon'); ?>" name="<?php echo $this->get_field_name('address_icon'); ?>" value="<?php echo esc_attr( $instance['address_icon'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('address_text'); ?>"><?php esc_html_e('Title', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('address_text'); ?>"><?php esc_html_e('Title', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('address_text'); ?>" name="<?php echo $this->get_field_name('address_text'); ?>" value="<?php echo esc_attr( $instance['address_text'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('address'); ?>"><?php esc_html_e('Content', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('address'); ?>"><?php esc_html_e('Content', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('address'); ?>" name="<?php echo $this->get_field_name('address'); ?>" value="<?php echo esc_attr( $instance['address'] ); ?>" />
 				</p>
 			</div>
 
-			<div class="oceanwp-infos">
-				<h2><?php esc_html_e('Phone:', 'oceanwp'); ?></h2>
+			<div class="kindling-infos">
+				<h2><?php esc_html_e('Phone:', 'kindling'); ?></h2>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('phone_icon'); ?>"><?php esc_html_e('Icon Class', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('phone_icon'); ?>"><?php esc_html_e('Icon Class', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('phone_icon'); ?>" name="<?php echo $this->get_field_name('phone_icon'); ?>" value="<?php echo esc_attr( $instance['phone_icon'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('phone_text'); ?>"><?php esc_html_e('Title', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('phone_text'); ?>"><?php esc_html_e('Title', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('phone_text'); ?>" name="<?php echo $this->get_field_name('phone_text'); ?>" value="<?php echo esc_attr( $instance['phone_text'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('phone'); ?>"><?php esc_html_e('Content', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('phone'); ?>"><?php esc_html_e('Content', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('phone'); ?>" name="<?php echo $this->get_field_name('phone'); ?>" value="<?php echo esc_attr( $instance['phone'] ); ?>" />
 				</p>
 			</div>
 
-			<div class="oceanwp-infos">
-				<h2><?php esc_html_e('Mobile:', 'oceanwp'); ?></h2>
+			<div class="kindling-infos">
+				<h2><?php esc_html_e('Mobile:', 'kindling'); ?></h2>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('mobile_icon'); ?>"><?php esc_html_e('Icon Class', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('mobile_icon'); ?>"><?php esc_html_e('Icon Class', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('mobile_icon'); ?>" name="<?php echo $this->get_field_name('mobile_icon'); ?>" value="<?php echo esc_attr( $instance['mobile_icon'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('mobile_text'); ?>"><?php esc_html_e('Title', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('mobile_text'); ?>"><?php esc_html_e('Title', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('mobile_text'); ?>" name="<?php echo $this->get_field_name('mobile_text'); ?>" value="<?php echo esc_attr( $instance['mobile_text'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('mobile'); ?>"><?php esc_html_e('Content', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('mobile'); ?>"><?php esc_html_e('Content', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('mobile'); ?>" name="<?php echo $this->get_field_name('mobile'); ?>" value="<?php echo esc_attr( $instance['mobile'] ); ?>" />
 				</p>
 			</div>
 
-			<div class="oceanwp-infos">
-				<h2><?php esc_html_e('Fax:', 'oceanwp'); ?></h2>
+			<div class="kindling-infos">
+				<h2><?php esc_html_e('Fax:', 'kindling'); ?></h2>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('fax_icon'); ?>"><?php esc_html_e('Icon Class', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('fax_icon'); ?>"><?php esc_html_e('Icon Class', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('fax_icon'); ?>" name="<?php echo $this->get_field_name('fax_icon'); ?>" value="<?php echo esc_attr( $instance['fax_icon'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('fax_text'); ?>"><?php esc_html_e('Title', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('fax_text'); ?>"><?php esc_html_e('Title', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('fax_text'); ?>" name="<?php echo $this->get_field_name('fax_text'); ?>" value="<?php echo esc_attr( $instance['fax_text'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('fax'); ?>"><?php esc_html_e('Content', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('fax'); ?>"><?php esc_html_e('Content', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('fax'); ?>" name="<?php echo $this->get_field_name('fax'); ?>" value="<?php echo esc_attr( $instance['fax'] ); ?>" />
 				</p>
 			</div>
 
-			<div class="oceanwp-infos">
-				<h2><?php esc_html_e('Email:', 'oceanwp'); ?></h2>
+			<div class="kindling-infos">
+				<h2><?php esc_html_e('Email:', 'kindling'); ?></h2>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('email_icon'); ?>"><?php esc_html_e('Icon Class', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('email_icon'); ?>"><?php esc_html_e('Icon Class', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('email_icon'); ?>" name="<?php echo $this->get_field_name('email_icon'); ?>" value="<?php echo esc_attr( $instance['email_icon'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('email_text'); ?>"><?php esc_html_e('Title', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('email_text'); ?>"><?php esc_html_e('Title', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('email_text'); ?>" name="<?php echo $this->get_field_name('email_text'); ?>" value="<?php echo esc_attr( $instance['email_text'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('email'); ?>"><?php esc_html_e('URL', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('email'); ?>"><?php esc_html_e('URL', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('email'); ?>" name="<?php echo $this->get_field_name('email'); ?>" value="<?php echo esc_attr( $instance['email'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('emailtxt'); ?>"><?php esc_html_e('URL Text', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('emailtxt'); ?>"><?php esc_html_e('URL Text', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('emailtxt'); ?>" name="<?php echo $this->get_field_name('emailtxt'); ?>" value="<?php echo esc_attr( $instance['emailtxt'] ); ?>" />
 				</p>
 			</div>
 
-			<div class="oceanwp-infos">
-				<h2><?php esc_html_e('Website:', 'oceanwp'); ?></h2>
+			<div class="kindling-infos">
+				<h2><?php esc_html_e('Website:', 'kindling'); ?></h2>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('web_icon'); ?>"><?php esc_html_e('Icon Class', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('web_icon'); ?>"><?php esc_html_e('Icon Class', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('web_icon'); ?>" name="<?php echo $this->get_field_name('web_icon'); ?>" value="<?php echo esc_attr( $instance['web_icon'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('web_text'); ?>"><?php esc_html_e('Title', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('web_text'); ?>"><?php esc_html_e('Title', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('web_text'); ?>" name="<?php echo $this->get_field_name('web_text'); ?>" value="<?php echo esc_attr( $instance['web_text'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('web'); ?>"><?php esc_html_e('URL (with HTTP)', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('web'); ?>"><?php esc_html_e('URL (with HTTP)', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('web'); ?>" name="<?php echo $this->get_field_name('web'); ?>" value="<?php echo esc_attr( $instance['web'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('webtxt'); ?>"><?php esc_html_e('URL Text', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('webtxt'); ?>"><?php esc_html_e('URL Text', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('webtxt'); ?>" name="<?php echo $this->get_field_name('webtxt'); ?>" value="<?php echo esc_attr( $instance['webtxt'] ); ?>" />
 				</p>
 			</div>
 
-			<div class="oceanwp-infos">
-				<h2><?php esc_html_e('Skype:', 'oceanwp'); ?></h2>
+			<div class="kindling-infos">
+				<h2><?php esc_html_e('Skype:', 'kindling'); ?></h2>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('skype'); ?>"><?php esc_html_e('Username', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('skype'); ?>"><?php esc_html_e('Username', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('skype'); ?>" name="<?php echo $this->get_field_name('skype'); ?>" value="<?php echo esc_attr( $instance['skype'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('skypetxt'); ?>"><?php esc_html_e('Text', 'oceanwp'); ?></label>
+					<label for="<?php echo $this->get_field_id('skypetxt'); ?>"><?php esc_html_e('Text', 'kindling'); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id('skypetxt'); ?>" name="<?php echo $this->get_field_name('skypetxt'); ?>" value="<?php echo esc_attr( $instance['skypetxt'] ); ?>" />
 				</p>
 			</div>
@@ -405,23 +405,23 @@ if ( ! class_exists( 'OceanWP_Contact_Info_Widget' ) ) {
 
 	}
 }
-register_widget( 'OceanWP_Contact_Info_Widget' );
+register_widget( 'Kindling_Contact_Info_Widget' );
 
 // Widget Styles
-function oceanwp_contact_info_widget_style() {
+function kindling_contact_info_widget_style() {
 	global $pagenow;
 	if ( is_admin() && $pagenow == "widgets.php" ) {
-		add_action( 'admin_head', 'oceanwp_contact_infos_style' );
-		function oceanwp_contact_infos_style() { ?>
+		add_action( 'admin_head', 'kindling_contact_infos_style' );
+		function kindling_contact_infos_style() { ?>
 			<style>
-				.oceanwp-infos { background: #fafafa; padding: 16px 10px; border: 1px solid #e5e5e5; margin-bottom: 10px; }
-				.oceanwp-infos h2 { font-size: 16px; margin: 0 0 10px; }
-				.oceanwp-infos p { margin: 0 0 8px; }
-				.oceanwp-infos p:last-child { margin: 0; }
-				.oceanwp-infos label { margin-bottom: 3px; display: block; color: #222; }
+				.kindling-infos { background: #fafafa; padding: 16px 10px; border: 1px solid #e5e5e5; margin-bottom: 10px; }
+				.kindling-infos h2 { font-size: 16px; margin: 0 0 10px; }
+				.kindling-infos p { margin: 0 0 8px; }
+				.kindling-infos p:last-child { margin: 0; }
+				.kindling-infos label { margin-bottom: 3px; display: block; color: #222; }
 			</style>
 		<?php
 		}
 	}
 }
-add_action( 'admin_init', 'oceanwp_contact_info_widget_style' );
+add_action( 'admin_init', 'kindling_contact_info_widget_style' );

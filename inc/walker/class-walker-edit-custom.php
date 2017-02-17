@@ -2,7 +2,7 @@
 /**
  * Custom walker nav edit.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 /**

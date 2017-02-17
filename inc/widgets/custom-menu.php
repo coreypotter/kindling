@@ -2,7 +2,7 @@
 /**
  * Custom Menu Widget.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_Custom_Menu_Widget' ) ) {
-	class OceanWP_Custom_Menu_Widget extends WP_Widget {
+if ( ! class_exists( 'Kindling_Custom_Menu_Widget' ) ) {
+	class Kindling_Custom_Menu_Widget extends WP_Widget {
 
 		/**
 		 * Register widget with WordPress.
@@ -20,11 +20,11 @@ if ( ! class_exists( 'OceanWP_Custom_Menu_Widget' ) ) {
 		 */
 		public function __construct() {
 			parent::__construct(
-				'ocean_custom_menu',
-				esc_html__( '&raquo; Custom Menu', 'oceanwp' ),
+				'kindling_custom_menu',
+				esc_html__( '&raquo; Custom Menu', 'kindling' ),
 				array(
-					'classname'   => 'widget-oceanwp-custom-menu custom-menu-widget',
-					'description' => esc_html__( 'Displays custom menu.', 'oceanwp' ),
+					'classname'   => 'widget-kindling-custom-menu custom-menu-widget',
+					'description' => esc_html__( 'Displays custom menu.', 'kindling' ),
 					'customize_selective_refresh' => true,
 				)
 			);
@@ -120,11 +120,11 @@ if ( ! class_exists( 'OceanWP_Custom_Menu_Widget' ) ) {
 					'fallback_cb'   => false,
 					'container'     => false,
 					'menu_class'    => 'dropdown-menu sf-menu',
-					'walker'        => new OceanWP_Custom_Nav_Walker(),
+					'walker'        => new Kindling_Custom_Nav_Walker(),
 				);
 
 				// Add classes
-				$classes 	= array( 'oceanwp-custom-menu', 'clr' );
+				$classes 	= array( 'kindling-custom-menu', 'clr' );
 				$classes[] 	= $this->id;
 				$classes[] 	= $position;
 				$classes 	= implode( ' ', $classes );
@@ -202,14 +202,14 @@ if ( ! class_exists( 'OceanWP_Custom_Menu_Widget' ) ) {
 			</p>
 			<div class="nav-menu-widget-form-controls" <?php if ( empty( $menus ) ) { echo ' style="display:none" '; } ?>>
 				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'oceanwp' ); ?>:</label>
+					<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'kindling' ); ?>:</label>
 					<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>"><?php esc_html_e( 'Select Menu:', 'oceanwp' ); ?></label>
+					<label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>"><?php esc_html_e( 'Select Menu:', 'kindling' ); ?></label>
 					<select class="widget-select widefat" id="<?php echo $this->get_field_id( 'nav_menu' ); ?>" name="<?php echo $this->get_field_name( 'nav_menu' ); ?>">
-						<option value="0"><?php esc_html_e( '&mdash; Select &mdash;', 'oceanwp' ); ?></option>
+						<option value="0"><?php esc_html_e( '&mdash; Select &mdash;', 'kindling' ); ?></option>
 						<?php foreach ( $menus as $menu ) : ?>
 							<option value="<?php echo esc_attr( $menu->term_id ); ?>" <?php selected( $instance['nav_menu'], $menu->term_id ); ?>>
 								<?php echo esc_html( $menu->name ); ?>
@@ -219,52 +219,52 @@ if ( ! class_exists( 'OceanWP_Custom_Menu_Widget' ) ) {
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('position'); ?>"><?php esc_html_e( 'Position:', 'oceanwp' ); ?></label>
+					<label for="<?php echo $this->get_field_id('position'); ?>"><?php esc_html_e( 'Position:', 'kindling' ); ?></label>
 					<select class="widget-select widefat" name="<?php echo $this->get_field_name('position'); ?>" id="<?php echo $this->get_field_id('position'); ?>">
-						<option value="left" <?php selected( $instance['position'], 'left' ) ?>><?php esc_html_e( 'Left', 'oceanwp' ); ?></option>
-						<option value="right" <?php selected( $instance['position'], 'right' ) ?>><?php esc_html_e( 'Right', 'oceanwp' ); ?></option>
-						<option value="center" <?php selected( $instance['position'], 'center' ) ?>><?php esc_html_e( 'Center', 'oceanwp' ); ?></option>
+						<option value="left" <?php selected( $instance['position'], 'left' ) ?>><?php esc_html_e( 'Left', 'kindling' ); ?></option>
+						<option value="right" <?php selected( $instance['position'], 'right' ) ?>><?php esc_html_e( 'Right', 'kindling' ); ?></option>
+						<option value="center" <?php selected( $instance['position'], 'center' ) ?>><?php esc_html_e( 'Center', 'kindling' ); ?></option>
 					</select>
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id( 'nav_padding' ); ?>"><?php esc_html_e( 'Menu Padding:', 'oceanwp' ); ?></label>
+					<label for="<?php echo $this->get_field_id( 'nav_padding' ); ?>"><?php esc_html_e( 'Menu Padding:', 'kindling' ); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'nav_padding' ); ?>" name="<?php echo $this->get_field_name( 'nav_padding' ); ?>" value="<?php echo $instance['nav_padding']; ?>" />
-					<small style="color: #777;"><?php esc_html_e( 'top left bottom right, eg: 15px 8px 15px 25px', 'oceanwp' ); ?></small>
+					<small style="color: #777;"><?php esc_html_e( 'top left bottom right, eg: 15px 8px 15px 25px', 'kindling' ); ?></small>
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id( 'nav_link_color' ); ?>"><?php esc_html_e( 'Menu Link Color:', 'oceanwp' ); ?></label>
+					<label for="<?php echo $this->get_field_id( 'nav_link_color' ); ?>"><?php esc_html_e( 'Menu Link Color:', 'kindling' ); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'nav_link_color' ); ?>" name="<?php echo $this->get_field_name( 'nav_link_color' ); ?>" value="<?php echo $instance['nav_link_color']; ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id( 'nav_link_hover_color' ); ?>"><?php esc_html_e( 'Menu Link Hover Color:', 'oceanwp' ); ?></label>
+					<label for="<?php echo $this->get_field_id( 'nav_link_hover_color' ); ?>"><?php esc_html_e( 'Menu Link Hover Color:', 'kindling' ); ?></label>
 					<input class="widefat" type="text" id="<?php echo $this->get_field_id( 'nav_link_hover_color' ); ?>" name="<?php echo $this->get_field_name( 'nav_link_hover_color' ); ?>" value="<?php echo $instance['nav_link_hover_color']; ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id( 'font_size' ); ?>"><?php esc_html_e( 'Font Size (px):', 'oceanwp' ); ?></label>
+					<label for="<?php echo $this->get_field_id( 'font_size' ); ?>"><?php esc_html_e( 'Font Size (px):', 'kindling' ); ?></label>
 					<input class="widefat" type="number" min="5" max="50" step="1" id="<?php echo $this->get_field_id( 'font_size' ); ?>" name="<?php echo $this->get_field_name( 'font_size' ); ?>" value="<?php echo $instance['font_size']; ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id( 'line_height' ); ?>"><?php esc_html_e( 'Line Height (px):', 'oceanwp' ); ?></label>
+					<label for="<?php echo $this->get_field_id( 'line_height' ); ?>"><?php esc_html_e( 'Line Height (px):', 'kindling' ); ?></label>
 					<input class="widefat" type="number" min="5" max="200" step="1" id="<?php echo $this->get_field_id( 'line_height' ); ?>" name="<?php echo $this->get_field_name( 'line_height' ); ?>" value="<?php echo $instance['line_height']; ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id( 'letter_spacing' ); ?>"><?php esc_html_e( 'Letter Spacing (px):', 'oceanwp' ); ?></label>
+					<label for="<?php echo $this->get_field_id( 'letter_spacing' ); ?>"><?php esc_html_e( 'Letter Spacing (px):', 'kindling' ); ?></label>
 					<input class="widefat" type="number" min="0" max="5" step="0.1" id="<?php echo $this->get_field_id( 'letter_spacing' ); ?>" name="<?php echo $this->get_field_name( 'letter_spacing' ); ?>" value="<?php echo $instance['letter_spacing']; ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('text_transform'); ?>"><?php esc_html_e( 'Text Transform:', 'oceanwp' ); ?></label>
+					<label for="<?php echo $this->get_field_id('text_transform'); ?>"><?php esc_html_e( 'Text Transform:', 'kindling' ); ?></label>
 					<select class="widget-select widefat" name="<?php echo $this->get_field_name('text_transform'); ?>" id="<?php echo $this->get_field_id('position'); ?>">
-						<option value="default" <?php selected( $instance['text_transform'], 'default' ) ?>><?php esc_html_e( 'Default', 'oceanwp' ); ?></option>
-						<option value="capitalize" <?php selected( $instance['text_transform'], 'capitalize' ) ?>><?php esc_html_e( 'Capitalize', 'oceanwp' ); ?></option>
-						<option value="lowercase" <?php selected( $instance['text_transform'], 'lowercase' ) ?>><?php esc_html_e( 'Lowercase', 'oceanwp' ); ?></option>
-						<option value="uppercase" <?php selected( $instance['text_transform'], 'uppercase' ) ?>><?php esc_html_e( 'Uppercase', 'oceanwp' ); ?></option>
+						<option value="default" <?php selected( $instance['text_transform'], 'default' ) ?>><?php esc_html_e( 'Default', 'kindling' ); ?></option>
+						<option value="capitalize" <?php selected( $instance['text_transform'], 'capitalize' ) ?>><?php esc_html_e( 'Capitalize', 'kindling' ); ?></option>
+						<option value="lowercase" <?php selected( $instance['text_transform'], 'lowercase' ) ?>><?php esc_html_e( 'Lowercase', 'kindling' ); ?></option>
+						<option value="uppercase" <?php selected( $instance['text_transform'], 'uppercase' ) ?>><?php esc_html_e( 'Uppercase', 'kindling' ); ?></option>
 					</select>
 				</p>
 
@@ -276,4 +276,4 @@ if ( ! class_exists( 'OceanWP_Custom_Menu_Widget' ) ) {
 
 	}
 }
-register_widget( 'OceanWP_Custom_Menu_Widget' );
+register_widget( 'Kindling_Custom_Menu_Widget' );

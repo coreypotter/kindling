@@ -2,10 +2,10 @@
 /**
  * Displays post entry content
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } ?>
@@ -13,13 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="blog-entry-summary clr">
 
     <?php
-    // Display excerpt if auto excerpts are enabled in the admin
-    if ( get_theme_mod( 'ocean_blog_excerpt', true ) ) :
+    # Display excerpt if auto excerpts are enabled in the admin
+    if ( get_theme_mod( 'kindling_blog_excerpt', true ) ) :
 
-        // Display custom excerpt
-        oceanwp_excerpt( 30 );
+        # Display custom excerpt
+        kindling_excerpt( 30 );
 
-    // If excerpts are disabled, display full content
+    # If excerpts are disabled, display full content
     else :
 
         the_content( '', '&hellip;' );

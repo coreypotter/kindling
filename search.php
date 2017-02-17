@@ -2,59 +2,46 @@
 /**
  * The template for displaying Search Results pages.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 get_header(); ?>
 
-	<?php do_action( 'ocean_before_content_wrap' ); ?>
+<?php do_action( 'kindling_before_content_wrap' ); ?>
+<div id="content-wrap" class="container clr">
 
-	<div id="content-wrap" class="container clr">
+	<?php do_action( 'kindling_before_primary' ); ?>
+	<div id="primary" class="content-area clr">
 
-		<?php do_action( 'ocean_before_primary' ); ?>
+		<?php do_action( 'kindling_before_content' ); ?>
+		<div id="content" class="site-content clr">
 
-		<div id="primary" class="content-area clr">
+			<?php do_action( 'kindling_before_content_inner' );
 
-			<?php do_action( 'ocean_before_content' ); ?>
+			get_template_part( 'partials/archive', 'header' );
 
-			<div id="content" class="site-content clr">
+			if ( have_posts() ) :
+				while ( have_posts() ) : the_post();
+					get_template_part( 'partials/entry/layout' );
+				endwhile;
 
-				<?php do_action( 'ocean_before_content_inner' ); ?>
+				kindling_pagination();
+			else :
+				# Display no post found notice
+				get_template_part( 'partials/none' );
+			endif;
 
-				<?php get_template_part( 'partials/archive', 'header' ); ?>
+			do_action( 'kindling_after_content_inner' ); ?>
 
-				<?php if ( have_posts() ) : ?>
+		</div><!-- #content -->
+		<?php do_action( 'kindling_after_content' ); ?>
 
-						<?php while ( have_posts() ) : the_post(); ?>
+	</div><!-- #primary -->
+	<?php do_action( 'kindling_after_primary' ); ?>
 
-							<?php get_template_part( 'partials/entry/layout' ); ?>
+	<?php get_sidebar(); ?>
 
-						<?php endwhile; ?>
-
-					<?php oceanwp_pagination(); ?>
-
-				<?php else : ?>
-
-					<?php
-					// Display no post found notice
-					get_template_part( 'partials/none' ); ?>
-
-				<?php endif; ?>
-
-				<?php do_action( 'ocean_after_content_inner' ); ?>
-
-			</div><!-- #content -->
-
-			<?php do_action( 'ocean_after_content' ); ?>
-
-		</div><!-- #primary -->
-
-		<?php do_action( 'ocean_after_primary' ); ?>
-
-		<?php get_sidebar(); ?>
-
-	</div><!-- #content-wrap -->
-
-	<?php do_action( 'ocean_after_content_wrap' ); ?>
+</div><!-- #content-wrap -->
+<?php do_action( 'kindling_after_content_wrap' ); ?>
 
 <?php get_footer(); ?>

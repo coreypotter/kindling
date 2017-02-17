@@ -4,7 +4,7 @@
  *
  * Based on Jetpack Facebook Like Box widget.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -12,8 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_Facebook_Widget' ) ) {
-	class OceanWP_Facebook_Widget extends WP_Widget {
+if ( ! class_exists( 'Kindling_Facebook_Widget' ) ) {
+	class Kindling_Facebook_Widget extends WP_Widget {
 
 		private $default_height       = 300;
 		private $default_width        = 300;
@@ -31,11 +31,11 @@ if ( ! class_exists( 'OceanWP_Facebook_Widget' ) ) {
 		 */
 		public function __construct() {
 			parent::__construct(
-				'ocean_facebook',
-				esc_html__( '&raquo; Facebook Like Box', 'oceanwp' ),
+				'kindling_facebook',
+				esc_html__( '&raquo; Facebook Like Box', 'kindling' ),
 				array(
 					'classname'   => 'widget_facebook_likebox',
-					'description' => esc_html__( 'Display a Facebook Like Box to connect visitors to your Facebook Page.', 'oceanwp' ),
+					'description' => esc_html__( 'Display a Facebook Like Box to connect visitors to your Facebook Page.', 'kindling' ),
 					'customize_selective_refresh' => true,
 				)
 			);
@@ -59,7 +59,7 @@ if ( ! class_exists( 'OceanWP_Facebook_Widget' ) ) {
 			if ( empty( $like_args['href'] ) || ! $this->is_valid_facebook_url( $like_args['href'] ) ) {
 				if ( current_user_can('edit_theme_options') ) {
 					echo $before_widget;
-					echo '<p>' . sprintf( __( 'It looks like your Facebook URL is incorrectly configured. Please check it in your <a href="%s">widget settings</a>.', 'oceanwp' ), admin_url( 'widgets.php' ) ) . '</p>';
+					echo '<p>' . sprintf( __( 'It looks like your Facebook URL is incorrectly configured. Please check it in your <a href="%s">widget settings</a>.', 'kindling' ), admin_url( 'widgets.php' ) ) . '</p>';
 					echo $after_widget;
 				}
 				echo '<!-- Invalid Facebook Page URL -->';
@@ -75,7 +75,7 @@ if ( ! class_exists( 'OceanWP_Facebook_Widget' ) ) {
 			$like_args['force_wall'] = (bool) $like_args['force_wall']         ? 'true' : 'false';
 			$like_args['show_border']= (bool) $like_args['show_border']        ? 'true' : 'false';
 			$like_args['header']     = (bool) $like_args['header']             ? 'true' : 'false';
-			$like_bg_colour          = apply_filters( 'ocean_fb_likebox_bg', ( 'dark' == $like_args['colorscheme'] ? '#000' : '#fff' ), $like_args['colorscheme'] );
+			$like_bg_colour          = apply_filters( 'kindling_fb_likebox_bg', ( 'dark' == $like_args['colorscheme'] ? '#000' : '#fff' ), $like_args['colorscheme'] );
 
 			$locale = $this->get_locale();
 			if ( $locale && 'en_US' != $locale )
@@ -95,7 +95,7 @@ if ( ! class_exists( 'OceanWP_Facebook_Widget' ) ) {
 
 					$likebox_widget_title = '<a href="' . esc_url( $page_url ) . '">' . esc_html( $title ) . '</a>';
 
-					echo apply_filters( 'ocean_facebook_likebox_title', $likebox_widget_title, $title, $page_url );
+					echo apply_filters( 'kindling_facebook_likebox_title', $likebox_widget_title, $title, $page_url );
 
 					echo $after_title;
 				endif; ?>
@@ -105,7 +105,7 @@ if ( ! class_exists( 'OceanWP_Facebook_Widget' ) ) {
 			// After widget WP hook
 			echo $args['after_widget'];
 
-			do_action( 'ocean_stats_extra', 'widget', 'facebook-likebox' );
+			do_action( 'kindling_stats_extra', 'widget', 'facebook-likebox' );
 		}
 
 		/**
@@ -161,68 +161,68 @@ if ( ! class_exists( 'OceanWP_Facebook_Widget' ) ) {
 			$like_args = $this->normalize_facebook_args( $instance['like_args'] ); ?>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title', 'oceanwp' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title', 'kindling' ); ?></label>
 				<input type="text" name="<?php echo $this->get_field_name( 'title' ); ?>" id="<?php echo $this->get_field_id( 'title' ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" class="widefat" />
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'href' ); ?>"><?php esc_html_e( 'Facebook Page URL', 'oceanwp' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'href' ); ?>"><?php esc_html_e( 'Facebook Page URL', 'kindling' ); ?></label>
 				<input type="text" name="<?php echo $this->get_field_name( 'href' ); ?>" id="<?php echo $this->get_field_id( 'href' ); ?>" value="<?php echo esc_url( $like_args['href'] ); ?>" class="widefat" />
 				<br />
-				<small><?php esc_html_e( 'The Like Box only works with ', 'oceanwp' ); ?><a href="http://www.facebook.com/help/?faq=174987089221178" target="_blank"><?php esc_html_e( 'Facebook Pages', 'oceanwp' ); ?></a></small>
+				<small><?php esc_html_e( 'The Like Box only works with ', 'kindling' ); ?><a href="http://www.facebook.com/help/?faq=174987089221178" target="_blank"><?php esc_html_e( 'Facebook Pages', 'kindling' ); ?></a></small>
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'width' ); ?>"><?php esc_html_e( 'Width', 'oceanwp' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'width' ); ?>"><?php esc_html_e( 'Width', 'kindling' ); ?></label>
 				<input type="number" class="smalltext" min="1" max="999" maxlength="3" name="<?php echo $this->get_field_name( 'width' ); ?>" id="<?php echo $this->get_field_id( 'width' ); ?>" value="<?php echo esc_attr( $like_args['width'] ); ?>" style="text-align: center;" />px
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php esc_html_e( 'Height', 'oceanwp' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'height' ); ?>"><?php esc_html_e( 'Height', 'kindling' ); ?></label>
 				<input type="number" class="smalltext" min="1" max="999" maxlength="3" name="<?php echo $this->get_field_name( 'height' ); ?>" id="<?php echo $this->get_field_id( 'height' ); ?>" value="<?php echo esc_attr( $like_args['height'] ); ?>" style="text-align: center;" />px
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id( 'colorscheme' ); ?>"><?php esc_html_e( 'Color Scheme', 'oceanwp' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'colorscheme' ); ?>"><?php esc_html_e( 'Color Scheme', 'kindling' ); ?></label>
 				<select name="<?php echo $this->get_field_name( 'colorscheme' ); ?>" id="<?php echo $this->get_field_id( 'colorscheme' ); ?>">
-					<option value="light" <?php selected( $like_args['colorscheme'], 'light' ); ?>><?php esc_html_e( 'Light', 'oceanwp' ); ?></option>
-					<option value="dark" <?php selected( $like_args['colorscheme'], 'dark' ); ?>><?php esc_html_e( 'Dark', 'oceanwp' ); ?></option>
+					<option value="light" <?php selected( $like_args['colorscheme'], 'light' ); ?>><?php esc_html_e( 'Light', 'kindling' ); ?></option>
+					<option value="dark" <?php selected( $like_args['colorscheme'], 'dark' ); ?>><?php esc_html_e( 'Dark', 'kindling' ); ?></option>
 				</select>
 			</p>
 
 			<p>
 				<label for="<?php echo $this->get_field_id( 'show_faces' ); ?>">
 					<input type="checkbox" name="<?php echo $this->get_field_name( 'show_faces' ); ?>" id="<?php echo $this->get_field_id( 'show_faces' ); ?>" <?php checked( $like_args['show_faces'] ); ?> />
-					<?php esc_html_e( 'Show Faces', 'oceanwp' ); ?>
+					<?php esc_html_e( 'Show Faces', 'kindling' ); ?>
 					<br />
-					<small><?php esc_html_e( 'Show profile photos in the plugin.', 'oceanwp' ); ?></small>
+					<small><?php esc_html_e( 'Show profile photos in the plugin.', 'kindling' ); ?></small>
 				</label>
 			</p>
 
 			<p>
 				<label for="<?php echo $this->get_field_id( 'stream' ); ?>">
 					<input type="checkbox" name="<?php echo $this->get_field_name( 'stream' ); ?>" id="<?php echo $this->get_field_id( 'stream' ); ?>" <?php checked( $like_args['stream'] ); ?> />
-					<?php esc_html_e( 'Show Stream', 'oceanwp' ); ?>
+					<?php esc_html_e( 'Show Stream', 'kindling' ); ?>
 					<br />
-					<small><?php esc_html_e( 'Show the profile stream for the public profile.', 'oceanwp' ); ?></small>
+					<small><?php esc_html_e( 'Show the profile stream for the public profile.', 'kindling' ); ?></small>
 				</label>
 			</p>
 
 			<p>
 				<label for="<?php echo $this->get_field_id( 'show_border' ); ?>">
 					<input type="checkbox" name="<?php echo $this->get_field_name( 'show_border' ); ?>" id="<?php echo $this->get_field_id( 'show_border' ); ?>" <?php checked( $like_args['show_border'] ); ?> />
-					<?php esc_html_e( 'Show Border', 'oceanwp' ); ?>
+					<?php esc_html_e( 'Show Border', 'kindling' ); ?>
 					<br />
-					<small><?php esc_html_e( 'Show a border around the plugin.', 'oceanwp' ); ?></small>
+					<small><?php esc_html_e( 'Show a border around the plugin.', 'kindling' ); ?></small>
 				</label>
 			</p>
 
 			<p>
 				<label for="<?php echo $this->get_field_id( 'force_wall' ); ?>">
 					<input type="checkbox" name="<?php echo $this->get_field_name( 'force_wall' ); ?>" id="<?php echo $this->get_field_id( 'force_wall' ); ?>" <?php checked( $like_args['force_wall'] ); ?> />
-					<?php esc_html_e( 'Show Wall', 'oceanwp' ); ?>
+					<?php esc_html_e( 'Show Wall', 'kindling' ); ?>
 					<br />
-					<small><?php esc_html_e( 'Show the wall for a Places page rather than friend activity.', 'oceanwp' ); ?></small>
+					<small><?php esc_html_e( 'Show the wall for a Places page rather than friend activity.', 'kindling' ); ?></small>
 				</label>
 			</p>
 
@@ -242,7 +242,7 @@ if ( ! class_exists( 'OceanWP_Facebook_Widget' ) ) {
 				'force_wall'  => false,
 			);
 
-			return apply_filters( 'ocean_facebook_likebox_defaults', $defaults );
+			return apply_filters( 'kindling_facebook_likebox_defaults', $defaults );
 		}
 
 		function normalize_facebook_args( $args ) {
@@ -335,4 +335,4 @@ if ( ! class_exists( 'OceanWP_Facebook_Widget' ) ) {
 		}
 	}
 }
-register_widget( 'OceanWP_Facebook_Widget' );
+register_widget( 'Kindling_Facebook_Widget' );

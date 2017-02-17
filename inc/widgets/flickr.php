@@ -2,7 +2,7 @@
 /**
  * Flickr Widget.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_Flickr_Widget' ) ) {
-	class OceanWP_Flickr_Widget extends WP_Widget {
+if ( ! class_exists( 'Kindling_Flickr_Widget' ) ) {
+	class Kindling_Flickr_Widget extends WP_Widget {
 
 		/**
 		 * Register widget with WordPress.
@@ -20,11 +20,11 @@ if ( ! class_exists( 'OceanWP_Flickr_Widget' ) ) {
 		 */
 		public function __construct() {
 			parent::__construct(
-				'ocean_flickr',
-				esc_html__( '&raquo; Flickr', 'oceanwp' ),
+				'kindling_flickr',
+				esc_html__( '&raquo; Flickr', 'kindling' ),
 				array(
-					'classname'   => 'widget-oceanwp-flickr flickr-widget',
-					'description' => esc_html__( 'Pulls in images from your flickr account.', 'oceanwp' ),
+					'classname'   => 'widget-kindling-flickr flickr-widget',
+					'description' => esc_html__( 'Pulls in images from your flickr account.', 'kindling' ),
 					'customize_selective_refresh' => true,
 				)
 			);
@@ -56,7 +56,7 @@ if ( ! class_exists( 'OceanWP_Flickr_Widget' ) ) {
 				if ( $id ) : ?>
 					<div class="flickr-widget-wrap">
 						<script type="text/javascript" src="https://www.flickr.com/badge_code_v2.gne?count=<?php echo intval( $number ); ?>&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=<?php echo strip_tags( $id ); ?>"></script>
-						<p class="flickr_stream_wrap"><a class="follow_btn" href="http://www.flickr.com/photos/<?php echo strip_tags( $id ); ?>"><?php esc_html_e( 'View stream on flickr', 'oceanwp' ); ?></a></p>
+						<p class="flickr_stream_wrap"><a class="follow_btn" href="http://www.flickr.com/photos/<?php echo strip_tags( $id ); ?>"><?php esc_html_e( 'View stream on flickr', 'kindling' ); ?></a></p>
 					</div>
 				<?php endif;
 
@@ -96,26 +96,26 @@ if ( ! class_exists( 'OceanWP_Flickr_Widget' ) ) {
 
 			// Parse arguments
 			extract( wp_parse_args( (array) $instance, array(
-				'title'         => esc_attr__( 'Flickr Photos', 'oceanwp' ),
+				'title'         => esc_attr__( 'Flickr Photos', 'kindling' ),
 				'id' 			=> '73064996@N08',
 				'number'		=> 6
 			) ) ); ?>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'oceanwp' ); ?>:</label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'kindling' ); ?>:</label>
 				<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id('id'); ?>"><?php esc_html_e( 'Flickr ID', 'oceanwp' ); ?></label>
+				<label for="<?php echo $this->get_field_id('id'); ?>"><?php esc_html_e( 'Flickr ID', 'kindling' ); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('id'); ?>" name="<?php echo $this->get_field_name('id'); ?>" type="text" value="<?php echo esc_attr( $id ); ?>" />
-				<small><?php esc_html_e( 'Enter the url of your Flickr page on this site: idgettr.com.', 'oceanwp' ); ?></small>
+				<small><?php esc_html_e( 'Enter the url of your Flickr page on this site: idgettr.com.', 'kindling' ); ?></small>
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id('number'); ?>"><?php esc_html_e( 'Number:', 'oceanwp' ); ?></label>
+				<label for="<?php echo $this->get_field_id('number'); ?>"><?php esc_html_e( 'Number:', 'kindling' ); ?></label>
 				<input class="widefat" id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr( $number ); ?>" />
-				<small><?php esc_html_e( 'The maximum is 10 images.', 'oceanwp' ); ?></small>
+				<small><?php esc_html_e( 'The maximum is 10 images.', 'kindling' ); ?></small>
 			</p>
 
 		<?php
@@ -124,4 +124,4 @@ if ( ! class_exists( 'OceanWP_Flickr_Widget' ) ) {
 
 	}
 }
-register_widget( 'OceanWP_Flickr_Widget' );
+register_widget( 'Kindling_Flickr_Widget' );

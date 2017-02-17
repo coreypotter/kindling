@@ -1,8 +1,8 @@
 <?php
 /**
- * Customizer Control: oceanwp-icon.
+ * Customizer Control: kindling-icon.
  *
- * @package     OceanWP WordPress theme
+ * @package     Kindling Theme
  * @subpackage  Controls
  * @since       1.0
  */
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Range control
  */
-class OceanWP_Customizer_Icon_Select_Control extends WP_Customize_Control {
+class Kindling_Customizer_Icon_Select_Control extends WP_Customize_Control {
 
 	/**
 	 * The control type.
@@ -23,7 +23,7 @@ class OceanWP_Customizer_Icon_Select_Control extends WP_Customize_Control {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'oceanwp-icon';
+	public $type = 'kindling-icon';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -31,8 +31,8 @@ class OceanWP_Customizer_Icon_Select_Control extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'oceanwp-icon-select', OCEANWP_INC_DIR_URI . 'customizer/controls/icon-select/icon-select.js', array( 'jquery', 'customize-base' ), false, true );
-		wp_enqueue_style( 'oceanwp-icon-select-css', OCEANWP_INC_DIR_URI . 'customizer/controls/icon-select/icon-select.css', null );
+		wp_enqueue_script( 'kindling-icon-select', KINDLING_INC_DIR_URI . 'customizer/controls/icon-select/icon-select.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_style( 'kindling-icon-select-css', KINDLING_INC_DIR_URI . 'customizer/controls/icon-select/icon-select.css', null );
 	}
 
 	/**

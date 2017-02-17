@@ -1,8 +1,8 @@
 <?php
 /**
- * Customizer Control: oceanwp-color.
+ * Customizer Control: kindling-color.
  *
- * @package     OceanWP WordPress theme
+ * @package     Kindling Theme
  * @subpackage  Controls
  * @see   		https://github.com/BraadMartin/components
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Color control
  */
-class OceanWP_Customizer_Color_Control extends WP_Customize_Control {
+class Kindling_Customizer_Color_Control extends WP_Customize_Control {
 
 	public $type = 'alpha-color';
 
@@ -39,8 +39,8 @@ class OceanWP_Customizer_Color_Control extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'oceanwp-color', OCEANWP_INC_DIR_URI . 'customizer/controls/color/color.js', array( 'jquery', 'customize-base', 'wp-color-picker' ), false, true );
-		wp_enqueue_style( 'oceanwp-color-css', OCEANWP_INC_DIR_URI . 'customizer/controls/color/color.css', array( 'wp-color-picker' ), '1.0.0' );
+		wp_enqueue_script( 'kindling-color', KINDLING_INC_DIR_URI . 'customizer/controls/color/color.js', array( 'jquery', 'customize-base', 'wp-color-picker' ), false, true );
+		wp_enqueue_style( 'kindling-color-css', KINDLING_INC_DIR_URI . 'customizer/controls/color/color.css', array( 'wp-color-picker' ), '1.0.0' );
 	}
 
 	/**

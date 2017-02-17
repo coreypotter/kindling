@@ -2,7 +2,7 @@
 /**
  * Active callback functions for the customizer
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 /*-------------------------------------------------------------------------------*/
@@ -22,65 +22,65 @@
 /*-------------------------------------------------------------------------------*/
 /* [ Core ]
 /*-------------------------------------------------------------------------------*/
-function oceanwp_cac_has_boxed_layout() {
-	if ( 'boxed' == get_theme_mod( 'ocean_main_layout_style', 'wide' ) ) {
+function kindling_cac_has_boxed_layout() {
+	if ( 'boxed' == get_theme_mod( 'kindling_main_layout_style', 'wide' ) ) {
 		return true;
 	} else {
 		return false;
 	}
 }
 
-function oceanwp_cac_hasnt_boxed_layout() {
-	if ( 'wide' == get_theme_mod( 'ocean_main_layout_style', 'wide' ) ) {
+function kindling_cac_hasnt_boxed_layout() {
+	if ( 'wide' == get_theme_mod( 'kindling_main_layout_style', 'wide' ) ) {
 		return true;
 	} else {
 		return false;
 	}
 }
 
-function oceanwp_cac_has_page_header() {
-	if ( 'hidden' != get_theme_mod( 'ocean_page_header_style' ) ) {
+function kindling_cac_has_page_header() {
+	if ( 'hidden' != get_theme_mod( 'kindling_page_header_style' ) ) {
 		return true;
 	} else {
 		return false;
 	}
 }
 
-function oceanwp_cac_has_breadcrumbs() {
+function kindling_cac_has_breadcrumbs() {
 	if ( function_exists( 'yoast_breadcrumb' ) ) {
 		return true;
 	} else {
-		return get_theme_mod( 'ocean_breadcrumbs', true );
+		return get_theme_mod( 'kindling_breadcrumbs', true );
 	}
 }
 
 
-function oceanwp_cac_enabled_not_yoast() {
+function kindling_cac_enabled_not_yoast() {
 	if ( function_exists( 'yoast_breadcrumb' ) ) {
 		return false;
 	} else {
-		return oceanwp_cac_has_breadcrumbs();
+		return kindling_cac_has_breadcrumbs();
 	}
 }
 
-function oceanwp_cac_has_scrolltop() {
-	return get_theme_mod( 'ocean_scroll_top', true );
+function kindling_cac_has_scrolltop() {
+	return get_theme_mod( 'kindling_scroll_top', true );
 }
 
-function oceanwp_cac_has_footer_widgets() {
-	return get_theme_mod( 'ocean_footer_widgets', true );
+function kindling_cac_has_footer_widgets() {
+	return get_theme_mod( 'kindling_footer_widgets', true );
 }
 
-function oceanwp_cac_has_footer_bottom() {
-	return get_theme_mod( 'ocean_footer_bottom', true );
+function kindling_cac_has_footer_bottom() {
+	return get_theme_mod( 'kindling_footer_bottom', true );
 }
 
 /*-------------------------------------------------------------------------------*/
 /* [ Background ]
 /*-------------------------------------------------------------------------------*/
 
-function oceanwp_cac_has_background_image() {
-	if ( '' != get_theme_mod( 'ocean_background_image' ) ) {
+function kindling_cac_has_background_image() {
+	if ( '' != get_theme_mod( 'kindling_background_image' ) ) {
 		return true;
 	} else {
 		return false;
@@ -90,14 +90,14 @@ function oceanwp_cac_has_background_image() {
 /*-------------------------------------------------------------------------------*/
 /* [ Topbar ]
 /*-------------------------------------------------------------------------------*/
-function oceanwp_cac_has_topbar() {
-	return get_theme_mod( 'ocean_top_bar', true );
+function kindling_cac_has_topbar() {
+	return get_theme_mod( 'kindling_top_bar', true );
 }
 
-function oceanwp_cac_has_topbar_social() {
-	if ( oceanwp_cac_has_topbar()
-		&& get_theme_mod( 'ocean_top_bar_social' )
-		&& ! get_theme_mod( 'ocean_top_bar_social_alt' ) ) {
+function kindling_cac_has_topbar_social() {
+	if ( kindling_cac_has_topbar()
+		&& get_theme_mod( 'kindling_top_bar_social' )
+		&& ! get_theme_mod( 'kindling_top_bar_social_alt' ) ) {
 		return true;
 	} else {
 		return false;
@@ -107,48 +107,48 @@ function oceanwp_cac_has_topbar_social() {
 /*-------------------------------------------------------------------------------*/
 /* [ Header ]
 /*-------------------------------------------------------------------------------*/
-function oceanwp_cac_has_transparent_header_style() {
-	if ( 'transparent' == get_theme_mod( 'ocean_header_style', 'minimal' ) ) {
+function kindling_cac_has_transparent_header_style() {
+	if ( 'transparent' == get_theme_mod( 'kindling_header_style', 'minimal' ) ) {
 		return true;
 	} else {
 		return false;
 	}
 }
 
-function oceanwp_cac_has_top_header_style() {
-	if ( 'top' == get_theme_mod( 'ocean_header_style', 'minimal' ) ) {
+function kindling_cac_has_top_header_style() {
+	if ( 'top' == get_theme_mod( 'kindling_header_style', 'minimal' ) ) {
 		return true;
 	} else {
 		return false;
 	}
 }
 
-function oceanwp_cac_hasnt_header_styles() {
-	if ( 'top' == get_theme_mod( 'ocean_header_style', 'minimal' ) ) {
+function kindling_cac_hasnt_header_styles() {
+	if ( 'top' == get_theme_mod( 'kindling_header_style', 'minimal' ) ) {
 		return false;
 	} else {
 		return true;
 	}
 }
 
-function oceanwp_cac_has_full_screen_header_style() {
-	if ( 'full_screen' == get_theme_mod( 'ocean_header_style', 'minimal' ) ) {
+function kindling_cac_has_full_screen_header_style() {
+	if ( 'full_screen' == get_theme_mod( 'kindling_header_style', 'minimal' ) ) {
 		return true;
 	} else {
 		return false;
 	}
 }
 
-function oceanwp_cac_has_menu_social() {
-	if ( true == get_theme_mod( 'ocean_menu_social', false ) ) {
+function kindling_cac_has_menu_social() {
+	if ( true == get_theme_mod( 'kindling_menu_social', false ) ) {
 		return true;
 	} else {
 		return false;
 	}
 }
 
-function oceanwp_cac_has_custom_header() {
-	if ( 'custom' == get_theme_mod( 'ocean_header_style', 'minimal' ) ) {
+function kindling_cac_has_custom_header() {
+	if ( 'custom' == get_theme_mod( 'kindling_header_style', 'minimal' ) ) {
 		return true;
 	} else {
 		return false;
@@ -158,7 +158,7 @@ function oceanwp_cac_has_custom_header() {
 /*-------------------------------------------------------------------------------*/
 /* [ Logo ]
 /*-------------------------------------------------------------------------------*/
-function oceanwp_cac_has_custom_logo() {
+function kindling_cac_has_custom_logo() {
 	if ( has_custom_logo() ) {
 		return true;
 	} else {
@@ -166,7 +166,7 @@ function oceanwp_cac_has_custom_logo() {
 	}
 }
 
-function oceanwp_cac_hasnt_custom_logo() {
+function kindling_cac_hasnt_custom_logo() {
 	if ( has_custom_logo() ) {
 		return false;
 	} else {
@@ -177,39 +177,39 @@ function oceanwp_cac_hasnt_custom_logo() {
 /*-------------------------------------------------------------------------------*/
 /* [ Menu ]
 /*-------------------------------------------------------------------------------*/
-function oceanwp_cac_has_menu_search_dropdown() {
-	if ( 'drop_down' == get_theme_mod( 'ocean_menu_search_style', 'drop_down' ) ) {
+function kindling_cac_has_menu_search_dropdown() {
+	if ( 'drop_down' == get_theme_mod( 'kindling_menu_search_style', 'drop_down' ) ) {
 		return true;
 	} else {
 		return false;
 	}
 }
 
-function oceanwp_cac_has_menu_search_overlay() {
-	if ( 'overlay' == get_theme_mod( 'ocean_menu_search_style', 'drop_down' ) ) {
+function kindling_cac_has_menu_search_overlay() {
+	if ( 'overlay' == get_theme_mod( 'kindling_menu_search_style', 'drop_down' ) ) {
 		return true;
 	} else {
 		return false;
 	}
 }
 
-function oceanwp_cac_has_menu_dropdown_top_border() {
-	return get_theme_mod( 'ocean_menu_dropdown_top_border', false );
+function kindling_cac_has_menu_dropdown_top_border() {
+	return get_theme_mod( 'kindling_menu_dropdown_top_border', false );
 }
 
 /*-------------------------------------------------------------------------------*/
 /* [ Page Header ]
 /*-------------------------------------------------------------------------------*/
-function oceanwp_cac_hasnt_bg_image_page_header() {
-	if ( 'background-image' == get_theme_mod( 'ocean_page_header_style' ) ) {
+function kindling_cac_hasnt_bg_image_page_header() {
+	if ( 'background-image' == get_theme_mod( 'kindling_page_header_style' ) ) {
 		return true;
 	} else {
 		return false;
 	}
 }
 
-function oceanwp_cac_has_bg_image_page_header() {
-	if ( 'background-image' == get_theme_mod( 'ocean_page_header_style' ) ) {
+function kindling_cac_has_bg_image_page_header() {
+	if ( 'background-image' == get_theme_mod( 'kindling_page_header_style' ) ) {
 		return false;
 	} else {
 		return true;
@@ -219,25 +219,25 @@ function oceanwp_cac_has_bg_image_page_header() {
 /*-------------------------------------------------------------------------------*/
 /* [ Blog ]
 /*-------------------------------------------------------------------------------*/
-function oceanwp_cac_grid_blog_style() {
-	if ( 'grid-entry' == get_theme_mod( 'ocean_blog_style', 'large-entry' ) ) {
+function kindling_cac_grid_blog_style() {
+	if ( 'grid-entry' == get_theme_mod( 'kindling_blog_style', 'large-entry' ) ) {
 		return true;
 	} else {
 		return false;
 	}
 }
 
-function oceanwp_cac_blog_supports_equal_heights() {
-	if ( oceanwp_cac_grid_blog_style()
-		&& 'masonry' != get_theme_mod( 'ocean_blog_grid_style', 'fit-rows' ) ) {
+function kindling_cac_blog_supports_equal_heights() {
+	if ( kindling_cac_grid_blog_style()
+		&& 'masonry' != get_theme_mod( 'kindling_blog_grid_style', 'fit-rows' ) ) {
 		return true;
 	} else {
 		return false;
 	}
 }
 
-function oceanwp_cac_has_blog_single_title_bg_image() {
-	if ( true == get_theme_mod( 'ocean_blog_single_featured_image_title', false ) ) {
+function kindling_cac_has_blog_single_title_bg_image() {
+	if ( true == get_theme_mod( 'kindling_blog_single_featured_image_title', false ) ) {
 		return true;
 	} else {
 		return false;
@@ -247,16 +247,16 @@ function oceanwp_cac_has_blog_single_title_bg_image() {
 /*-------------------------------------------------------------------------------*/
 /* [ WooCommerce ]
 /*-------------------------------------------------------------------------------*/
-function oceanwp_cac_has_menu_cart() {
-	if ( 'disabled' != get_theme_mod( 'ocean_woo_menu_icon_display', 'icon_count' ) ) {
+function kindling_cac_has_menu_cart() {
+	if ( 'disabled' != get_theme_mod( 'kindling_woo_menu_icon_display', 'icon_count' ) ) {
 		return true;
 	} else {
 		return false;
 	}
 }
 
-function oceanwp_cac_has_grid_list_buttons() {
-	if ( true == get_theme_mod( 'ocean_woo_grid_list', true ) ) {
+function kindling_cac_has_grid_list_buttons() {
+	if ( true == get_theme_mod( 'kindling_woo_grid_list', true ) ) {
 		return true;
 	} else {
 		return false;

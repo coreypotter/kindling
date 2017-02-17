@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['oceanwp-buttonset'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kindling-buttonset'] = wp.customize.Control.extend({
 
 	ready: function() {
 

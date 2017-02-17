@@ -2,16 +2,16 @@
 /**
  * Mobile Menu sidr close
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 } ?>
 
 <div id="sidr-close">
 	<a href="#" class="toggle-sidr-close">
-		<i class="icon icon-close"></i><?php esc_html_e( 'Close Menu', 'oceanwp' ); ?>
+		<i class="icon icon-close"></i><?php esc_html_e( 'Close Menu', 'kindling' ); ?>
 	</a>
 </div>

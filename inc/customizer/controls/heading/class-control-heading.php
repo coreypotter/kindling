@@ -1,8 +1,8 @@
 <?php
 /**
- * Customizer Control: oceanwp-heading.
+ * Customizer Control: kindling-heading.
  *
- * @package     OceanWP WordPress theme
+ * @package     Kindling Theme
  * @subpackage  Controls
  * @since       1.0
  */
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Range control
  */
-class OceanWP_Customizer_Heading_Control extends WP_Customize_Control {
+class Kindling_Customizer_Heading_Control extends WP_Customize_Control {
 
 	/**
 	 * The control type.
@@ -23,7 +23,7 @@ class OceanWP_Customizer_Heading_Control extends WP_Customize_Control {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'oceanwp-heading';
+	public $type = 'kindling-heading';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -31,7 +31,7 @@ class OceanWP_Customizer_Heading_Control extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_style( 'oceanwp-heading-css', OCEANWP_INC_DIR_URI . 'customizer/controls/heading/heading.css', null );
+		wp_enqueue_style( 'kindling-heading-css', KINDLING_INC_DIR_URI . 'customizer/controls/heading/heading.css', null );
 	}
 
 	/**
@@ -46,7 +46,7 @@ class OceanWP_Customizer_Heading_Control extends WP_Customize_Control {
 	 */
 	protected function content_template() {
 		?>
-		<h4 class="oceanwp-customizer-heading">{{{ data.label }}}</h4>
+		<h4 class="kindling-customizer-heading">{{{ data.label }}}</h4>
 		<?php
 	}
 }

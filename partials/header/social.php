@@ -2,31 +2,31 @@
 /**
  * Header social menu template part.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Get social options array
-$social_options = oceanwp_social_options();
+# Get social options array
+$social_options = kindling_social_options();
 
-// Return if $social_options array is empty
+# Return if $social_options array is empty
 if ( empty( $social_options ) ) {
 	return;
 }
 
-// Classes
-$style = get_theme_mod( 'ocean_menu_social_style' );
+# Classes
+$style = get_theme_mod( 'kindling_menu_social_style' );
 $classes = 'social-menu-inner clr';
 if ( 'simple' != $style ) {
 	$classes .= ' '. $style;
 }
 
-// Add class if social menu has class
-$social_style = get_theme_mod( 'ocean_menu_social_style' );
+# Add class if social menu has class
+$social_style = get_theme_mod( 'kindling_menu_social_style' );
 $has_social = '';
 if ( 'simple' != $social_style ) {
 	$has_social .= 'social-with-style';
@@ -34,41 +34,41 @@ if ( 'simple' != $social_style ) {
 	$has_social .= 'simple-social';
 }
 
-// Return if there aren't any profiles defined and define var
-if ( ! $profiles = get_theme_mod( 'ocean_menu_social_profiles' ) ) {
+# Return if there aren't any profiles defined and define var
+if ( ! $profiles = get_theme_mod( 'kindling_menu_social_profiles' ) ) {
 	return;
 }
 
-// Get theme mods
-$link_target = get_theme_mod( 'ocean_menu_social_target', 'blank' );
+# Get theme mods
+$link_target = get_theme_mod( 'kindling_menu_social_target', 'blank' );
 $link_target = ( 'blank' == $link_target || '_blank' == $link_target ) ? ' target="_blank"' : '';
 
-// Only used on main menu
+# Only used on main menu
 if ( has_nav_menu( 'main_menu' ) ) { ?>
 
-	<div id="oceanwp-social-menu" class="<?php echo esc_attr( $has_social ); ?> clr">
+	<div id="kindling-social-menu" class="<?php echo esc_attr( $has_social ); ?> clr">
 
 		<div class="<?php echo esc_attr( $classes ); ?>">
 
 			<ul>
 
 				<?php
-				// Loop through social options
+				# Loop through social options
 				foreach ( $social_options as $key => $val ) {
 
-					// Get URL from the theme mods
+					# Get URL from the theme mods
 					$url = isset( $profiles[$key] ) ? $profiles[$key] : '';
 
-					// Display if there is a value defined
+					# Display if there is a value defined
 					if ( $url ) {
 
-						// Escape URL except for the following keys
+						# Escape URL except for the following keys
 						if ( ! in_array( $key, array( 'skype', 'email' ) ) ) {
 							$url = esc_url( $url );
 						}
 
-						// Display link
-						echo '<li class="oceanwp-'. $key .'">';
+						# Display link
+						echo '<li class="kindling-'. $key .'">';
 
 							echo '<a href="'. $url .'" '. $link_target .'>';
 
@@ -78,9 +78,9 @@ if ( has_nav_menu( 'main_menu' ) ) { ?>
 
 						echo '</li>';
 
-					} // End url check
+					} # End url check
 
-				} // End loop ?>
+				} # End loop ?>
 
 			</ul>
 

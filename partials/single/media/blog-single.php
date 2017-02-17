@@ -2,15 +2,15 @@
 /**
  * Displays the post single thumbmnail
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Return if there isn't a thumbnail defined
+# Return if there isn't a thumbnail defined
 if ( ! has_post_thumbnail() ) {
 	return;
 } ?>
@@ -18,7 +18,7 @@ if ( ! has_post_thumbnail() ) {
 <div class="thumbnail">
 
 	<?php
-	// Display post thumbnail
+	# Display post thumbnail
 	the_post_thumbnail( 'full', array(
 		'alt'		=> get_the_title(),
 		'itemprop' 	=> 'image',

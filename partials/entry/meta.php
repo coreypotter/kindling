@@ -2,18 +2,18 @@
 /**
  * The default template for displaying post meta.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Get meta sections
-$sections = oceanwp_blog_entry_meta();
+# Get meta sections
+$sections = kindling_blog_entry_meta();
 
-// Return if sections are empty
+# Return if sections are empty
 if ( empty( $sections ) ) {
 	return;
 }
@@ -23,7 +23,7 @@ if ( 'post' == get_post_type() ) { ?>
 	<ul class="meta clr">
 
 		<?php
-		// Loop through meta sections
+		# Loop through meta sections
 		foreach ( $sections as $section ) { ?>
 
 			<?php if ( 'author' == $section ) { ?>
@@ -39,7 +39,7 @@ if ( 'post' == get_post_type() ) { ?>
 			<?php }
 
 			if ( 'comments' == $section && comments_open() && ! post_password_required() ) { ?>
-				<li class="meta-comments"><i class="icon-bubble"></i><?php comments_popup_link( esc_html__( '0 Comments', 'oceanwp' ), esc_html__( '1 Comment',  'oceanwp' ), esc_html__( '% Comments', 'oceanwp' ), 'comments-link' ); ?></li>
+				<li class="meta-comments"><i class="icon-bubble"></i><?php comments_popup_link( esc_html__( '0 Comments', 'kindling' ), esc_html__( '1 Comment',  'kindling' ), esc_html__( '% Comments', 'kindling' ), 'comments-link' ); ?></li>
 			<?php }
 
 		} ?>

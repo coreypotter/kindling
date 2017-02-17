@@ -2,33 +2,33 @@
 /**
  * Single related posts
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Text
-$text = esc_html__( 'You Might Also Like', 'oceanwp' );
+# Text
+$text = esc_html__( 'You Might Also Like', 'kindling' );
 
-// Apply filters for child theming
-$text = apply_filters( 'ocean_related_posts_title', $text );
+# Apply filters for child theming
+$text = apply_filters( 'kindling_related_posts_title', $text );
 
-// Number of columns for entries
-$oceanwp_columns = apply_filters( 'ocean_related_blog_posts_columns', get_theme_mod( 'ocean_blog_related_columns', '3' ) );
+# Number of columns for entries
+$kindling_columns = apply_filters( 'kindling_related_blog_posts_columns', get_theme_mod( 'kindling_blog_related_columns', '3' ) );
 
-// Create an array of current category ID's
+# Create an array of current category ID's
 $cats     = wp_get_post_terms( get_the_ID(), 'category' );
 $cats_ids = array();
-foreach( $cats as $oceanwp_related_cat ) {
-	$cats_ids[] = $oceanwp_related_cat->term_id;
+foreach( $cats as $kindling_related_cat ) {
+	$cats_ids[] = $kindling_related_cat->term_id;
 }
 
-// Query args
+# Query args
 $args = array(
-	'posts_per_page' => get_theme_mod( 'ocean_blog_related_count', '3' ),
+	'posts_per_page' => get_theme_mod( 'kindling_blog_related_count', '3' ),
 	'orderby'        => 'rand',
 	'category__in'   => $cats_ids,
 	'post__not_in'   => array( get_the_ID() ),
@@ -43,17 +43,17 @@ $args = array(
 		),
 	),
 );
-$args = apply_filters( 'ocean_blog_post_related_query_args', $args );
+$args = apply_filters( 'kindling_blog_post_related_query_args', $args );
 
-// Related query arguments
-$oceanwp_related_query = new WP_Query( $args );
+# Related query arguments
+$kindling_related_query = new WP_Query( $args );
 
-// If the custom query returns post display related posts section
-if ( $oceanwp_related_query->have_posts() ) :
+# If the custom query returns post display related posts section
+if ( $kindling_related_query->have_posts() ) :
 
-	// Wrapper classes
+	# Wrapper classes
 	$classes = 'clr';
-	if ( 'full-screen' == oceanwp_post_layout() ) {
+	if ( 'full-screen' == kindling_post_layout() ) {
 		$classes .= ' container';
 	} ?>
 
@@ -63,28 +63,28 @@ if ( $oceanwp_related_query->have_posts() ) :
 			<span class="text"><?php echo $text ?></span>
 		</h2>
 
-		<div class="oceanwp-row clr">
+		<div class="kindling-row clr">
 
-			<?php $oceanwp_count = 0; ?>
+			<?php $kindling_count = 0; ?>
 
-			<?php foreach( $oceanwp_related_query->posts as $post ) : setup_postdata( $post ); ?>
+			<?php foreach( $kindling_related_query->posts as $post ) : setup_postdata( $post ); ?>
 
-				<?php $oceanwp_count++;
+				<?php $kindling_count++;
 
-				// Disable embeds
-				$show_embeds = apply_filters( 'ocean_related_blog_posts_embeds', false );
+				# Disable embeds
+				$show_embeds = apply_filters( 'kindling_related_blog_posts_embeds', false );
 
-				// Get post format
+				# Get post format
 				$format = get_post_format();
 
-				// Add classes
+				# Add classes
 				$classes	= array( 'related-post', 'clr', 'col' );
-				$classes[]	= oceanwp_grid_class( $oceanwp_columns );
-				$classes[]	= 'col-'. $oceanwp_count;
+				$classes[]	= kindling_grid_class( $kindling_columns );
+				$classes[]	= 'col-'. $kindling_count;
 
-				// Images size
-				if ( 'full-width' == oceanwp_post_layout()
-					|| 'full-screen' == oceanwp_post_layout() ) {
+				# Images size
+				if ( 'full-width' == kindling_post_layout()
+					|| 'full-screen' == kindling_post_layout() ) {
 					$size = 'medium_large';
 				} else {
 					$size = 'medium';
@@ -93,30 +93,30 @@ if ( $oceanwp_related_query->have_posts() ) :
 				<article <?php post_class( $classes ); ?>>
 
 					<?php
-					// Display post video
-					if ( $show_embeds && 'video' == $format && $video = oceanwp_get_post_video_html() ) : ?>
+					# Display post video
+					if ( $show_embeds && 'video' == $format && $video = kindling_get_post_video_html() ) : ?>
 
 						<div class="related-post-video">
 							<?php echo $video; ?>
 						</div><!-- .related-post-video -->
 
 					<?php
-					// Display post audio
-					elseif ( $show_embeds && 'audio' == $format && $audio = oceanwp_get_post_audio_html() ) : ?>
+					# Display post audio
+					elseif ( $show_embeds && 'audio' == $format && $audio = kindling_get_post_audio_html() ) : ?>
 
 						<div class="related-post-video">
 							<?php echo $audio; ?>
 						</div><!-- .related-post-audio -->
 
 					<?php
-					// Display post thumbnail
+					# Display post thumbnail
 					elseif ( has_post_thumbnail() ) : ?>
 
 						<figure class="related-post-media clr">
 
 							<a href="<?php the_permalink(); ?>" class="related-thumb">
 								<?php
-								// Display post thumbnail
+								# Display post thumbnail
 								the_post_thumbnail( $size, array(
 									'alt'		=> get_the_title(),
 									'itemprop' 	=> 'image',
@@ -135,11 +135,11 @@ if ( $oceanwp_related_query->have_posts() ) :
 
 				</article><!-- .related-post -->
 				
-				<?php if ( $oceanwp_columns == $oceanwp_count ) $oceanwp_count=0; ?>
+				<?php if ( $kindling_columns == $kindling_count ) $kindling_count=0; ?>
 
 			<?php endforeach; ?>
 
-		</div><!-- .oceanwp-row -->
+		</div><!-- .kindling-row -->
 
 	</div><!-- .related-posts -->
 

@@ -1,7 +1,7 @@
 /*!
- * Project   : OceanWP WordPress Theme
+ * Project   : Kindling WordPress Theme
  * Purpose   : WooCommerce Tweaks
- * Author    : Nick
+ * Author    : Nick (of OceanWP), Corey Potter
  */
 
 /*------------------------------------------------------------------
@@ -145,12 +145,12 @@ Store
 .woocommerce ul.products { margin: 0 -10px }
 
 /* store > toolbar */
-.woocommerce .oceanwp-toolbar { display: block; padding: 10px 0; border-top: 1px solid #eaeaea; border-bottom: 1px solid #eaeaea; margin-bottom: 20px; }
-.woocommerce .oceanwp-grid-list { float: left; margin: 0 20px 0 0; }
-.woocommerce .oceanwp-grid-list a { display: inline-block; width: 34px; height: 34px; line-height: 34px; color: #999; border: 1px solid #eaeaea; text-align: center; }
-.woocommerce .oceanwp-grid-list a:last-child { margin-left: 10px; }
-.woocommerce .oceanwp-grid-list a.active,
-.woocommerce .oceanwp-grid-list a:hover { color: #13aff0; border-color: #13aff0; }
+.woocommerce .kindling-toolbar { display: block; padding: 10px 0; border-top: 1px solid #eaeaea; border-bottom: 1px solid #eaeaea; margin-bottom: 20px; }
+.woocommerce .kindling-grid-list { float: left; margin: 0 20px 0 0; }
+.woocommerce .kindling-grid-list a { display: inline-block; width: 34px; height: 34px; line-height: 34px; color: #999; border: 1px solid #eaeaea; text-align: center; }
+.woocommerce .kindling-grid-list a:last-child { margin-left: 10px; }
+.woocommerce .kindling-grid-list a.active,
+.woocommerce .kindling-grid-list a:hover { color: #13aff0; border-color: #13aff0; }
 
 .woocommerce .woocommerce-ordering { float: left; }
 .woocommerce .woocommerce-ordering select { font-size: 13px; min-height: 34px; line-height: 34px; padding: 0 15px; border-color: #ddd; border-radius: 0; margin: 0; vertical-align: top }
@@ -712,25 +712,25 @@ Checkout & Order Received
 Account Page
 -------------------------------------------------------------------*/
 .woocommerce #customer_login h2,
-.woocommerce .oceanwp-loginform-wrap h2 { font-size: 14px; position: relative; margin: 0 0 20px; padding-bottom: 8px; text-transform: uppercase; border-bottom: 1px solid #ddd; }
+.woocommerce .kindling-loginform-wrap h2 { font-size: 14px; position: relative; margin: 0 0 20px; padding-bottom: 8px; text-transform: uppercase; border-bottom: 1px solid #ddd; }
 
 .woocommerce #customer_login p:nth-last-child(2),
 .woocommerce #customer_login p:last-child,
-.woocommerce .oceanwp-loginform-wrap p:nth-last-child(2),
-.woocommerce .oceanwp-loginform-wrap p:last-child { margin: 0; }
+.woocommerce .kindling-loginform-wrap p:nth-last-child(2),
+.woocommerce .kindling-loginform-wrap p:last-child { margin: 0; }
 
 .woocommerce #customer_login .form-row,
-.woocommerce .oceanwp-loginform-wrap .form-row { display: inline-block; }
+.woocommerce .kindling-loginform-wrap .form-row { display: inline-block; }
 .woocommerce #customer_login .form-row.form-row-wide,
-.woocommerce .oceanwp-loginform-wrap .form-row.form-row-wide { width: 100%; }
+.woocommerce .kindling-loginform-wrap .form-row.form-row-wide { width: 100%; }
 .woocommerce #customer_login .form-row label[for="rememberme"],
-.woocommerce .oceanwp-loginform-wrap .form-row label[for="rememberme"] { margin: 0 0 0 15px; }
+.woocommerce .kindling-loginform-wrap .form-row label[for="rememberme"] { margin: 0 0 0 15px; }
 
 .woocommerce #customer_login .lost_password,
-.woocommerce .oceanwp-loginform-wrap .lost_password { float: right; line-height: 42px; }
+.woocommerce .kindling-loginform-wrap .lost_password { float: right; line-height: 42px; }
 
 .woocommerce #customer_login > div,
-.woocommerce .oceanwp-loginform-wrap { padding: 20px; border-width: 2px; border-style: solid; }
+.woocommerce .kindling-loginform-wrap { padding: 20px; border-width: 2px; border-style: solid; }
 
 /* Account > lost password */
 .woocommerce .lost_reset_password { max-width: 600px; margin: 0 auto; padding: 20px; border-width: 2px; border-style: solid; text-align: center; }
@@ -750,14 +750,14 @@ Account Page
 .woocommerce-MyAccount-content #payment .payment_methods li .payment_box { background-color: rgba(0, 0, 0, 0.05); }
 
 /* Account > user info */
-.woocommerce-MyAccount-tabs .oceanwp-user-profile { display: table; width: 100%; table-layout: auto; margin-bottom: 40px; }
-.woocommerce-MyAccount-tabs .oceanwp-user-profile .image,
-.woocommerce-MyAccount-tabs .oceanwp-user-profile .user-info { display: table-cell; vertical-align: middle; }
-.woocommerce-MyAccount-tabs .oceanwp-user-profile .image { width: 64px; height: 64px; }
-.woocommerce-MyAccount-tabs .oceanwp-user-profile .image img { width: 100%; height: auto; border-radius: 50%; }
-.woocommerce-MyAccount-tabs .oceanwp-user-profile .user-info { padding-left: 15px; }
-.woocommerce-MyAccount-tabs .oceanwp-user-profile .user-info .name { display: block; font-size: 18px; line-height: 1; margin-bottom: 5px; color: #333; }
-.woocommerce-MyAccount-tabs .oceanwp-user-profile .user-info .logout { font-size: 13px; }
+.woocommerce-MyAccount-tabs .kindling-user-profile { display: table; width: 100%; table-layout: auto; margin-bottom: 40px; }
+.woocommerce-MyAccount-tabs .kindling-user-profile .image,
+.woocommerce-MyAccount-tabs .kindling-user-profile .user-info { display: table-cell; vertical-align: middle; }
+.woocommerce-MyAccount-tabs .kindling-user-profile .image { width: 64px; height: 64px; }
+.woocommerce-MyAccount-tabs .kindling-user-profile .image img { width: 100%; height: auto; border-radius: 50%; }
+.woocommerce-MyAccount-tabs .kindling-user-profile .user-info { padding-left: 15px; }
+.woocommerce-MyAccount-tabs .kindling-user-profile .user-info .name { display: block; font-size: 18px; line-height: 1; margin-bottom: 5px; color: #333; }
+.woocommerce-MyAccount-tabs .kindling-user-profile .user-info .logout { font-size: 13px; }
 
 /* Account > navigation */
 .woocommerce-MyAccount-navigation ul { list-style: none; margin: 15px 0; padding: 0; border-top: 1px solid #e9e9e9; }
@@ -877,7 +877,7 @@ Borders
 .woocommerce-checkout #payment,
 .woocommerce ul.order_details,
 .woocommerce #customer_login > div,
-.woocommerce .oceanwp-loginform-wrap,
+.woocommerce .kindling-loginform-wrap,
 .woocommerce .lost_reset_password,
 .woocommerce .col-1.address,
 .woocommerce .col-2.address,
@@ -920,10 +920,10 @@ All Devices Under 992px
 	
 	/* account page */
 	.woocommerce #customer_login .lost_password,
-	.woocommerce .oceanwp-loginform-wrap .lost_password { float: none; margin-top: 10px !important; line-height: 1; }
+	.woocommerce .kindling-loginform-wrap .lost_password { float: none; margin-top: 10px !important; line-height: 1; }
 
 	.woocommerce #customer_login .form-row label[for="rememberme"],
-	.woocommerce .oceanwp-loginform-wrap .form-row label[for="rememberme"] { margin: 0 0 0 4px; }
+	.woocommerce .kindling-loginform-wrap .form-row label[for="rememberme"] { margin: 0 0 0 4px; }
 
 }
 
@@ -985,7 +985,7 @@ Phone Portrait
 
 	/* shop toolbar */
 	.woocommerce .result-count { display: none; }
-	.woocommerce .oceanwp-grid-list { margin: 0 10px 0 0; }
+	.woocommerce .kindling-grid-list { margin: 0 10px 0 0; }
 	.woocommerce .woocommerce-ordering .orderby,
 	.woocommerce .woocommerce-ordering .orderby span { width: 194px !important; }
 

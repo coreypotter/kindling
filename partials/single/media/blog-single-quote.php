@@ -2,16 +2,16 @@
 /**
  * Blog single quote format
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Return if Ocean Extra is not active
-if ( ! class_exists( 'Ocean_Extra' ) ) {
+# Return if Kindling Extra is not active
+if ( ! class_exists( 'Kindling_Extra' ) ) {
 	return;
 } ?>
 
@@ -19,7 +19,7 @@ if ( ! class_exists( 'Ocean_Extra' ) ) {
 
 	<div class="post-quote-content">
 
-		<?php echo get_post_meta( get_the_ID(), 'ocean_quote_format', true ); ?>
+		<?php echo get_post_meta( get_the_ID(), 'kindling_quote_format', true ); ?>
 
 		<span class="post-quote-icon icon-speech"></span>
 

@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['oceanwp-multi-check'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['kindling-multi-check'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing.
 	ready: function() {

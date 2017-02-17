@@ -2,33 +2,33 @@
 /**
  * Topbar content
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-// Get topbar content
-$content = get_theme_mod( 'ocean_top_bar_content', '<i class="icon-phone"></i> 1-555-645-324 <i class="icon-user"></i> <a href="#">Sign in</a>' );
-$content = oceanwp_tm_translation( 'ocean_top_bar_content', $content );
+# Get topbar content
+$content = get_theme_mod( 'kindling_top_bar_content', '<i class="icon-phone"></i> 1-555-645-324 <i class="icon-user"></i> <a href="#">Sign in</a>' );
+$content = kindling_tm_translation( 'kindling_top_bar_content', $content );
 
-// Display topbar content
+# Display topbar content
 if ( $content || has_nav_menu( 'topbar_menu' ) ) : ?>
 
-    <div id="top-bar-content" class="<?php echo oceanwp_topbar_content_classes(); ?>">
+    <div id="top-bar-content" class="<?php echo kindling_topbar_content_classes(); ?>">
 
         <?php
-        // Get topbar menu
+        # Get topbar menu
         get_template_part( 'partials/topbar/nav' ); ?>
 
         <?php
-        // Check if there is content for the topbar
+        # Check if there is content for the topbar
         if ( $content ) : ?>
 
             <?php
-            // Display top bar content
+            # Display top bar content
             echo do_shortcode( $content ); ?>
 
         <?php endif; ?>

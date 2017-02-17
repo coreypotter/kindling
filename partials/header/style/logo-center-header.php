@@ -2,22 +2,22 @@
 /**
  * Logo Center Header Style
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-// Vars
+# Vars
 $home_url   = home_url( '/' );
 $blog_name  = get_bloginfo( 'name' ); ?>
 
 <li class="middle-site-logo clr">
 
 	<?php
-	// Custom site-wide image logo
+	# Custom site-wide image logo
 	if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
 
 		the_custom_logo();

@@ -23,7 +23,7 @@
         factory(jQuery);
     }
 
-    jQuery.fn.oceanwpSelect2 = jQuery.fn.select2;
+    jQuery.fn.kindlingSelect2 = jQuery.fn.select2;
 
     if (existingVersion) {
         delete jQuery.fn.select2;

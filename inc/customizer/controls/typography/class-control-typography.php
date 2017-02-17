@@ -1,8 +1,8 @@
 <?php
 /**
- * Customizer Control: oceanwp-typography.
+ * Customizer Control: kindling-typography.
  *
- * @package     OceanWP WordPress theme
+ * @package     Kindling WordPress theme
  * @subpackage  Controls
  * @since       1.0
  */
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Typography control
  */
-class OceanWP_Customizer_Typography_Control extends WP_Customize_Control {
+class Kindling_Customizer_Typography_Control extends WP_Customize_Control {
 
 	/**
 	 * The control type.
@@ -23,7 +23,7 @@ class OceanWP_Customizer_Typography_Control extends WP_Customize_Control {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'oceanwp-typography';
+	public $type = 'kindling-typography';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -31,10 +31,10 @@ class OceanWP_Customizer_Typography_Control extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'oceanwp-select2', OCEANWP_INC_DIR_URI . 'customizer/controls/typography/select2.min.js', array( 'jquery' ), false, true );
-		wp_enqueue_style( 'select2-css', OCEANWP_INC_DIR_URI . 'customizer/controls/typography/select2.min.css', null );
-		wp_enqueue_script( 'oceanwp-typography', OCEANWP_INC_DIR_URI . 'customizer/controls/typography/typography.js', array( 'jquery', 'select2' ), false, true );
-		wp_enqueue_style( 'oceanwp-typography-css', OCEANWP_INC_DIR_URI . 'customizer/controls/typography/typography.css', null );
+		wp_enqueue_script( 'kindling-select2', KINDLING_INC_DIR_URI . 'customizer/controls/typography/select2.min.js', array( 'jquery' ), false, true );
+		wp_enqueue_style( 'select2-css', KINDLING_INC_DIR_URI . 'customizer/controls/typography/select2.min.css', null );
+		wp_enqueue_script( 'kindling-typography', KINDLING_INC_DIR_URI . 'customizer/controls/typography/typography.js', array( 'jquery', 'select2' ), false, true );
+		wp_enqueue_style( 'kindling-typography-css', KINDLING_INC_DIR_URI . 'customizer/controls/typography/typography.css', null );
 	}
 
 	/**
@@ -53,14 +53,14 @@ class OceanWP_Customizer_Typography_Control extends WP_Customize_Control {
 				<span class="description customize-control-description"><?php echo wp_kses_post( $this->description ); ?></span>
 			<?php endif; ?>
 
-			<select class="oceanwp-typography-select" <?php $this->link(); ?>>
-				<option value="" <?php if ( ! $this_val ) echo 'selected="selected"'; ?>><?php esc_html_e( 'Default', 'oceanwp' ); ?></option>
+			<select class="kindling-typography-select" <?php $this->link(); ?>>
+				<option value="" <?php if ( ! $this_val ) echo 'selected="selected"'; ?>><?php esc_html_e( 'Default', 'kindling' ); ?></option>
 				<?php
 				// Add custom fonts from child themes
-				if ( function_exists( 'ocean_add_custom_fonts' ) ) {
-					$fonts = ocean_add_custom_fonts();
+				if ( function_exists( 'kindling_add_custom_fonts' ) ) {
+					$fonts = kindling_add_custom_fonts();
 					if ( $fonts && is_array( $fonts ) ) { ?>
-						<optgroup label="<?php esc_html_e( 'Custom Fonts', 'oceanwp' ); ?>">
+						<optgroup label="<?php esc_html_e( 'Custom Fonts', 'kindling' ); ?>">
 							<?php foreach ( $fonts as $font ) { ?>
 								<option value="<?php echo $font; ?>" <?php if ( $font == $this_val ) echo 'selected="selected"'; ?>><?php echo $font; ?></option>
 							<?php } ?>
@@ -69,8 +69,8 @@ class OceanWP_Customizer_Typography_Control extends WP_Customize_Control {
 				}
 
 				// Get Standard font options
-				if ( $std_fonts = oceanwp_standard_fonts() ) { ?>
-					<optgroup label="<?php esc_html_e( 'Standard Fonts', 'oceanwp' ); ?>">
+				if ( $std_fonts = kindling_standard_fonts() ) { ?>
+					<optgroup label="<?php esc_html_e( 'Standard Fonts', 'kindling' ); ?>">
 						<?php
 						// Loop through font options and add to select
 						foreach ( $std_fonts as $font ) { ?>
@@ -80,8 +80,8 @@ class OceanWP_Customizer_Typography_Control extends WP_Customize_Control {
 				<?php }
 
 				// Google font options
-				if ( $google_fonts = oceanwp_google_fonts_array() ) { ?>
-					<optgroup label="<?php esc_html_e( 'Google Fonts', 'oceanwp' ); ?>">
+				if ( $google_fonts = kindling_google_fonts_array() ) { ?>
+					<optgroup label="<?php esc_html_e( 'Google Fonts', 'kindling' ); ?>">
 						<?php
 						// Loop through font options and add to select
 						foreach ( $google_fonts as $font ) { ?>

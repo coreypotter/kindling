@@ -1,8 +1,8 @@
 <?php
 /**
- * Customizer Control: oceanwp-multi-check.
+ * Customizer Control: kindling-multi-check.
  *
- * @package     OceanWP WordPress theme
+ * @package     Kindling Theme
  * @subpackage  Controls
  * @see   		https://github.com/aristath/kirki
  * @license     http://opensource.org/licenses/https://opensource.org/licenses/MIT
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Multi check control
  */
-class OceanWP_Customize_Multicheck_Control extends WP_Customize_Control {
+class Kindling_Customize_Multicheck_Control extends WP_Customize_Control {
 
 	/**
 	 * The control type.
@@ -25,7 +25,7 @@ class OceanWP_Customize_Multicheck_Control extends WP_Customize_Control {
 	 * @access public
 	 * @var string
 	 */
-	public $type = 'oceanwp-multi-check';
+	public $type = 'kindling-multi-check';
 
 	/**
 	 * Enqueue control related scripts/styles.
@@ -33,7 +33,7 @@ class OceanWP_Customize_Multicheck_Control extends WP_Customize_Control {
 	 * @access public
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'oceanwp-multicheck', OCEANWP_INC_DIR_URI . 'customizer/controls/multicheck/multicheck.js', array( 'jquery', 'customize-base' ), false, true );
+		wp_enqueue_script( 'kindling-multicheck', KINDLING_INC_DIR_URI . 'customizer/controls/multicheck/multicheck.js', array( 'jquery', 'customize-base' ), false, true );
 	}
 
 	/**

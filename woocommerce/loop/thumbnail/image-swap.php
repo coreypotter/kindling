@@ -2,7 +2,7 @@
 /**
  * Image Swap style thumbnail
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Return dummy image if no featured image is defined
 if ( ! has_post_thumbnail() ) {
-	oceanwp_woo_placeholder_img();
+	kindling_woo_placeholder_img();
 	return;
 }
 

@@ -2,16 +2,16 @@
 /**
  * Typography Customizer Options
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
+if ( ! class_exists( 'Kindling_Typography_Customizer' ) ) :
 
-	class OceanWP_Typography_Customizer {
+	class Kindling_Typography_Customizer {
 
 		/**
 		 * Setup class.
@@ -28,7 +28,7 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 			if ( is_customize_preview() ) {
 				add_action( 'wp_head', 				array( $this, 'live_preview_styles' ), 999 );
 			} else {
-				add_filter( 'ocean_head_css', 		array( $this, 'head_css' ), 99 );
+				add_filter( 'kindling_head_css', 		array( $this, 'head_css' ), 99 );
 			}
 
 		}
@@ -41,9 +41,9 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 		public function elements() {
 
 			// Return settings
-			return apply_filters( 'ocean_typography_settings', array(
+			return apply_filters( 'kindling_typography_settings', array(
 				'body' 						=> array(
-					'label' 				=> esc_html__( 'Body', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Body', 'kindling' ),
 					'target' 				=> 'body',
 					'defaults' 				=> array(
 						'font-size' 		=> '14',
@@ -52,8 +52,8 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 					),
 				),
 				'headings' 					=> array(
-					'label' 				=> esc_html__( 'All Headings', 'oceanwp' ),
-					'target' 				=> 'h1,h2,h3,h4,h5,h6,.theme-heading,.widget-title,.oceanwp-widget-recent-posts-title,.comment-reply-title,.entry-title,.sidebar-box .widget-title',
+					'label' 				=> esc_html__( 'All Headings', 'kindling' ),
+					'target' 				=> 'h1,h2,h3,h4,h5,h6,.theme-heading,.widget-title,.kindling-widget-recent-posts-title,.comment-reply-title,.entry-title,.sidebar-box .widget-title',
 					'exclude' 				=> array( 'font-size' ),
 					'defaults' 				=> array(
 						'color' 			=> '#333333',
@@ -61,7 +61,7 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 					),
 				),
 				'heading_h1' 				=> array(
-					'label' 				=> esc_html__( 'Heading 1 (H1)', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Heading 1 (H1)', 'kindling' ),
 					'target' 				=> 'h1',
 					'defaults' 				=> array(
 						'font-size' 		=> '23',
@@ -70,7 +70,7 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 					),
 				),
 				'heading_h2' 				=> array(
-					'label' 				=> esc_html__( 'Heading 2 (H2)', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Heading 2 (H2)', 'kindling' ),
 					'target' 				=> 'h2',
 					'defaults' 				=> array(
 						'font-size' 		=> '20',
@@ -79,7 +79,7 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 					),
 				),
 				'heading_h3' 				=> array(
-					'label' 				=> esc_html__( 'Heading 3 (H3)', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Heading 3 (H3)', 'kindling' ),
 					'target' 				=> 'h3',
 					'defaults' 				=> array(
 						'font-size' 		=> '18',
@@ -88,7 +88,7 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 					),
 				),
 				'heading_h4' 				=> array(
-					'label' 				=> esc_html__( 'Heading 4 (H4)', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Heading 4 (H4)', 'kindling' ),
 					'target' 				=> 'h4',
 					'defaults' 				=> array(
 						'font-size' 		=> '17',
@@ -97,7 +97,7 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 					),
 				),
 				'logo' 						=> array(
-					'label' 				=> esc_html__( 'Logo', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Logo', 'kindling' ),
 					'target' 				=> '#site-logo a.site-logo-text',
 					'exclude' 				=> array( 'font-color' ),
 					'defaults' 				=> array(
@@ -106,18 +106,18 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 					),
 				),
 				'top_menu' 					=> array(
-					'label' 				=> esc_html__( 'Top Bar', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Top Bar', 'kindling' ),
 					'target' 				=> '#top-bar-content,#top-bar-social-alt',
 					'exclude' 				=> array( 'font-color' ),
 					'defaults' 				=> array(
 						'font-size' 		=> '12',
 						'line-height' 		=> '1.8',
 					),
-					'active_callback' 		=> 'oceanwp_cac_has_topbar',
+					'active_callback' 		=> 'kindling_cac_has_topbar',
 				),
 				'menu' 						=> array(
-					'label' 				=> esc_html__( 'Main Menu', 'oceanwp' ),
-					'target' 				=> '#site-navigation-wrap .dropdown-menu > li > a,#site-header.full_screen-header .fs-dropdown-menu > li > a,#site-header.top-header #site-navigation-wrap .dropdown-menu > li > a,#site-header.center-header #site-navigation-wrap .dropdown-menu > li > a,#oceanwp-mobile-menu-icon a',
+					'label' 				=> esc_html__( 'Main Menu', 'kindling' ),
+					'target' 				=> '#site-navigation-wrap .dropdown-menu > li > a,#site-header.full_screen-header .fs-dropdown-menu > li > a,#site-header.top-header #site-navigation-wrap .dropdown-menu > li > a,#site-header.center-header #site-navigation-wrap .dropdown-menu > li > a,#kindling-mobile-menu-icon a',
 					'exclude' 				=> array( 'font-color', 'line-height' ),
 					'defaults' 				=> array(
 						'font-size' 		=> '13',
@@ -125,7 +125,7 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 					),
 				),
 				'menu_dropdown' 			=> array(
-					'label' 				=> esc_html__( 'Main Menu: Dropdowns', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Main Menu: Dropdowns', 'kindling' ),
 					'target' 				=> '.dropdown-menu ul li a.menu-link,#site-header.full_screen-header .fs-dropdown-menu ul.sub-menu li a',
 					'exclude' 				=> array( 'font-color' ),
 					'defaults' 				=> array(
@@ -135,7 +135,7 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 					),
 				),
 				'mobile_menu_dropdown' 		=> array(
-					'label' 				=> esc_html__( 'Mobile Menu: Dropdowns', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Mobile Menu: Dropdowns', 'kindling' ),
 					'target' 				=> '.sidr-class-dropdown-menu li a, a.sidr-class-toggle-sidr-close',
 					'exclude' 				=> array( 'font-color' ),
 					'defaults' 				=> array(
@@ -144,36 +144,36 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 					),
 				),
 				'page_title' 				=> array(
-					'label' 				=> esc_html__( 'Page Title', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Page Title', 'kindling' ),
 					'target' 				=> '.page-header .page-header-title, .page-header.background-image-page-header .page-header-title',
 					'exclude' 				=> array( 'font-color' ),
 					'defaults' 				=> array(
 						'font-size' 		=> '32',
 						'line-height' 		=> '1.4',
 					),
-					'active_callback' 		=> 'oceanwp_cac_has_page_header',
+					'active_callback' 		=> 'kindling_cac_has_page_header',
 				),
 				'page_subheading' 			=> array(
-					'label' 				=> esc_html__( 'Page Title Subheading', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Page Title Subheading', 'kindling' ),
 					'target' 				=> '.page-header .page-subheading',
 					'defaults' 				=> array(
 						'font-size' 		=> '15',
 						'color' 			=> '#929292',
 						'line-height' 		=> '1.8',
 					),
-					'active_callback' 		=> 'oceanwp_cac_has_page_header',
+					'active_callback' 		=> 'kindling_cac_has_page_header',
 				),
 				'breadcrumbs' 				=> array(
-					'label' 				=> esc_html__( 'Breadcrumbs', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Breadcrumbs', 'kindling' ),
 					'target' 				=> '.site-breadcrumbs',
 					'exclude' 				=> array( 'font-color', 'line-height' ),
 					'defaults' 				=> array(
 						'font-size' 		=> '13',
 					),
-					'active_callback' 		=> 'oceanwp_cac_has_breadcrumbs',
+					'active_callback' 		=> 'kindling_cac_has_breadcrumbs',
 				),
 				'blog_entry_title' 			=> array(
-					'label' 				=> esc_html__( 'Blog Entry Title', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Blog Entry Title', 'kindling' ),
 					'target' 				=> '.blog-entry.post .blog-entry-header h2 a',
 					'defaults' 				=> array(
 						'font-size' 		=> '24',
@@ -182,7 +182,7 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 					),
 				),
 				'blog_post_title' 			=> array(
-					'label' 				=> esc_html__( 'Blog Post Title', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Blog Post Title', 'kindling' ),
 					'target' 				=> '.single-post h1.entry-title',
 					'defaults' 				=> array(
 						'font-size' 		=> '34',
@@ -192,7 +192,7 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 					),
 				),
 				'sidebar_widget_title' 		=> array(
-					'label' 				=> esc_html__( 'Sidebar Widget Heading', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Sidebar Widget Heading', 'kindling' ),
 					'target' 				=> '.sidebar-box .widget-title',
 					'defaults' 				=> array(
 						'font-size' 		=> '13',
@@ -203,7 +203,7 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 					'margin' => true,
 				),
 				'footer_widget_title' 		=> array(
-					'label' 				=> esc_html__( 'Footer Widget Heading', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Footer Widget Heading', 'kindling' ),
 					'target' 				=> '#footer-widgets .footer-box .widget-title',
 					'defaults' 				=> array(
 						'font-size' 		=> '13',
@@ -211,27 +211,27 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 						'line-height' 		=> '1',
 						'letter-spacing' 	=> '1',
 					),
-					'active_callback' 		=> 'oceanwp_cac_has_footer_widgets',
+					'active_callback' 		=> 'kindling_cac_has_footer_widgets',
 				),
 				'copyright' 				=> array(
-					'label' 				=> esc_html__( 'Footer Copyright', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Footer Copyright', 'kindling' ),
 					'target' 				=> '#footer-bottom #copyright',
 					'exclude' 				=> array( 'font-color' ),
 					'defaults' 				=> array(
 						'font-size' 		=> '12',
 						'line-height' 		=> '1',
 					),
-					'active_callback' 		=> 'oceanwp_cac_has_footer_bottom',
+					'active_callback' 		=> 'kindling_cac_has_footer_bottom',
 				),
 				'footer_menu' 				=> array(
-					'label' 				=> esc_html__( 'Footer Menu', 'oceanwp' ),
+					'label' 				=> esc_html__( 'Footer Menu', 'kindling' ),
 					'target' 				=> '#footer-bottom #footer-bottom-menu',
 					'exclude' 				=> array( 'font-color' ),
 					'defaults' 				=> array(
 						'font-size' 		=> '12',
 						'line-height'		=> '1',
 					),
-					'active_callback' 		=> 'oceanwp_cac_has_footer_bottom',
+					'active_callback' 		=> 'kindling_cac_has_footer_bottom',
 				),
 			) );
 
@@ -253,8 +253,8 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 			}
 
 			// Panel
-			$wp_customize->add_panel( 'ocean_typography_panel' , array(
-				'title' 			=> esc_html__( 'Typography', 'oceanwp' ),
+			$wp_customize->add_panel( 'kindling_typography_panel' , array(
+				'title' 			=> esc_html__( 'Typography', 'kindling' ),
 				'priority' 			=> 210,
 			) );
 
@@ -301,10 +301,10 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 					/**
 					 * Section
 					 */
-					$wp_customize->add_section( 'ocean_typography_'. $element , array(
+					$wp_customize->add_section( 'kindling_typography_'. $element , array(
 						'title' 	=> $label,
 						'priority' 	=> $count,
-						'panel' 	=> 'ocean_typography_panel',
+						'panel' 	=> 'kindling_typography_panel',
 					) );
 
 					/**
@@ -318,9 +318,9 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 							'sanitize_callback' => false,
 						) );
 
-						$wp_customize->add_control( new OceanWP_Customizer_Typography_Control( $wp_customize, $element .'_typography[font-family]', array(
-								'label' 			=> esc_html__( 'Font Family', 'oceanwp' ),
-								'section' 			=> 'ocean_typography_'. $element,
+						$wp_customize->add_control( new Kindling_Customizer_Typography_Control( $wp_customize, $element .'_typography[font-family]', array(
+								'label' 			=> esc_html__( 'Font Family', 'kindling' ),
+								'section' 			=> 'kindling_typography_'. $element,
 								'settings' 			=> $element .'_typography[font-family]',
 								'priority' 			=> 1,
 								'type' 				=> 'select',
@@ -341,22 +341,22 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 						) );
 
 						$wp_customize->add_control( $element .'_typography[font-weight]', array(
-							'label' 			=> esc_html__( 'Font Weight', 'oceanwp' ),
-							'description' 		=> esc_html__( 'Important: Not all fonts support every font-weight.', 'oceanwp' ),
-							'section' 			=> 'ocean_typography_'. $element,
+							'label' 			=> esc_html__( 'Font Weight', 'kindling' ),
+							'description' 		=> esc_html__( 'Important: Not all fonts support every font-weight.', 'kindling' ),
+							'section' 			=> 'kindling_typography_'. $element,
 							'settings' 			=> $element .'_typography[font-weight]',
 							'priority' 			=> 2,
 							'type' 				=> 'select',
 							'active_callback' 	=> $active_callback,
 							'choices' 			=> array(
-								'' => esc_html__( 'Default', 'oceanwp' ),
-								'100' => esc_html__( 'Extra Light: 100', 'oceanwp' ),
-								'200' => esc_html__( 'Light: 200', 'oceanwp' ),
-								'300' => esc_html__( 'Book: 300', 'oceanwp' ),
-								'400' => esc_html__( 'Normal: 400', 'oceanwp' ),
-								'600' => esc_html__( 'Semibold: 600', 'oceanwp' ),
-								'700' => esc_html__( 'Bold: 700', 'oceanwp' ),
-								'800' => esc_html__( 'Extra Bold: 800', 'oceanwp' ),
+								'' => esc_html__( 'Default', 'kindling' ),
+								'100' => esc_html__( 'Extra Light: 100', 'kindling' ),
+								'200' => esc_html__( 'Light: 200', 'kindling' ),
+								'300' => esc_html__( 'Book: 300', 'kindling' ),
+								'400' => esc_html__( 'Normal: 400', 'kindling' ),
+								'600' => esc_html__( 'Semibold: 600', 'kindling' ),
+								'700' => esc_html__( 'Bold: 700', 'kindling' ),
+								'800' => esc_html__( 'Extra Bold: 800', 'kindling' ),
 							),
 						) );
 					}
@@ -373,16 +373,16 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 						) );
 
 						$wp_customize->add_control( $element .'_typography[font-style]', array(
-							'label' 			=> esc_html__( 'Font Style', 'oceanwp' ),
-							'section' 			=> 'ocean_typography_'. $element,
+							'label' 			=> esc_html__( 'Font Style', 'kindling' ),
+							'section' 			=> 'kindling_typography_'. $element,
 							'settings' 			=> $element .'_typography[font-style]',
 							'priority' 			=> 3,
 							'type' 				=> 'select',
 							'active_callback' 	=> $active_callback,
 							'choices' 			=> array(
-								'' => esc_html__( 'Default', 'oceanwp' ),
-								'normal' => esc_html__( 'Normal', 'oceanwp' ),
-								'italic' => esc_html__( 'Italic', 'oceanwp' ),
+								'' => esc_html__( 'Default', 'kindling' ),
+								'normal' => esc_html__( 'Normal', 'kindling' ),
+								'italic' => esc_html__( 'Italic', 'kindling' ),
 							),
 						) );
 
@@ -400,17 +400,17 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 						) );
 
 						$wp_customize->add_control( $element .'_typography[text-transform]', array(
-							'label' 			=> esc_html__( 'Text Transform', 'oceanwp' ),
-							'section' 			=> 'ocean_typography_'. $element,
+							'label' 			=> esc_html__( 'Text Transform', 'kindling' ),
+							'section' 			=> 'kindling_typography_'. $element,
 							'settings' 			=> $element .'_typography[text-transform]',
 							'priority' 			=> 4,
 							'type' 				=> 'select',
 							'active_callback' 	=> $active_callback,
 							'choices' 			=> array(
-								'' => esc_html__( 'Default', 'oceanwp' ),
-								'capitalize' => esc_html__( 'Capitalize', 'oceanwp' ),
-								'lowercase' => esc_html__( 'Lowercase', 'oceanwp' ),
-								'uppercase' => esc_html__( 'Uppercase', 'oceanwp' ),
+								'' => esc_html__( 'Default', 'kindling' ),
+								'capitalize' => esc_html__( 'Capitalize', 'kindling' ),
+								'lowercase' => esc_html__( 'Lowercase', 'kindling' ),
+								'uppercase' => esc_html__( 'Uppercase', 'kindling' ),
 							),
 						) );
 
@@ -431,9 +431,9 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 							'default' 			=> $default,
 						) );
 
-						$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, $element .'_typography[font-size]', array(
-							'label' 			=> esc_html__( 'Font Size (px)', 'oceanwp' ),
-							'section' 			=> 'ocean_typography_'. $element,
+						$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, $element .'_typography[font-size]', array(
+							'label' 			=> esc_html__( 'Font Size (px)', 'kindling' ),
+							'section' 			=> 'kindling_typography_'. $element,
 							'settings' 			=> $element .'_typography[font-size]',
 							'priority' 			=> 5,
 							'active_callback' 	=> $active_callback,
@@ -461,9 +461,9 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 							'transport' 		=> $transport,
 							'default' 			=> $default,
 						) );
-						$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, $element .'_typography[color]', array(
-							'label' 			=> esc_html__( 'Font Color', 'oceanwp' ),
-							'section' 			=> 'ocean_typography_'. $element,
+						$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, $element .'_typography[color]', array(
+							'label' 			=> esc_html__( 'Font Color', 'kindling' ),
+							'section' 			=> 'kindling_typography_'. $element,
 							'settings' 			=> $element .'_typography[color]',
 							'priority' 			=> 6,
 							'active_callback' 	=> $active_callback,
@@ -486,9 +486,9 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 							'default' 			=> $default,
 						) );
 
-						$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, $element .'_typography[line-height]', array(
-							'label' 			=> esc_html__( 'Line Height', 'oceanwp' ),
-							'section' 			=> 'ocean_typography_'. $element,
+						$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, $element .'_typography[line-height]', array(
+							'label' 			=> esc_html__( 'Line Height', 'kindling' ),
+							'section' 			=> 'kindling_typography_'. $element,
 							'settings' 			=> $element .'_typography[line-height]',
 							'priority' 			=> 7,
 							'active_callback' 	=> $active_callback,
@@ -517,8 +517,8 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 						) );
 
 						$wp_customize->add_control( new WP_Customize_Control( $wp_customize, $element .'_typography[letter-spacing]', array(
-							'label' 			=> esc_html__( 'Letter Spacing', 'oceanwp' ),
-							'section' 			=> 'ocean_typography_'. $element,
+							'label' 			=> esc_html__( 'Letter Spacing', 'kindling' ),
+							'section' 			=> 'kindling_typography_'. $element,
 							'settings' 			=> $element .'_typography[letter-spacing]',
 							'priority' 			=> 8,
 							'type' 				=> 'number',
@@ -542,8 +542,8 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 		 * @since 1.0.0
 		 */
 		public function customize_preview_init() {
-			wp_enqueue_script( 'oceanwp-typography-customize-preview', OCEANWP_THEME_URI . '/inc/customizer/assets/js/typography-customize-preview.js', array( 'customize-preview' ), OCEANWP_THEME_VERSION, true );
-			wp_localize_script( 'oceanwp-typography-customize-preview', 'oceanwp', array(
+			wp_enqueue_script( 'kindling-typography-customize-preview', KINDLING_THEME_URI . '/inc/customizer/assets/js/typography-customize-preview.js', array( 'customize-preview' ), KINDLING_THEME_VERSION, true );
+			wp_localize_script( 'kindling-typography-customize-preview', 'kindling', array(
 				'googleFontsUrl' => '//fonts.googleapis.com'
 			) );
 		}
@@ -703,7 +703,7 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 			// Loop through and enqueue fonts
 			if ( ! empty( $fonts ) && is_array( $fonts ) ) {
 				foreach ( $fonts as $font ) {
-					oceanwp_enqueue_google_font( $font );
+					kindling_enqueue_google_font( $font );
 				}
 			}
 
@@ -713,4 +713,4 @@ if ( ! class_exists( 'OceanWP_Typography_Customizer' ) ) :
 
 endif;
 
-return new OceanWP_Typography_Customizer();
+return new Kindling_Typography_Customizer();

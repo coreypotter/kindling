@@ -2,26 +2,26 @@
 /**
  * Author bio template
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Only display for standard posts
+# Only display for standard posts
 if ( 'post' != get_post_type() ) {
 	return;
 }
 
-// Get author data
+# Get author data
 $author				= get_the_author();
 $author_description	= get_the_author_meta( 'description' );
 $author_url			= esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) );
-$author_avatar		= get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'ocean_author_bio_avatar_size', 100 ) );
+$author_avatar		= get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'kindling_author_bio_avatar_size', 100 ) );
 
-// Only display if author has a description
+# Only display if author has a description
 if ( ! $author_description ) {
 	return;
 } ?>
@@ -32,9 +32,9 @@ if ( ! $author_description ) {
 
 		<div class="author-bio-avatar">
 
-			<a href="<?php echo esc_url( $author_url ); ?>" title="<?php esc_attr_e( 'Visit Author Page', 'oceanwp' ); ?>" rel="author" >
+			<a href="<?php echo esc_url( $author_url ); ?>" title="<?php esc_attr_e( 'Visit Author Page', 'kindling' ); ?>" rel="author" >
 				<?php
-				// Display author avatar
+				# Display author avatar
 				echo $author_avatar; ?>
 			</a>
 
@@ -45,13 +45,13 @@ if ( ! $author_description ) {
 	<div class="author-bio-content clr">
 
 		<h4 class="author-bio-title">
-			<a href="<?php echo esc_url( $author_url ); ?>" title="<?php esc_attr_e( 'Visit Author Page', 'oceanwp' ); ?>">
+			<a href="<?php echo esc_url( $author_url ); ?>" title="<?php esc_attr_e( 'Visit Author Page', 'kindling' ); ?>">
 				<?php echo strip_tags( $author ); ?>
 			</a>
 		</h4><!-- .author-bio-title -->
 
 		<?php
-		// Outputs the author description if one exists
+		# Outputs the author description if one exists
 		if ( $author_description ) : ?>
 
 			<div class="author-bio-description clr">

@@ -2,19 +2,19 @@
 /**
  * Top Menu Header Style
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-// Menu position
-$position 	= get_theme_mod( 'ocean_top_header_menu_position', 'before' );
+# Menu position
+$position 	= get_theme_mod( 'kindling_top_header_menu_position', 'before' );
 
-// Search style
-$search 	= oceanwp_menu_search_style(); ?>
+# Search style
+$search 	= kindling_menu_search_style(); ?>
 
 <?php
 if ( 'after' == $position ) { ?>
@@ -28,12 +28,12 @@ if ( 'after' == $position ) { ?>
 
 <div class="header-top clr">
 
-	<?php do_action( 'ocean_before_header_inner' ); ?>
+	<?php do_action( 'kindling_before_header_inner' ); ?>
 
 	<div id="site-header-inner" class="container clr">
 
 		<?php
-		// Search header replace
+		# Search header replace
 		if ( 'header_replace' == $search ) {
 			get_template_part( 'partials/header/search-replace' );
 		} ?>
@@ -54,13 +54,13 @@ if ( 'after' == $position ) { ?>
 
 			<div class="inner">
 				
-				<?php if ( true == get_theme_mod( 'ocean_menu_social', false ) ) {
+				<?php if ( true == get_theme_mod( 'kindling_menu_social', false ) ) {
 					get_template_part( 'partials/header/social' );
 				}
 
-				oceanwp_top_header_search();
+				kindling_top_header_search();
 
-				// Search style
+				# Search style
 				if ( 'drop_down' == $search ) {
 					get_template_part( 'partials/header/search-dropdown' );
 				} else if ( 'overlay' == $search ) {
@@ -73,7 +73,7 @@ if ( 'after' == $position ) { ?>
 
 	</div><!-- #site-header-inner -->
 
-	<?php do_action( 'ocean_after_header_inner' ); ?>
+	<?php do_action( 'kindling_after_header_inner' ); ?>
 
 </div><!-- .header-top -->
 

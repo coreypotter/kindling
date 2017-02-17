@@ -45,7 +45,7 @@ $image       = wp_get_attachment_image( $thumbnail_id, 'shop_single', '', array(
     	<?php else :
 
 			// Display placeholder image
-			oceanwp_woo_placeholder_img();
+			kindling_woo_placeholder_img();
 
     	endif;
 
@@ -98,7 +98,7 @@ $image       = wp_get_attachment_image( $thumbnail_id, 'shop_single', '', array(
         <?php else :
 
 			// Display placeholder image
-			oceanwp_woo_placeholder_img();
+			kindling_woo_placeholder_img();
 
         endif;
 

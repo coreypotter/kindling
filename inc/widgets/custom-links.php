@@ -2,7 +2,7 @@
 /**
  * Custom Links Widget.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_Custom_Links_Widget' ) ) {
-	class OceanWP_Custom_Links_Widget extends WP_Widget {
+if ( ! class_exists( 'Kindling_Custom_Links_Widget' ) ) {
+	class Kindling_Custom_Links_Widget extends WP_Widget {
 
 		/**
 		 * Register widget with WordPress.
@@ -20,11 +20,11 @@ if ( ! class_exists( 'OceanWP_Custom_Links_Widget' ) ) {
 		 */
 		public function __construct() {
 			parent::__construct(
-				'ocean_custom_links',
-				esc_html__( '&raquo; Custom Links', 'oceanwp' ),
+				'kindling_custom_links',
+				esc_html__( '&raquo; Custom Links', 'kindling' ),
 				array(
-					'classname'   => 'widget-oceanwp-custom-links custom-links-widget',
-					'description' => esc_html__( 'Displays custom links.', 'oceanwp' ),
+					'classname'   => 'widget-kindling-custom-links custom-links-widget',
+					'description' => esc_html__( 'Displays custom links.', 'kindling' ),
 					'customize_selective_refresh' => true,
 				)
 			);
@@ -53,7 +53,7 @@ if ( ! class_exists( 'OceanWP_Custom_Links_Widget' ) ) {
 					echo $args['before_title'] . $title . $args['after_title'];
 				}
 
-				echo '<ul class="oceanwp-custom-links">';
+				echo '<ul class="kindling-custom-links">';
 					if ( $count !== '0' ) {
 						for ( $i=1; $i<=$count; $i++ ) {
 							$url 	= isset( $instance["url_".$i] ) ? $instance["url_".$i] : '';
@@ -101,9 +101,9 @@ if ( ! class_exists( 'OceanWP_Custom_Links_Widget' ) ) {
 
 			// Parse arguments
 			extract( wp_parse_args( (array) $instance, array(
-				'title'             => esc_attr__( 'Useful Links', 'oceanwp' ),
+				'title'             => esc_attr__( 'Useful Links', 'kindling' ),
 				'count'             => '5',
-				'target' 			=> esc_html__( 'Blank', 'oceanwp' ),
+				'target' 			=> esc_html__( 'Blank', 'kindling' ),
 			) ) );
 
 			for ( $i=1;$i<=15;$i++ ) {
@@ -114,36 +114,36 @@ if ( ! class_exists( 'OceanWP_Custom_Links_Widget' ) ) {
 			} ?>
 
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'oceanwp' ); ?>:</label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'kindling' ); ?>:</label>
 				<input class="widefat" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id('target'); ?>"><?php _e( 'Link Target:', 'oceanwp' ); ?></label>
+				<label for="<?php echo $this->get_field_id('target'); ?>"><?php _e( 'Link Target:', 'kindling' ); ?></label>
 				<select class='widefat' name="<?php echo $this->get_field_name('target'); ?>" id="<?php echo $this->get_field_id('target'); ?>">
-					<option value="blank" <?php selected( $target, 'blank' ) ?>><?php esc_html_e( 'Blank', 'oceanwp' ); ?></option>
-					<option value="self" <?php selected( $target, 'self' ) ?>><?php esc_html_e( 'Self', 'oceanwp' ); ?></option>
+					<option value="blank" <?php selected( $target, 'blank' ) ?>><?php esc_html_e( 'Blank', 'kindling' ); ?></option>
+					<option value="self" <?php selected( $target, 'self' ) ?>><?php esc_html_e( 'Self', 'kindling' ); ?></option>
 				</select>
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'Number of Custom Links:', 'oceanwp' ); ?></label>
+				<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'Number of Custom Links:', 'kindling' ); ?></label>
 				<select class='widefat' name="<?php echo $this->get_field_name('count'); ?>" id="<?php echo $this->get_field_id('count'); ?>">
-					<option value="1" <?php selected( $count, '1' ) ?>><?php esc_html_e( '1', 'oceanwp' ); ?></option>
-					<option value="2" <?php selected( $count, '2' ) ?>><?php esc_html_e( '2', 'oceanwp' ); ?></option>
-					<option value="3" <?php selected( $count, '3' ) ?>><?php esc_html_e( '3', 'oceanwp' ); ?></option>
-					<option value="4" <?php selected( $count, '4' ) ?>><?php esc_html_e( '4', 'oceanwp' ); ?></option>
-					<option value="5" <?php selected( $count, '5' ) ?>><?php esc_html_e( '5', 'oceanwp' ); ?></option>
-					<option value="6" <?php selected( $count, '6' ) ?>><?php esc_html_e( '6', 'oceanwp' ); ?></option>
-					<option value="7" <?php selected( $count, '7' ) ?>><?php esc_html_e( '7', 'oceanwp' ); ?></option>
-					<option value="8" <?php selected( $count, '8' ) ?>><?php esc_html_e( '8', 'oceanwp' ); ?></option>
-					<option value="9" <?php selected( $count, '9' ) ?>><?php esc_html_e( '9', 'oceanwp' ); ?></option>
-					<option value="10" <?php selected( $count, '10' ) ?>><?php esc_html_e( '10', 'oceanwp' ); ?></option>
-					<option value="11" <?php selected( $count, '11' ) ?>><?php esc_html_e( '11', 'oceanwp' ); ?></option>
-					<option value="12" <?php selected( $count, '12' ) ?>><?php esc_html_e( '12', 'oceanwp' ); ?></option>
-					<option value="13" <?php selected( $count, '13' ) ?>><?php esc_html_e( '13', 'oceanwp' ); ?></option>
-					<option value="14" <?php selected( $count, '14' ) ?>><?php esc_html_e( '14', 'oceanwp' ); ?></option>
-					<option value="15" <?php selected( $count, '15' ) ?>><?php esc_html_e( '15', 'oceanwp' ); ?></option>
+					<option value="1" <?php selected( $count, '1' ) ?>><?php esc_html_e( '1', 'kindling' ); ?></option>
+					<option value="2" <?php selected( $count, '2' ) ?>><?php esc_html_e( '2', 'kindling' ); ?></option>
+					<option value="3" <?php selected( $count, '3' ) ?>><?php esc_html_e( '3', 'kindling' ); ?></option>
+					<option value="4" <?php selected( $count, '4' ) ?>><?php esc_html_e( '4', 'kindling' ); ?></option>
+					<option value="5" <?php selected( $count, '5' ) ?>><?php esc_html_e( '5', 'kindling' ); ?></option>
+					<option value="6" <?php selected( $count, '6' ) ?>><?php esc_html_e( '6', 'kindling' ); ?></option>
+					<option value="7" <?php selected( $count, '7' ) ?>><?php esc_html_e( '7', 'kindling' ); ?></option>
+					<option value="8" <?php selected( $count, '8' ) ?>><?php esc_html_e( '8', 'kindling' ); ?></option>
+					<option value="9" <?php selected( $count, '9' ) ?>><?php esc_html_e( '9', 'kindling' ); ?></option>
+					<option value="10" <?php selected( $count, '10' ) ?>><?php esc_html_e( '10', 'kindling' ); ?></option>
+					<option value="11" <?php selected( $count, '11' ) ?>><?php esc_html_e( '11', 'kindling' ); ?></option>
+					<option value="12" <?php selected( $count, '12' ) ?>><?php esc_html_e( '12', 'kindling' ); ?></option>
+					<option value="13" <?php selected( $count, '13' ) ?>><?php esc_html_e( '13', 'kindling' ); ?></option>
+					<option value="14" <?php selected( $count, '14' ) ?>><?php esc_html_e( '14', 'kindling' ); ?></option>
+					<option value="15" <?php selected( $count, '15' ) ?>><?php esc_html_e( '15', 'kindling' ); ?></option>
 				</select>
 			</p>
 
@@ -173,4 +173,4 @@ if ( ! class_exists( 'OceanWP_Custom_Links_Widget' ) ) {
 
 	}
 }
-register_widget( 'OceanWP_Custom_Links_Widget' );
+register_widget( 'Kindling_Custom_Links_Widget' );

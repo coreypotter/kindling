@@ -2,7 +2,7 @@
 /**
  * Custom Header nav widget.
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 // Exit if accessed directly
@@ -10,8 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_Custom_Header_Nav_Widget' ) ) {
-	class OceanWP_Custom_Header_Nav_Widget extends WP_Widget {
+if ( ! class_exists( 'Kindling_Custom_Header_Nav_Widget' ) ) {
+	class Kindling_Custom_Header_Nav_Widget extends WP_Widget {
 
 		/**
 		 * Register widget with WordPress.
@@ -20,11 +20,11 @@ if ( ! class_exists( 'OceanWP_Custom_Header_Nav_Widget' ) ) {
 		 */
 		public function __construct() {
 			parent::__construct(
-				'ocean_custom_header_nav',
-				esc_html__( '&raquo; Custom Header Nav', 'oceanwp' ),
+				'kindling_custom_header_nav',
+				esc_html__( '&raquo; Custom Header Nav', 'kindling' ),
 				array(
-					'classname'   => 'widget-oceanwp-custom-header-nav custom-header-nav-widget',
-					'description' => esc_html__( 'Display the main menu for the Custom Header style.', 'oceanwp' ),
+					'classname'   => 'widget-kindling-custom-header-nav custom-header-nav-widget',
+					'description' => esc_html__( 'Display the main menu for the Custom Header style.', 'kindling' ),
 					'customize_selective_refresh' => true,
 				)
 			);
@@ -101,15 +101,15 @@ if ( ! class_exists( 'OceanWP_Custom_Header_Nav_Widget' ) ) {
 			) ); ?>
 
 			<p>
-				<?php esc_html_e( 'This widget is to display with your page builder the menu for the Custom Header style.', 'oceanwp' ); ?>
+				<?php esc_html_e( 'This widget is to display with your page builder the menu for the Custom Header style.', 'kindling' ); ?>
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id('position'); ?>"><?php esc_html_e( 'Position:', 'oceanwp' ); ?></label>
+				<label for="<?php echo $this->get_field_id('position'); ?>"><?php esc_html_e( 'Position:', 'kindling' ); ?></label>
 				<select class="widget-select widefat" name="<?php echo $this->get_field_name('position'); ?>" id="<?php echo $this->get_field_id('position'); ?>">
-					<option value="left" <?php selected( $instance['position'], 'left' ) ?>><?php esc_html_e( 'Left', 'oceanwp' ); ?></option>
-					<option value="right" <?php selected( $instance['position'], 'right' ) ?>><?php esc_html_e( 'Right', 'oceanwp' ); ?></option>
-					<option value="center" <?php selected( $instance['position'], 'center' ) ?>><?php esc_html_e( 'Center', 'oceanwp' ); ?></option>
+					<option value="left" <?php selected( $instance['position'], 'left' ) ?>><?php esc_html_e( 'Left', 'kindling' ); ?></option>
+					<option value="right" <?php selected( $instance['position'], 'right' ) ?>><?php esc_html_e( 'Right', 'kindling' ); ?></option>
+					<option value="center" <?php selected( $instance['position'], 'center' ) ?>><?php esc_html_e( 'Center', 'kindling' ); ?></option>
 				</select>
 			</p>
 
@@ -119,4 +119,4 @@ if ( ! class_exists( 'OceanWP_Custom_Header_Nav_Widget' ) ) {
 
 	}
 }
-register_widget( 'OceanWP_Custom_Header_Nav_Widget' );
+register_widget( 'Kindling_Custom_Header_Nav_Widget' );

@@ -2,16 +2,16 @@
 /**
  * General Customizer Options
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
+if ( ! class_exists( 'Kindling_General_Customizer' ) ) :
 
-	class OceanWP_General_Customizer {
+	class Kindling_General_Customizer {
 
 		/**
 		 * Setup class.
@@ -21,8 +21,8 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 		public function __construct() {
 
 			add_action( 'customize_register', 	array( $this, 'customizer_options' ) );
-			add_filter( 'ocean_head_css', 		array( $this, 'site_background_css' ) );
-			add_filter( 'ocean_head_css', 		array( $this, 'head_css' ) );
+			add_filter( 'kindling_head_css', 		array( $this, 'site_background_css' ) );
+			add_filter( 'kindling_head_css', 		array( $this, 'head_css' ) );
 
 		}
 
@@ -36,17 +36,17 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Panel
 			 */
-			$panel = 'ocean_general_panel';
+			$panel = 'kindling_general_panel';
 			$wp_customize->add_panel( $panel , array(
-				'title' 			=> esc_html__( 'General Options', 'oceanwp' ),
+				'title' 			=> esc_html__( 'General Options', 'kindling' ),
 				'priority' 			=> 210,
 			) );
 
 			/**
 			 * Section
 			 */
-			$wp_customize->add_section( 'ocean_general_styling' , array(
-				'title' 			=> esc_html__( 'General Styling', 'oceanwp' ),
+			$wp_customize->add_section( 'kindling_general_styling' , array(
+				'title' 			=> esc_html__( 'General Styling', 'kindling' ),
 				'priority' 			=> 10,
 				'panel' 			=> $panel,
 			) );
@@ -54,247 +54,247 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Primary Color
 			 */
-			$wp_customize->add_setting( 'ocean_primary_color', array(
+			$wp_customize->add_setting( 'kindling_primary_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#13aff0',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_primary_color', array(
-				'label'	   				=> esc_html__( 'Primary Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_styling',
-				'settings' 				=> 'ocean_primary_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_primary_color', array(
+				'label'	   				=> esc_html__( 'Primary Color', 'kindling' ),
+				'section'  				=> 'kindling_general_styling',
+				'settings' 				=> 'kindling_primary_color',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Hover Primary Color
 			 */
-			$wp_customize->add_setting( 'ocean_hover_primary_color', array(
+			$wp_customize->add_setting( 'kindling_hover_primary_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#0b7cac',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_hover_primary_color', array(
-				'label'	   				=> esc_html__( 'Hover Primary Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_styling',
-				'settings' 				=> 'ocean_hover_primary_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_hover_primary_color', array(
+				'label'	   				=> esc_html__( 'Hover Primary Color', 'kindling' ),
+				'section'  				=> 'kindling_general_styling',
+				'settings' 				=> 'kindling_hover_primary_color',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Main Border Color
 			 */
-			$wp_customize->add_setting( 'ocean_main_border_color', array(
+			$wp_customize->add_setting( 'kindling_main_border_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#e9e9e9',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_main_border_color', array(
-				'label'	   				=> esc_html__( 'Main Border Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_styling',
-				'settings' 				=> 'ocean_main_border_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_main_border_color', array(
+				'label'	   				=> esc_html__( 'Main Border Color', 'kindling' ),
+				'section'  				=> 'kindling_general_styling',
+				'settings' 				=> 'kindling_main_border_color',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Heading Site Background
 			 */
-			$wp_customize->add_setting( 'ocean_site_background_heading', array(
+			$wp_customize->add_setting( 'kindling_site_background_heading', array(
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Heading_Control( $wp_customize, 'ocean_site_background_heading', array(
-				'label'    				=> esc_html__( 'Site Background', 'oceanwp' ),
-				'section'  				=> 'ocean_general_styling',
+			$wp_customize->add_control( new Kindling_Customizer_Heading_Control( $wp_customize, 'kindling_site_background_heading', array(
+				'label'    				=> esc_html__( 'Site Background', 'kindling' ),
+				'section'  				=> 'kindling_general_styling',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Site Background
 			 */
-			$wp_customize->add_setting( 'ocean_background_color', array(
+			$wp_customize->add_setting( 'kindling_background_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#ffffff',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_background_color', array(
-				'label'	   				=> esc_html__( 'Background Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_styling',
-				'settings' 				=> 'ocean_background_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_background_color', array(
+				'label'	   				=> esc_html__( 'Background Color', 'kindling' ),
+				'section'  				=> 'kindling_general_styling',
+				'settings' 				=> 'kindling_background_color',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_hasnt_boxed_layout',
+				'active_callback' 		=> 'kindling_cac_hasnt_boxed_layout',
 			) ) );
 
 			/**
 			 * Site Background Image
 			 */
-			$wp_customize->add_setting( 'ocean_background_image', array(
+			$wp_customize->add_setting( 'kindling_background_image', array(
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ocean_background_image', array(
-				'label'	   				=> esc_html__( 'Background Image', 'oceanwp' ),
-				'section'  				=> 'ocean_general_styling',
-				'settings' 				=> 'ocean_background_image',
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'kindling_background_image', array(
+				'label'	   				=> esc_html__( 'Background Image', 'kindling' ),
+				'section'  				=> 'kindling_general_styling',
+				'settings' 				=> 'kindling_background_image',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Site Background Image Position
 			 */
-			$wp_customize->add_setting( 'ocean_background_image_position', array(
+			$wp_customize->add_setting( 'kindling_background_image_position', array(
 				'transport' 			=> 'postMessage',
 				'default' 				=> 'initial',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_background_image_position', array(
-				'label'	   				=> esc_html__( 'Position', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_background_image_position', array(
+				'label'	   				=> esc_html__( 'Position', 'kindling' ),
 				'type' 					=> 'select',
-				'section'  				=> 'ocean_general_styling',
-				'settings' 				=> 'ocean_background_image_position',
+				'section'  				=> 'kindling_general_styling',
+				'settings' 				=> 'kindling_background_image_position',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_background_image',
+				'active_callback' 		=> 'kindling_cac_has_background_image',
 				'choices' 				=> array(
-					'initial' 			=> esc_html__( 'Default', 'oceanwp' ),
-					'top left' 			=> esc_html__( 'Top Left', 'oceanwp' ),
-					'top center' 		=> esc_html__( 'Top Center', 'oceanwp' ),
-					'top right'  		=> esc_html__( 'Top Right', 'oceanwp' ),
-					'center left' 		=> esc_html__( 'Center Left', 'oceanwp' ),
-					'center center' 	=> esc_html__( 'Center Center', 'oceanwp' ),
-					'center right' 		=> esc_html__( 'Center Right', 'oceanwp' ),
-					'bottom left' 		=> esc_html__( 'Bottom Left', 'oceanwp' ),
-					'bottom center' 	=> esc_html__( 'Bottom Center', 'oceanwp' ),
-					'bottom right' 		=> esc_html__( 'Bottom Right', 'oceanwp' ),
+					'initial' 			=> esc_html__( 'Default', 'kindling' ),
+					'top left' 			=> esc_html__( 'Top Left', 'kindling' ),
+					'top center' 		=> esc_html__( 'Top Center', 'kindling' ),
+					'top right'  		=> esc_html__( 'Top Right', 'kindling' ),
+					'center left' 		=> esc_html__( 'Center Left', 'kindling' ),
+					'center center' 	=> esc_html__( 'Center Center', 'kindling' ),
+					'center right' 		=> esc_html__( 'Center Right', 'kindling' ),
+					'bottom left' 		=> esc_html__( 'Bottom Left', 'kindling' ),
+					'bottom center' 	=> esc_html__( 'Bottom Center', 'kindling' ),
+					'bottom right' 		=> esc_html__( 'Bottom Right', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Site Background Image Attachment
 			 */
-			$wp_customize->add_setting( 'ocean_background_image_attachment', array(
+			$wp_customize->add_setting( 'kindling_background_image_attachment', array(
 				'transport' 			=> 'postMessage',
 				'default' 				=> 'initial',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_background_image_attachment', array(
-				'label'	   				=> esc_html__( 'Attachment', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_background_image_attachment', array(
+				'label'	   				=> esc_html__( 'Attachment', 'kindling' ),
 				'type' 					=> 'select',
-				'section'  				=> 'ocean_general_styling',
-				'settings' 				=> 'ocean_background_image_attachment',
+				'section'  				=> 'kindling_general_styling',
+				'settings' 				=> 'kindling_background_image_attachment',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_background_image',
+				'active_callback' 		=> 'kindling_cac_has_background_image',
 				'choices' 				=> array(
-					'initial' 	=> esc_html__( 'Default', 'oceanwp' ),
-					'scroll' 	=> esc_html__( 'Scroll', 'oceanwp' ),
-					'fixed' 	=> esc_html__( 'Fixed', 'oceanwp' ),
+					'initial' 	=> esc_html__( 'Default', 'kindling' ),
+					'scroll' 	=> esc_html__( 'Scroll', 'kindling' ),
+					'fixed' 	=> esc_html__( 'Fixed', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Site Background Image Repeat
 			 */
-			$wp_customize->add_setting( 'ocean_background_image_repeat', array(
+			$wp_customize->add_setting( 'kindling_background_image_repeat', array(
 				'transport' 			=> 'postMessage',
 				'default' 				=> 'initial',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_background_image_repeat', array(
-				'label'	   				=> esc_html__( 'Repeat', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_background_image_repeat', array(
+				'label'	   				=> esc_html__( 'Repeat', 'kindling' ),
 				'type' 					=> 'select',
-				'section'  				=> 'ocean_general_styling',
-				'settings' 				=> 'ocean_background_image_repeat',
+				'section'  				=> 'kindling_general_styling',
+				'settings' 				=> 'kindling_background_image_repeat',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_background_image',
+				'active_callback' 		=> 'kindling_cac_has_background_image',
 				'choices' 				=> array(
-					'initial' 	=> esc_html__( 'Default', 'oceanwp' ),
-					'no-repeat' => esc_html__( 'No-repeat', 'oceanwp' ),
-					'repeat' 	=> esc_html__( 'Repeat', 'oceanwp' ),
-					'repeat-x' 	=> esc_html__( 'Repeat-x', 'oceanwp' ),
-					'repeat-y' 	=> esc_html__( 'Repeat-y', 'oceanwp' ),
+					'initial' 	=> esc_html__( 'Default', 'kindling' ),
+					'no-repeat' => esc_html__( 'No-repeat', 'kindling' ),
+					'repeat' 	=> esc_html__( 'Repeat', 'kindling' ),
+					'repeat-x' 	=> esc_html__( 'Repeat-x', 'kindling' ),
+					'repeat-y' 	=> esc_html__( 'Repeat-y', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Site Background Image Size
 			 */
-			$wp_customize->add_setting( 'ocean_background_image_size', array(
+			$wp_customize->add_setting( 'kindling_background_image_size', array(
 				'transport' 			=> 'postMessage',
 				'default' 				=> 'initial',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_background_image_size', array(
-				'label'	   				=> esc_html__( 'Size', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_background_image_size', array(
+				'label'	   				=> esc_html__( 'Size', 'kindling' ),
 				'type' 					=> 'select',
-				'section'  				=> 'ocean_general_styling',
-				'settings' 				=> 'ocean_background_image_size',
+				'section'  				=> 'kindling_general_styling',
+				'settings' 				=> 'kindling_background_image_size',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_background_image',
+				'active_callback' 		=> 'kindling_cac_has_background_image',
 				'choices' 				=> array(
-					'initial' 	=> esc_html__( 'Default', 'oceanwp' ),
-					'auto' 		=> esc_html__( 'Auto', 'oceanwp' ),
-					'cover' 	=> esc_html__( 'Cover', 'oceanwp' ),
-					'contain' 	=> esc_html__( 'Contain', 'oceanwp' ),
+					'initial' 	=> esc_html__( 'Default', 'kindling' ),
+					'auto' 		=> esc_html__( 'Auto', 'kindling' ),
+					'cover' 	=> esc_html__( 'Cover', 'kindling' ),
+					'contain' 	=> esc_html__( 'Contain', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Heading Links Color
 			 */
-			$wp_customize->add_setting( 'ocean_links_color_heading', array(
+			$wp_customize->add_setting( 'kindling_links_color_heading', array(
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Heading_Control( $wp_customize, 'ocean_links_color_heading', array(
-				'label'    				=> esc_html__( 'Links Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_styling',
+			$wp_customize->add_control( new Kindling_Customizer_Heading_Control( $wp_customize, 'kindling_links_color_heading', array(
+				'label'    				=> esc_html__( 'Links Color', 'kindling' ),
+				'section'  				=> 'kindling_general_styling',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Links Color
 			 */
-			$wp_customize->add_setting( 'ocean_links_color', array(
+			$wp_customize->add_setting( 'kindling_links_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#333333',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_links_color', array(
-				'label'	   				=> esc_html__( 'Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_styling',
-				'settings' 				=> 'ocean_links_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_links_color', array(
+				'label'	   				=> esc_html__( 'Color', 'kindling' ),
+				'section'  				=> 'kindling_general_styling',
+				'settings' 				=> 'kindling_links_color',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Links Color Hover
 			 */
-			$wp_customize->add_setting( 'ocean_links_color_hover', array(
+			$wp_customize->add_setting( 'kindling_links_color_hover', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#13aff0',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_links_color_hover', array(
-				'label'	   				=> esc_html__( 'Color: Hover', 'oceanwp' ),
-				'section'  				=> 'ocean_general_styling',
-				'settings' 				=> 'ocean_links_color_hover',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_links_color_hover', array(
+				'label'	   				=> esc_html__( 'Color: Hover', 'kindling' ),
+				'section'  				=> 'kindling_general_styling',
+				'settings' 				=> 'kindling_links_color_hover',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Section
 			 */
-			$wp_customize->add_section( 'ocean_general_settings' , array(
-				'title' 			=> esc_html__( 'General Settings', 'oceanwp' ),
+			$wp_customize->add_section( 'kindling_general_settings' , array(
+				'title' 			=> esc_html__( 'General Settings', 'kindling' ),
 				'priority' 			=> 10,
 				'panel' 			=> $panel,
 			) );
@@ -302,55 +302,55 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Main Layout Style
 			 */
-			$wp_customize->add_setting( 'ocean_main_layout_style', array(
+			$wp_customize->add_setting( 'kindling_main_layout_style', array(
 				'default'           	=> 'wide',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Buttonset_Control( $wp_customize, 'ocean_main_layout_style', array(
-				'label'	   				=> esc_html__( 'Layout Style', 'oceanwp' ),
-				'section'  				=> 'ocean_general_settings',
-				'settings' 				=> 'ocean_main_layout_style',
+			$wp_customize->add_control( new Kindling_Customizer_Buttonset_Control( $wp_customize, 'kindling_main_layout_style', array(
+				'label'	   				=> esc_html__( 'Layout Style', 'kindling' ),
+				'section'  				=> 'kindling_general_settings',
+				'settings' 				=> 'kindling_main_layout_style',
 				'priority' 				=> 10,
 				'choices' 				=> array(
-					'wide'  			=> esc_html__( 'Wide', 'oceanwp' ),
-					'boxed' 			=> esc_html__( 'Boxed', 'oceanwp' ),
+					'wide'  			=> esc_html__( 'Wide', 'kindling' ),
+					'boxed' 			=> esc_html__( 'Boxed', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Boxed Layout Drop-Shadow
 			 */
-			$wp_customize->add_setting( 'ocean_boxed_dropdshadow', array(
+			$wp_customize->add_setting( 'kindling_boxed_dropdshadow', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> true,
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_boxed_dropdshadow', array(
-				'label'	   				=> esc_html__( 'Boxed Layout Drop-Shadow', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_boxed_dropdshadow', array(
+				'label'	   				=> esc_html__( 'Boxed Layout Drop-Shadow', 'kindling' ),
 				'type' 					=> 'checkbox',
-				'section'  				=> 'ocean_general_settings',
-				'settings' 				=> 'ocean_boxed_dropdshadow',
+				'section'  				=> 'kindling_general_settings',
+				'settings' 				=> 'kindling_boxed_dropdshadow',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_boxed_layout',
+				'active_callback' 		=> 'kindling_cac_has_boxed_layout',
 			) ) );
 
 			/**
 			 * Boxed Width
 			 */
-			$wp_customize->add_setting( 'ocean_boxed_width', array(
+			$wp_customize->add_setting( 'kindling_boxed_width', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '1280',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_boxed_width', array(
-				'label'	   				=> esc_html__( 'Boxed Width (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_settings',
-				'settings' 				=> 'ocean_boxed_width',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_boxed_width', array(
+				'label'	   				=> esc_html__( 'Boxed Width (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_settings',
+				'settings' 				=> 'kindling_boxed_width',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_boxed_layout',
+				'active_callback' 		=> 'kindling_cac_has_boxed_layout',
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
 			        'max'   => 1900,
@@ -361,52 +361,52 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Boxed Outside Background
 			 */
-			$wp_customize->add_setting( 'ocean_boxed_outside_bg', array(
+			$wp_customize->add_setting( 'kindling_boxed_outside_bg', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#e9e9e9',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_boxed_outside_bg', array(
-				'label'	   				=> esc_html__( 'Outside Background', 'oceanwp' ),
-				'section'  				=> 'ocean_general_settings',
-				'settings' 				=> 'ocean_boxed_outside_bg',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_boxed_outside_bg', array(
+				'label'	   				=> esc_html__( 'Outside Background', 'kindling' ),
+				'section'  				=> 'kindling_general_settings',
+				'settings' 				=> 'kindling_boxed_outside_bg',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_boxed_layout',
+				'active_callback' 		=> 'kindling_cac_has_boxed_layout',
 			) ) );
 
 			/**
 			 * Boxed Inner Background
 			 */
-			$wp_customize->add_setting( 'ocean_boxed_inner_bg', array(
+			$wp_customize->add_setting( 'kindling_boxed_inner_bg', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#ffffff',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_boxed_inner_bg', array(
-				'label'	   				=> esc_html__( 'Inner Background', 'oceanwp' ),
-				'section'  				=> 'ocean_general_settings',
-				'settings' 				=> 'ocean_boxed_inner_bg',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_boxed_inner_bg', array(
+				'label'	   				=> esc_html__( 'Inner Background', 'kindling' ),
+				'section'  				=> 'kindling_general_settings',
+				'settings' 				=> 'kindling_boxed_inner_bg',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_boxed_layout',
+				'active_callback' 		=> 'kindling_cac_has_boxed_layout',
 			) ) );
 
 			/**
 			 * Main Container Width
 			 */
-			$wp_customize->add_setting( 'ocean_main_container_width', array(
+			$wp_customize->add_setting( 'kindling_main_container_width', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '1200',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_main_container_width', array(
-				'label'	   				=> esc_html__( 'Main Container Width (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_settings',
-				'settings' 				=> 'ocean_main_container_width',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_main_container_width', array(
+				'label'	   				=> esc_html__( 'Main Container Width (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_settings',
+				'settings' 				=> 'kindling_main_container_width',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_hasnt_boxed_layout',
+				'active_callback' 		=> 'kindling_cac_hasnt_boxed_layout',
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
 			        'max'   => 1980,
@@ -417,16 +417,16 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Content Width
 			 */
-			$wp_customize->add_setting( 'ocean_left_container_width', array(
+			$wp_customize->add_setting( 'kindling_left_container_width', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '72',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_left_container_width', array(
-				'label'	   				=> esc_html__( 'Content Width (%)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_settings',
-				'settings' 				=> 'ocean_left_container_width',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_left_container_width', array(
+				'label'	   				=> esc_html__( 'Content Width (%)', 'kindling' ),
+				'section'  				=> 'kindling_general_settings',
+				'settings' 				=> 'kindling_left_container_width',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
@@ -438,16 +438,16 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Sidebar Width
 			 */
-			$wp_customize->add_setting( 'ocean_sidebar_width', array(
+			$wp_customize->add_setting( 'kindling_sidebar_width', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '28',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_sidebar_width', array(
-				'label'	   				=> esc_html__( 'Sidebar Width (%)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_settings',
-				'settings' 				=> 'ocean_sidebar_width',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_sidebar_width', array(
+				'label'	   				=> esc_html__( 'Sidebar Width (%)', 'kindling' ),
+				'section'  				=> 'kindling_general_settings',
+				'settings' 				=> 'kindling_sidebar_width',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
@@ -459,49 +459,49 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Heading Pages
 			 */
-			$wp_customize->add_setting( 'ocean_pages_heading', array(
+			$wp_customize->add_setting( 'kindling_pages_heading', array(
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Heading_Control( $wp_customize, 'ocean_pages_heading', array(
-				'label'    	=> esc_html__( 'Pages', 'oceanwp' ),
-				'section'  	=> 'ocean_general_settings',
+			$wp_customize->add_control( new Kindling_Customizer_Heading_Control( $wp_customize, 'kindling_pages_heading', array(
+				'label'    	=> esc_html__( 'Pages', 'kindling' ),
+				'section'  	=> 'kindling_general_settings',
 				'priority' 	=> 10,
 			) ) );
 
 			/**
 			 * Pages
 			 */
-			$wp_customize->add_setting( 'ocean_page_single_layout', array(
+			$wp_customize->add_setting( 'kindling_page_single_layout', array(
 				'default'           	=> 'right-sidebar',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Radio_Image_Control( $wp_customize, 'ocean_page_single_layout', array(
-				'label'	   				=> esc_html__( 'Layout', 'oceanwp' ),
-				'section'  				=> 'ocean_general_settings',
-				'settings' 				=> 'ocean_page_single_layout',
+			$wp_customize->add_control( new Kindling_Customizer_Radio_Image_Control( $wp_customize, 'kindling_page_single_layout', array(
+				'label'	   				=> esc_html__( 'Layout', 'kindling' ),
+				'section'  				=> 'kindling_general_settings',
+				'settings' 				=> 'kindling_page_single_layout',
 				'priority' 				=> 10,
 				'choices' 				=> array(
-					'right-sidebar'  	=> OCEANWP_INC_DIR_URI . 'customizer/assets/img/2cr.png',
-					'left-sidebar' 		=> OCEANWP_INC_DIR_URI . 'customizer/assets/img/2cl.png',
-					'full-width'  		=> OCEANWP_INC_DIR_URI . 'customizer/assets/img/1c.png',
+					'right-sidebar'  	=> KINDLING_INC_DIR_URI . 'customizer/assets/img/2cr.png',
+					'left-sidebar' 		=> KINDLING_INC_DIR_URI . 'customizer/assets/img/2cl.png',
+					'full-width'  		=> KINDLING_INC_DIR_URI . 'customizer/assets/img/1c.png',
 				),
 			) ) );
 
 			/**
 			 * Content Top Padding
 			 */
-			$wp_customize->add_setting( 'ocean_page_content_top_padding', array(
+			$wp_customize->add_setting( 'kindling_page_content_top_padding', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '50',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_page_content_top_padding', array(
-				'label'	   				=> esc_html__( 'Content Top Padding (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_settings',
-				'settings' 				=> 'ocean_page_content_top_padding',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_page_content_top_padding', array(
+				'label'	   				=> esc_html__( 'Content Top Padding (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_settings',
+				'settings' 				=> 'kindling_page_content_top_padding',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
@@ -513,16 +513,16 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Content Bottom Padding
 			 */
-			$wp_customize->add_setting( 'ocean_page_content_bottom_padding', array(
+			$wp_customize->add_setting( 'kindling_page_content_bottom_padding', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '50',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_page_content_bottom_padding', array(
-				'label'	   				=> esc_html__( 'Content Bottom Padding (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_settings',
-				'settings' 				=> 'ocean_page_content_bottom_padding',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_page_content_bottom_padding', array(
+				'label'	   				=> esc_html__( 'Content Bottom Padding (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_settings',
+				'settings' 				=> 'kindling_page_content_bottom_padding',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
@@ -534,57 +534,57 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Heading Search Result Page
 			 */
-			$wp_customize->add_setting( 'ocean_search_result_heading', array(
+			$wp_customize->add_setting( 'kindling_search_result_heading', array(
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Heading_Control( $wp_customize, 'ocean_search_result_heading', array(
-				'label'    	=> esc_html__( 'Search Result Page', 'oceanwp' ),
-				'section'  	=> 'ocean_general_settings',
+			$wp_customize->add_control( new Kindling_Customizer_Heading_Control( $wp_customize, 'kindling_search_result_heading', array(
+				'label'    	=> esc_html__( 'Search Result Page', 'kindling' ),
+				'section'  	=> 'kindling_general_settings',
 				'priority' 	=> 10,
 			) ) );
 
 			/**
 			 * Search Page
 			 */
-			$wp_customize->add_setting( 'ocean_search_custom_sidebar', array(
+			$wp_customize->add_setting( 'kindling_search_custom_sidebar', array(
 				'default'           	=> true,
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_search_custom_sidebar', array(
-				'label'	   				=> esc_html__( 'Custom Sidebar', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_search_custom_sidebar', array(
+				'label'	   				=> esc_html__( 'Custom Sidebar', 'kindling' ),
 				'type' 					=> 'checkbox',
-				'section'  				=> 'ocean_general_settings',
-				'settings' 				=> 'ocean_search_custom_sidebar',
+				'section'  				=> 'kindling_general_settings',
+				'settings' 				=> 'kindling_search_custom_sidebar',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Search Page Layout
 			 */
-			$wp_customize->add_setting( 'ocean_search_layout', array(
+			$wp_customize->add_setting( 'kindling_search_layout', array(
 				'default'           	=> 'right-sidebar',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Radio_Image_Control( $wp_customize, 'ocean_search_layout', array(
-				'label'	   				=> esc_html__( 'Layout', 'oceanwp' ),
-				'section'  				=> 'ocean_general_settings',
-				'settings' 				=> 'ocean_search_layout',
+			$wp_customize->add_control( new Kindling_Customizer_Radio_Image_Control( $wp_customize, 'kindling_search_layout', array(
+				'label'	   				=> esc_html__( 'Layout', 'kindling' ),
+				'section'  				=> 'kindling_general_settings',
+				'settings' 				=> 'kindling_search_layout',
 				'priority' 				=> 10,
 				'choices' 				=> array(
-					'right-sidebar'  	=> OCEANWP_INC_DIR_URI . 'customizer/assets/img/2cr.png',
-					'left-sidebar' 		=> OCEANWP_INC_DIR_URI . 'customizer/assets/img/2cl.png',
-					'full-width'  		=> OCEANWP_INC_DIR_URI . 'customizer/assets/img/1c.png',
+					'right-sidebar'  	=> KINDLING_INC_DIR_URI . 'customizer/assets/img/2cr.png',
+					'left-sidebar' 		=> KINDLING_INC_DIR_URI . 'customizer/assets/img/2cl.png',
+					'full-width'  		=> KINDLING_INC_DIR_URI . 'customizer/assets/img/1c.png',
 				),
 			) ) );
 
 			/**
 			 * Section
 			 */
-			$wp_customize->add_section( 'ocean_general_page_header' , array(
-				'title' 			=> esc_html__( 'Page Title', 'oceanwp' ),
+			$wp_customize->add_section( 'kindling_general_page_header' , array(
+				'title' 			=> esc_html__( 'Page Title', 'kindling' ),
 				'priority' 			=> 10,
 				'panel' 			=> $panel,
 			) );
@@ -592,115 +592,115 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Page Title Style
 			 */
-			$wp_customize->add_setting( 'ocean_page_header_style', array(
+			$wp_customize->add_setting( 'kindling_page_header_style', array(
 				'default'           	=> '',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_page_header_style', array(
-				'label'	   				=> esc_html__( 'Style', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_page_header_style', array(
+				'label'	   				=> esc_html__( 'Style', 'kindling' ),
 				'type' 					=> 'select',
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_page_header_style',
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_page_header_style',
 				'priority' 				=> 10,
 				'choices' 				=> array(
-					'' 					=> esc_html__( 'Default','oceanwp' ),
-					'centered' 			=> esc_html__( 'Centered', 'oceanwp' ),
-					'centered-minimal' 	=> esc_html__( 'Centered Minimal', 'oceanwp' ),
-					'background-image' 	=> esc_html__( 'Background Image', 'oceanwp' ),
-					'hidden' 			=> esc_html__( 'Hidden', 'oceanwp' ),
+					'' 					=> esc_html__( 'Default','kindling' ),
+					'centered' 			=> esc_html__( 'Centered', 'kindling' ),
+					'centered-minimal' 	=> esc_html__( 'Centered Minimal', 'kindling' ),
+					'background-image' 	=> esc_html__( 'Background Image', 'kindling' ),
+					'hidden' 			=> esc_html__( 'Hidden', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Page Title Background Image
 			 */
-			$wp_customize->add_setting( 'ocean_page_header_bg_image', array(
+			$wp_customize->add_setting( 'kindling_page_header_bg_image', array(
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'ocean_page_header_bg_image', array(
-				'label'	   				=> esc_html__( 'Image', 'oceanwp' ),
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_page_header_bg_image',
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'kindling_page_header_bg_image', array(
+				'label'	   				=> esc_html__( 'Image', 'kindling' ),
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_page_header_bg_image',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_hasnt_bg_image_page_header',
+				'active_callback' 		=> 'kindling_cac_hasnt_bg_image_page_header',
 			) ) );
 
 			/**
 			 * Page Title Background Image Height
 			 */
-			$wp_customize->add_setting( 'ocean_page_header_bg_image_height', array(
+			$wp_customize->add_setting( 'kindling_page_header_bg_image_height', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '400',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_page_header_bg_image_height', array(
-				'label'	   				=> esc_html__( 'Height (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_page_header_bg_image_height',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_page_header_bg_image_height', array(
+				'label'	   				=> esc_html__( 'Height (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_page_header_bg_image_height',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
 			        'max'   => 800,
 			        'step'  => 1,
 			    ),
-				'active_callback' 		=> 'oceanwp_cac_hasnt_bg_image_page_header',
+				'active_callback' 		=> 'kindling_cac_hasnt_bg_image_page_header',
 			) ) );
 
 			/**
 			 * Page Title Background Image Overlay Opacity
 			 */
-			$wp_customize->add_setting( 'ocean_page_header_bg_image_overlay_opacity', array(
+			$wp_customize->add_setting( 'kindling_page_header_bg_image_overlay_opacity', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '0.5',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_page_header_bg_image_overlay_opacity', array(
-				'label'	   				=> esc_html__( 'Overlay Opacity', 'oceanwp' ),
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_page_header_bg_image_overlay_opacity',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_page_header_bg_image_overlay_opacity', array(
+				'label'	   				=> esc_html__( 'Overlay Opacity', 'kindling' ),
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_page_header_bg_image_overlay_opacity',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
 			        'max'   => 1,
 			        'step'  => 0.1,
 			    ),
-				'active_callback' 		=> 'oceanwp_cac_hasnt_bg_image_page_header',
+				'active_callback' 		=> 'kindling_cac_hasnt_bg_image_page_header',
 			) ) );
 
 			/**
 			 * Page Title Background Image Overlay Color
 			 */
-			$wp_customize->add_setting( 'ocean_page_header_bg_image_overlay_color', array(
+			$wp_customize->add_setting( 'kindling_page_header_bg_image_overlay_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#000000',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_page_header_bg_image_overlay_color', array(
-				'label'	   				=> esc_html__( 'Overlay Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_page_header_bg_image_overlay_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_page_header_bg_image_overlay_color', array(
+				'label'	   				=> esc_html__( 'Overlay Color', 'kindling' ),
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_page_header_bg_image_overlay_color',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_hasnt_bg_image_page_header',
+				'active_callback' 		=> 'kindling_cac_hasnt_bg_image_page_header',
 			) ) );
 
 			/**
 			 * Page Title Top Padding
 			 */
-			$wp_customize->add_setting( 'ocean_page_header_top_padding', array(
+			$wp_customize->add_setting( 'kindling_page_header_top_padding', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '34',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_page_header_top_padding', array(
-				'label'	   				=> esc_html__( 'Top Padding (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_page_header_top_padding',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_page_header_top_padding', array(
+				'label'	   				=> esc_html__( 'Top Padding (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_page_header_top_padding',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
@@ -712,16 +712,16 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Page Title Bottom Padding
 			 */
-			$wp_customize->add_setting( 'ocean_page_header_bottom_padding', array(
+			$wp_customize->add_setting( 'kindling_page_header_bottom_padding', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '34',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_page_header_bottom_padding', array(
-				'label'	   				=> esc_html__( 'Bottom Padding (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_page_header_bottom_padding',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_page_header_bottom_padding', array(
+				'label'	   				=> esc_html__( 'Bottom Padding (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_page_header_bottom_padding',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
@@ -733,177 +733,177 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Page Title Background Color
 			 */
-			$wp_customize->add_setting( 'ocean_page_header_background', array(
+			$wp_customize->add_setting( 'kindling_page_header_background', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#f5f5f5',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_page_header_background', array(
-				'label'	   				=> esc_html__( 'Background Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_page_header_background',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_page_header_background', array(
+				'label'	   				=> esc_html__( 'Background Color', 'kindling' ),
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_page_header_background',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_bg_image_page_header',
+				'active_callback' 		=> 'kindling_cac_has_bg_image_page_header',
 			) ) );
 
 			/**
 			 * Page Title Color
 			 */
-			$wp_customize->add_setting( 'ocean_page_header_title_color', array(
+			$wp_customize->add_setting( 'kindling_page_header_title_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#333333',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_page_header_title_color', array(
-				'label'	   				=> esc_html__( 'Text Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_page_header_title_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_page_header_title_color', array(
+				'label'	   				=> esc_html__( 'Text Color', 'kindling' ),
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_page_header_title_color',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_bg_image_page_header',
+				'active_callback' 		=> 'kindling_cac_has_bg_image_page_header',
 			) ) );
 
 			/**
 			 * Breadcrumbs Heading
 			 */
-			$wp_customize->add_setting( 'ocean_breadcrumbs_heading', array(
+			$wp_customize->add_setting( 'kindling_breadcrumbs_heading', array(
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Heading_Control( $wp_customize, 'ocean_breadcrumbs_heading', array(
-				'label'    				=> esc_html__( 'Breadcrumbs', 'oceanwp' ),
-				'section'  				=> 'ocean_general_page_header',
+			$wp_customize->add_control( new Kindling_Customizer_Heading_Control( $wp_customize, 'kindling_breadcrumbs_heading', array(
+				'label'    				=> esc_html__( 'Breadcrumbs', 'kindling' ),
+				'section'  				=> 'kindling_general_page_header',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Breadcrumbs
 			 */
-			$wp_customize->add_setting( 'ocean_breadcrumbs', array(
+			$wp_customize->add_setting( 'kindling_breadcrumbs', array(
 				'default'           	=> true,
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_breadcrumbs', array(
-				'label'	   				=> esc_html__( 'Breadcrumbs', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_breadcrumbs', array(
+				'label'	   				=> esc_html__( 'Breadcrumbs', 'kindling' ),
 				'type' 					=> 'checkbox',
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_breadcrumbs',
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_breadcrumbs',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Breadcrumbs Position
 			 */
-			$wp_customize->add_setting( 'ocean_breadcrumbs_position', array(
+			$wp_customize->add_setting( 'kindling_breadcrumbs_position', array(
 				'default'           	=> '',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_breadcrumbs_position', array(
-				'label'	   				=> esc_html__( 'Position', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_breadcrumbs_position', array(
+				'label'	   				=> esc_html__( 'Position', 'kindling' ),
 				'type' 					=> 'select',
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_breadcrumbs_position',
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_breadcrumbs_position',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_breadcrumbs',
+				'active_callback' 		=> 'kindling_cac_has_breadcrumbs',
 				'choices' 				=> array(
-					'' 					=> esc_html__( 'Absolute Right','oceanwp' ),
-					'under-title' 		=> esc_html__( 'Under Title', 'oceanwp' ),
+					'' 					=> esc_html__( 'Absolute Right','kindling' ),
+					'under-title' 		=> esc_html__( 'Under Title', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Breadcrumbs Text Color
 			 */
-			$wp_customize->add_setting( 'ocean_breadcrumbs_text_color', array(
+			$wp_customize->add_setting( 'kindling_breadcrumbs_text_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#c6c6c6',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_breadcrumbs_text_color', array(
-				'label'	   				=> esc_html__( 'Text Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_breadcrumbs_text_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_breadcrumbs_text_color', array(
+				'label'	   				=> esc_html__( 'Text Color', 'kindling' ),
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_breadcrumbs_text_color',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_breadcrumbs',
+				'active_callback' 		=> 'kindling_cac_has_breadcrumbs',
 			) ) );
 
 			/**
 			 * Breadcrumbs Separator Color
 			 */
-			$wp_customize->add_setting( 'ocean_breadcrumbs_seperator_color', array(
+			$wp_customize->add_setting( 'kindling_breadcrumbs_seperator_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#c6c6c6',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_breadcrumbs_seperator_color', array(
-				'label'	   				=> esc_html__( 'Separator Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_breadcrumbs_seperator_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_breadcrumbs_seperator_color', array(
+				'label'	   				=> esc_html__( 'Separator Color', 'kindling' ),
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_breadcrumbs_seperator_color',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_breadcrumbs',
+				'active_callback' 		=> 'kindling_cac_has_breadcrumbs',
 			) ) );
 
 			/**
 			 * Breadcrumbs Separator Color
 			 */
-			$wp_customize->add_setting( 'ocean_breadcrumbs_seperator_color', array(
+			$wp_customize->add_setting( 'kindling_breadcrumbs_seperator_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#c6c6c6',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_breadcrumbs_seperator_color', array(
-				'label'	   				=> esc_html__( 'Separator Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_breadcrumbs_seperator_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_breadcrumbs_seperator_color', array(
+				'label'	   				=> esc_html__( 'Separator Color', 'kindling' ),
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_breadcrumbs_seperator_color',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_breadcrumbs',
+				'active_callback' 		=> 'kindling_cac_has_breadcrumbs',
 			) ) );
 
 			/**
 			 * Breadcrumbs Link Color
 			 */
-			$wp_customize->add_setting( 'ocean_breadcrumbs_link_color', array(
+			$wp_customize->add_setting( 'kindling_breadcrumbs_link_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#333333',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_breadcrumbs_link_color', array(
-				'label'	   				=> esc_html__( 'Link Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_breadcrumbs_link_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_breadcrumbs_link_color', array(
+				'label'	   				=> esc_html__( 'Link Color', 'kindling' ),
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_breadcrumbs_link_color',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_breadcrumbs',
+				'active_callback' 		=> 'kindling_cac_has_breadcrumbs',
 			) ) );
 
 			/**
 			 * Breadcrumbs Link Color
 			 */
-			$wp_customize->add_setting( 'ocean_breadcrumbs_link_color_hover', array(
+			$wp_customize->add_setting( 'kindling_breadcrumbs_link_color_hover', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#13aff0',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_breadcrumbs_link_color_hover', array(
-				'label'	   				=> esc_html__( 'Link Color: Hover', 'oceanwp' ),
-				'section'  				=> 'ocean_general_page_header',
-				'settings' 				=> 'ocean_breadcrumbs_link_color_hover',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_breadcrumbs_link_color_hover', array(
+				'label'	   				=> esc_html__( 'Link Color: Hover', 'kindling' ),
+				'section'  				=> 'kindling_general_page_header',
+				'settings' 				=> 'kindling_breadcrumbs_link_color_hover',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_breadcrumbs',
+				'active_callback' 		=> 'kindling_cac_has_breadcrumbs',
 			) ) );
 
 			/**
 			 * Section
 			 */
-			$wp_customize->add_section( 'ocean_general_scroll_top' , array(
-				'title' 			=> esc_html__( 'Scroll To Top', 'oceanwp' ),
+			$wp_customize->add_section( 'kindling_general_scroll_top' , array(
+				'title' 			=> esc_html__( 'Scroll To Top', 'kindling' ),
 				'priority' 			=> 10,
 				'panel' 			=> $panel,
 			) );
@@ -911,52 +911,52 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Scroll To Top
 			 */
-			$wp_customize->add_setting( 'ocean_scroll_top', array(
+			$wp_customize->add_setting( 'kindling_scroll_top', array(
 				'default'           	=> true,
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_scroll_top', array(
-				'label'	   				=> esc_html__( 'Scroll Up Button', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_scroll_top', array(
+				'label'	   				=> esc_html__( 'Scroll Up Button', 'kindling' ),
 				'type' 					=> 'checkbox',
-				'section'  				=> 'ocean_general_scroll_top',
-				'settings' 				=> 'ocean_scroll_top',
+				'section'  				=> 'kindling_general_scroll_top',
+				'settings' 				=> 'kindling_scroll_top',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Scroll Top Arrow
 			 */
-			$wp_customize->add_setting( 'ocean_scroll_top_arrow', array(
+			$wp_customize->add_setting( 'kindling_scroll_top_arrow', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> 'angle-up',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Icon_Select_Control( $wp_customize, 'ocean_scroll_top_arrow', array(
-				'label'	   				=> esc_html__( 'Arrow Icon', 'oceanwp' ),
-				'section'  				=> 'ocean_general_scroll_top',
-				'settings' 				=> 'ocean_scroll_top_arrow',
+			$wp_customize->add_control( new Kindling_Customizer_Icon_Select_Control( $wp_customize, 'kindling_scroll_top_arrow', array(
+				'label'	   				=> esc_html__( 'Arrow Icon', 'kindling' ),
+				'section'  				=> 'kindling_general_scroll_top',
+				'settings' 				=> 'kindling_scroll_top_arrow',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_scrolltop',
-			    'choices' 				=> oceanwp_get_awesome_icons( 'up_arrows' ),
+				'active_callback' 		=> 'kindling_cac_has_scrolltop',
+			    'choices' 				=> kindling_get_awesome_icons( 'up_arrows' ),
 			) ) );
 
 			/**
 			 * Scroll Top Size
 			 */
-			$wp_customize->add_setting( 'ocean_scroll_top_size', array(
+			$wp_customize->add_setting( 'kindling_scroll_top_size', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '40',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_scroll_top_size', array(
-				'label'	   				=> esc_html__( 'Button Size (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_scroll_top',
-				'settings' 				=> 'ocean_scroll_top_size',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_scroll_top_size', array(
+				'label'	   				=> esc_html__( 'Button Size (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_scroll_top',
+				'settings' 				=> 'kindling_scroll_top_size',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_scrolltop',
+				'active_callback' 		=> 'kindling_cac_has_scrolltop',
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
 			        'max'   => 60,
@@ -967,18 +967,18 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Scroll Top Icon Size
 			 */
-			$wp_customize->add_setting( 'ocean_scroll_top_icon_size', array(
+			$wp_customize->add_setting( 'kindling_scroll_top_icon_size', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '18',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_scroll_top_icon_size', array(
-				'label'	   				=> esc_html__( 'Icon Size (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_scroll_top',
-				'settings' 				=> 'ocean_scroll_top_icon_size',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_scroll_top_icon_size', array(
+				'label'	   				=> esc_html__( 'Icon Size (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_scroll_top',
+				'settings' 				=> 'kindling_scroll_top_icon_size',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_scrolltop',
+				'active_callback' 		=> 'kindling_cac_has_scrolltop',
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
 			        'max'   => 60,
@@ -989,18 +989,18 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Scroll Top Border Radius
 			 */
-			$wp_customize->add_setting( 'ocean_scroll_top_border_radius', array(
+			$wp_customize->add_setting( 'kindling_scroll_top_border_radius', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '2',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_scroll_top_border_radius', array(
-				'label'	   				=> esc_html__( 'Border Radius (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_scroll_top',
-				'settings' 				=> 'ocean_scroll_top_border_radius',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_scroll_top_border_radius', array(
+				'label'	   				=> esc_html__( 'Border Radius (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_scroll_top',
+				'settings' 				=> 'kindling_scroll_top_border_radius',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_scrolltop',
+				'active_callback' 		=> 'kindling_cac_has_scrolltop',
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
 			        'max'   => 100,
@@ -1011,76 +1011,76 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Scroll Top Background Color
 			 */
-			$wp_customize->add_setting( 'ocean_scroll_top_bg', array(
+			$wp_customize->add_setting( 'kindling_scroll_top_bg', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> 'rgba(0,0,0,0.4)',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_scroll_top_bg', array(
-				'label'	   				=> esc_html__( 'Background Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_scroll_top',
-				'settings' 				=> 'ocean_scroll_top_bg',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_scroll_top_bg', array(
+				'label'	   				=> esc_html__( 'Background Color', 'kindling' ),
+				'section'  				=> 'kindling_general_scroll_top',
+				'settings' 				=> 'kindling_scroll_top_bg',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_scrolltop',
+				'active_callback' 		=> 'kindling_cac_has_scrolltop',
 			) ) );
 
 			/**
 			 * Scroll Top Background Hover Color
 			 */
-			$wp_customize->add_setting( 'ocean_scroll_top_bg_hover', array(
+			$wp_customize->add_setting( 'kindling_scroll_top_bg_hover', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> 'rgba(0,0,0,0.8)',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_scroll_top_bg_hover', array(
-				'label'	   				=> esc_html__( 'Background Color: Hover', 'oceanwp' ),
-				'section'  				=> 'ocean_general_scroll_top',
-				'settings' 				=> 'ocean_scroll_top_bg_hover',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_scroll_top_bg_hover', array(
+				'label'	   				=> esc_html__( 'Background Color: Hover', 'kindling' ),
+				'section'  				=> 'kindling_general_scroll_top',
+				'settings' 				=> 'kindling_scroll_top_bg_hover',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_scrolltop',
+				'active_callback' 		=> 'kindling_cac_has_scrolltop',
 			) ) );
 
 			/**
 			 * Scroll Top Color
 			 */
-			$wp_customize->add_setting( 'ocean_scroll_top_color', array(
+			$wp_customize->add_setting( 'kindling_scroll_top_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#ffffff',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_scroll_top_color', array(
-				'label'	   				=> esc_html__( 'Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_scroll_top',
-				'settings' 				=> 'ocean_scroll_top_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_scroll_top_color', array(
+				'label'	   				=> esc_html__( 'Color', 'kindling' ),
+				'section'  				=> 'kindling_general_scroll_top',
+				'settings' 				=> 'kindling_scroll_top_color',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_scrolltop',
+				'active_callback' 		=> 'kindling_cac_has_scrolltop',
 			) ) );
 
 			/**
 			 * Scroll Top Hover Color
 			 */
-			$wp_customize->add_setting( 'ocean_scroll_top_color_hover', array(
+			$wp_customize->add_setting( 'kindling_scroll_top_color_hover', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#ffffff',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_scroll_top_color_hover', array(
-				'label'	   				=> esc_html__( 'Color: Hover', 'oceanwp' ),
-				'section'  				=> 'ocean_general_scroll_top',
-				'settings' 				=> 'ocean_scroll_top_color_hover',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_scroll_top_color_hover', array(
+				'label'	   				=> esc_html__( 'Color: Hover', 'kindling' ),
+				'section'  				=> 'kindling_general_scroll_top',
+				'settings' 				=> 'kindling_scroll_top_color_hover',
 				'priority' 				=> 10,
-				'active_callback' 		=> 'oceanwp_cac_has_scrolltop',
+				'active_callback' 		=> 'kindling_cac_has_scrolltop',
 			) ) );
 
 			/**
 			 * Section
 			 */
-			$wp_customize->add_section( 'ocean_general_pagination' , array(
-				'title' 			=> esc_html__( 'Pagination', 'oceanwp' ),
+			$wp_customize->add_section( 'kindling_general_pagination' , array(
+				'title' 			=> esc_html__( 'Pagination', 'kindling' ),
 				'priority' 			=> 10,
 				'panel' 			=> $panel,
 			) );
@@ -1088,38 +1088,38 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Pagination Align
 			 */
-			$wp_customize->add_setting( 'ocean_pagination_align', array(
+			$wp_customize->add_setting( 'kindling_pagination_align', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> 'right',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_pagination_align', array(
-				'label'	   				=> esc_html__( 'Align', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_pagination_align', array(
+				'label'	   				=> esc_html__( 'Align', 'kindling' ),
 				'type' 					=> 'select',
-				'section'  				=> 'ocean_general_pagination',
-				'settings' 				=> 'ocean_pagination_align',
+				'section'  				=> 'kindling_general_pagination',
+				'settings' 				=> 'kindling_pagination_align',
 				'priority' 				=> 10,
 				'choices' 				=> array(
-					'right' 	=> esc_html__( 'Right', 'oceanwp' ),
-					'center' 	=> esc_html__( 'Center', 'oceanwp' ),
-					'left' 		=> esc_html__( 'Left', 'oceanwp' ),
+					'right' 	=> esc_html__( 'Right', 'kindling' ),
+					'center' 	=> esc_html__( 'Center', 'kindling' ),
+					'left' 		=> esc_html__( 'Left', 'kindling' ),
 				),
 			) ) );
 
 			/**
 			 * Pagination Font Size
 			 */
-			$wp_customize->add_setting( 'ocean_pagination_font_size', array(
+			$wp_customize->add_setting( 'kindling_pagination_font_size', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '18',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_pagination_font_size', array(
-				'label'	   				=> esc_html__( 'Font Size (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_pagination',
-				'settings' 				=> 'ocean_pagination_font_size',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_pagination_font_size', array(
+				'label'	   				=> esc_html__( 'Font Size (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_pagination',
+				'settings' 				=> 'kindling_pagination_font_size',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
@@ -1131,16 +1131,16 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Pagination Border Width
 			 */
-			$wp_customize->add_setting( 'ocean_pagination_border_width', array(
+			$wp_customize->add_setting( 'kindling_pagination_border_width', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '1',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_pagination_border_width', array(
-				'label'	   				=> esc_html__( 'Border Width (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_pagination',
-				'settings' 				=> 'ocean_pagination_border_width',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_pagination_border_width', array(
+				'label'	   				=> esc_html__( 'Border Width (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_pagination',
+				'settings' 				=> 'kindling_pagination_border_width',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
@@ -1152,103 +1152,103 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Pagination Background Color
 			 */
-			$wp_customize->add_setting( 'ocean_pagination_bg', array(
+			$wp_customize->add_setting( 'kindling_pagination_bg', array(
 				'transport' 			=> 'postMessage',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_pagination_bg', array(
-				'label'	   				=> esc_html__( 'Background Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_pagination',
-				'settings' 				=> 'ocean_pagination_bg',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_pagination_bg', array(
+				'label'	   				=> esc_html__( 'Background Color', 'kindling' ),
+				'section'  				=> 'kindling_general_pagination',
+				'settings' 				=> 'kindling_pagination_bg',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Pagination Background Color Hover
 			 */
-			$wp_customize->add_setting( 'ocean_pagination_hover_bg', array(
+			$wp_customize->add_setting( 'kindling_pagination_hover_bg', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#f8f8f8',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_pagination_hover_bg', array(
-				'label'	   				=> esc_html__( 'Background Color: Hover', 'oceanwp' ),
-				'section'  				=> 'ocean_general_pagination',
-				'settings' 				=> 'ocean_pagination_hover_bg',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_pagination_hover_bg', array(
+				'label'	   				=> esc_html__( 'Background Color: Hover', 'kindling' ),
+				'section'  				=> 'kindling_general_pagination',
+				'settings' 				=> 'kindling_pagination_hover_bg',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Pagination Color
 			 */
-			$wp_customize->add_setting( 'ocean_pagination_color', array(
+			$wp_customize->add_setting( 'kindling_pagination_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#555555',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_pagination_color', array(
-				'label'	   				=> esc_html__( 'Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_pagination',
-				'settings' 				=> 'ocean_pagination_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_pagination_color', array(
+				'label'	   				=> esc_html__( 'Color', 'kindling' ),
+				'section'  				=> 'kindling_general_pagination',
+				'settings' 				=> 'kindling_pagination_color',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Pagination Color Hover
 			 */
-			$wp_customize->add_setting( 'ocean_pagination_hover_color', array(
+			$wp_customize->add_setting( 'kindling_pagination_hover_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#333333',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_pagination_hover_color', array(
-				'label'	   				=> esc_html__( 'Color: Hover', 'oceanwp' ),
-				'section'  				=> 'ocean_general_pagination',
-				'settings' 				=> 'ocean_pagination_hover_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_pagination_hover_color', array(
+				'label'	   				=> esc_html__( 'Color: Hover', 'kindling' ),
+				'section'  				=> 'kindling_general_pagination',
+				'settings' 				=> 'kindling_pagination_hover_color',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Pagination Border Color
 			 */
-			$wp_customize->add_setting( 'ocean_pagination_border_color', array(
+			$wp_customize->add_setting( 'kindling_pagination_border_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#e9e9e9',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_pagination_border_color', array(
-				'label'	   				=> esc_html__( 'Border Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_pagination',
-				'settings' 				=> 'ocean_pagination_border_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_pagination_border_color', array(
+				'label'	   				=> esc_html__( 'Border Color', 'kindling' ),
+				'section'  				=> 'kindling_general_pagination',
+				'settings' 				=> 'kindling_pagination_border_color',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Pagination Border Color Hover
 			 */
-			$wp_customize->add_setting( 'ocean_pagination_border_hover_color', array(
+			$wp_customize->add_setting( 'kindling_pagination_border_hover_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#e9e9e9',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_pagination_border_hover_color', array(
-				'label'	   				=> esc_html__( 'Border Color: Hover', 'oceanwp' ),
-				'section'  				=> 'ocean_general_pagination',
-				'settings' 				=> 'ocean_pagination_border_hover_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_pagination_border_hover_color', array(
+				'label'	   				=> esc_html__( 'Border Color: Hover', 'kindling' ),
+				'section'  				=> 'kindling_general_pagination',
+				'settings' 				=> 'kindling_pagination_border_hover_color',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Section
 			 */
-			$wp_customize->add_section( 'ocean_general_forms' , array(
-				'title' 			=> esc_html__( 'Forms (Input - Textarea)', 'oceanwp' ),
+			$wp_customize->add_section( 'kindling_general_forms' , array(
+				'title' 			=> esc_html__( 'Forms (Input - Textarea)', 'kindling' ),
 				'priority' 			=> 10,
 				'panel' 			=> $panel,
 			) );
@@ -1256,49 +1256,49 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Forms Label Color
 			 */
-			$wp_customize->add_setting( 'ocean_label_color', array(
+			$wp_customize->add_setting( 'kindling_label_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#929292',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_label_color', array(
-				'label'	   				=> esc_html__( 'Label Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_forms',
-				'settings' 				=> 'ocean_label_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_label_color', array(
+				'label'	   				=> esc_html__( 'Label Color', 'kindling' ),
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_label_color',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Forms Padding
 			 */
-			$wp_customize->add_setting( 'ocean_input_padding', array(
+			$wp_customize->add_setting( 'kindling_input_padding', array(
 				'transport' 			=> 'postMessage',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_input_padding', array(
-				'label'	   				=> esc_html__( 'Padding (px)', 'oceanwp' ),
-				'description'	   		=> esc_html__( 'Format: top right bottom left.', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_input_padding', array(
+				'label'	   				=> esc_html__( 'Padding (px)', 'kindling' ),
+				'description'	   		=> esc_html__( 'Format: top right bottom left.', 'kindling' ),
 				'type' 					=> 'text',
-				'section'  				=> 'ocean_general_forms',
-				'settings' 				=> 'ocean_input_padding',
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_padding',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Forms Font Size
 			 */
-			$wp_customize->add_setting( 'ocean_input_font_size', array(
+			$wp_customize->add_setting( 'kindling_input_font_size', array(
 				'transport' 			=> 'postMessage',
 				'default' 				=> '14',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_input_font_size', array(
-				'label'	   				=> esc_html__( 'Font Size (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_forms',
-				'settings' 				=> 'ocean_input_font_size',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_input_font_size', array(
+				'label'	   				=> esc_html__( 'Font Size (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_font_size',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
@@ -1310,33 +1310,33 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Forms Border Width
 			 */
-			$wp_customize->add_setting( 'ocean_input_border_width', array(
+			$wp_customize->add_setting( 'kindling_input_border_width', array(
 				'transport' 			=> 'postMessage',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_input_border_width', array(
-				'label'	   				=> esc_html__( 'Border Width (px)', 'oceanwp' ),
-				'description'	   		=> esc_html__( 'Format: top right bottom left.', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_input_border_width', array(
+				'label'	   				=> esc_html__( 'Border Width (px)', 'kindling' ),
+				'description'	   		=> esc_html__( 'Format: top right bottom left.', 'kindling' ),
 				'type' 					=> 'text',
-				'section'  				=> 'ocean_general_forms',
-				'settings' 				=> 'ocean_input_border_width',
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_border_width',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Forms Border Radius
 			 */
-			$wp_customize->add_setting( 'ocean_input_border_radius', array(
+			$wp_customize->add_setting( 'kindling_input_border_radius', array(
 				'transport' 			=> 'postMessage',
 				'default' 				=> '3',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_input_border_radius', array(
-				'label'	   				=> esc_html__( 'Border Radius (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_forms',
-				'settings' 				=> 'ocean_input_border_radius',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_input_border_radius', array(
+				'label'	   				=> esc_html__( 'Border Radius (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_border_radius',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
@@ -1348,71 +1348,71 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Forms Border Color
 			 */
-			$wp_customize->add_setting( 'ocean_input_border_color', array(
+			$wp_customize->add_setting( 'kindling_input_border_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#dddddd',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_input_border_color', array(
-				'label'	   				=> esc_html__( 'Border Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_forms',
-				'settings' 				=> 'ocean_input_border_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_input_border_color', array(
+				'label'	   				=> esc_html__( 'Border Color', 'kindling' ),
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_border_color',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Forms Border Color Focus
 			 */
-			$wp_customize->add_setting( 'ocean_input_border_color_focus', array(
+			$wp_customize->add_setting( 'kindling_input_border_color_focus', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#bbbbbb',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_input_border_color_focus', array(
-				'label'	   				=> esc_html__( 'Border Color: Focus', 'oceanwp' ),
-				'section'  				=> 'ocean_general_forms',
-				'settings' 				=> 'ocean_input_border_color_focus',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_input_border_color_focus', array(
+				'label'	   				=> esc_html__( 'Border Color: Focus', 'kindling' ),
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_border_color_focus',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Forms Background Color
 			 */
-			$wp_customize->add_setting( 'ocean_input_background', array(
+			$wp_customize->add_setting( 'kindling_input_background', array(
 				'transport' 			=> 'postMessage',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_input_background', array(
-				'label'	   				=> esc_html__( 'Background Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_forms',
-				'settings' 				=> 'ocean_input_background',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_input_background', array(
+				'label'	   				=> esc_html__( 'Background Color', 'kindling' ),
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_background',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Forms Color
 			 */
-			$wp_customize->add_setting( 'ocean_input_color', array(
+			$wp_customize->add_setting( 'kindling_input_color', array(
 				'transport' 			=> 'postMessage',
 				'default' 				=> '#333333',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_input_color', array(
-				'label'	   				=> esc_html__( 'Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_forms',
-				'settings' 				=> 'ocean_input_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_input_color', array(
+				'label'	   				=> esc_html__( 'Color', 'kindling' ),
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_color',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Section
 			 */
-			$wp_customize->add_section( 'ocean_general_theme_button' , array(
-				'title' 			=> esc_html__( 'Theme Button', 'oceanwp' ),
+			$wp_customize->add_section( 'kindling_general_theme_button' , array(
+				'title' 			=> esc_html__( 'Theme Button', 'kindling' ),
 				'priority' 			=> 10,
 				'panel' 			=> $panel,
 			) );
@@ -1420,33 +1420,33 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Theme Button
 			 */
-			$wp_customize->add_setting( 'ocean_theme_button_padding', array(
+			$wp_customize->add_setting( 'kindling_theme_button_padding', array(
 				'transport' 			=> 'postMessage',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'ocean_theme_button_padding', array(
-				'label'	   				=> esc_html__( 'Padding (px)', 'oceanwp' ),
-				'description'	   		=> esc_html__( 'Format: top right bottom left.', 'oceanwp' ),
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_theme_button_padding', array(
+				'label'	   				=> esc_html__( 'Padding (px)', 'kindling' ),
+				'description'	   		=> esc_html__( 'Format: top right bottom left.', 'kindling' ),
 				'type' 					=> 'text',
-				'section'  				=> 'ocean_general_theme_button',
-				'settings' 				=> 'ocean_theme_button_padding',
+				'section'  				=> 'kindling_general_theme_button',
+				'settings' 				=> 'kindling_theme_button_padding',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Theme Button Border Radius
 			 */
-			$wp_customize->add_setting( 'ocean_theme_button_border_radius', array(
+			$wp_customize->add_setting( 'kindling_theme_button_border_radius', array(
 				'transport' 			=> 'postMessage',
 				'default' 				=> '0',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Range_Control( $wp_customize, 'ocean_theme_button_border_radius', array(
-				'label'	   				=> esc_html__( 'Border Radius (px)', 'oceanwp' ),
-				'section'  				=> 'ocean_general_theme_button',
-				'settings' 				=> 'ocean_theme_button_border_radius',
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_theme_button_border_radius', array(
+				'label'	   				=> esc_html__( 'Border Radius (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_theme_button',
+				'settings' 				=> 'kindling_theme_button_border_radius',
 				'priority' 				=> 10,
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
@@ -1458,64 +1458,64 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 			/**
 			 * Theme Button Background Color
 			 */
-			$wp_customize->add_setting( 'ocean_theme_button_bg', array(
+			$wp_customize->add_setting( 'kindling_theme_button_bg', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#13aff0',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_theme_button_bg', array(
-				'label'	   				=> esc_html__( 'Background Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_theme_button',
-				'settings' 				=> 'ocean_theme_button_bg',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_theme_button_bg', array(
+				'label'	   				=> esc_html__( 'Background Color', 'kindling' ),
+				'section'  				=> 'kindling_general_theme_button',
+				'settings' 				=> 'kindling_theme_button_bg',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Theme Button Background Color Hover
 			 */
-			$wp_customize->add_setting( 'ocean_theme_button_hover_bg', array(
+			$wp_customize->add_setting( 'kindling_theme_button_hover_bg', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#0b7cac',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_theme_button_hover_bg', array(
-				'label'	   				=> esc_html__( 'Background Color: Hover', 'oceanwp' ),
-				'section'  				=> 'ocean_general_theme_button',
-				'settings' 				=> 'ocean_theme_button_hover_bg',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_theme_button_hover_bg', array(
+				'label'	   				=> esc_html__( 'Background Color: Hover', 'kindling' ),
+				'section'  				=> 'kindling_general_theme_button',
+				'settings' 				=> 'kindling_theme_button_hover_bg',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Theme Button Color
 			 */
-			$wp_customize->add_setting( 'ocean_theme_button_color', array(
+			$wp_customize->add_setting( 'kindling_theme_button_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#ffffff',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_theme_button_color', array(
-				'label'	   				=> esc_html__( 'Color', 'oceanwp' ),
-				'section'  				=> 'ocean_general_theme_button',
-				'settings' 				=> 'ocean_theme_button_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_theme_button_color', array(
+				'label'	   				=> esc_html__( 'Color', 'kindling' ),
+				'section'  				=> 'kindling_general_theme_button',
+				'settings' 				=> 'kindling_theme_button_color',
 				'priority' 				=> 10,
 			) ) );
 
 			/**
 			 * Theme Button Color Hover
 			 */
-			$wp_customize->add_setting( 'ocean_theme_button_hover_color', array(
+			$wp_customize->add_setting( 'kindling_theme_button_hover_color', array(
 				'transport' 			=> 'postMessage',
 				'default'           	=> '#ffffff',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new OceanWP_Customizer_Color_Control( $wp_customize, 'ocean_theme_button_hover_color', array(
-				'label'	   				=> esc_html__( 'Color: Hover', 'oceanwp' ),
-				'section'  				=> 'ocean_general_theme_button',
-				'settings' 				=> 'ocean_theme_button_hover_color',
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_theme_button_hover_color', array(
+				'label'	   				=> esc_html__( 'Color: Hover', 'kindling' ),
+				'section'  				=> 'kindling_general_theme_button',
+				'settings' 				=> 'kindling_theme_button_hover_color',
 				'priority' 				=> 10,
 			) ) );
 
@@ -1529,14 +1529,14 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 		private static function primary_color_arrays( $return ) {
 
 			// Texts
-			$texts = apply_filters( 'ocean_primary_texts', array(
+			$texts = apply_filters( 'kindling_primary_texts', array(
 				'a:hover',
 				'a.light:hover',
 				'.theme-heading .text::before',
 				'#top-bar-content > a:hover',
-				'#top-bar-social li.oceanwp-email a:hover',
+				'#top-bar-social li.kindling-email a:hover',
 				'#site-navigation-wrap .dropdown-menu > li > a:hover',
-				'#oceanwp-mobile-menu-icon a:hover',
+				'#kindling-mobile-menu-icon a:hover',
 				'.blog-entry.post .blog-entry-header h2 a:hover',
 				'.blog-entry.post .blog-entry-readmore a:hover',
 				'ul.meta li a:hover',
@@ -1546,10 +1546,10 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 				'.woocommerce-MyAccount-navigation ul li a:before',
 				'#wp-calendar caption',
 				'.contact-info-widget i',
-				'.custom-links-widget .oceanwp-custom-links li a:hover',
-				'.custom-links-widget .oceanwp-custom-links li a:hover:before',
+				'.custom-links-widget .kindling-custom-links li a:hover',
+				'.custom-links-widget .kindling-custom-links li a:hover:before',
 				'.posts-thumbnails-widget li a:hover',
-				'.social-widget li.oceanwp-email a:hover',
+				'.social-widget li.kindling-email a:hover',
 				'.comment-author .comment-meta .comment-reply-link',
 				'#respond #cancel-comment-reply-link:hover',
 				'#footer-widgets .footer-box a:hover',
@@ -1559,15 +1559,15 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 				'.sidr-class-dropdown-toggle:hover',
 				'.sidr-class-menu-item-has-children.active > a',
 				'.sidr-class-menu-item-has-children.active > a > .sidr-class-dropdown-toggle',
-				'#oceanwp-post-list.one .oceanwp-post-category:hover',
-				'#oceanwp-post-list.one .oceanwp-post-category:hover a',
-				'#oceanwp-post-list.two .slick-arrow:hover',
-				'#oceanwp-post-list.two article:hover .oceanwp-post-category',
-				'#oceanwp-post-list.two article:hover .oceanwp-post-category a',
+				'#kindling-post-list.one .kindling-post-category:hover',
+				'#kindling-post-list.one .kindling-post-category:hover a',
+				'#kindling-post-list.two .slick-arrow:hover',
+				'#kindling-post-list.two article:hover .kindling-post-category',
+				'#kindling-post-list.two article:hover .kindling-post-category a',
 			) );
 
 			// Backgrounds
-			$backgrounds = apply_filters( 'ocean_primary_backgrounds', array(
+			$backgrounds = apply_filters( 'kindling_primary_backgrounds', array(
 				'input[type="button"]',
 				'input[type="reset"]',
 				'input[type="submit"]',
@@ -1575,25 +1575,25 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 				'#site-navigation-wrap .dropdown-menu > li.btn > a > span',
 				'.thumbnail:hover i',
 				'.post-quote-content',
-				'#oceanwp-post-list.one .readmore:hover',
-				'#oceanwp-post-list.one .oceanwp-post-category',
-				'#oceanwp-post-list.two .oceanwp-post-category',
-				'#oceanwp-post-list.two article:hover .slide-overlay-wrap',
-				'.oceanwp-modal .oceanwp-close-modal',
+				'#kindling-post-list.one .readmore:hover',
+				'#kindling-post-list.one .kindling-post-category',
+				'#kindling-post-list.two .kindling-post-category',
+				'#kindling-post-list.two article:hover .slide-overlay-wrap',
+				'.kindling-modal .kindling-close-modal',
 			) );
 
 			// Borders
-			$borders = apply_filters( 'ocean_primary_borders', array(
+			$borders = apply_filters( 'kindling_primary_borders', array(
 				'.widget-title',
 				'blockquote',
 				'#searchform-dropdown',
 				'.dropdown-menu .sub-menu',
 				'.blog-entry.large-entry .blog-entry-readmore a:hover',
-				'.oceanwp-newsletter-form-wrap input[type="email"]:focus',
-				'.social-widget li.oceanwp-email a:hover',
+				'.kindling-newsletter-form-wrap input[type="email"]:focus',
+				'.social-widget li.kindling-email a:hover',
 				'#respond #cancel-comment-reply-link:hover',
-				'#footer-widgets .oceanwp-newsletter-form-wrap input[type="email"]:focus',
-				'#oceanwp-post-list.one .readmore:hover',
+				'#footer-widgets .kindling-newsletter-form-wrap input[type="email"]:focus',
+				'#kindling-post-list.one .readmore:hover',
 			) );
 
 			// Return array
@@ -1615,7 +1615,7 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 		private static function hover_primary_color_array( $return ) {
 
 			// Hover backgrounds
-			$hover = apply_filters( 'ocean_hover_primary_backgrounds', array(
+			$hover = apply_filters( 'kindling_hover_primary_backgrounds', array(
 				'input[type="button"]:hover',
 				'input[type="reset"]:hover',
 				'input[type="submit"]:hover',
@@ -1625,7 +1625,7 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 				'.button:hover',
 				'#site-navigation-wrap .dropdown-menu > li.btn > a:hover > span',
 				'.post-quote-author',
-				'.oceanwp-modal .oceanwp-close-modal:hover',
+				'.kindling-modal .kindling-close-modal:hover',
 			) );
 
 			// Return array
@@ -1642,7 +1642,7 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 		 */
 		private static function main_border_array() {
 
-			return apply_filters( 'ocean_border_color_elements', array(
+			return apply_filters( 'kindling_border_color_elements', array(
 
 				// General
 				'table th',
@@ -1720,12 +1720,12 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 		public function site_background_css( $output ) {
 
 			// Global vars
-			$background_color 				= get_theme_mod( 'ocean_background_color', '#ffffff' );
-			$background_image 				= get_theme_mod( 'ocean_background_image' );
-			$background_image_position 		= get_theme_mod( 'ocean_background_image_position' );
-			$background_image_attachment 	= get_theme_mod( 'ocean_background_image_attachment' );
-			$background_image_repeat 		= get_theme_mod( 'ocean_background_image_repeat' );
-			$background_image_size 			= get_theme_mod( 'ocean_background_image_size' );
+			$background_color 				= get_theme_mod( 'kindling_background_color', '#ffffff' );
+			$background_image 				= get_theme_mod( 'kindling_background_image' );
+			$background_image_position 		= get_theme_mod( 'kindling_background_image_position' );
+			$background_image_attachment 	= get_theme_mod( 'kindling_background_image_attachment' );
+			$background_image_repeat 		= get_theme_mod( 'kindling_background_image_repeat' );
+			$background_image_size 			= get_theme_mod( 'kindling_background_image_size' );
 
 			// Define css var
 			$css = '';
@@ -1778,57 +1778,57 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 		public function head_css( $output ) {
 
 			// Global vars
-			$primary_color 					= get_theme_mod( 'ocean_primary_color', '#13aff0' );
-			$hover_primary_color 			= get_theme_mod( 'ocean_hover_primary_color', '#0b7cac' );
-			$main_border_color 				= get_theme_mod( 'ocean_main_border_color', '#e9e9e9' );
-			$links_color 					= get_theme_mod( 'ocean_links_color', '#333333' );
-			$links_color_hover 				= get_theme_mod( 'ocean_links_color_hover', '#13aff0' );
-			$boxed_width 					= get_theme_mod( 'ocean_boxed_width', '1280' );
-			$boxed_outside_bg 				= get_theme_mod( 'ocean_boxed_outside_bg', '#e9e9e9' );
-			$boxed_inner_bg 				= get_theme_mod( 'ocean_boxed_inner_bg', '#ffffff' );
-			$main_container_width 			= get_theme_mod( 'ocean_main_container_width', '1200' );
-			$left_container_width 			= get_theme_mod( 'ocean_left_container_width', '72' );
-			$sidebar_width 					= get_theme_mod( 'ocean_sidebar_width', '28' );
-			$content_top_padding 			= get_theme_mod( 'ocean_page_content_top_padding', '50' );
-			$content_bottom_padding 		= get_theme_mod( 'ocean_page_content_bottom_padding', '50' );
-			$page_header_top_padding 		= get_theme_mod( 'ocean_page_header_top_padding', '34' );
-			$page_header_bottom_padding 	= get_theme_mod( 'ocean_page_header_bottom_padding', '34' );
-			$page_header_bg 				= get_theme_mod( 'ocean_page_header_background', '#f5f5f5' );
-			$page_header_title_color 		= get_theme_mod( 'ocean_page_header_title_color', '#333333' );
-			$breadcrumbs_text_color 		= get_theme_mod( 'ocean_breadcrumbs_text_color', '#c6c6c6' );
-			$breadcrumbs_seperator_color 	= get_theme_mod( 'ocean_breadcrumbs_seperator_color', '#c6c6c6' );
-			$breadcrumbs_link_color 		= get_theme_mod( 'ocean_breadcrumbs_link_color', '#333333' );
-			$breadcrumbs_link_color_hover 	= get_theme_mod( 'ocean_breadcrumbs_link_color_hover', '#13aff0' );
-			$scroll_top_size 				= get_theme_mod( 'ocean_scroll_top_size', '40' );
-			$scroll_top_icon_size 			= get_theme_mod( 'ocean_scroll_top_icon_size', '18' );
-			$scroll_top_border_radius 		= get_theme_mod( 'ocean_scroll_top_border_radius', '2' );
-			$scroll_top_bg 					= get_theme_mod( 'ocean_scroll_top_bg', 'rgba(0,0,0,0.4)' );
-			$scroll_top_bg_hover 			= get_theme_mod( 'ocean_scroll_top_bg_hover', 'rgba(0,0,0,0.8)' );
-			$scroll_top_color 				= get_theme_mod( 'ocean_scroll_top_color', '#ffffff' );
-			$scroll_top_color_hover 		= get_theme_mod( 'ocean_scroll_top_color_hover', '#ffffff' );
-			$pagination_font_size 			= get_theme_mod( 'ocean_pagination_font_size', '18' );
-			$pagination_border_width 		= get_theme_mod( 'ocean_pagination_border_width', '1' );
-			$pagination_bg 					= get_theme_mod( 'ocean_pagination_bg' );
-			$pagination_hover_bg 			= get_theme_mod( 'ocean_pagination_hover_bg', '#f8f8f8' );
-			$pagination_color 				= get_theme_mod( 'ocean_pagination_color', '#555555' );
-			$pagination_hover_color 		= get_theme_mod( 'ocean_pagination_hover_color', '#333333' );
-			$pagination_border_color 		= get_theme_mod( 'ocean_pagination_border_color', '#e9e9e9' );
-			$pagination_border_hover_color 	= get_theme_mod( 'ocean_pagination_border_hover_color', '#e9e9e9' );
-			$label_color 					= get_theme_mod( 'ocean_label_color', '#929292' );
-			$input_padding 					= get_theme_mod( 'ocean_input_padding' );
-			$input_font_size 				= get_theme_mod( 'ocean_input_font_size', '14' );
-			$input_border_width 			= get_theme_mod( 'ocean_input_border_width' );
-			$input_border_radius 			= get_theme_mod( 'ocean_input_border_radius', '3' );
-			$input_border_color 			= get_theme_mod( 'ocean_input_border_color', '#dddddd' );
-			$input_border_color_focus 		= get_theme_mod( 'ocean_input_border_color_focus', '#bbbbbb' );
-			$input_background 				= get_theme_mod( 'ocean_input_background' );
-			$input_color 					= get_theme_mod( 'ocean_input_color', '#333333' );
-			$theme_button_padding 			= get_theme_mod( 'ocean_theme_button_padding' );
-			$theme_button_border_radius 	= get_theme_mod( 'ocean_theme_button_border_radius', '0' );
-			$theme_button_bg 				= get_theme_mod( 'ocean_theme_button_bg', '#13aff0' );
-			$theme_button_hover_bg 			= get_theme_mod( 'ocean_theme_button_hover_bg', '#0b7cac' );
-			$theme_button_color 			= get_theme_mod( 'ocean_theme_button_color', '#ffffff' );
-			$theme_button_hover_color 		= get_theme_mod( 'ocean_theme_button_hover_color', '#ffffff' );
+			$primary_color 					= get_theme_mod( 'kindling_primary_color', '#13aff0' );
+			$hover_primary_color 			= get_theme_mod( 'kindling_hover_primary_color', '#0b7cac' );
+			$main_border_color 				= get_theme_mod( 'kindling_main_border_color', '#e9e9e9' );
+			$links_color 					= get_theme_mod( 'kindling_links_color', '#333333' );
+			$links_color_hover 				= get_theme_mod( 'kindling_links_color_hover', '#13aff0' );
+			$boxed_width 					= get_theme_mod( 'kindling_boxed_width', '1280' );
+			$boxed_outside_bg 				= get_theme_mod( 'kindling_boxed_outside_bg', '#e9e9e9' );
+			$boxed_inner_bg 				= get_theme_mod( 'kindling_boxed_inner_bg', '#ffffff' );
+			$main_container_width 			= get_theme_mod( 'kindling_main_container_width', '1200' );
+			$left_container_width 			= get_theme_mod( 'kindling_left_container_width', '72' );
+			$sidebar_width 					= get_theme_mod( 'kindling_sidebar_width', '28' );
+			$content_top_padding 			= get_theme_mod( 'kindling_page_content_top_padding', '50' );
+			$content_bottom_padding 		= get_theme_mod( 'kindling_page_content_bottom_padding', '50' );
+			$page_header_top_padding 		= get_theme_mod( 'kindling_page_header_top_padding', '34' );
+			$page_header_bottom_padding 	= get_theme_mod( 'kindling_page_header_bottom_padding', '34' );
+			$page_header_bg 				= get_theme_mod( 'kindling_page_header_background', '#f5f5f5' );
+			$page_header_title_color 		= get_theme_mod( 'kindling_page_header_title_color', '#333333' );
+			$breadcrumbs_text_color 		= get_theme_mod( 'kindling_breadcrumbs_text_color', '#c6c6c6' );
+			$breadcrumbs_seperator_color 	= get_theme_mod( 'kindling_breadcrumbs_seperator_color', '#c6c6c6' );
+			$breadcrumbs_link_color 		= get_theme_mod( 'kindling_breadcrumbs_link_color', '#333333' );
+			$breadcrumbs_link_color_hover 	= get_theme_mod( 'kindling_breadcrumbs_link_color_hover', '#13aff0' );
+			$scroll_top_size 				= get_theme_mod( 'kindling_scroll_top_size', '40' );
+			$scroll_top_icon_size 			= get_theme_mod( 'kindling_scroll_top_icon_size', '18' );
+			$scroll_top_border_radius 		= get_theme_mod( 'kindling_scroll_top_border_radius', '2' );
+			$scroll_top_bg 					= get_theme_mod( 'kindling_scroll_top_bg', 'rgba(0,0,0,0.4)' );
+			$scroll_top_bg_hover 			= get_theme_mod( 'kindling_scroll_top_bg_hover', 'rgba(0,0,0,0.8)' );
+			$scroll_top_color 				= get_theme_mod( 'kindling_scroll_top_color', '#ffffff' );
+			$scroll_top_color_hover 		= get_theme_mod( 'kindling_scroll_top_color_hover', '#ffffff' );
+			$pagination_font_size 			= get_theme_mod( 'kindling_pagination_font_size', '18' );
+			$pagination_border_width 		= get_theme_mod( 'kindling_pagination_border_width', '1' );
+			$pagination_bg 					= get_theme_mod( 'kindling_pagination_bg' );
+			$pagination_hover_bg 			= get_theme_mod( 'kindling_pagination_hover_bg', '#f8f8f8' );
+			$pagination_color 				= get_theme_mod( 'kindling_pagination_color', '#555555' );
+			$pagination_hover_color 		= get_theme_mod( 'kindling_pagination_hover_color', '#333333' );
+			$pagination_border_color 		= get_theme_mod( 'kindling_pagination_border_color', '#e9e9e9' );
+			$pagination_border_hover_color 	= get_theme_mod( 'kindling_pagination_border_hover_color', '#e9e9e9' );
+			$label_color 					= get_theme_mod( 'kindling_label_color', '#929292' );
+			$input_padding 					= get_theme_mod( 'kindling_input_padding' );
+			$input_font_size 				= get_theme_mod( 'kindling_input_font_size', '14' );
+			$input_border_width 			= get_theme_mod( 'kindling_input_border_width' );
+			$input_border_radius 			= get_theme_mod( 'kindling_input_border_radius', '3' );
+			$input_border_color 			= get_theme_mod( 'kindling_input_border_color', '#dddddd' );
+			$input_border_color_focus 		= get_theme_mod( 'kindling_input_border_color_focus', '#bbbbbb' );
+			$input_background 				= get_theme_mod( 'kindling_input_background' );
+			$input_color 					= get_theme_mod( 'kindling_input_color', '#333333' );
+			$theme_button_padding 			= get_theme_mod( 'kindling_theme_button_padding' );
+			$theme_button_border_radius 	= get_theme_mod( 'kindling_theme_button_border_radius', '0' );
+			$theme_button_bg 				= get_theme_mod( 'kindling_theme_button_bg', '#13aff0' );
+			$theme_button_hover_bg 			= get_theme_mod( 'kindling_theme_button_hover_bg', '#0b7cac' );
+			$theme_button_color 			= get_theme_mod( 'kindling_theme_button_color', '#ffffff' );
+			$theme_button_hover_color 		= get_theme_mod( 'kindling_theme_button_hover_color', '#ffffff' );
 
 			// Define css var
 			$css = '';
@@ -2133,4 +2133,4 @@ if ( ! class_exists( 'OceanWP_General_Customizer' ) ) :
 
 endif;
 
-return new OceanWP_General_Customizer();
+return new Kindling_General_Customizer();

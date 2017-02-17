@@ -2,70 +2,70 @@
 /**
  * Default post entry layout
  *
- * @package OceanWP WordPress theme
+ * @package Kindling Theme
  */
 
-// Exit if accessed directly
+# Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Get post format
+# Get post format
 $format = get_post_format();
 
-// Quote format is completely different
+# Quote format is completely different
 if ( 'quote' == $format ) {
 
-	// Get quote entry content
+	# Get quote entry content
 	get_template_part( 'partials/entry/quote' );
 
 	return;
 
 }
 
-// Add classes to the blog entry post class
-$classes = oceanwp_post_entry_classes(); ?>
+# Add classes to the blog entry post class
+$classes = kindling_post_entry_classes(); ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 
 	<div class="blog-entry-inner clr">
 
 		<?php
-		// Get elements
-		$elements = oceanwp_blog_entry_elements_positioning();
+		# Get elements
+		$elements = kindling_blog_entry_elements_positioning();
 
-		// Loop through elements
+		# Loop through elements
 		foreach ( $elements as $element ) {
 
-			// Featured Image
+			# Featured Image
 			if ( 'featured_image' == $element ) {
 
 				get_template_part( 'partials/entry/media/blog-entry', $format );
 
 			}
 
-			// Title
+			# Title
 			if ( 'title' == $element ) {
 
 				get_template_part( 'partials/entry/header' );
 
 			}
 
-			// Meta
+			# Meta
 			if ( 'meta' == $element ) {
 
 				get_template_part( 'partials/entry/meta' );
 
 			}
 
-			// Content
+			# Content
 			if ( 'content' == $element ) {
 
 				get_template_part( 'partials/entry/content' );
 
 			}
 
-			// Read more button
+			# Read more button
 			if ( 'read_more' == $element ) {
 
 				get_template_part( 'partials/entry/readmore' );
