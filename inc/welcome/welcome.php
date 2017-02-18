@@ -56,7 +56,7 @@ class OCEANWP_Welcome {
 		?>
 			<div class="updated notice is-dismissible">
 				<p><?php echo sprintf( esc_html__( 'Thanks for choosing Kindling! You can read hints and tips on how get the most out of your new theme on the %swelcome screen%s.', 'kindling' ), '<a href="' . esc_url( admin_url( 'themes.php?page=kindling-welcome' ) ) . '">', '</a>' ); ?></p>
-				<p><a href="<?php echo esc_url( admin_url( 'themes.php?page=kindling-welcome' ) ); ?>" class="button" style="text-decoration: none;"><?php esc_attr_e( 'Get started with OCeanWP', 'kindling' ); ?></a></p>
+				<p><a href="<?php echo esc_url( admin_url( 'themes.php?page=kindling-welcome' ) ); ?>" class="button" style="text-decoration: none;"><?php esc_attr_e( 'Get started with Kindling', 'kindling' ); ?></a></p>
 			</div>
 		<?php
 	}

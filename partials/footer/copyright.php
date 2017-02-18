@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 # Get copyright text
-$copy = get_theme_mod( 'kindling_footer_copyright_text', 'Copyright - Kindling Theme by Nick Powered by <a href="https:#wordpress.org/" title="WordPress" target="_blank">WordPress</a>' );
+$copy = get_theme_mod( 'kindling_footer_copyright_text', '<a href="https://www.coreypotter.com/kindling/" target="_blank">Kindling Theme</a> Powered by <a href="https://wordpress.org/" title="WordPress" target="_blank">WordPress</a>' );
 $copy = kindling_tm_translation( 'kindling_footer_copyright_text', $copy );
 
 # Get footer menu location and apply filters for child theming
