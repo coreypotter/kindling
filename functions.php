@@ -33,9 +33,12 @@ add_action( 'after_setup_theme', 'kindling_custom_css_migrate' );
 define( 'KINDLING_THEME_DIR', get_template_directory() );
 define( 'KINDLING_THEME_URI', get_template_directory_uri() );
 
+/**
+# Commenting out because this isn't configured yet and is crashing the install
 # Auto update
 require_once( KINDLING_THEME_DIR .'/inc/wp-updates.php' );
 new WPUpdatesThemeUpdater_1916( 'http:#wp-updates.com/api/2/theme', basename( get_template_directory() ) );
+*/
 
 class Kindling_Theme_Class {
 	/**
