@@ -1,21 +1,21 @@
 /**
  * About Me Widget
  */
-.oceanwp-about-me {
+.kindling-about-me {
     position: relative;
     text-align: center;
 
-    .oceanwp-about-me-avatar,
-    .oceanwp-about-me-social {
+    .kindling-about-me-avatar,
+    .kindling-about-me-social {
 	    margin-top: 20px;
 	}
 
-    .oceanwp-about-me-avatar img {
+    .kindling-about-me-avatar img {
 	    position: relative;
 	    border-radius: 50%;
 	}
 
-	.oceanwp-about-me-name {
+	.kindling-about-me-name {
 	    display: block;
 	    font-size: 13px;
 	    font-weight: 600;
@@ -24,7 +24,7 @@
 	    clear: none;
 	}
 
-	.oceanwp-about-me-social {
+	.kindling-about-me-social {
 	   	li {
 		    display: inline-block;
 		    margin-left: 6px;

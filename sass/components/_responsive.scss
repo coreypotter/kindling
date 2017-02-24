@@ -22,7 +22,7 @@
 	}
 }
 
-#oceanwp-mobile-menu-icon {
+#kindling-mobile-menu-icon {
 	display: none;
 	float: right;
 	position: relative;
@@ -46,7 +46,7 @@
 }
 
 /* Top Menu header*/
-#site-header.top-header #oceanwp-mobile-menu-icon {
+#site-header.top-header #kindling-mobile-menu-icon {
 	float: none;
 	left: -15px;
 	right: auto;
@@ -194,11 +194,11 @@ only screen and (                min-resolution: 2dppx) {
 	}
 	
 	/* header > navbar */
-	#site-navigation-wrap, #oceanwp-social-menu {
+	#site-navigation-wrap, #kindling-social-menu {
 		display: none;
 	}
 
-	#oceanwp-mobile-menu-icon {
+	#kindling-mobile-menu-icon {
 		display: block;
 	}
 
@@ -230,7 +230,7 @@ only screen and (                min-resolution: 2dppx) {
 	}
 
 	/* recent posts widget */
-	.oceanwp-recent-posts {
+	.kindling-recent-posts {
 		.recent-posts-thumbnail {
 			width: 15%;
 			margin-right: 3%;
@@ -301,7 +301,7 @@ only screen and (                min-resolution: 2dppx) {
 	}
 	
 	/* turn 4 column masonry grids into 2 columns */
-	body .oceanwp-row {
+	body .kindling-row {
 		.span_1_of_4.col-3.col,
 		.span_1_of_4.col.product:nth-child(2n+3) {
 			margin-left: 0;
@@ -309,8 +309,8 @@ only screen and (                min-resolution: 2dppx) {
 		}
 	}
 
-	body .oceanwp-row .span_1_of_4.col,
-	body .oceanwp-isotope-grid .span_1_of_4.col {
+	body .kindling-row .span_1_of_4.col,
+	body .kindling-isotope-grid .span_1_of_4.col {
 		width: 50%;
 	}
 	
@@ -543,7 +543,7 @@ only screen and (                min-resolution: 2dppx) {
 			}
 		}
 
-		#oceanwp-mobile-menu-icon {
+		#kindling-mobile-menu-icon {
 			float: none;
 			left: auto !important;
 			right: auto !important;
@@ -558,7 +558,7 @@ only screen and (                min-resolution: 2dppx) {
 			padding-bottom: 10px;
 		}
 
-		#oceanwp-social-menu,
+		#kindling-social-menu,
 		#search-toggle {
 			float: none;
 			display: inline-block;
@@ -647,12 +647,12 @@ only screen and (                min-resolution: 2dppx) {
 	}
 
 	/* flickr widget */
-	.oceanwp-flickr-widget .flickr_badge_image {
+	.kindling-flickr-widget .flickr_badge_image {
 		width: 23%;
 	}
 
 	/* recent posts widget */
-	.oceanwp-recent-posts {
+	.kindling-recent-posts {
 		.recent-posts-thumbnail {
 			width: 25%;
 			margin-right: 4%;

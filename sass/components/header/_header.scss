@@ -60,7 +60,7 @@
 #site-logo-fa-icon {
 	margin-right: 10px;
 
-	&.fa-oceanwp-hidden {
+	&.fa-kindling-hidden {
 		margin-right: 0;
 	}
 }
@@ -100,7 +100,7 @@
 	}
 }
 
-body.has-transparent-header .oceanwp-sticky-header-holder {
+body.has-transparent-header .kindling-sticky-header-holder {
 	height: auto !important;
 	background: none !important;
 }
@@ -165,7 +165,7 @@ body.has-transparent-header .oceanwp-sticky-header-holder {
 	    text-transform: uppercase;
 	}
 
-	#oceanwp-social-menu,
+	#kindling-social-menu,
 	#search-toggle {
 		float: none;
 	    display: table-cell;
@@ -173,12 +173,12 @@ body.has-transparent-header .oceanwp-sticky-header-holder {
 		height: 40px;
 	}
 
-	#oceanwp-social-menu .social-menu-inner {
+	#kindling-social-menu .social-menu-inner {
 		display: block;
     	height: auto;
 	}
 
-	#oceanwp-social-menu {
+	#kindling-social-menu {
 		right: 0;
 	    padding: 0 10px;
 
@@ -530,7 +530,7 @@ body.has-transparent-header .oceanwp-sticky-header-holder {
 	    }
     }
 
-    #oceanwp-social-menu {
+    #kindling-social-menu {
     	display: block;
 	    float: none;
 	    margin-top: 30px;
@@ -681,7 +681,7 @@ body.has-transparent-header .oceanwp-sticky-header-holder {
 /**
  * Custom header
  */
-#site-header.custom-header ul.oceanwp-custom-menu {
+#site-header.custom-header ul.kindling-custom-menu {
 	list-style: none;
     margin: 0;
     padding: 0;

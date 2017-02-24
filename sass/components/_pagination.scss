@@ -51,14 +51,14 @@ ul.page-numbers {
     color: $color-2;
 }
 
-.oceanwp-pagination {
-    &.oceanwp-center ul.page-numbers,
-    &.oceanwp-center .page-links {
+.kindling-pagination {
+    &.kindling-center ul.page-numbers,
+    &.kindling-center .page-links {
         text-align: center;
     }
 
-    &.oceanwp-left ul.page-numbers,
-    &.oceanwp-left .page-links {
+    &.kindling-left ul.page-numbers,
+    &.kindling-left .page-links {
         text-align: left;
     }
 }

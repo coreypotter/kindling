@@ -1,10 +1,10 @@
 /**
  * MailChimp Widget
  */
-.oceanwp-newsletter-form-wrap {
+.kindling-newsletter-form-wrap {
     position: relative;
 
-    .oceanwp-mail-text {
+    .kindling-mail-text {
 	    margin-bottom: 10px;
 	}
 
@@ -35,7 +35,7 @@
 }
 
 /* Prevent conflict with woocommerce */
-body.woocommerce .oceanwp-newsletter-form-wrap button {
+body.woocommerce .kindling-newsletter-form-wrap button {
 	padding-top: 0 !important;
     padding-bottom: 0 !important;
 }

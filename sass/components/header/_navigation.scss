@@ -169,7 +169,7 @@
 	}
 }
 
-.oceanwp-dropdown-top-border #searchform-dropdown {
+.kindling-dropdown-top-border #searchform-dropdown {
 	border: none;
 }
 
@@ -384,7 +384,7 @@ body #wrap #searchform-overlay .container {
 /**
  * Social icons
  */
-#oceanwp-social-menu {
+#kindling-social-menu {
 	float: right;
     display: table;
     position: relative;
@@ -427,26 +427,26 @@ body #wrap #searchform-overlay .container {
 			    }
     		}
 
-		    &.oceanwp-twitter a:hover { color: #46d4fe; }
-		    &.oceanwp-facebook a:hover { color: #37589b; }
-		    &.oceanwp-googleplus a:hover { color: #de5a49; }
-		    &.oceanwp-pinterest a:hover { color: #cb2027; }
-		    &.oceanwp-dribbble a:hover { color: #ea4c89; }
-		    &.oceanwp-vk a:hover { color: #597BA5; }
-		    &.oceanwp-instagram a:hover { color: #3F729B; }
-		    &.oceanwp-linkedin a:hover { color: #3399CC; }
-		    &.oceanwp-tumblr a:hover { color: #2C4762; }
-		    &.oceanwp-github a:hover { color: #60b044; }
-		    &.oceanwp-flickr a:hover { color: #fa4086; }
-		    &.oceanwp-skype a:hover { color: #00AFF0; }
-		    &.oceanwp-youtube a:hover { color: #C4302B; }
-		    &.oceanwp-vimeo a:hover { color: #1ab7ea; }
-		    &.oceanwp-vine a:hover { color: #00bf8f; }
-		    &.oceanwp-xing a:hover { color: #006464; }
-		    &.oceanwp-yelp a:hover { color: #C41200; }
-		    &.oceanwp-tripadvisor a:hover { color: #589442; }
-		    &.oceanwp-rss a:hover { color: #ff7900; }
-		    &.oceanwp-email a:hover { color: #13aff0; }
+		    &.kindling-twitter a:hover { color: #46d4fe; }
+		    &.kindling-facebook a:hover { color: #37589b; }
+		    &.kindling-googleplus a:hover { color: #de5a49; }
+		    &.kindling-pinterest a:hover { color: #cb2027; }
+		    &.kindling-dribbble a:hover { color: #ea4c89; }
+		    &.kindling-vk a:hover { color: #597BA5; }
+		    &.kindling-instagram a:hover { color: #3F729B; }
+		    &.kindling-linkedin a:hover { color: #3399CC; }
+		    &.kindling-tumblr a:hover { color: #2C4762; }
+		    &.kindling-github a:hover { color: #60b044; }
+		    &.kindling-flickr a:hover { color: #fa4086; }
+		    &.kindling-skype a:hover { color: #00AFF0; }
+		    &.kindling-youtube a:hover { color: #C4302B; }
+		    &.kindling-vimeo a:hover { color: #1ab7ea; }
+		    &.kindling-vine a:hover { color: #00bf8f; }
+		    &.kindling-xing a:hover { color: #006464; }
+		    &.kindling-yelp a:hover { color: #C41200; }
+		    &.kindling-tripadvisor a:hover { color: #589442; }
+		    &.kindling-rss a:hover { color: #ff7900; }
+		    &.kindling-email a:hover { color: #13aff0; }
 	    }
 	}
 
@@ -472,46 +472,46 @@ body #wrap #searchform-overlay .container {
 		    }
 		}
 
-	    &.oceanwp-twitter span { background-color: #46d4fe; }
-	    &.oceanwp-twitter:hover span { background-color: #39b4d8; }
-	    &.oceanwp-facebook span{ background-color: #37589b; }
-	    &.oceanwp-facebook:hover span{ background-color: #2d477c; }
-	    &.oceanwp-googleplus span{ background-color: #de5a49; }
-	    &.oceanwp-googleplus:hover span { background-color: #bb4c3e; }
-	    &.oceanwp-pinterest span { background-color: #cb2027; }
-	    &.oceanwp-pinterest:hover span { background-color: #a91d23; }
-	    &.oceanwp-dribbble span { background-color: #ea4c89; }
-	    &.oceanwp-dribbble:hover span { background-color: #c64174; }
-	    &.oceanwp-vk span { background-color: #597BA5; }
-	    &.oceanwp-vk:hover span { background-color: #486384; }
-	    &.oceanwp-instagram span { background-color: #3F729B; }
-	    &.oceanwp-instagram:hover span { background-color: #315a7c; }
-	    &.oceanwp-linkedin span{ background-color: #3399CC; }
-	    &.oceanwp-linkedin:hover span { background-color: #2678a1; }
-	    &.oceanwp-tumblr span { background-color: #2C4762; }
-	    &.oceanwp-tumblr:hover span { background-color: #1d3042; }
-	    &.oceanwp-github span { background-color: #60b044; }
-	    &.oceanwp-github:hover span { background-color: #4f9237; }
-	    &.oceanwp-flickr span { background-color: #fa4086; }
-	    &.oceanwp-flickr:hover span { background-color: #c63169; }
-	    &.oceanwp-skype span { background-color: #00AFF0; }
-	    &.oceanwp-skype:hover span { background-color: #0291c6; }
-	    &.oceanwp-youtube span { background-color: #C4302B; }
-	    &.oceanwp-youtube:hover span { background-color: #982420; }
-	    &.oceanwp-vimeo span { background-color: #1ab7ea; }
-	    &.oceanwp-vimeo:hover span { background-color: #1494bd; }
-	    &.oceanwp-vine span { background-color: #00bf8f; }
-	    &.oceanwp-vine:hover span { background-color: #01906c; }
-	    &.oceanwp-xing span { background-color: #006464; }
-	    &.oceanwp-xing:hover span { background-color: #014646; }
-	    &.oceanwp-yelp span { background-color: #C41200; }
-	    &.oceanwp-yelp:hover span { background-color: #940f01; }
-	    &.oceanwp-tripadvisor span { background-color: #589442; }
-	    &.oceanwp-tripadvisor:hover span { background-color: #426f32; }
-	    &.oceanwp-rss span { background-color: #ff7900; }
-	    &.oceanwp-rss:hover span { background-color: #d46603; }
-	    &.oceanwp-email span { background-color: #13aff0; }
-	    &.oceanwp-email:hover span { background-color: #0f8dc2; }
+	    &.kindling-twitter span { background-color: #46d4fe; }
+	    &.kindling-twitter:hover span { background-color: #39b4d8; }
+	    &.kindling-facebook span{ background-color: #37589b; }
+	    &.kindling-facebook:hover span{ background-color: #2d477c; }
+	    &.kindling-googleplus span{ background-color: #de5a49; }
+	    &.kindling-googleplus:hover span { background-color: #bb4c3e; }
+	    &.kindling-pinterest span { background-color: #cb2027; }
+	    &.kindling-pinterest:hover span { background-color: #a91d23; }
+	    &.kindling-dribbble span { background-color: #ea4c89; }
+	    &.kindling-dribbble:hover span { background-color: #c64174; }
+	    &.kindling-vk span { background-color: #597BA5; }
+	    &.kindling-vk:hover span { background-color: #486384; }
+	    &.kindling-instagram span { background-color: #3F729B; }
+	    &.kindling-instagram:hover span { background-color: #315a7c; }
+	    &.kindling-linkedin span{ background-color: #3399CC; }
+	    &.kindling-linkedin:hover span { background-color: #2678a1; }
+	    &.kindling-tumblr span { background-color: #2C4762; }
+	    &.kindling-tumblr:hover span { background-color: #1d3042; }
+	    &.kindling-github span { background-color: #60b044; }
+	    &.kindling-github:hover span { background-color: #4f9237; }
+	    &.kindling-flickr span { background-color: #fa4086; }
+	    &.kindling-flickr:hover span { background-color: #c63169; }
+	    &.kindling-skype span { background-color: #00AFF0; }
+	    &.kindling-skype:hover span { background-color: #0291c6; }
+	    &.kindling-youtube span { background-color: #C4302B; }
+	    &.kindling-youtube:hover span { background-color: #982420; }
+	    &.kindling-vimeo span { background-color: #1ab7ea; }
+	    &.kindling-vimeo:hover span { background-color: #1494bd; }
+	    &.kindling-vine span { background-color: #00bf8f; }
+	    &.kindling-vine:hover span { background-color: #01906c; }
+	    &.kindling-xing span { background-color: #006464; }
+	    &.kindling-xing:hover span { background-color: #014646; }
+	    &.kindling-yelp span { background-color: #C41200; }
+	    &.kindling-yelp:hover span { background-color: #940f01; }
+	    &.kindling-tripadvisor span { background-color: #589442; }
+	    &.kindling-tripadvisor:hover span { background-color: #426f32; }
+	    &.kindling-rss span { background-color: #ff7900; }
+	    &.kindling-rss:hover span { background-color: #d46603; }
+	    &.kindling-email span { background-color: #13aff0; }
+	    &.kindling-email:hover span { background-color: #0f8dc2; }
 	}
 	
 	.minimal ul li {
@@ -537,26 +537,26 @@ body #wrap #searchform-overlay .container {
 		    }
 		}
 
-	    &.oceanwp-twitter:hover span { color: #46d4fe; border-color: #46d4fe; }
-	    &.oceanwp-facebook:hover span { color: #37589b; border-color: #37589b; }
-	    &.oceanwp-googleplus:hover span { color: #de5a49; border-color: #de5a49; }
-	    &.oceanwp-pinterest:hover span { color: #cb2027; border-color: #cb2027; }
-	    &.oceanwp-dribbble:hover span { color: #ea4c89; border-color: #ea4c89; }
-	    &.oceanwp-vk:hover span { color: #597BA5; border-color: #597BA5; }
-	    &.oceanwp-instagram:hover span { color: #3F729B; border-color: #3F729B; }
-	    &.oceanwp-linkedin:hover span { color: #3399CC; border-color: #3399CC; }
-	    &.oceanwp-tumblr:hover span { color: #2C4762; border-color: #2C4762; }
-	    &.oceanwp-github:hover span { color: #60b044; border-color: #60b044; }
-	    &.oceanwp-flickr:hover span { color: #fa4086; border-color: #fa4086; }
-	    &.oceanwp-skype:hover span { color: #00AFF0; border-color: #00AFF0; }
-	    &.oceanwp-youtube:hover span { color: #C4302B; border-color: #C4302B; }
-	    &.oceanwp-vimeo:hover span { color: #1ab7ea; border-color: #1ab7ea; }
-	    &.oceanwp-vine:hover span { color: #00bf8f; border-color: #00bf8f; }
-	    &.oceanwp-xing:hover span { color: #006464; border-color: #006464; }
-	    &.oceanwp-yelp:hover span { color: #C41200; border-color: #C41200; }
-	    &.oceanwp-tripadvisor:hover span { color: #589442; border-color: #589442; }
-	    &.oceanwp-rss:hover span { color: #ff7900; border-color: #ff7900; }
-	    &.oceanwp-email:hover span { color: #13aff0; border-color: #13aff0; }
+	    &.kindling-twitter:hover span { color: #46d4fe; border-color: #46d4fe; }
+	    &.kindling-facebook:hover span { color: #37589b; border-color: #37589b; }
+	    &.kindling-googleplus:hover span { color: #de5a49; border-color: #de5a49; }
+	    &.kindling-pinterest:hover span { color: #cb2027; border-color: #cb2027; }
+	    &.kindling-dribbble:hover span { color: #ea4c89; border-color: #ea4c89; }
+	    &.kindling-vk:hover span { color: #597BA5; border-color: #597BA5; }
+	    &.kindling-instagram:hover span { color: #3F729B; border-color: #3F729B; }
+	    &.kindling-linkedin:hover span { color: #3399CC; border-color: #3399CC; }
+	    &.kindling-tumblr:hover span { color: #2C4762; border-color: #2C4762; }
+	    &.kindling-github:hover span { color: #60b044; border-color: #60b044; }
+	    &.kindling-flickr:hover span { color: #fa4086; border-color: #fa4086; }
+	    &.kindling-skype:hover span { color: #00AFF0; border-color: #00AFF0; }
+	    &.kindling-youtube:hover span { color: #C4302B; border-color: #C4302B; }
+	    &.kindling-vimeo:hover span { color: #1ab7ea; border-color: #1ab7ea; }
+	    &.kindling-vine:hover span { color: #00bf8f; border-color: #00bf8f; }
+	    &.kindling-xing:hover span { color: #006464; border-color: #006464; }
+	    &.kindling-yelp:hover span { color: #C41200; border-color: #C41200; }
+	    &.kindling-tripadvisor:hover span { color: #589442; border-color: #589442; }
+	    &.kindling-rss:hover span { color: #ff7900; border-color: #ff7900; }
+	    &.kindling-email:hover span { color: #13aff0; border-color: #13aff0; }
 	}
 	
 	.dark ul li {
@@ -626,7 +626,7 @@ body #wrap #searchform-overlay .container {
 	}
 }
 
-.oceanwp-dropdown-top-border .sub-menu {
+.kindling-dropdown-top-border .sub-menu {
 	border: none;
 }
 
