@@ -154,7 +154,7 @@ class Kindling_Nav_Walker {
 	 * @return string Class name of new navwalker
 	 */
 	public function edit_walker() {
-		require_once OCEANWP_INC_DIR . 'walker/class-walker-edit-custom.php';
+		require_once KINDLING_INC_DIR . 'walker/class-walker-edit-custom.php';
 		return 'Walker_Nav_Menu_Edit_Custom';
 	}
 

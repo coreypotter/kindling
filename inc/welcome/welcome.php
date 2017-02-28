@@ -28,9 +28,9 @@ class OCEANWP_Welcome {
 		$this->dir             = $info['dir'];
 
 		// Actions
-		add_action( 'admin_menu', 				array( $this, 'admin_menus' ) );
-		add_action( 'load-themes.php',			array( $this, 'activation_admin_notice' ) );
-		add_action( 'admin_enqueue_scripts', 	array( $this, 'welcome_style' ) );
+		#add_action( 'admin_menu', 				array( $this, 'admin_menus' ) );
+		#add_action( 'load-themes.php',			array( $this, 'activation_admin_notice' ) );
+		#add_action( 'admin_enqueue_scripts', 	array( $this, 'welcome_style' ) );
 
 	}
 
