@@ -10,12 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'Kindling_Customizer' ) ) :
-
 	/**
 	 * The Kindling Customizer class
 	 */
 	class Kindling_Customizer {
-
+		/* Actions */
+	
 		/**
 		 * Setup class.
 		 *
@@ -29,7 +29,13 @@ if ( ! class_exists( 'Kindling_Customizer' ) ) :
 			add_action( 'after_setup_theme',					array( $this, 'register_options' ) );
 			add_action( 'customize_preview_init', 				array( $this, 'customize_preview_init' ) );
 			add_action( 'customize_controls_enqueue_scripts', 	array( $this, 'custom_customize_enqueue' ), 7 );
-
+			
+			/* Export & Import */
+			add_action( 'plugins_loaded', 'CEI_Core::load_plugin_textdomain' );
+			add_action( 'customize_controls_print_scripts', 'CEI_Core::controls_print_scripts' );
+			add_action( 'customize_controls_enqueue_scripts', 'CEI_Core::controls_enqueue_scripts' );
+			add_action( 'customize_register', 'CEI_Core::init', 999999 );
+			add_action( 'customize_register', 'CEI_Core::register' );
 		}
 
 		/**
@@ -53,6 +59,7 @@ if ( ! class_exists( 'Kindling_Customizer' ) ) :
 			require_once( $dir . 'range/class-control-range.php' );
 			require_once( $dir . 'sortable/class-control-sortable.php' );
 			require_once( $dir . 'typography/class-control-typography.php' );
+			require_once( $dir . 'exportimport/class-cei-core.php' );
 
 			// Register the controls
 			$wp_customize->register_control_type( 'Kindling_Customizer_Buttonset_Control' );
