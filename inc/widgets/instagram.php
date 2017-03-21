@@ -41,7 +41,7 @@ if ( ! class_exists( 'Kindling_Instagram_Widget' ) ) {
 	     * Upload the Javascripts for the media uploader
 	     */
 	    function kindling_instagram_js() {
-	        wp_enqueue_script( 'kindling-insta-admin-script', OCEANWP_INC_DIR_URI .'widgets/js/insta-admin.js', array( 'jquery' ) );
+	        wp_enqueue_script( 'kindling-insta-admin-script', KINDLING_INC_DIR_URI .'widgets/js/insta-admin.js', array( 'jquery' ) );
 
 	    }
 		

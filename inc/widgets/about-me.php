@@ -199,7 +199,7 @@ if ( ! class_exists( 'Kindling_About_Me_Widget' ) ) {
 		function form( $instance ) {
 			$instance = wp_parse_args( ( array ) $instance, array(
 				'title'       		=> esc_html__( 'About Me', 'kindling' ),
-				'avatar' 			=> OCEANWP_THEME_URI . '/assets/img/about-avatar.png',
+				'avatar' 			=> KINDLING_THEME_URI . '/assets/img/about-avatar.png',
 				'name'  			=> esc_html__( 'John Doe', 'kindling' ),
 				'text' 				=> 'Lorem ipsum ex vix illud nonummy novumtatio et his. At vix patrioque scribentur at fugitertissi ext scriptaset verterem molestiae.',
 				'social_style' 		=> 'color',

@@ -2,7 +2,7 @@
 Contributors: coreypotter, delster
 Requires at least: WordPress 4.5
 Tested up to: WordPress 4.7
-Version: 0.1
+Version: 0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, right-sidebar, footer-widgets, blog, news, custom-background, custom-menu, post-formats, sticky-post, editor-style, threaded-comments, translation-ready
@@ -101,6 +101,21 @@ License: CC0 Public Domain
 Source: https://pixabay.com/en/underwater-sunbeams-ocean-sea-698671/
 
 == Changelog ==
+
+### *2017.03.20* - 0.2
+* Integrated GitHub Updater 6.2.2.16
+
+### *2017.03.20* - 0.1.1
+* Customizer Export/Import
+* Bugfixes
+* Misc
+
+### *2017.02.16* - 0.1
+* Initial Re/De-brand
+* Plugin Nags: Elementor, TSEOF
+* WP-Updater Configured
+* TODO: Replace with GitHub-based Updater
+* TODO: Pull WIP completed features into Kindling
 
 ### *2017.02.16* - 0.1
 * Initial Re/De-brand
