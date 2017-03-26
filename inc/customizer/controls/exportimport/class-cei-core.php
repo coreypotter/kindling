@@ -197,6 +197,10 @@ final class CEI_Core {
 			}
 		}
 		
+		# Kindling: Grab the WP Core Custom CSS pane from Customizer
+		$customizer_css = wp_get_custom_css();
+		$data['options'][ 'kindling-custom-css-pane-contents' ] = $customizer_css;
+		
 		// Set the download headers.
 		header( 'Content-disposition: attachment; filename=' . $theme . '-export.dat' );
 		header( 'Content-Type: application/octet-stream; charset=' . $charset );
@@ -281,7 +285,24 @@ final class CEI_Core {
 		
 		// Import custom options.
 		if ( isset( $data['options'] ) ) {
+			# Custom CSS Panel Import
+			if ( function_exists( 'wp_update_custom_css_post' ) ) {
+				# Grab the incredibly long-named theme_mod this was saved to.
+				$old_css = $data['options'][ 'kindling-custom-css-pane-contents' ];
+				
+				/* This would append imported CSS to existing */
+				#$current_css = wp_get_custom_css();
+				#$return = wp_update_custom_css_post( $current_css . $old_css );
+				
+				/* This replaces existing CSS with imported (if import has CSS) */
+				$return = wp_update_custom_css_post( $old_css );
+
+				if ( ! is_wp_error( $return ) ) {
+					$data['options'][ 'kindling-custom-css-pane-contents' ] = null;
+				}
+			}
 			
+			# The rest
 			foreach ( $data['options'] as $option_key => $option_value ) {
 				
 				$option = new CEI_Option( $wp_customize, $option_key, array(
