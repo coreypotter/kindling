@@ -33,13 +33,6 @@ add_action( 'after_setup_theme', 'kindling_custom_css_migrate' );
 define( 'KINDLING_THEME_DIR', get_template_directory() );
 define( 'KINDLING_THEME_URI', get_template_directory_uri() );
 
-/**
-# Commenting out because this isn't configured yet and is crashing the install
-# Auto update
-require_once( KINDLING_THEME_DIR .'/inc/wp-updates.php' );
-new WPUpdatesThemeUpdater_1916( 'http:#wp-updates.com/api/2/theme', basename( get_template_directory() ) );
-*/
-
 class Kindling_Theme_Class {
 	/**
 	 * Main Theme Class Constructor
@@ -76,6 +69,10 @@ class Kindling_Theme_Class {
 			add_action( 'admin_enqueue_scripts', array( 'Kindling_Theme_Class', 'admin_scripts' ) );
 			# Outputs custom CSS for the admin
 			add_action( 'admin_head', array( 'Kindling_Theme_Class', 'admin_inline_css' ) );
+			# Hide GitHub Updater Plugin Settings Page
+			add_filter( 'github_updater_hide_settings', '__return_true' );
+			# Omit GitHub Updater "View Details" API Calls
+			add_filter( 'github_updater_run_at_scale', '__return_true' );
 
 		/** Non Admin actions **/
 		} else {
@@ -182,7 +179,7 @@ class Kindling_Theme_Class {
 	public static function classes() {
 		# Admin only classes
 		if ( is_admin() ) {
-			# Recommend plugins
+			# Plugin Nags
 			require_once( KINDLING_INC_DIR .'plugins/class-tgm-plugin-activation.php' );
 			require_once( KINDLING_INC_DIR .'plugins/tgm-plugin-activation.php' );
 		}
@@ -195,9 +192,6 @@ class Kindling_Theme_Class {
 
 		# Customizer class
 		require_once( KINDLING_INC_DIR .'customizer/customizer.php' );
-
-		# Load the Updater class for kindling extensions
-		require_once( KINDLING_INC_DIR .'updater.php' );
 	}
 
 	/**

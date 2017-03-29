@@ -62,7 +62,7 @@ if ( ! class_exists( 'Kindling_Footer_Bottom_Customizer' ) ) :
 			 */
 			$wp_customize->add_setting( 'kindling_footer_copyright_text', array(
 				'transport'           	=> 'postMessage',
-				'default'           	=> 'Copyright - Kindling Theme by Nick Powered by <a href="https://wordpress.org/" title="WordPress" target="_blank">WordPress</a>',
+				'default'           	=> 'Copyright - Kindling Theme by <a href="https://github.com/coreypotter/" target="_blank">Corey Potter</a> | Powered by <a href="https://wordpress.org/" title="WordPress" target="_blank">WordPress</a>',
 				'sanitize_callback' 	=> false,
 			) );
 
