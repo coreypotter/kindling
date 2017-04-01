@@ -158,19 +158,19 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_logo_height', array(
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_logo_height', array(
 				'label'	   				=> esc_html__( 'Logo Max Height (px)', 'kindling' ),
-				'type' 					=> 'number',
 				'section'  				=> 'kindling_header_general',
 				'settings' 				=> 'kindling_logo_height',
 				'priority' 				=> 10,
 				'active_callback' 		=> 'kindling_cac_has_custom_logo',
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
-			        'max'   => 100,
+			        'max'   => 300,
+					'step'  => 1,
 			    ),
 			) ) );
-
+			
 			/**
 			 * Header Border Bottom
 			 */
