@@ -31,46 +31,35 @@ $wrap_classes = array( 'clr' );
 if ( '1' == $columns ) {
 	$wrap_classes[] = 'single-col-footer';
 }
-$wrap_classes = implode( ' ', $wrap_classes ); ?>
+$wrap_classes = implode( ' ', $wrap_classes );
 
-<?php do_action( 'kindling_before_footer_widgets' ); ?>
+do_action( 'kindling_before_footer_widgets' );
+
+# Check if there is page for the footer
+if ( $get_page ) : ?>
 
 <div id="footer-widgets" class="kindling-row <?php echo $wrap_classes; ?>">
-
 	<?php do_action( 'kindling_before_footer_widgets_inner' ); ?>
-
 	<div class="container">
-
         <?php
-        # Check if there is page for the footer
-        if ( $get_page ) :
-
 		    # If Elementor
 		    if ( class_exists( 'Elementor\Plugin' ) && $elementor ) {
-
 				echo Plugin::instance()->frontend->get_builder_content_for_display( $get_id );
-
 	    	}
 
 	    	# If Beaver Builder
 		    else if ( class_exists( 'FLBuilder' ) ) {
-
 				echo do_shortcode( '[fl_builder_insert_layout id="' . $get_id . '"]' );
-
 	    	}
 
 	    	# Else
 	    	else {
-
 	        	# Display page content
-	        	echo do_shortcode( $get_page );
-
+				echo do_shortcode( $get_page );
 	        }
 
-		# Display widgets
-		else :
 /*
-			# Footer box 1 ?>
+			# Footer box 1
 			<div class="footer-box <?php echo $grid_class; ?> col col-1">
 				<?php dynamic_sidebar( 'footer-one' ); ?>
 			</div><!-- .footer-one-box -->
@@ -97,12 +86,11 @@ $wrap_classes = implode( ' ', $wrap_classes ); ?>
 				</div><!-- .footer-box -->
 			<?php endif;
 */
-		endif; ?>
-
+?>
 	</div><!-- .container -->
-
 	<?php do_action( 'kindling_after_footer_widgets_inner' ); ?>
+	</div><!-- #footer-widgets -->
 
-</div><!-- #footer-widgets -->
-
-<?php do_action( 'kindling_after_footer_widgets' ); ?>
+<? 
+endif;
+do_action( 'kindling_after_footer_widgets' ); ?>

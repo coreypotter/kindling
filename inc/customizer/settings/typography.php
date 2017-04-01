@@ -103,16 +103,16 @@ if ( ! class_exists( 'Kindling_Typography_Customizer' ) ) :
 						'line-height'	 	=> '1.8',
 					),
 				),
-				'top_menu' 					=> array(
-					'label' 				=> esc_html__( 'Top Bar', 'kindling' ),
-					'target' 				=> '#top-bar-content,#top-bar-social-alt',
-					'exclude' 				=> array( 'font-color' ),
-					'defaults' 				=> array(
-						'font-size' 		=> '12',
-						'line-height' 		=> '1.8',
-					),
-					'active_callback' 		=> 'kindling_cac_has_topbar',
-				),
+#				'top_menu' 					=> array(
+#					'label' 				=> esc_html__( 'Top Bar', 'kindling' ),
+#					'target' 				=> '#top-bar-content,#top-bar-social-alt',
+#					'exclude' 				=> array( 'font-color' ),
+#					'defaults' 				=> array(
+#						'font-size' 		=> '12',
+#						'line-height' 		=> '1.8',
+#					),
+#					'active_callback' 		=> 'kindling_cac_has_topbar',
+#				),
 				'menu' 						=> array(
 					'label' 				=> esc_html__( 'Main Menu', 'kindling' ),
 					'target' 				=> '#site-navigation-wrap .dropdown-menu > li > a,#site-header.full_screen-header .fs-dropdown-menu > li > a,#site-header.top-header #site-navigation-wrap .dropdown-menu > li > a,#site-header.center-header #site-navigation-wrap .dropdown-menu > li > a,#kindling-mobile-menu-icon a',
