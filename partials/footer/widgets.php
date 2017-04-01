@@ -34,9 +34,7 @@ if ( '1' == $columns ) {
 $wrap_classes = implode( ' ', $wrap_classes );
 
 do_action( 'kindling_before_footer_widgets' );
-
-# Check if there is page for the footer
-if ( $get_page ) : ?>
+?>
 
 <div id="footer-widgets" class="kindling-row <?php echo $wrap_classes; ?>">
 	<?php do_action( 'kindling_before_footer_widgets_inner' ); ?>
@@ -57,40 +55,9 @@ if ( $get_page ) : ?>
 	        	# Display page content
 				echo do_shortcode( $get_page );
 	        }
-
-/*
-			# Footer box 1
-			<div class="footer-box <?php echo $grid_class; ?> col col-1">
-				<?php dynamic_sidebar( 'footer-one' ); ?>
-			</div><!-- .footer-one-box -->
-
-			<?php
-			# Footer box 2
-			if ( $columns > '1' ) : ?>
-				<div class="footer-box <?php echo $grid_class; ?> col col-2">
-					<?php dynamic_sidebar( 'footer-two' ); ?>
-				</div><!-- .footer-one-box -->
-			<?php endif;
-			
-			# Footer box 3
-			if ( $columns > '2' ) : ?>
-				<div class="footer-box <?php echo $grid_class; ?> col col-3 ">
-					<?php dynamic_sidebar( 'footer-three' ); ?>
-				</div><!-- .footer-one-box -->
-			<?php endif;
-
-			# Footer box 4
-			if ( $columns > '3' ) : ?>
-				<div class="footer-box <?php echo $grid_class; ?> col col-4">
-					<?php dynamic_sidebar( 'footer-four' ); ?>
-				</div><!-- .footer-box -->
-			<?php endif;
-*/
 ?>
 	</div><!-- .container -->
 	<?php do_action( 'kindling_after_footer_widgets_inner' ); ?>
 	</div><!-- #footer-widgets -->
 
-<? 
-endif;
-do_action( 'kindling_after_footer_widgets' ); ?>
+<? do_action( 'kindling_after_footer_widgets' ); ?>

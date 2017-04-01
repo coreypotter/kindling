@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
         <?php
         # Display the footer widgets if enabled
-        if ( kindling_display_footer_widgets() ) {
+        if ( kindling_display_footer_widgets() && kindling_footer_page_id() ) {
         	get_template_part( 'partials/footer/widgets' );
         }
 
