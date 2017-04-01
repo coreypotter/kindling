@@ -64,11 +64,11 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				'priority' 				=> 10,
 				'choices' 				=> array(
 					'minimal' 		=> esc_html__( 'Logo Left', 'kindling' ),
-					'transparent' 	=> esc_html__( 'Transparent', 'kindling' ),
+#					'transparent' 	=> esc_html__( 'Transparent', 'kindling' ),
 					'top'			=> esc_html__( 'Top Menu', 'kindling' ),
 					'full_screen'	=> esc_html__( 'Full Screen', 'kindling' ),
 					'center'		=> esc_html__( 'Center', 'kindling' ),
-					'custom'		=> esc_html__( 'Custom Header', 'kindling' ),
+#					'custom'		=> esc_html__( 'Custom Header', 'kindling' ),
 				),
 			) ) );
 
@@ -112,7 +112,6 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			 * Header Height
 			 */
 			$wp_customize->add_setting( 'kindling_header_height', array(
-				'transport' 			=> 'postMessage',
 				'default'           	=> '74',
 				'sanitize_callback' 	=> false,
 			) );
@@ -156,7 +155,6 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			 * Header Logo Max Height
 			 */
 			$wp_customize->add_setting( 'kindling_logo_height', array(
-				'transport' 			=> 'postMessage',
 				'sanitize_callback' 	=> false,
 			) );
 
@@ -2016,9 +2014,21 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				$css .= '#site-header.full_screen-header .fs-dropdown-menu>li.search-toggle-li input:focus{border-color:'. $full_screen_header_search_focus_border_color .';}';
 			}
 
-			// Header logo max height
-			if ( ! empty( $logo_height ) ) {
-				$css .= '#site-logo #site-logo-inner a img{max-height:'. $logo_height .'px;}';
+			# Header logo max height
+			if (  (! empty( $logo_height )) && ( $logo_height < $header_height ) ) {
+				# If logo height is specified and less than header_height, set it:
+					if ( 'center' != $header_style ) {
+						$css .= '#site-logo #site-logo-inner a img{max-height:'. $logo_height .'px;}';
+					} else {
+						$css .= '#site-header.center-header #site-navigation .middle-site-logo a img{max-height:'. $logo_height .'px;}';
+					}
+			} else {
+				# If logo height is empty, or larger than menu, set it to menu:
+					if ( 'center' != $header_style ) {
+						$css .= '#site-logo #site-logo-inner a img{max-height:'. $header_height .'px;}';
+					} else {
+						$css .= '#site-header.center-header #site-navigation .middle-site-logo a img{max-height:'. $header_height .'px;}';
+					}
 			}
 
 			// Header logo color
@@ -2264,7 +2274,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			# Top Menu Header Menu Horizontal Centered
 			$tmhmhc = get_theme_mod( 'kindling_top_header_menu_centered', false );
 			if ( $tmhmhc ) {
-				$css .= '#site-header-inner{display:flex;flex-direction:row nowrap;align-items:center;justify-content:flex-end}#site-header-inner .left{flex-grow:1}#site-header.top-header #site-navigation-wrap{left:21px;text-align:center}#site-navigation-wrap .dropdown-menu>li{float:none!important;display:inline-block}';
+				$css .= '#site-header-inner{display:flex;flex-flow:row nowrap;align-items:center;justify-content:space-between}#site-header-inner .left{flex-grow:1}#site-header.top-header #site-navigation-wrap{left:21px;text-align:center}#site-navigation-wrap .dropdown-menu>li{float:none!important;display:inline-block}';
 			}
 			
 			// Return CSS
