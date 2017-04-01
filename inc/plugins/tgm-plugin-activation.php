@@ -15,13 +15,6 @@ function fyp_register_required_plugins() {
 			'required'          => false,
 			'force_activation'  => false,
 		),
-		# The SEO Framework
-		array(
-			'name'              => 'The SEO Framework',
-			'slug'              => 'autodescription',
-			'required'          => false,
-			'force_activation'  => false,
-		),
 		# GitHub Updater
 		array(
 			'name'              => 'Kindling Updater',
