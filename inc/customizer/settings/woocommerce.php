@@ -20,8 +20,8 @@ if ( ! class_exists( 'Kindling_WooCommerce_Customizer' ) ) :
 		 */
 		public function __construct() {
 
-			add_action( 'customize_register', 	array( $this, 'customizer_options' ) );
-			add_filter( 'kindling_head_css', 		array( $this, 'head_css' ) );
+			add_action( 'customize_register', array( $this, 'customizer_options' ) );
+			add_filter( 'kindling_head_css',  array( $this, 'head_css' ) );
 
 		}
 
@@ -38,7 +38,7 @@ if ( ! class_exists( 'Kindling_WooCommerce_Customizer' ) ) :
 			$panel = 'kindling_woocommerce_panel';
 			$wp_customize->add_panel( $panel , array(
 				'title' 			=> esc_html__( 'WooCommerce', 'kindling' ),
-				'priority' 			=> 210,
+				'priority' 			=> 19,
 			) );
 
 			/**

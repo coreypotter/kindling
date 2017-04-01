@@ -22,7 +22,8 @@ $get_id 	= get_theme_mod( 'kindling_footer_widgets_page_id' );
 $elementor 	= get_post_meta( $get_id, '_elementor_edit_mode', true );
 
 # Get footer widgets columns
-$columns    = get_theme_mod( 'kindling_footer_widgets_columns', '4' );
+#$columns    = get_theme_mod( 'kindling_footer_widgets_columns', '4' );
+$columns = 1;
 $grid_class = kindling_grid_class( $columns );
 
 # Classes
@@ -68,7 +69,7 @@ $wrap_classes = implode( ' ', $wrap_classes ); ?>
 
 		# Display widgets
 		else :
-
+/*
 			# Footer box 1 ?>
 			<div class="footer-box <?php echo $grid_class; ?> col col-1">
 				<?php dynamic_sidebar( 'footer-one' ); ?>
@@ -95,7 +96,7 @@ $wrap_classes = implode( ' ', $wrap_classes ); ?>
 					<?php dynamic_sidebar( 'footer-four' ); ?>
 				</div><!-- .footer-box -->
 			<?php endif;
-
+*/
 		endif; ?>
 
 	</div><!-- .container -->

@@ -19,8 +19,8 @@ if ( ! class_exists( 'Kindling_Blog_Customizer' ) ) :
 		 * @since 1.0
 		 */
 		public function __construct() {
-
-			add_action( 'customize_register', 	array( $this, 'customizer_options' ) );
+			add_action( 'customize_register', array( $this, 'customizer_options' ) );
+			add_filter( 'kindling_blog_css',  array( $this, 'blog_css' ) );
 
 		}
 
@@ -37,7 +37,7 @@ if ( ! class_exists( 'Kindling_Blog_Customizer' ) ) :
 			$panel = 'kindling_blog';
 			$wp_customize->add_panel( $panel , array(
 				'title' 			=> esc_html__( 'Blog', 'kindling' ),
-				'priority' 			=> 210,
+				'priority' 			=> 4,
 			) );
 
 			/**
@@ -452,8 +452,391 @@ if ( ! class_exists( 'Kindling_Blog_Customizer' ) ) :
 			    ),
 			) ) );
 
+			/**
+			 * Section
+			 */
+			$wp_customize->add_section( 'kindling_general_forms' , array(
+				'title' 			=> esc_html__( 'Comments', 'kindling' ),
+				'priority' 			=> 10,
+				'panel' 			=> $panel,
+			) );
+
+			/**
+			 * Forms Label Color
+			 */
+			$wp_customize->add_setting( 'kindling_label_color', array(
+				'transport' 			=> 'postMessage',
+				'default'           	=> '#929292',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_label_color', array(
+				'label'	   				=> esc_html__( 'Label Color', 'kindling' ),
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_label_color',
+				'priority' 				=> 10,
+			) ) );
+
+			/**
+			 * Forms Padding
+			 */
+			$wp_customize->add_setting( 'kindling_input_padding', array(
+				'transport' 			=> 'postMessage',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_input_padding', array(
+				'label'	   				=> esc_html__( 'Padding (px)', 'kindling' ),
+				'description'	   		=> esc_html__( 'Format: top right bottom left.', 'kindling' ),
+				'type' 					=> 'text',
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_padding',
+				'priority' 				=> 10,
+			) ) );
+
+			/**
+			 * Forms Font Size
+			 */
+			$wp_customize->add_setting( 'kindling_input_font_size', array(
+				'transport' 			=> 'postMessage',
+				'default' 				=> '14',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_input_font_size', array(
+				'label'	   				=> esc_html__( 'Font Size (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_font_size',
+				'priority' 				=> 10,
+			    'input_attrs' 			=> array(
+			        'min'   => 0,
+			        'max'   => 100,
+			        'step'  => 1,
+			    ),
+			) ) );
+
+			/**
+			 * Forms Border Width
+			 */
+			$wp_customize->add_setting( 'kindling_input_border_width', array(
+				'transport' 			=> 'postMessage',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_input_border_width', array(
+				'label'	   				=> esc_html__( 'Border Width (px)', 'kindling' ),
+				'description'	   		=> esc_html__( 'Format: top right bottom left.', 'kindling' ),
+				'type' 					=> 'text',
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_border_width',
+				'priority' 				=> 10,
+			) ) );
+
+			/**
+			 * Forms Border Radius
+			 */
+			$wp_customize->add_setting( 'kindling_input_border_radius', array(
+				'transport' 			=> 'postMessage',
+				'default' 				=> '3',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_input_border_radius', array(
+				'label'	   				=> esc_html__( 'Border Radius (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_border_radius',
+				'priority' 				=> 10,
+			    'input_attrs' 			=> array(
+			        'min'   => 0,
+			        'max'   => 100,
+			        'step'  => 1,
+			    ),
+			) ) );
+
+			/**
+			 * Forms Border Color
+			 */
+			$wp_customize->add_setting( 'kindling_input_border_color', array(
+				'transport' 			=> 'postMessage',
+				'default'           	=> '#dddddd',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_input_border_color', array(
+				'label'	   				=> esc_html__( 'Border Color', 'kindling' ),
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_border_color',
+				'priority' 				=> 10,
+			) ) );
+
+			/**
+			 * Forms Border Color Focus
+			 */
+			$wp_customize->add_setting( 'kindling_input_border_color_focus', array(
+				'transport' 			=> 'postMessage',
+				'default'           	=> '#bbbbbb',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_input_border_color_focus', array(
+				'label'	   				=> esc_html__( 'Border Color: Focus', 'kindling' ),
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_border_color_focus',
+				'priority' 				=> 10,
+			) ) );
+
+			/**
+			 * Forms Background Color
+			 */
+			$wp_customize->add_setting( 'kindling_input_background', array(
+				'transport' 			=> 'postMessage',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_input_background', array(
+				'label'	   				=> esc_html__( 'Background Color', 'kindling' ),
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_background',
+				'priority' 				=> 10,
+			) ) );
+
+			/**
+			 * Forms Color
+			 */
+			$wp_customize->add_setting( 'kindling_input_color', array(
+				'transport' 			=> 'postMessage',
+				'default' 				=> '#333333',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_input_color', array(
+				'label'	   				=> esc_html__( 'Color', 'kindling' ),
+				'section'  				=> 'kindling_general_forms',
+				'settings' 				=> 'kindling_input_color',
+				'priority' 				=> 10,
+			) ) );
+
+			/**
+			 * Section
+			 */
+			$wp_customize->add_section( 'kindling_general_theme_button' , array(
+				'title' 			=> esc_html__( 'Buttons', 'kindling' ),
+				'priority' 			=> 10,
+				'panel' 			=> $panel,
+			) );
+
+			/**
+			 * Theme Button
+			 */
+			$wp_customize->add_setting( 'kindling_theme_button_padding', array(
+				'transport' 			=> 'postMessage',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_theme_button_padding', array(
+				'label'	   				=> esc_html__( 'Padding (px)', 'kindling' ),
+				'description'	   		=> esc_html__( 'Format: top right bottom left.', 'kindling' ),
+				'type' 					=> 'text',
+				'section'  				=> 'kindling_general_theme_button',
+				'settings' 				=> 'kindling_theme_button_padding',
+				'priority' 				=> 10,
+			) ) );
+
+			/**
+			 * Theme Button Border Radius
+			 */
+			$wp_customize->add_setting( 'kindling_theme_button_border_radius', array(
+				'transport' 			=> 'postMessage',
+				'default' 				=> '0',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_theme_button_border_radius', array(
+				'label'	   				=> esc_html__( 'Border Radius (px)', 'kindling' ),
+				'section'  				=> 'kindling_general_theme_button',
+				'settings' 				=> 'kindling_theme_button_border_radius',
+				'priority' 				=> 10,
+			    'input_attrs' 			=> array(
+			        'min'   => 0,
+			        'max'   => 100,
+			        'step'  => 1,
+			    ),
+			) ) );
+
+			/**
+			 * Theme Button Background Color
+			 */
+			$wp_customize->add_setting( 'kindling_theme_button_bg', array(
+				'transport' 			=> 'postMessage',
+				'default'           	=> '#13aff0',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_theme_button_bg', array(
+				'label'	   				=> esc_html__( 'Background Color', 'kindling' ),
+				'section'  				=> 'kindling_general_theme_button',
+				'settings' 				=> 'kindling_theme_button_bg',
+				'priority' 				=> 10,
+			) ) );
+
+			/**
+			 * Theme Button Background Color Hover
+			 */
+			$wp_customize->add_setting( 'kindling_theme_button_hover_bg', array(
+				'transport' 			=> 'postMessage',
+				'default'           	=> '#0b7cac',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_theme_button_hover_bg', array(
+				'label'	   				=> esc_html__( 'Background Color: Hover', 'kindling' ),
+				'section'  				=> 'kindling_general_theme_button',
+				'settings' 				=> 'kindling_theme_button_hover_bg',
+				'priority' 				=> 10,
+			) ) );
+
+			/**
+			 * Theme Button Color
+			 */
+			$wp_customize->add_setting( 'kindling_theme_button_color', array(
+				'transport' 			=> 'postMessage',
+				'default'           	=> '#ffffff',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_theme_button_color', array(
+				'label'	   				=> esc_html__( 'Color', 'kindling' ),
+				'section'  				=> 'kindling_general_theme_button',
+				'settings' 				=> 'kindling_theme_button_color',
+				'priority' 				=> 10,
+			) ) );
+
+			/**
+			 * Theme Button Color Hover
+			 */
+			$wp_customize->add_setting( 'kindling_theme_button_hover_color', array(
+				'transport' 			=> 'postMessage',
+				'default'           	=> '#ffffff',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_theme_button_hover_color', array(
+				'label'	   				=> esc_html__( 'Color: Hover', 'kindling' ),
+				'section'  				=> 'kindling_general_theme_button',
+				'settings' 				=> 'kindling_theme_button_hover_color',
+				'priority' 				=> 10,
+			) ) );			
+			
 		}
 
+		/**
+		 * Get CSS
+		 *
+		 */
+		public function blog_css( $output ) {
+			$label_color 					= get_theme_mod( 'kindling_label_color', '#929292' );
+			$input_padding 					= get_theme_mod( 'kindling_input_padding' );
+			$input_font_size 				= get_theme_mod( 'kindling_input_font_size', '14' );
+			$input_border_width 			= get_theme_mod( 'kindling_input_border_width' );
+			$input_border_radius 			= get_theme_mod( 'kindling_input_border_radius', '3' );
+			$input_border_color 			= get_theme_mod( 'kindling_input_border_color', '#dddddd' );
+			$input_border_color_focus 		= get_theme_mod( 'kindling_input_border_color_focus', '#bbbbbb' );
+			$input_background 				= get_theme_mod( 'kindling_input_background' );
+			$input_color 					= get_theme_mod( 'kindling_input_color', '#333333' );
+			$theme_button_padding 			= get_theme_mod( 'kindling_theme_button_padding' );
+			$theme_button_border_radius 	= get_theme_mod( 'kindling_theme_button_border_radius', '0' );
+			$theme_button_bg 				= get_theme_mod( 'kindling_theme_button_bg', '#13aff0' );
+			$theme_button_hover_bg 			= get_theme_mod( 'kindling_theme_button_hover_bg', '#0b7cac' );
+			$theme_button_color 			= get_theme_mod( 'kindling_theme_button_color', '#ffffff' );
+			$theme_button_hover_color 		= get_theme_mod( 'kindling_theme_button_hover_color', '#ffffff' );
+
+			# Define CSS var
+			$css = '';
+
+
+			// Label color
+			if ( ! empty( $label_color ) && '#929292' != $label_color ) {
+				$css .= 'label{color:'. $label_color .';}';
+			}
+
+			// Input padding
+			if ( ! empty( $input_padding ) ) {
+				$css .= '.site-content input[type="text"],.site-content input[type="password"],.site-content input[type="email"],.site-content input[type="tel"],.site-content input[type="url"],.site-content input[type="search"],.site-content textarea{padding:'. $input_padding .';}';
+			}
+
+			// Input font size
+			if ( ! empty( $input_font_size ) && '14' != $input_font_size ) {
+				$css .= '.site-content input[type="text"],.site-content input[type="password"],.site-content input[type="email"],.site-content input[type="tel"],.site-content input[type="url"],.site-content input[type="search"],.site-content textarea{font-size:'. $input_font_size .'px;}';
+			}
+
+			// Input border width
+			if ( ! empty( $input_border_width ) ) {
+				$css .= '.site-content input[type="text"],.site-content input[type="password"],.site-content input[type="email"],.site-content input[type="tel"],.site-content input[type="url"],.site-content input[type="search"],.site-content textarea{border-width:'. $input_border_width .';}';
+			}
+
+			// Input border radius
+			if ( ! empty( $input_border_radius ) && '3' != $input_border_radius ) {
+				$css .= '.site-content input[type="text"],.site-content input[type="password"],.site-content input[type="email"],.site-content input[type="tel"],.site-content input[type="url"],.site-content input[type="search"],.site-content textarea{border-radius:'. $input_border_radius .'px;}';
+			}
+
+			// Input border radius
+			if ( ! empty( $input_border_color ) && '3' != $input_border_color ) {
+				$css .= '.site-content input[type="text"],.site-content input[type="password"],.site-content input[type="email"],.site-content input[type="tel"],.site-content input[type="url"],.site-content input[type="search"],.site-content textarea,.select2-container .select2-choice{border-color:'. $input_border_color .';}';
+			}
+
+			// Input border radius
+			if ( ! empty( $input_border_color_focus ) && '3' != $input_border_color_focus ) {
+				$css .= '.site-content input[type="text"]:focus,.site-content input[type="password"]:focus,.site-content input[type="email"]:focus,.site-content input[type="tel"]:focus,.site-content input[type="url"]:focus,.site-content input[type="search"]:focus,.site-content textarea:focus,.select2-drop-active,.select2-dropdown-open.select2-drop-above .select2-choice,.select2-dropdown-open.select2-drop-above .select2-choices,.select2-drop.select2-drop-above.select2-drop-active,.select2-container-active .select2-choice,.select2-container-active .select2-choices{border-color:'. $input_border_color_focus .';}';
+			}
+
+			// Input border radius
+			if ( ! empty( $input_background ) ) {
+				$css .= '.site-content input[type="text"],.site-content input[type="password"],.site-content input[type="email"],.site-content input[type="tel"],.site-content input[type="url"],.site-content input[type="search"],.site-content textarea{background-color:'. $input_background .';}';
+			}
+
+			// Input border radius
+			if ( ! empty( $input_color ) && '#333333' != $input_color ) {
+				$css .= '.site-content input[type="text"],.site-content input[type="password"],.site-content input[type="email"],.site-content input[type="tel"],.site-content input[type="url"],.site-content input[type="search"],.site-content textarea{color:'. $input_color .';}';
+			}
+
+			// Theme button padding
+			if ( ! empty( $theme_button_padding ) ) {
+				$css .= '.theme-button,input[type="submit"],button{padding:'. $theme_button_padding .';}';
+			}
+
+			// Theme button border radius
+			if ( ! empty( $theme_button_border_radius ) && '0' != $theme_button_border_radius ) {
+				$css .= '.theme-button,input[type="submit"],button{border-radius:'. $theme_button_border_radius .'px;}';
+			}
+
+			// Theme button background color
+			if ( ! empty( $theme_button_bg ) && '#13aff0' != $theme_button_bg ) {
+				$css .= '.theme-button,input[type="submit"],button{background-color:'. $theme_button_bg .';}';
+			}
+
+			// Theme button background color
+			if ( ! empty( $theme_button_hover_bg ) && '#0b7cac' != $theme_button_hover_bg ) {
+				$css .= '.theme-button:hover,input[type="submit"]:hover,button:hover{background-color:'. $theme_button_hover_bg .';}';
+			}
+
+			// Theme button background color
+			if ( ! empty( $theme_button_color ) && '#ffffff' != $theme_button_color ) {
+				$css .= '.theme-button,input[type="submit"],button{color:'. $theme_button_color .';}';
+			}
+
+			// Theme button background color
+			if ( ! empty( $theme_button_hover_color ) && '#ffffff' != $theme_button_hover_color ) {
+				$css .= '.theme-button:hover,input[type="submit"]:hover,button:hover{color:'. $theme_button_hover_color .';}';
+			}
+			
+			# Build return CSS
+			if ( ! empty( $css ) ) {
+				$output .= '/* General CSS */'. $css;
+			}
+
+			# Return output CSS
+			return $output;			
+		}
 	}
 
 endif;

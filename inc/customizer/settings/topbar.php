@@ -19,10 +19,8 @@ if ( ! class_exists( 'Kindling_Top_Bar_Customizer' ) ) :
 		 * @since 1.0
 		 */
 		public function __construct() {
-
-			add_action( 'customize_register', 	array( $this, 'customizer_options' ) );
-			add_filter( 'kindling_head_css', 		array( $this, 'head_css' ) );
-
+			add_action( 'customize_register', array( $this, 'customizer_options' ) );
+			add_filter( 'kindling_head_css',  array( $this, 'head_css' ) );
 		}
 
 		/**

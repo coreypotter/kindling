@@ -19,10 +19,8 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 		 * @since 1.0
 		 */
 		public function __construct() {
-
-			add_action( 'customize_register', 	array( $this, 'customizer_options' ) );
-			add_filter( 'kindling_head_css', 		array( $this, 'head_css' ) );
-
+			add_action( 'customize_register', array( $this, 'customizer_options' ) );
+			add_filter( 'kindling_head_css',  array( $this, 'head_css' ) );
 		}
 
 		/**
@@ -38,7 +36,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			$panel = 'kindling_header_panel';
 			$wp_customize->add_panel( $panel , array(
 				'title' 			=> esc_html__( 'Header', 'kindling' ),
-				'priority' 			=> 210,
+				'priority' 			=> 2,
 			) );
 
 			/**
@@ -155,7 +153,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			) ) );
 
 			/**
-			 * Header Logo Height
+			 * Header Logo Max Height
 			 */
 			$wp_customize->add_setting( 'kindling_logo_height', array(
 				'transport' 			=> 'postMessage',
@@ -163,8 +161,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			) );
 
 			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_logo_height', array(
-				'label'	   				=> esc_html__( 'Logo Height (px)', 'kindling' ),
-				'description' 			=> esc_html__( 'Used for retina.', 'kindling' ),
+				'label'	   				=> esc_html__( 'Logo Max Height (px)', 'kindling' ),
 				'type' 					=> 'number',
 				'section'  				=> 'kindling_header_general',
 				'settings' 				=> 'kindling_logo_height',
@@ -176,27 +173,6 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			    ),
 			) ) );
 
-			/**
-			 * Header Logo Max Width
-			 */
-			$wp_customize->add_setting( 'kindling_logo_max_width', array(
-				'transport' 			=> 'postMessage',
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_logo_max_width', array(
-				'label'	   				=> esc_html__( 'Logo Max Width (px)', 'kindling' ),
-				'type' 					=> 'number',
-				'section'  				=> 'kindling_header_general',
-				'settings' 				=> 'kindling_logo_max_width',
-				'priority' 				=> 10,
-				'active_callback' 		=> 'kindling_cac_has_custom_logo',
-			    'input_attrs' 			=> array(
-			        'min'   => 10,
-			        'max'   => 500,
-			    ),
-			) ) );
-			
 			/**
 			 * Header Border Bottom
 			 */
@@ -1868,7 +1844,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			$full_screen_header_search_border_color 		= get_theme_mod( 'kindling_full_screen_header_search_border_color', '#666666' );
 			$full_screen_header_search_hover_border_color 	= get_theme_mod( 'kindling_full_screen_header_search_hover_border_color', '#ffffff' );
 			$full_screen_header_search_focus_border_color 	= get_theme_mod( 'kindling_full_screen_header_search_focus_border_color', '#ffffff' );
-			$logo_max_width									= get_theme_mod( 'kindling_logo_max_width' );
+			$logo_height									= get_theme_mod( 'kindling_logo_height' );
 			$logo_color 									= get_theme_mod( 'kindling_logo_color', '#333333' );
 			$logo_hover_color 								= get_theme_mod( 'kindling_logo_hover_color', '#13aff0' );
 			$search_dropdown_input_bg 						= get_theme_mod( 'kindling_search_dropdown_input_background' );
@@ -2040,9 +2016,9 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				$css .= '#site-header.full_screen-header .fs-dropdown-menu>li.search-toggle-li input:focus{border-color:'. $full_screen_header_search_focus_border_color .';}';
 			}
 
-			// Header logo max width
-			if ( ! empty( $logo_max_width ) ) {
-				$css .= '#site-logo #site-logo-inner a img{max-width:'. $logo_max_width .'px;}';
+			// Header logo max height
+			if ( ! empty( $logo_height ) ) {
+				$css .= '#site-logo #site-logo-inner a img{max-height:'. $logo_height .'px;}';
 			}
 
 			// Header logo color

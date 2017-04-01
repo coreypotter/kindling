@@ -55,13 +55,6 @@ $full_screen_logo 	= get_theme_mod( 'kindling_full_screen_header_logo' ); ?>
 
 	<?php do_action( 'kindling_after_logo_inner' ); ?>
 
-	<?php
-	# Site description
-	if ( 'top' == get_theme_mod( 'kindling_header_style', 'minimal' )
-		&& '' != get_bloginfo( 'description' ) ) { ?>
-		<div id="site-description"><h2><?php echo bloginfo( 'description' ); ?></h2></div><!-- #site-logo-inner -->
-	<?php } ?>
-
 </div><!-- #site-logo -->
 
 <?php do_action( 'kindling_after_logo' ); ?>

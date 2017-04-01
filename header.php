@@ -25,9 +25,9 @@
 
 			<?php 
 			# Top Bar
-			if ( kindling_display_topbar() ) {
-				get_template_part( 'partials/topbar/layout' );
-			}
+#			if ( kindling_display_topbar() ) {
+#				get_template_part( 'partials/topbar/layout' );
+#			}
 
 			# Header
 			if ( kindling_display_header() ) {

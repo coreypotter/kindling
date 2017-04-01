@@ -19,16 +19,14 @@ if ( ! class_exists( 'Kindling_Typography_Customizer' ) ) :
 		 * @since 1.0
 		 */
 		public function __construct() {
-
-			add_action( 'customize_register', 		array( $this, 'customizer_options' ) );
-			add_action( 'customize_preview_init', 	array( $this, 'customize_preview_init' ) );
-			add_action( 'wp_enqueue_scripts', 		array( $this, 'load_fonts' ) );
-		
+			add_action( 'customize_register',     array( $this, 'customizer_options' ) );
+			add_action( 'customize_preview_init', array( $this, 'customize_preview_init' ) );
+			add_action( 'wp_enqueue_scripts',     array( $this, 'load_fonts' ) );
 			// CSS output
 			if ( is_customize_preview() ) {
-				add_action( 'wp_head', 				array( $this, 'live_preview_styles' ), 999 );
+				add_action( 'wp_head',            array( $this, 'live_preview_styles' ), 999 );
 			} else {
-				add_filter( 'kindling_head_css', 		array( $this, 'head_css' ), 99 );
+				add_filter( 'kindling_head_css',  array( $this, 'head_css' ), 99 );
 			}
 
 		}
@@ -255,7 +253,7 @@ if ( ! class_exists( 'Kindling_Typography_Customizer' ) ) :
 			// Panel
 			$wp_customize->add_panel( 'kindling_typography_panel' , array(
 				'title' 			=> esc_html__( 'Typography', 'kindling' ),
-				'priority' 			=> 210,
+				'priority' 			=> 9,
 			) );
 
 			// Lopp through elements

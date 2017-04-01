@@ -19,10 +19,8 @@ if ( ! class_exists( 'Kindling_Footer_Bottom_Customizer' ) ) :
 		 * @since 1.0
 		 */
 		public function __construct() {
-
-			add_action( 'customize_register', 	array( $this, 'customizer_options' ) );
-			add_filter( 'kindling_head_css', 		array( $this, 'head_css' ) );
-
+			add_action( 'customize_register', array( $this, 'customizer_options' ) );
+			add_filter( 'kindling_head_css',  array( $this, 'head_css' ) );
 		}
 
 		/**
@@ -32,15 +30,49 @@ if ( ! class_exists( 'Kindling_Footer_Bottom_Customizer' ) ) :
 		 */
 		public function customizer_options( $wp_customize ) {
 
-			/**
+		/**
 			 * Section
 			 */
 			$section = 'kindling_footer_bottom_section';
 			$wp_customize->add_section( $section , array(
-				'title' 			=> esc_html__( 'Footer Bottom', 'kindling' ),
-				'priority' 			=> 210,
+				'title' 			=> esc_html__( 'Footer', 'kindling' ),
+				'priority' 			=> 3,
 			) );
 
+			/**
+			 * Enable Footer Page Embed (Widgets Area)
+			 */
+			$wp_customize->add_setting( 'kindling_footer_widgets', array(
+				'default'           	=> false,
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_footer_widgets', array(
+				'label'	   				=> esc_html__( 'Enable Footer Page Embed', 'kindling' ),
+				'type' 					=> 'checkbox',
+				'section'  				=> $section,
+				'settings' 				=> 'kindling_footer_widgets',
+				'priority' 				=> 10,
+			) ) );
+
+			/**
+			 * Footer Widgets Page ID
+			 */
+			$wp_customize->add_setting( 'kindling_footer_widgets_page_id', array(
+				'default' 				=> '',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Dropdown_Pages( $wp_customize, 'kindling_footer_widgets_page_id', array(
+				'label'	   				=> esc_html__( 'Page ID', 'kindling' ),
+				'description'	   		=> esc_html__( 'Choose a page to embed above the footer credits.', 'kindling' ),
+				'type' 					=> 'select',
+				'section'  				=> $section,
+				'settings' 				=> 'kindling_footer_widgets_page_id',
+				'priority' 				=> 10,
+				'active_callback' 		=> 'kindling_cac_has_footer_widgets',
+			) ) );			
+			
 			/**
 			 * Enable Footer Bottom
 			 */
@@ -50,7 +82,7 @@ if ( ! class_exists( 'Kindling_Footer_Bottom_Customizer' ) ) :
 			) );
 
 			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_footer_bottom', array(
-				'label'	   				=> esc_html__( 'Enable Footer Bottom', 'kindling' ),
+				'label'	   				=> esc_html__( 'Enable Footer Credits', 'kindling' ),
 				'type' 					=> 'checkbox',
 				'section'  				=> $section,
 				'settings' 				=> 'kindling_footer_bottom',

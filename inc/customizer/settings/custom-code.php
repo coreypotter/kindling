@@ -19,10 +19,8 @@ if ( ! class_exists( 'Kindling_Custom_Code_Customizer' ) ) :
 		 * @since 1.0
 		 */
 		public function __construct() {
-
-			add_action( 'customize_register', 	array( $this, 'customizer_options' ) );
-			add_action( 'kindling_footer_js', 		array( $this, 'output_custom_js' ), 9999 );
-
+			add_action( 'customize_register', array( $this, 'customizer_options' ) );
+			add_action( 'kindling_footer_js', array( $this, 'output_custom_js' ), 9999 );
 		}
 
 		/**
@@ -38,7 +36,7 @@ if ( ! class_exists( 'Kindling_Custom_Code_Customizer' ) ) :
 			$section = 'kindling_custom_code_panel';
 			$wp_customize->add_section( $section , array(
 				'title' 			=> esc_html__( 'Custom CSS/JS', 'kindling' ),
-				'priority' 			=> 210,
+				'priority' 			=> 10,
 			) );
 
 			/**

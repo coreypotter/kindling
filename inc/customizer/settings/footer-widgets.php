@@ -19,10 +19,8 @@ if ( ! class_exists( 'Kindling_Footer_Widgets_Customizer' ) ) :
 		 * @since 1.0
 		 */
 		public function __construct() {
-
-			add_action( 'customize_register', 	array( $this, 'customizer_options' ) );
-			add_filter( 'kindling_head_css', 		array( $this, 'head_css' ) );
-
+			add_action( 'customize_register', array( $this, 'customizer_options' ) );
+			add_filter( 'kindling_head_css',  array( $this, 'head_css' ) );
 		}
 
 		/**
@@ -45,7 +43,7 @@ if ( ! class_exists( 'Kindling_Footer_Widgets_Customizer' ) ) :
 			 * Enable Footer Widgets
 			 */
 			$wp_customize->add_setting( 'kindling_footer_widgets', array(
-				'default'           	=> true,
+				'default'           	=> false,
 				'sanitize_callback' 	=> false,
 			) );
 

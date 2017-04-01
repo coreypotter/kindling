@@ -20,8 +20,8 @@ if ( ! class_exists( 'Kindling_Sidebar_Customizer' ) ) :
 		 */
 		public function __construct() {
 
-			add_action( 'customize_register', 	array( $this, 'customizer_options' ) );
-			add_filter( 'kindling_head_css', 		array( $this, 'head_css' ) );
+			add_action( 'customize_register', array( $this, 'customizer_options' ) );
+			add_filter( 'kindling_head_css',  array( $this, 'head_css' ) );
 
 		}
 
@@ -38,7 +38,7 @@ if ( ! class_exists( 'Kindling_Sidebar_Customizer' ) ) :
 			$section = 'kindling_sidebar_section';
 			$wp_customize->add_section( $section , array(
 				'title' 			=> esc_html__( 'Sidebar', 'kindling' ),
-				'priority' 			=> 210,
+				'priority' 			=> 5,
 			) );
 
 			/**

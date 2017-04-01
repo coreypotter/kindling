@@ -1,9 +1,18 @@
 /*!
  * Project   : Kindling WordPress Theme
  * Purpose   : Customizer Tweaks
- * Author    : Nick
+ * Author    : Nick, Corey Potter
  */
 
+/* WordPress Logo Before WP Core Sections */
+#accordion-section-title_tagline > .accordion-section-title::before,
+#accordion-panel-nav_menus > .accordion-section-title::before,
+#accordion-panel-widgets > .accordion-section-title::before,
+#accordion-section-static_front_page > .accordion-section-title::before { content: "\f120"; font: 400 20px/1 dashicons; vertical-align: bottom; }
+
+/* Footer Page ID Dropdown Spacing */
+#_customize-dropdown-pages-kindling_footer_widgets_page_id { margin-bottom: 2em; }
+ 
 /* Margin checkbox */
 #customize-control-kindling_has_header_border_bottom.customize-control,
 #customize-control-kindling_search_custom_sidebar.customize-control,

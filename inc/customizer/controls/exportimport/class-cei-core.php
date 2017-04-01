@@ -114,7 +114,7 @@ final class CEI_Core {
 		// Add the export/import section.
 		$wp_customize->add_section( 'cei-section', array(
 			'title'	   => __( 'Export/Import', 'customizer-export-import' ),
-			'priority' => 10000000
+			'priority' => 11
 		));
 		
 		// Add the export/import setting.
