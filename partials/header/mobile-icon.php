@@ -41,16 +41,16 @@ if ( has_nav_menu( $menu_location ) || $ms_global_menu ) :
 		
 		<?php do_action( 'kindling_before_mobile_icon' ); ?>
 		<?php
- +		// Cart icon
- +		if ( KINDLING_WOOCOMMERCE_ACTIVE
- +			&& 'disabled' != get_theme_mod( 'kindling_woo_menu_icon_display', 'icon_count' ) ) { ?>
-
+		// Cart icon
+		if ( KINDLING_WOOCOMMERCE_ACTIVE
+			&& 'disabled' != get_theme_mod( 'kindling_woo_menu_icon_display', 'icon_count' ) ) { ?>
 			<a href="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" class="mobile-wcmenucart"><?php echo $cart_icon; ?></a>
 		<?php } ?>
 
 		<a href="#" class="mobile-menu"><?php echo $icon; ?><span class="kindling-text"><?php echo $text; ?></span></a>
+
 		<?php do_action( 'kindling_after_mobile_icon' ); ?>
-		
+
 	</div><!-- #kindling-mobile-menu-navbar -->
 
 <?php endif; ?>
