@@ -348,13 +348,15 @@ if ( ! class_exists( 'Kindling_Typography_Customizer' ) ) :
 							'active_callback' 	=> $active_callback,
 							'choices' 			=> array(
 								'' => esc_html__( 'Default', 'kindling' ),
-								'100' => esc_html__( 'Extra Light: 100', 'kindling' ),
-								'200' => esc_html__( 'Light: 200', 'kindling' ),
-								'300' => esc_html__( 'Book: 300', 'kindling' ),
+								'100' => esc_html__( 'Thin: 100', 'kindling' ),
+								'200' => esc_html__( 'Extra Light: 200', 'kindling' ),
+								'300' => esc_html__( 'Light: 300', 'kindling' ),
 								'400' => esc_html__( 'Normal: 400', 'kindling' ),
+								'500' => esc_html__( 'Medium: 500', 'kindling' ),
 								'600' => esc_html__( 'Semibold: 600', 'kindling' ),
 								'700' => esc_html__( 'Bold: 700', 'kindling' ),
 								'800' => esc_html__( 'Extra Bold: 800', 'kindling' ),
+								'900' => esc_html__( 'Black: 900', 'kindling' ),
 							),
 						) );
 					}
@@ -542,7 +544,8 @@ if ( ! class_exists( 'Kindling_Typography_Customizer' ) ) :
 		public function customize_preview_init() {
 			wp_enqueue_script( 'kindling-typography-customize-preview', KINDLING_THEME_URI . '/inc/customizer/assets/js/typography-customize-preview.js', array( 'customize-preview' ), KINDLING_THEME_VERSION, true );
 			wp_localize_script( 'kindling-typography-customize-preview', 'kindling', array(
-				'googleFontsUrl' => '//fonts.googleapis.com'
+				'googleFontsUrl'    => '//fonts.googleapis.com',
+				'googleFontsWeight' => '100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i',
 			) );
 		}
 
