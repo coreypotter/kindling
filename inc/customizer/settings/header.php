@@ -2274,7 +2274,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			}
 
 			# Top Menu Header Menu Horizontal Centered
-			if ( $top_header_menu_centered ) {
+			if ( $top_header_menu_centered && ( 'top' == $header_style ) ) {
 				$css .= '#site-header-inner{display:flex;flex-flow:row nowrap;align-items:center;justify-content:space-between}#site-header-inner .left{flex-grow:1}#site-header.top-header #site-navigation-wrap{left:21px;text-align:center}#site-navigation-wrap .dropdown-menu>li{float:none!important;display:inline-block}';
 			}
 			
