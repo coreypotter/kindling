@@ -153,6 +153,48 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			) ) );
 
 			/**
+			 * Header Top Padding
+			 */
+			$wp_customize->add_setting( 'kindling_header_top_padding', array(
+				'transport' 			=> 'postMessage',
+				'default'           	=> '0',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_header_top_padding', array(
+				'label'	   				=> esc_html__( 'Top Padding (px)', 'kindling' ),
+				'section'  				=> 'kindling_header_general',
+				'settings' 				=> 'kindling_header_top_padding',
+				'priority' 				=> 10,
+			    'input_attrs' 			=> array(
+			        'min'   => 0,
+			        'max'   => 100,
+			        'step'  => 1,
+			    ),
+			) ) );
+
+			/**
+			 * Header Bottom Padding
+			 */
+			$wp_customize->add_setting( 'kindling_header_bottom_padding', array(
+				'transport' 			=> 'postMessage',
+				'default'           	=> '0',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_header_bottom_padding', array(
+				'label'	   				=> esc_html__( 'Bottom Padding (px)', 'kindling' ),
+				'section'  				=> 'kindling_header_general',
+				'settings' 				=> 'kindling_header_bottom_padding',
+				'priority' 				=> 10,
+			    'input_attrs' 			=> array(
+			        'min'   => 0,
+			        'max'   => 100,
+			        'step'  => 1,
+			    ),
+			) ) );			
+			
+			/**
 			 * Header Logo Max Height
 			 */
 			$wp_customize->add_setting( 'kindling_logo_height', array(
@@ -171,6 +213,48 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 					'step'  => 1,
 			    ),
 			) ) );
+
+			/**
+			 * Header Logo Top Margin
+			 */
+			$wp_customize->add_setting( 'kindling_header_logo_top_margin', array(
+				'default'           	=> '0',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_header_logo_top_margin', array(
+				'label'	   				=> esc_html__( 'Logo Top Margin (px)', 'kindling' ),
+				'section'  				=> 'kindling_header_general',
+				'settings' 				=> 'kindling_header_logo_top_margin',
+				'priority' 				=> 10,
+				'active_callback' 		=> 'kindling_cac_has_custom_logo',
+			    'input_attrs' 			=> array(
+			        'min'   => 0,
+			        'max'   => 100,
+			        'step'  => 1,
+			    ),
+			) ) );
+
+			/**
+			 * Header Logo Bottom Margin
+			 */
+			$wp_customize->add_setting( 'kindling_header_logo_bottom_margin', array(
+				'default'           	=> '0',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_header_logo_bottom_margin', array(
+				'label'	   				=> esc_html__( 'Logo Bottom Margin (px)', 'kindling' ),
+				'section'  				=> 'kindling_header_general',
+				'settings' 				=> 'kindling_header_logo_bottom_margin',
+				'priority' 				=> 10,
+				'active_callback' 		=> 'kindling_cac_has_custom_logo',
+			    'input_attrs' 			=> array(
+			        'min'   => 0,
+			        'max'   => 100,
+			        'step'  => 1,
+			    ),
+			) ) );			
 			
 			/**
 			 * Header Border Bottom
@@ -221,47 +305,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				'priority' 				=> 10,
 			) ) );
 
-			/**
-			 * Header Top Padding
-			 */
-			$wp_customize->add_setting( 'kindling_header_top_padding', array(
-				'transport' 			=> 'postMessage',
-				'default'           	=> '0',
-				'sanitize_callback' 	=> false,
-			) );
 
-			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_header_top_padding', array(
-				'label'	   				=> esc_html__( 'Top Padding (px)', 'kindling' ),
-				'section'  				=> 'kindling_header_general',
-				'settings' 				=> 'kindling_header_top_padding',
-				'priority' 				=> 10,
-			    'input_attrs' 			=> array(
-			        'min'   => 0,
-			        'max'   => 100,
-			        'step'  => 1,
-			    ),
-			) ) );
-
-			/**
-			 * Header Bottom Padding
-			 */
-			$wp_customize->add_setting( 'kindling_header_bottom_padding', array(
-				'transport' 			=> 'postMessage',
-				'default'           	=> '0',
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_header_bottom_padding', array(
-				'label'	   				=> esc_html__( 'Bottom Padding (px)', 'kindling' ),
-				'section'  				=> 'kindling_header_general',
-				'settings' 				=> 'kindling_header_bottom_padding',
-				'priority' 				=> 10,
-			    'input_attrs' 			=> array(
-			        'min'   => 0,
-			        'max'   => 100,
-			        'step'  => 1,
-			    ),
-			) ) );
 
 #######################################################################################################################
 ####
@@ -1846,6 +1890,8 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			$logo_height									= get_theme_mod( 'kindling_logo_height' );
 			$logo_color 									= get_theme_mod( 'kindling_logo_color', '#333333' );
 			$logo_hover_color 								= get_theme_mod( 'kindling_logo_hover_color', '#13aff0' );
+			$logo_top_margin								= get_theme_mod( 'kindling_header_logo_top_margin', '0' );
+			$logo_bottom_margin								= get_theme_mod( 'kindling_header_logo_bottom_margin', '0' );
 			$search_dropdown_input_bg 						= get_theme_mod( 'kindling_search_dropdown_input_background' );
 			$search_dropdown_input_color 					= get_theme_mod( 'kindling_search_dropdown_input_color', '#333333' );
 			$search_dropdown_input_border 					= get_theme_mod( 'kindling_search_dropdown_input_border', '#dddddd' );
@@ -1911,16 +1957,6 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				$css .= '#site-header.top-header #site-navigation-wrap .dropdown-menu > li > a,#site-header.top-header #kindling-mobile-menu-icon a{line-height:'. $top_height .'px;}';
 			}
 
-			// Header background color
-			if ( ! empty( $header_background ) && '#ffffff' != $header_background ) {
-				$css .= '#site-header,.is-sticky #site-header.transparent-header,#searchform-header-replace{background-color:'. $header_background .';}';
-			}
-
-			// Header border color
-			if ( ! empty( $header_border_bottom ) && '#f1f1f1' != $header_border_bottom ) {
-				$css .= '#site-header{border-color:'. $header_border_bottom .';}';
-			}
-
 			// Header top padding
 			if ( ! empty( $header_top_padding ) && '0' != $header_top_padding ) {
 				$css .= '#site-header-inner{padding-top:'. $header_top_padding .'px;}';
@@ -1929,6 +1965,16 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			// Header bottom padding
 			if ( ! empty( $header_bottom_padding ) && '0' != $header_bottom_padding ) {
 				$css .= '#site-header-inner{padding-bottom:'. $header_bottom_padding .'px;}';
+			}
+			
+			// Header background color
+			if ( ! empty( $header_background ) && '#ffffff' != $header_background ) {
+				$css .= '#site-header,.is-sticky #site-header.transparent-header,#searchform-header-replace{background-color:'. $header_background .';}';
+			}
+
+			// Header border color
+			if ( ! empty( $header_border_bottom ) && '#f1f1f1' != $header_border_bottom ) {
+				$css .= '#site-header{border-color:'. $header_border_bottom .';}';
 			}
 
 			// Transparent header background color
@@ -2033,6 +2079,24 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 					}
 			}
 
+			// Header logo top margin
+			if ( ! empty( $logo_top_margin ) && '0' != $logo_top_margin ) {
+				if ( 'center' != $header_style ) {
+					$css .= '#site-logo #site-logo-inner a img{margin-top:'. $logo_top_margin .'px;}';
+				} else {
+					$css .= '#site-header.center-header #site-navigation .middle-site-logo a img{margin-top:'. $logo_top_margin .'px;}';
+				}
+			}
+
+			// Header logo bottom margin
+			if ( ! empty( $logo_bottom_margin ) && '0' != $logo_bottom_margin ) {
+				if ( 'center' != $header_style ) {
+					$css .= '#site-logo #site-logo-inner a img{margin-bottom:'. $logo_bottom_margin .'px;}';
+				} else {
+					$css .= '#site-header.center-header #site-navigation .middle-site-logo a img{margin-bottom:'. $logo_bottom_margin .'px;}';
+				}
+			}
+			
 			// Header logo color
 			if ( ! empty( $logo_color ) && '#333333' != $logo_color ) {
 				$css .= '#site-logo a.site-logo-text{color:'. $logo_color .';}';
