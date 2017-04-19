@@ -197,8 +197,8 @@ module.exports = function ( grunt ) {
 					updateTimestamp: true, // Whether the POT-Creation-Date should be updated without other changes.
 					processPot: function ( pot, options ) {
 						pot.headers[ 'plural-forms' ] = 'nplurals=2; plural=n != 1;';
-						pot.headers[ 'last-translator' ] = 'OceanWP\n';
-						pot.headers[ 'language-team' ] = 'OceanWP\n';
+						pot.headers[ 'last-translator' ] = 'CPotter\n';
+						pot.headers[ 'language-team' ] = 'Kindling\n';
 						pot.headers[ 'x-poedit-basepath' ] = '..\n';
 						pot.headers[ 'x-poedit-language' ] = 'English\n';
 						pot.headers[ 'x-poedit-country' ] = 'UNITED STATES\n';
