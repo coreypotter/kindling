@@ -69,10 +69,6 @@ class Kindling_Theme_Class {
 			add_action( 'admin_enqueue_scripts', array( 'Kindling_Theme_Class', 'admin_scripts' ) );
 			# Outputs custom CSS for the admin
 			add_action( 'admin_head', array( 'Kindling_Theme_Class', 'admin_inline_css' ) );
-			# Hide GitHub Updater Plugin Settings Page
-			add_filter( 'github_updater_hide_settings', '__return_true' );
-			# Omit GitHub Updater "View Details" API Calls
-			add_filter( 'github_updater_run_at_scale', '__return_true' );
 
 		/** Non Admin actions **/
 		} else {
@@ -138,6 +134,7 @@ class Kindling_Theme_Class {
 		$dir = KINDLING_INC_DIR;
 		require_once ( $dir .'helpers.php' );
 		require_once ( $dir .'customizer/controls/typography/webfonts.php' );
+		require_once ( $dir .'updater/theme-updater.php' );
 		require_once ( $dir .'walker/init.php' );
 		require_once ( $dir .'walker/menu-walker.php' );
 		# Welcome page
@@ -145,6 +142,8 @@ class Kindling_Theme_Class {
 			require_once( $dir .'welcome/welcome.php' );
 		}
 	}
+
+
 
 	/**
 	 * Configs for 3rd party plugins.
@@ -672,5 +671,6 @@ class Kindling_Theme_Class {
 		# Return link
 		return $link;
 	}
+
 }
 $Kindling_Theme_Class = new Kindling_Theme_Class;
