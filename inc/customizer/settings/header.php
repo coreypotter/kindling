@@ -193,6 +193,19 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			        'step'  => 1,
 			    ),
 			) ) );			
+
+			/**
+			 * Logo Styling Heading
+			 */
+			$wp_customize->add_setting( 'kindling_logo_styling_heading', array(
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Heading_Control( $wp_customize, 'kindling_logo_styling_heading', array(
+				'label'    				=> esc_html__( 'Logo Styling', 'kindling' ),
+				'section'  				=> 'kindling_header_general',
+				'priority' 				=> 10,
+			) ) );
 			
 			/**
 			 * Header Logo Max Height
