@@ -15,15 +15,6 @@ function fyp_register_required_plugins() {
 			'required'          => false,
 			'force_activation'  => false,
 		),
-		# GitHub Updater
-		array(
-			'name'              => 'Kindling Updater',
-			'slug'              => 'github-updater',
-			'source'			=> str_replace('/', DIRECTORY_SEPARATOR, KINDLING_INC_DIR . 'updater/github-updater.zip'),
-			'required'          => true,
-			'force_activation'  => true,
-			'force_deactivation'  => true,
-		),
 	);
 	$config = array(
 		'id'           => 'kindling',
