@@ -102,24 +102,6 @@ class EDD_Theme_Updater_Admin {
 	}
 
 	/**
-	 * Adds a menu item for the theme license under the appearance menu.
-	 *
-	 * since 1.0.0
-	 */
-	function license_menu() {
-
-		$strings = $this->strings;
-
-		add_theme_page(
-			$strings['theme-license'],
-			$strings['theme-license'],
-			'manage_options',
-			$this->theme_slug . '-license',
-			array( $this, 'license_page' )
-		);
-	}
-
-	/**
 	 * Outputs the markup used on the theme license page.
 	 *
 	 * since 1.0.0
