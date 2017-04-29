@@ -1372,98 +1372,100 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				'active_callback' 		=> 'kindling_cac_has_menu_search_overlay',
 			) ) );
 
-			/**
-			 * Dropdown Category Heading
-			 */
-			$wp_customize->add_setting( 'kindling_menu_dropdown_category_heading', array(
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new Kindling_Customizer_Heading_Control( $wp_customize, 'kindling_menu_dropdown_category_heading', array(
-				'label'    				=> esc_html__( 'Dropdowns Categories Posts', 'kindling' ),
-				'section'  				=> 'kindling_header_menu',
-				'priority' 				=> 10,
-			) ) );
-
-			/**
-			 * Dropdown Category Title Background Color
-			 */
-			$wp_customize->add_setting( 'kindling_dropdown_category_title_bg', array(
-				'transport' 			=> 'postMessage',
-				'default'           	=> '#f8f8f8',
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_dropdown_category_title_bg', array(
-				'label'	   				=> esc_html__( 'Category Title: Background', 'kindling' ),
-				'section'  				=> 'kindling_header_menu',
-				'settings' 				=> 'kindling_dropdown_category_title_bg',
-				'priority' 				=> 10,
-			) ) );
-
-			/**
-			 * Dropdown Category Title Color
-			 */
-			$wp_customize->add_setting( 'kindling_dropdown_category_title_color', array(
-				'transport' 			=> 'postMessage',
-				'default'           	=> '#222222',
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_dropdown_category_title_color', array(
-				'label'	   				=> esc_html__( 'Category Title: Color', 'kindling' ),
-				'section'  				=> 'kindling_header_menu',
-				'settings' 				=> 'kindling_dropdown_category_title_color',
-				'priority' 				=> 10,
-			) ) );
-
-			/**
-			 * Dropdown Category Posts Links Color
-			 */
-			$wp_customize->add_setting( 'kindling_dropdown_category_links_color', array(
-				'transport' 			=> 'postMessage',
-				'default'           	=> '#555555',
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_dropdown_category_links_color', array(
-				'label'	   				=> esc_html__( 'Posts Links: Color', 'kindling' ),
-				'section'  				=> 'kindling_header_menu',
-				'settings' 				=> 'kindling_dropdown_category_links_color',
-				'priority' 				=> 10,
-			) ) );
-
-			/**
-			 * Dropdown Category Posts Links Hover Color
-			 */
-			$wp_customize->add_setting( 'kindling_dropdown_category_links_hover_color', array(
-				'transport' 			=> 'postMessage',
-				'default'           	=> '#333333',
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_dropdown_category_links_hover_color', array(
-				'label'	   				=> esc_html__( 'Posts Links Hover: Color', 'kindling' ),
-				'section'  				=> 'kindling_header_menu',
-				'settings' 				=> 'kindling_dropdown_category_links_hover_color',
-				'priority' 				=> 10,
-			) ) );
-
-			/**
-			 * Dropdown Category Posts Date Color
-			 */
-			$wp_customize->add_setting( 'kindling_dropdown_category_date_color', array(
-				'transport' 			=> 'postMessage',
-				'default'           	=> '#bbbbbb',
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_dropdown_category_date_color', array(
-				'label'	   				=> esc_html__( 'Posts Date: Color', 'kindling' ),
-				'section'  				=> 'kindling_header_menu',
-				'settings' 				=> 'kindling_dropdown_category_date_color',
-				'priority' 				=> 10,
-			) ) );
+/*  BEGIN REMOVED: DROPDOWN CATEGORIES POSTS  */
+#			/**
+#			 * Dropdown Category Heading
+#			 */
+#			$wp_customize->add_setting( 'kindling_menu_dropdown_category_heading', array(
+#				'sanitize_callback' 	=> false,
+#			) );
+#
+#			$wp_customize->add_control( new Kindling_Customizer_Heading_Control( $wp_customize, 'kindling_menu_dropdown_category_heading', array(
+#				'label'    				=> esc_html__( 'Dropdowns Categories Posts', 'kindling' ),
+#				'section'  				=> 'kindling_header_menu',
+#				'priority' 				=> 10,
+#			) ) );
+#
+#			/**
+#			 * Dropdown Category Title Background Color
+#			 */
+#			$wp_customize->add_setting( 'kindling_dropdown_category_title_bg', array(
+#				'transport' 			=> 'postMessage',
+#				'default'           	=> '#f8f8f8',
+#				'sanitize_callback' 	=> false,
+#			) );
+#
+#			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_dropdown_category_title_bg', array(
+#				'label'	   				=> esc_html__( 'Category Title: Background', 'kindling' ),
+#				'section'  				=> 'kindling_header_menu',
+#				'settings' 				=> 'kindling_dropdown_category_title_bg',
+#				'priority' 				=> 10,
+#			) ) );
+#
+#			/**
+#			 * Dropdown Category Title Color
+#			 */
+#			$wp_customize->add_setting( 'kindling_dropdown_category_title_color', array(
+#				'transport' 			=> 'postMessage',
+#				'default'           	=> '#222222',
+#				'sanitize_callback' 	=> false,
+#			) );
+#
+#			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_dropdown_category_title_color', array(
+#				'label'	   				=> esc_html__( 'Category Title: Color', 'kindling' ),
+#				'section'  				=> 'kindling_header_menu',
+#				'settings' 				=> 'kindling_dropdown_category_title_color',
+#				'priority' 				=> 10,
+#			) ) );
+#
+#			/**
+#			 * Dropdown Category Posts Links Color
+#			 */
+#			$wp_customize->add_setting( 'kindling_dropdown_category_links_color', array(
+#				'transport' 			=> 'postMessage',
+#				'default'           	=> '#555555',
+#				'sanitize_callback' 	=> false,
+#			) );
+#
+#			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_dropdown_category_links_color', array(
+#				'label'	   				=> esc_html__( 'Posts Links: Color', 'kindling' ),
+#				'section'  				=> 'kindling_header_menu',
+#				'settings' 				=> 'kindling_dropdown_category_links_color',
+#				'priority' 				=> 10,
+#			) ) );
+#
+#			/**
+#			 * Dropdown Category Posts Links Hover Color
+#			 */
+#			$wp_customize->add_setting( 'kindling_dropdown_category_links_hover_color', array(
+#				'transport' 			=> 'postMessage',
+#				'default'           	=> '#333333',
+#				'sanitize_callback' 	=> false,
+#			) );
+#
+#			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_dropdown_category_links_hover_color', array(
+#				'label'	   				=> esc_html__( 'Posts Links Hover: Color', 'kindling' ),
+#				'section'  				=> 'kindling_header_menu',
+#				'settings' 				=> 'kindling_dropdown_category_links_hover_color',
+#				'priority' 				=> 10,
+#			) ) );
+#
+#			/**
+#			 * Dropdown Category Posts Date Color
+#			 */
+#			$wp_customize->add_setting( 'kindling_dropdown_category_date_color', array(
+#				'transport' 			=> 'postMessage',
+#				'default'           	=> '#bbbbbb',
+#				'sanitize_callback' 	=> false,
+#			) );
+#
+#			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_dropdown_category_date_color', array(
+#				'label'	   				=> esc_html__( 'Posts Date: Color', 'kindling' ),
+#				'section'  				=> 'kindling_header_menu',
+#				'settings' 				=> 'kindling_dropdown_category_date_color',
+#				'priority' 				=> 10,
+#			) ) );
+/*  END REMOVED: DROPDOWN CATEGORIES POSTS  */
 
 			/**
 			 * Section
