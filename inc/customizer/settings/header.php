@@ -731,7 +731,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			 */
 			$wp_customize->add_section( 'kindling_header_logo' , array(
 				'title' 			=> esc_html__( 'Logo', 'kindling' ),
-				'priority' 			=> 10,
+				'priority' 			=> 9,
 				'panel' 			=> $panel,
 			) );
 
