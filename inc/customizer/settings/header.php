@@ -2106,22 +2106,28 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			}
 
 			# Header logo max height
-			if ( ! empty( $logo_height ) && ( $logo_height < $header_height ) ) {
-				# If logo height is specified and less than header_height, set it:
-					if ( 'center' != $header_style ) {
-						$css .= '#site-logo #site-logo-inner a img{max-height:'. $logo_height .'px;}';
-					} else {
-						$css .= '#site-header.center-header #site-navigation .middle-site-logo a img{max-height:'. $logo_height .'px;}';
-					}
-			} else {
-				# If logo height is empty, or larger than menu, set it to menu:
-					if ( 'center' != $header_style ) {
-						$css .= '#site-logo #site-logo-inner a img{max-height:'. $header_height .'px;}';
-					} else {
-						$css .= '#site-header.center-header #site-navigation .middle-site-logo a img{max-height:'. $header_height .'px;}';
-					}
-			}
+			if ( !empty( $logo_height ) ) {
+				# Center and Top Menu should always use logo height
+				if ( $header_style == 'center' ) {
+					# Center Menu
+					$css .= '#site-header.center-header #site-navigation .middle-site-logo a img{max-height:'. $logo_height .'px;}';
 
+				} elseif ( $header_style == 'top' ) {
+					# Top Menu
+					$css .= '#site-logo #site-logo-inner a img{max-height:'. $logo_height .'px;}';
+					
+				} else {
+					# Determine if we should use logo or header height
+					if ( $logo_height < $header_height ) {
+						# If logo height is specified and less than header_height, set it:
+						$css .= '#site-logo #site-logo-inner a img{max-height:'. $logo_height .'px;}';						
+					} else {
+						# If logo height is empty, or larger than menu, set it to menu:
+						$css .= '#site-logo #site-logo-inner a img{max-height:'. $header_height .'px;}';
+					}
+				}
+			}
+			
 			// Header logo top margin
 			if ( ! empty( $logo_top_margin ) && '0' != $logo_top_margin ) {
 				if ( 'center' != $header_style ) {
