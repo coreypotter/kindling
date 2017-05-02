@@ -29,6 +29,20 @@ function kindling_custom_css_migrate() {
 }
 add_action( 'after_setup_theme', 'kindling_custom_css_migrate' );
 
+# Update Old Theme Mods
+function kindling_update_old_theme_mods() {
+	$kthmp = get_theme_mod( 'kindling_top_header_menu_position' ) ;
+	# Something's set..
+	if ( $kthmp ) {
+		# Old Value: Set to New Default
+		if ( ($kthmp == 'before') || ($thmp == 'after') ) {
+			set_theme_mod( 'kindling_top_header_menu_position', 'left' );
+		}
+	}
+}
+add_action( 'after_setup_theme', 'kindling_update_old_theme_mods' );
+
+
 # Core Constants
 define( 'KINDLING_THEME_DIR', get_template_directory() );
 define( 'KINDLING_THEME_URI', get_template_directory_uri() );

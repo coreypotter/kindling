@@ -64,48 +64,10 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				'priority' 				=> 10,
 				'choices' 				=> array(
 					'minimal' 		=> esc_html__( 'Logo Left', 'kindling' ),
-#					'transparent' 	=> esc_html__( 'Transparent', 'kindling' ),
 					'top'			=> esc_html__( 'Top Menu', 'kindling' ),
 					'full_screen'	=> esc_html__( 'Full Screen', 'kindling' ),
 					'center'		=> esc_html__( 'Center', 'kindling' ),
-#					'custom'		=> esc_html__( 'Custom Header', 'kindling' ),
 				),
-			) ) );
-
-			/**
-			 * Custom Header Page ID
-			 */
-			$wp_customize->add_setting( 'kindling_header_page_id', array(
-				'default' 				=> '',
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new Kindling_Customizer_Dropdown_Pages( $wp_customize, 'kindling_header_page_id', array(
-				'label'	   				=> esc_html__( 'Page ID', 'kindling' ),
-				'description'	   		=> esc_html__( 'Choose a page where the content will be displayed in the header.', 'kindling' ),
-				'type' 					=> 'select',
-				'section'  				=> 'kindling_header_general',
-				'settings' 				=> 'kindling_header_page_id',
-				'priority' 				=> 10,
-				'active_callback' 		=> 'kindling_cac_has_custom_header',
-			) ) );
-
-			/**
-			 * Custom Header Add Container
-			 */
-			$wp_customize->add_setting( 'kindling_add_custom_header_container', array(
-				'transport' 			=> 'postMessage',
-				'default'           	=> true,
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_add_custom_header_container', array(
-				'label'	   				=> esc_html__( 'Add Container', 'kindling' ),
-				'type' 					=> 'checkbox',
-				'section'  				=> 'kindling_header_general',
-				'settings' 				=> 'kindling_add_custom_header_container',
-				'priority' 				=> 10,
-				'active_callback' 		=> 'kindling_cac_has_custom_header',
 			) ) );
 
 			/**
@@ -325,98 +287,60 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 ####	SECTION: TRANSPARENT HEADER
 ####
 #######################################################################################################################
-
-			/**
-			 * Transparent Header Image Logo
-			 */
-			$wp_customize->add_setting( 'kindling_transparent_header_logo', array(
-				'default'           	=> '',
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'kindling_transparent_header_logo', array(
-				'label'	   				=> esc_html__( 'Transparent Logo', 'kindling' ),
-				'section'  				=> 'kindling_header_general',
-				'settings' 				=> 'kindling_transparent_header_logo',
-				'priority' 				=> 10,
-				'active_callback' 		=> 'kindling_cac_has_transparent_header_style',
-			) ) );
-
-			/**
-			 * Transparent Header Retina Logo
-			 */
-			$wp_customize->add_setting( 'kindling_transparent_header_logo_retina', array(
-				'default'           	=> '',
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'kindling_transparent_header_logo_retina', array(
-				'label'	   				=> esc_html__( 'Transparent Retina Logo', 'kindling' ),
-				'section'  				=> 'kindling_header_general',
-				'settings' 				=> 'kindling_transparent_header_logo_retina',
-				'priority' 				=> 10,
-				'active_callback' 		=> 'kindling_cac_has_transparent_header_style',
-			) ) );
-
-			/**
-			 * Transparent Header Background Color
-			 */
-			$wp_customize->add_setting( 'kindling_transparent_header_bg', array(
-				'transport' 			=> 'postMessage',
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_transparent_header_bg', array(
-				'label'	   				=> esc_html__( 'Background Color', 'kindling' ),
-				'section'  				=> 'kindling_header_general',
-				'settings' 				=> 'kindling_transparent_header_bg',
-				'priority' 				=> 10,
-				'active_callback' 		=> 'kindling_cac_has_transparent_header_style',
-			) ) );
-
+##
+##			/**
+##			 * Transparent Header Image Logo
+##			 */
+##			$wp_customize->add_setting( 'kindling_transparent_header_logo', array(
+##				'default'           	=> '',
+##				'sanitize_callback' 	=> false,
+##			) );
+##
+##			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'kindling_transparent_header_logo', array(
+##				'label'	   				=> esc_html__( 'Transparent Logo', 'kindling' ),
+##				'section'  				=> 'kindling_header_general',
+##				'settings' 				=> 'kindling_transparent_header_logo',
+##				'priority' 				=> 10,
+##				'active_callback' 		=> 'kindling_cac_has_transparent_header_style',
+##			) ) );
+##
+##			/**
+##			 * Transparent Header Retina Logo
+##			 */
+##			$wp_customize->add_setting( 'kindling_transparent_header_logo_retina', array(
+##				'default'           	=> '',
+##				'sanitize_callback' 	=> false,
+##			) );
+##
+##			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'kindling_transparent_header_logo_retina', array(
+##				'label'	   				=> esc_html__( 'Transparent Retina Logo', 'kindling' ),
+##				'section'  				=> 'kindling_header_general',
+##				'settings' 				=> 'kindling_transparent_header_logo_retina',
+##				'priority' 				=> 10,
+##				'active_callback' 		=> 'kindling_cac_has_transparent_header_style',
+##			) ) );
+##
+##			/**
+##			 * Transparent Header Background Color
+##			 */
+##			$wp_customize->add_setting( 'kindling_transparent_header_bg', array(
+##				'transport' 			=> 'postMessage',
+##				'sanitize_callback' 	=> false,
+##			) );
+##
+##			$wp_customize->add_control( new Kindling_Customizer_Color_Control( $wp_customize, 'kindling_transparent_header_bg', array(
+##				'label'	   				=> esc_html__( 'Background Color', 'kindling' ),
+##				'section'  				=> 'kindling_header_general',
+##				'settings' 				=> 'kindling_transparent_header_bg',
+##				'priority' 				=> 10,
+##				'active_callback' 		=> 'kindling_cac_has_transparent_header_style',
+##			) ) );
+##
 #######################################################################################################################
 ####
 ####	SECTION: TOP HEADER
 ####
 #######################################################################################################################
-
-			/**
-			 * Top Menu Header Menu Position
-			 */
-			$wp_customize->add_setting( 'kindling_top_header_menu_position', array(
-				'default'           	=> 'before',
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_top_header_menu_position', array(
-				'label'	   				=> esc_html__( 'Menu Position', 'kindling' ),
-				'type' 					=> 'select',
-				'section'  				=> 'kindling_header_general',
-				'settings' 				=> 'kindling_top_header_menu_position',
-				'priority' 				=> 10,
-				'active_callback' 		=> 'kindling_cac_has_top_header_style',
-				'choices' 				=> array(
-					'before' 	=> esc_html__( 'Before The Logo', 'kindling' ),
-					'after' 	=> esc_html__( 'After The Logo', 'kindling' ),
-				),
-			) ) );
-
-			/**
-			 * Top Menu Header Menu Horizontal Centered
-			 */
-			$wp_customize->add_setting( 'kindling_top_header_menu_centered', array(
-				'default'           	=> true,
-				'sanitize_callback' 	=> false,
-			) );
-
-			$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'kindling_top_header_menu_centered', array(
-				'label'	   				=> esc_html__( 'Center Menu', 'kindling' ),
-				'type' 					=> 'checkbox',
-				'section'  				=> 'kindling_header_general',
-				'settings' 				=> 'kindling_top_header_menu_centered',
-				'priority' 				=> 10,
-				'active_callback' 		=> 'kindling_cac_has_top_header_style',
-			) ) );
 			
 			/**
 			 * Top Menu Header Menu Background Color
@@ -856,22 +780,43 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			) ) );
 
 			/**
-			 * Menu Position
+			 * Top Menu Header Menu Position
 			 */
-			$wp_customize->add_setting( 'kindling_menu_position', array(
-				'transport' 			=> 'postMessage',
-				'default'           	=> 'right-menu',
+			$wp_customize->add_setting( 'kindling_top_header_menu_position', array(
+				'default'           	=> 'left',
 				'sanitize_callback' 	=> false,
 			) );
 
-			$wp_customize->add_control( new Kindling_Customizer_Buttonset_Control( $wp_customize, 'kindling_menu_position', array(
-				'label'	   				=> esc_html__( 'Position', 'kindling' ),
+			$wp_customize->add_control( new Kindling_Customizer_Buttonset_Control( $wp_customize, 'kindling_top_header_menu_position', array(
+				'label'	   				=> esc_html__( 'Menu Position', 'kindling' ),
 				'section'  				=> 'kindling_header_menu',
-				'settings' 				=> 'kindling_menu_position',
+				'settings' 				=> 'kindling_top_header_menu_position',
 				'priority' 				=> 10,
+				'active_callback' 		=> 'kindling_cac_has_top_header_style',
 				'choices' 				=> array(
-					'left-menu' 	=> esc_html__( 'Left', 'kindling' ),
-					'right-menu' 	=> esc_html__( 'Right', 'kindling' ),
+					'left'				=> esc_html__( 'Left', 'kindling' ),
+					'center'			=> esc_html__( 'Center', 'kindling' ),
+					'right'				=> esc_html__( 'Right', 'kindling' ),
+				),
+			) ) );
+
+			/**
+			 * Top Menu Header Menu Position (Vertical)
+			 */
+			$wp_customize->add_setting( 'kindling_top_header_menu_vertical_position', array(
+				'default'           	=> 'before',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Buttonset_Control( $wp_customize, 'kindling_top_header_menu_vertical_position', array(
+				'label'	   				=> esc_html__( 'Menu Vertical Position', 'kindling' ),
+				'section'  				=> 'kindling_header_menu',
+				'settings' 				=> 'kindling_top_header_menu_vertical_position',
+				'priority' 				=> 10,
+				'active_callback' 		=> 'kindling_cac_has_top_header_style',
+				'choices' 				=> array(
+					'before'			=> esc_html__( 'Before Logo', 'kindling' ),
+					'after'				=> esc_html__( 'After Logo', 'kindling' ),
 				),
 			) ) );
 
@@ -1504,6 +1449,87 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				'settings' 				=> 'kindling_menu_social',
 				'priority' 				=> 10,
 			) ) );
+			
+			/**
+			 * Logo Left Social Position
+			 */
+			$wp_customize->add_setting( 'kindling_minimal_social_menu_position', array(
+				'default'           	=> 'right',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Buttonset_Control( $wp_customize, 'kindling_minimal_social_menu_position', array(
+				'label'	   				=> esc_html__( 'Position', 'kindling' ),
+				'section'  				=> 'kindling_header_menu_social',
+				'settings' 				=> 'kindling_minimal_social_menu_position',
+				'priority' 				=> 10,
+				'active_callback' 		=> 'kindling_cac_has_minimal_header_style_and_menu_social',
+				'choices' 				=> array(
+					'left'				=> esc_html__( 'Left', 'kindling' ),
+					'right'				=> esc_html__( 'Right', 'kindling' ),
+				),
+			) ) );
+
+			/**
+			 * Top Menu Social Position
+			 */
+			$wp_customize->add_setting( 'kindling_top_social_menu_position', array(
+				'default'           	=> 'right',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Buttonset_Control( $wp_customize, 'kindling_top_social_menu_position', array(
+				'label'	   				=> esc_html__( 'Position', 'kindling' ),
+				'section'  				=> 'kindling_header_menu_social',
+				'settings' 				=> 'kindling_top_social_menu_position',
+				'priority' 				=> 10,
+				'active_callback' 		=> 'kindling_cac_has_top_header_style_and_menu_social',
+				'choices' 				=> array(
+					'left'				=> esc_html__( 'Left', 'kindling' ),
+					'right'				=> esc_html__( 'Right', 'kindling' ),
+				),
+			) ) );
+
+			/**
+			 *Center Menu Social Position (Horizontal)
+			 */
+			$wp_customize->add_setting( 'kindling_center_social_menu_position', array(
+				'default'           	=> 'center',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Buttonset_Control( $wp_customize, 'kindling_center_social_menu_position', array(
+				'label'	   				=> esc_html__( 'Position', 'kindling' ),
+				'section'  				=> 'kindling_header_menu_social',
+				'settings' 				=> 'kindling_center_social_menu_position',
+				'priority' 				=> 10,
+				'active_callback' 		=> 'kindling_cac_has_center_header_style_and_menu_social',
+				'choices' 				=> array(
+					'left'				=> esc_html__( 'Left', 'kindling' ),
+					'center'			=> esc_html__( 'Center', 'kindling' ),
+					'right'				=> esc_html__( 'Right', 'kindling' ),
+				),
+			) ) );
+
+			/**
+			 *Center Menu Social Position (Vertical)
+			 */
+			$wp_customize->add_setting( 'kindling_center_social_menu_vertical_position', array(
+				'default'           	=> 'before',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Buttonset_Control( $wp_customize, 'kindling_center_social_menu_vertical_position', array(
+				'label'	   				=> esc_html__( 'Vertical Position', 'kindling' ),
+				'section'  				=> 'kindling_header_menu_social',
+				'settings' 				=> 'kindling_center_social_menu_vertical_position',
+				'priority' 				=> 10,
+				'active_callback' 		=> 'kindling_cac_has_center_header_style_and_menu_social',
+				'choices' 				=> array(
+					'before'			=> esc_html__( 'Before Logo', 'kindling' ),
+					'after'				=> esc_html__( 'After Logo', 'kindling' ),
+				),
+			) ) );
 
 			/**
 			 * Menu Social Style
@@ -1953,21 +1979,23 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			$mobile_menu_sidr_search_border_color_focus 	= get_theme_mod( 'kindling_mobile_menu_sidr_search_border_color_focus', '#bbbbbb' );
 			$mobile_menu_sidr_search_button_color 			= get_theme_mod( 'kindling_mobile_menu_sidr_search_button_color', '#555555' );
 			$mobile_menu_sidr_search_button_hover_color 	= get_theme_mod( 'kindling_mobile_menu_sidr_search_button_hover_color', '#222222' );
-			$top_header_menu_centered 						= get_theme_mod( 'kindling_top_header_menu_centered', true );
-
+			$minimal_social_menu_pos						= get_theme_mod( 'kindling_minimal_social_menu_position', 'right' );
+			$top_menu_pos									= get_theme_mod( 'kindling_top_header_menu_position', 'left' );
+			$top_social_menu_pos							= get_theme_mod( 'kindling_top_social_menu_position', 'right' );
+			$center_social_menu_pos							= get_theme_mod( 'kindling_center_social_menu_position', 'center' );
+			$center_social_menu_vpos						= get_theme_mod( 'kindling_center_social_menu_vertical_position', 'before' );
+			
 			// Define css var
 			$css = '';
 
 			// Add header height
-			if ( ( 'top' != $header_style ) && ! empty( $header_height ) && '74' != $header_height ) {
-				if ( 'custom' != $header_style ) {
-					$css .= '#site-logo #site-logo-inner,#kindling-social-menu .social-menu-inner,#site-header.full_screen-header .menu-bar-inner{height:'. $header_height .'px;}';
-				}
+			if ( ( ! empty( $header_height ) && 'top' != $header_style ) ) {
+				$css .= '#site-logo #site-logo-inner,#kindling-social-menu .social-menu-inner,#site-header.full_screen-header .menu-bar-inner{height:'. $header_height .'px;}';
 				$css .= '#site-navigation-wrap .dropdown-menu > li > a,#kindling-mobile-menu-icon a{line-height:'. $header_height .'px;}';
 			}
 
 			// Add header height for top header style
-			if ( 'top' == $header_style && ! empty( $top_height ) && '40' != $top_height ) {
+			if ( ! empty( $top_height ) && 'top' == $header_style  ) {
 				$css .= '#site-header.top-header #kindling-social-menu,#site-header.top-header #search-toggle{height:'. $top_height .'px;}';
 				$css .= '#site-header.top-header #site-navigation-wrap .dropdown-menu > li > a,#site-header.top-header #kindling-mobile-menu-icon a{line-height:'. $top_height .'px;}';
 			}
@@ -2078,7 +2106,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			}
 
 			# Header logo max height
-			if (  (! empty( $logo_height )) && ( $logo_height < $header_height ) ) {
+			if ( ! empty( $logo_height ) && ( $logo_height < $header_height ) ) {
 				# If logo height is specified and less than header_height, set it:
 					if ( 'center' != $header_style ) {
 						$css .= '#site-logo #site-logo-inner a img{max-height:'. $logo_height .'px;}';
@@ -2281,7 +2309,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			if ( ! empty( $dropdown_category_date_color ) && '#bbbbbb' != $dropdown_category_date_color ) {
 				$css .= '#site-navigation li.mega-cat ul li .mega-post-date{color:'. $dropdown_category_date_color .';}';
 			}
-
+			
 			// Menu social links color
 			if ( ! empty( $menu_social_links_color ) ) {
 				$css .= '#kindling-social-menu ul li a,#site-header.full_screen-header #kindling-social-menu.simple-social ul li a{color:'. $menu_social_links_color .';}';
@@ -2352,11 +2380,40 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				$css .= '.sidr-class-mobile-searchform button:hover{color:'. $mobile_menu_sidr_search_button_hover_color .';}';
 			}
 
-			# Top Menu Header Menu Horizontal Centered
-			if ( $top_header_menu_centered && ( 'top' == $header_style ) ) {
-				$css .= '#site-header-inner{display:flex;flex-flow:row nowrap;align-items:center;justify-content:space-between}#site-header-inner .left{flex-grow:1}#site-header.top-header #site-navigation-wrap{left:21px;text-align:center}#site-navigation-wrap .dropdown-menu>li{float:none!important;display:inline-block}';
+			# All the new Nav/Social Positioning Stuff
+			switch( $header_style ) {
+				# Logo Left
+				case "minimal":
+					if ( $minimal_social_menu_pos == 'left' ) {
+						$css .= '#site-header.minimal-header #site-logo{flex-grow:0}#site-header.minimal-header #site-navigation-wrap{flex-grow:1;display:inline-flex;justify-content:flex-end}';
+					}
+					break;
+				# Top Menu
+				case "top":
+					if ( $top_menu_pos == 'center' ) {
+						$css .= '#site-header.top-header #site-navigation-wrap{display:inline-flex;justify-content:center;position:absolute;left:0}';
+					} else if ( $top_menu_pos == 'right' ) {
+						$css .= '#site-header.top-header #site-navigation-wrap{order:2;display:inline-flex;justify-content:flex-end}';
+					}
+					if ( $top_social_menu_pos == 'left' ) {
+						$css .= '#site-header.top-header #kindling-social-menu{order:1}#site-header.top-header #site-header-inner{justify-content:flex-start}';
+					}
+					break;
+				# Center Menu
+				case "center":
+					if ( $center_social_menu_pos == 'left' ) {
+						$css .= '#site-header.center-header #kindling-social-menu{align-self:flex-start}';
+					} else if ( $center_social_menu_pos == 'right' ) {
+						$css .= '#site-header.center-header #kindling-social-menu {align-self:flex-end}';
+					}
+					if ( $center_social_menu_vpos == 'after' ) {
+						$css .= '#site-header.center-header #kindling-social-menu{order:1}';
+					}
+					break;
+				default:
+					/* Different Header, Do Nothing. */
 			}
-			
+
 			// Return CSS
 			if ( ! empty( $css ) ) {
 				$output .= '/* Header CSS */'. $css;

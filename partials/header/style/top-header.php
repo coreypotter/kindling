@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 # Menu position
-$position 	= get_theme_mod( 'kindling_top_header_menu_position', 'before' );
+$position 	= get_theme_mod( 'kindling_top_header_menu_vertical_position', 'before' );
 
 # Search style
 $search 	= kindling_menu_search_style(); ?>
@@ -38,23 +38,11 @@ if ( 'after' == $position ) { ?>
 			get_template_part( 'partials/header/search-replace' );
 		} ?>
 
-		<div class="left clr">
+		<?php get_template_part( 'partials/header/nav' ); ?>
 
-			<div class="inner">
-				
-				<?php get_template_part( 'partials/header/nav' ); ?>
+		<?php get_template_part( 'partials/header/mobile-icon' ); ?>
 
-				<?php get_template_part( 'partials/header/mobile-icon' ); ?>
-
-			</div>
-			
-		</div>
-
-		<div class="right clr">
-
-			<div class="inner">
-				
-				<?php if ( true == get_theme_mod( 'kindling_menu_social', false ) ) {
+		<?php if ( true == get_theme_mod( 'kindling_menu_social', false ) ) {
 					get_template_part( 'partials/header/social' );
 				}
 
@@ -66,10 +54,6 @@ if ( 'after' == $position ) { ?>
 				} else if ( 'overlay' == $search ) {
 					get_template_part( 'partials/header/search-overlay' );
 				} ?>
-
-			</div>
-
-		</div>
 
 	</div><!-- #site-header-inner -->
 

@@ -20,9 +20,7 @@
 }
 
 #site-logo {
-	float: left;
 	height: 100%;
-    display: table;
 
     &.has-transparent-logo .transparent-logo-link {
 		display: none;
@@ -32,7 +30,6 @@
 #site-logo #site-logo-inner {
 	display: table-cell;
     vertical-align: middle;
-    height: 74px;
 
     a {
     	background-color: transparent !important;
@@ -67,7 +64,7 @@
 
 /**
  * Transparent header
- */
+ *
 #transparent-header-wrap {
 	position: relative;
 }
@@ -117,19 +114,6 @@ body.has-transparent-header .kindling-sticky-header-holder {
 		-moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
 		box-shadow: 0 1px 5px 0 rgba(0,0,0,0.1);
 		z-index: 100;
-
-		.left {
-			float: left;
-		}
-
-		.right {
-			float: right;
-
-			.inner {
-				display: table;
-				position: relative;
-			}
-		}
 	}
 
 	#searchform-header-replace {
@@ -151,35 +135,36 @@ body.has-transparent-header .kindling-sticky-header-holder {
 		}
 	}
 
+	#site-header-inner {
+		display: flex;
+		flex-flow: row nowrap;
+		align-items: center;
+		justify-content: flex-end;
+	}
+
 	#site-navigation-wrap {
-	    float: none;
-	    right: auto !important;
-	    left: -15px;
+		flex-grow: 1;
+	}
+
+	#kindling-social-menu,
+	#search-toggle {
+		display: inline-flex;
+		flex-direction: row;
+		align-items: center;
 	}
 
 	#site-navigation-wrap .dropdown-menu > li > a {
 		font-size: 10px;
-		line-height: 40px;
 	    font-weight: 600;
 	    letter-spacing: 2px;
 	    text-transform: uppercase;
 	}
 
-	#kindling-social-menu,
-	#search-toggle {
-		float: none;
-	    display: table-cell;
-	    vertical-align: middle;
-		height: 40px;
-	}
-
 	#kindling-social-menu .social-menu-inner {
-		display: block;
     	height: auto;
 	}
 
 	#kindling-social-menu {
-		right: 0;
 	    padding: 0 10px;
 
 	    .colored ul li a,
@@ -300,7 +285,6 @@ body.has-transparent-header .kindling-sticky-header-holder {
 	    display: table-cell;
 	    vertical-align: middle;
 	    position: relative;
-	    height: 74px;
 	}
 
 	.menu-bar {
@@ -575,51 +559,27 @@ body.has-transparent-header .kindling-sticky-header-holder {
 }
 
 @-webkit-keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    0%   { opacity: 1; }
+    50%  { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 @-moz-keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    0%   { opacity: 1; }
+    50%  { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 @-o-keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    0%   { opacity: 1; }
+    50%  { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 @keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+    0%   { opacity: 1; }
+    50%  { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 /**
@@ -628,6 +588,12 @@ body.has-transparent-header .kindling-sticky-header-holder {
 #site-header.center-header {
 	#site-logo {
 		display: none;
+	}
+	
+	#site-header-inner {
+		display: flex;
+		flex-flow: column nowrap;
+		align-items: center;
 	}
 
 	#site-navigation-wrap {
@@ -678,77 +644,14 @@ body.has-transparent-header .kindling-sticky-header-holder {
 }
 
 /**
- * Custom header
+ * Logo Left header
  */
-#site-header.custom-header ul.kindling-custom-menu {
-	list-style: none;
-    margin: 0;
-    padding: 0;
-
-    li {
-    	display: inline-block;
-
-    	a {
-    		display: block;
-		    font-size: 13px;
-		    line-height: 40px;
-		    padding: 0 15px;
-		    letter-spacing: 0.6px;
-    	}
-    }
-}
-
-.custom-header-logo {
-
-	&.left {
-		text-align: left;
+#site-header.minimal-header {
+	#site-header-inner {
+		display: flex;
+		flex-flow: row nowrap;
 	}
-
-	&.right {
-		text-align: right;
-	}
-
-	&.center {
-		text-align: center;
-	}
-
 	#site-logo {
-	    float: none;
-	    display: inline-block;
-
-	    #site-logo-inner {
-		    display: block;
-		    height: auto !important;
-		}
-	}
-}
-
-.custom-header-nav {
-
-	&.left {
-		text-align: left;
-	}
-
-	&.right {
-		text-align: right;
-	}
-
-	&.center {
-		text-align: center;
-	}
-
-	#site-navigation-wrap {
-	    float: none;
-	    right: auto;
-
-	    #site-navigation {
-	    	display: inline-block;
-    		position: relative;
-	    }
-
-	    .dropdown-menu > li {
-		    float: none;
-		    display: inline-block;
-		}
+		flex-grow: 1;
 	}
 }

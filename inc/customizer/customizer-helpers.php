@@ -107,8 +107,18 @@ function kindling_cac_has_topbar_social() {
 /*-------------------------------------------------------------------------------*/
 /* [ Header ]
 /*-------------------------------------------------------------------------------*/
-function kindling_cac_has_transparent_header_style() {
-	if ( 'transparent' == get_theme_mod( 'kindling_header_style', 'minimal' ) ) {
+
+# TODO: Refactor this. It's bad, REAL bad.
+function kindling_cac_hasnt_header_styles() {
+	if ( 'top' == get_theme_mod( 'kindling_header_style', 'minimal' ) ) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+function kindling_cac_has_minimal_header_style() {
+	if ( 'minimal' == get_theme_mod( 'kindling_header_style', 'minimal' ) ) {
 		return true;
 	} else {
 		return false;
@@ -123,16 +133,16 @@ function kindling_cac_has_top_header_style() {
 	}
 }
 
-function kindling_cac_hasnt_header_styles() {
-	if ( 'top' == get_theme_mod( 'kindling_header_style', 'minimal' ) ) {
-		return false;
-	} else {
+function kindling_cac_has_full_screen_header_style() {
+	if ( 'full_screen' == get_theme_mod( 'kindling_header_style', 'minimal' ) ) {
 		return true;
+	} else {
+		return false;
 	}
 }
 
-function kindling_cac_has_full_screen_header_style() {
-	if ( 'full_screen' == get_theme_mod( 'kindling_header_style', 'minimal' ) ) {
+function kindling_cac_has_center_header_style() {
+	if ( 'center' == get_theme_mod( 'kindling_header_style', 'minimal' ) ) {
 		return true;
 	} else {
 		return false;
@@ -147,12 +157,24 @@ function kindling_cac_has_menu_social() {
 	}
 }
 
-function kindling_cac_has_custom_header() {
-	if ( 'custom' == get_theme_mod( 'kindling_header_style', 'minimal' ) ) {
-		return true;
-	} else {
-		return false;
-	}
+function kindling_cac_has_minimal_header_style_and_menu_social() {
+	$has_style = ( 'minimal' == get_theme_mod( 'kindling_header_style', 'minimal' ) );
+	$has_social = ( true == get_theme_mod( 'kindling_menu_social', false ) );
+	return ( $has_style && $has_social );
+
+}
+
+function kindling_cac_has_top_header_style_and_menu_social() {
+	$has_style = ( 'top' == get_theme_mod( 'kindling_header_style', 'minimal' ) );
+	$has_social = ( true == get_theme_mod( 'kindling_menu_social', false ) );
+	return ( $has_style && $has_social );
+
+}
+
+function kindling_cac_has_center_header_style_and_menu_social() {
+	$has_style = ( 'center' == get_theme_mod( 'kindling_header_style', 'minimal' ) );
+	$has_social = ( true == get_theme_mod( 'kindling_menu_social', false ) );
+	return ( $has_style && $has_social );
 }
 
 /*-------------------------------------------------------------------------------*/

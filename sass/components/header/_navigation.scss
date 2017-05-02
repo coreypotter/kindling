@@ -1,7 +1,5 @@
 #site-navigation-wrap {
-	float: right;
 	position: relative;
-	right: -15px;
 
 	.dropdown-menu {
 		list-style: none;
@@ -15,7 +13,6 @@
 			> a {
 				display: block;
 				font-size: 13px;
-				line-height: 74px;
 				color: $color-11;
 				padding: 0 15px;
 				letter-spacing: 0.6px;
@@ -72,18 +69,6 @@
 			}
 		}
 	}
-}
-
-// If social
-.has-social #site-navigation-wrap {
-	right: 0;
-}
-
-// If left menu
-.minimal-header.left-menu #site-navigation-wrap,
-.transparent-header.left-menu #site-navigation-wrap {
-	float: left;
-	right: 0;
 }
 
 .minimal-header.left-menu #site-logo,
@@ -385,14 +370,7 @@ body #wrap #searchform-overlay .container {
  * Social icons
  */
 #kindling-social-menu {
-	float: right;
-    display: table;
     position: relative;
-    z-index: 10;
-
-    &.simple-social {
-		right: -8px;
-	}
 
 	&.social-with-style {
 		right: -2px;
@@ -401,7 +379,6 @@ body #wrap #searchform-overlay .container {
     .social-menu-inner {
     	display: table-cell;
     	vertical-align: middle;
-    	height: 74px;
     }
 
     ul {

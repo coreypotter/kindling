@@ -49,11 +49,6 @@ if ( 'transparent' == $header_style ) { ?>
 		get_template_part( 'partials/header/style/full-screen-header' );
 	}
 
-	# If custom header style
-	else if ( 'custom' == $header_style ) {
-		get_template_part( 'partials/header/style/custom-header' );
-	}
-
 	# Default header style
 	else { ?>
 
