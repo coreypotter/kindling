@@ -1689,6 +1689,163 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			) ) );
 
 			/**
+			 * Mobile Header Height
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_header_height', array(
+				'default'           	=> '74',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_mobile_header_height', array(
+				'label'	   				=> esc_html__( 'Height (px)', 'kindling' ),
+				'section'  				=> 'kindling_header_mobile_menu',
+				'settings' 				=> 'kindling_mobile_header_height',
+				'priority' 				=> 10,
+				'active_callback' 		=> 'kindling_cac_hasnt_header_styles',
+			    'input_attrs' 			=> array(
+			        'min'   => 0,
+			        'max'   => 300,
+			        'step'  => 1,
+			    ),
+			) ) );
+
+			/**
+			 * Top Mobile Header Height
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_top_header_height', array(
+				'default'           	=> '40',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_mobile_top_header_height', array(
+				'label'	   				=> esc_html__( 'Height (px)', 'kindling' ),
+				'section'  				=> 'kindling_header_mobile_menu',
+				'settings' 				=> 'kindling_mobile_top_header_height',
+				'priority' 				=> 10,
+				'active_callback' 		=> 'kindling_cac_has_top_header_style',
+			    'input_attrs' 			=> array(
+			        'min'   => 0,
+			        'max'   => 100,
+			        'step'  => 1,
+			    ),
+			) ) );
+
+			/**
+			 * Mobile Header Top Padding
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_header_top_padding', array(
+				'default'           	=> '0',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_mobile_header_top_padding', array(
+				'label'	   				=> esc_html__( 'Top Padding (px)', 'kindling' ),
+				'section'  				=> 'kindling_header_mobile_menu',
+				'settings' 				=> 'kindling_mobile_header_top_padding',
+				'priority' 				=> 10,
+			    'input_attrs' 			=> array(
+			        'min'   => 0,
+			        'max'   => 100,
+			        'step'  => 1,
+			    ),
+			) ) );
+
+			/**
+			 * Mobile Header Bottom Padding
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_header_bottom_padding', array(
+				'default'           	=> '0',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_mobile_header_bottom_padding', array(
+				'label'	   				=> esc_html__( 'Bottom Padding (px)', 'kindling' ),
+				'section'  				=> 'kindling_header_mobile_menu',
+				'settings' 				=> 'kindling_mobile_header_bottom_padding',
+				'priority' 				=> 10,
+			    'input_attrs' 			=> array(
+			        'min'   => 0,
+			        'max'   => 100,
+			        'step'  => 1,
+			    ),
+			) ) );			
+
+			/**
+			 * Mobile Logo Styling Heading
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_logo_styling_heading', array(
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Heading_Control( $wp_customize, 'kindling_mobile_logo_styling_heading', array(
+				'label'    				=> esc_html__( 'Mobile Logo Styling', 'kindling' ),
+				'section'  				=> 'kindling_header_mobile_menu',
+				'priority' 				=> 10,
+			) ) );
+			
+			/**
+			 * Mobile Header Logo Max Height
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_logo_height', array(
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_mobile_logo_height', array(
+				'label'	   				=> esc_html__( 'Logo Max Height (px)', 'kindling' ),
+				'section'  				=> 'kindling_header_mobile_menu',
+				'settings' 				=> 'kindling_mobile_logo_height',
+				'priority' 				=> 10,
+				'active_callback' 		=> 'kindling_cac_has_custom_logo',
+			    'input_attrs' 			=> array(
+			        'min'   => 0,
+			        'max'   => 300,
+					'step'  => 1,
+			    ),
+			) ) );
+
+			/**
+			 * Mobile Header Logo Top Margin
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_header_logo_top_margin', array(
+				'default'           	=> '0',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_mobile_header_logo_top_margin', array(
+				'label'	   				=> esc_html__( 'Logo Top Margin (px)', 'kindling' ),
+				'section'  				=> 'kindling_header_mobile_menu',
+				'settings' 				=> 'kindling_mobile_header_logo_top_margin',
+				'priority' 				=> 10,
+				'active_callback' 		=> 'kindling_cac_has_custom_logo',
+			    'input_attrs' 			=> array(
+			        'min'   => 0,
+			        'max'   => 100,
+			        'step'  => 1,
+			    ),
+			) ) );
+
+			/**
+			 * Mobile Header Logo Bottom Margin
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_header_logo_bottom_margin', array(
+				'default'           	=> '0',
+				'sanitize_callback' 	=> false,
+			) );
+
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_mobile_header_logo_bottom_margin', array(
+				'label'	   				=> esc_html__( 'Logo Bottom Margin (px)', 'kindling' ),
+				'section'  				=> 'kindling_header_mobile_menu',
+				'settings' 				=> 'kindling_mobile_header_logo_bottom_margin',
+				'priority' 				=> 10,
+				'active_callback' 		=> 'kindling_cac_has_custom_logo',
+			    'input_attrs' 			=> array(
+			        'min'   => 0,
+			        'max'   => 100,
+			        'step'  => 1,
+			    ),
+			) ) );
+			
+			/**
 			 * Mobile Menu Styling
 			 */
 			$wp_customize->add_setting( 'kindling_mobile_menu_styling_heading', array(
@@ -1984,6 +2141,14 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			$top_social_menu_pos							= get_theme_mod( 'kindling_top_social_menu_position', 'right' );
 			$center_social_menu_pos							= get_theme_mod( 'kindling_center_social_menu_position', 'center' );
 			$center_social_menu_vpos						= get_theme_mod( 'kindling_center_social_menu_vertical_position', 'before' );
+			$mobile_header_height 							= get_theme_mod( 'kindling_mobile_header_height', '74' );
+			$mobile_top_height 								= get_theme_mod( 'kindling_mobile_top_header_height', '40' );
+			$mobile_header_top_padding						= get_theme_mod( 'kindling_mobile_header_top_padding', '0' );
+			$mobile_header_bottom_padding					= get_theme_mod( 'kindling_mobile_header_bottom_padding', '0' );
+			$mobile_logo_height								= get_theme_mod( 'kindling_mobile_logo_height' );
+			$mobile_logo_top_margin							= get_theme_mod( 'kindling_mobile_header_logo_top_margin', '0' );
+			$mobile_logo_bottom_margin						= get_theme_mod( 'kindling_mobile_header_logo_bottom_margin', '0' );
+
 			
 			// Define css var
 			$css = '';
@@ -2127,7 +2292,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 					}
 				}
 			}
-			
+
 			// Header logo top margin
 			if ( ! empty( $logo_top_margin ) && '0' != $logo_top_margin ) {
 				if ( 'center' != $header_style ) {
@@ -2145,7 +2310,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 					$css .= '#site-header.center-header #site-navigation .middle-site-logo a img{margin-bottom:'. $logo_bottom_margin .'px;}';
 				}
 			}
-			
+
 			// Header logo color
 			if ( ! empty( $logo_color ) && '#333333' != $logo_color ) {
 				$css .= '#site-logo a.site-logo-text{color:'. $logo_color .';}';
@@ -2420,6 +2585,74 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 					/* Different Header, Do Nothing. */
 			}
 
+############################################################
+###############   START BREAKPOINT: <960px   ###############
+############################################################
+			$css .= '@media only screen and (max-width:959px){';
+
+# $mobile_header_height
+			// Add header height
+			if ( ( ! empty( $mobile_header_height ) && ($header_style!='top') ) ) {
+				$css .= '#site-logo #site-logo-inner,#kindling-social-menu .social-menu-inner,#site-header.full_screen-header .menu-bar-inner{height:'. $mobile_header_height .'px;}';
+				$css .= '#site-navigation-wrap .dropdown-menu > li > a,#kindling-mobile-menu-icon a{line-height:'. $mobile_header_height .'px;}';
+			}
+
+# $mobile_top_height
+			// Add header height for top header style
+			if ( ! empty( $mobile_top_height ) && 'top' == $header_style  ) {
+				$css .= '#site-header.top-header #kindling-social-menu,#site-header.top-header #search-toggle{height:'. $mobile_top_height .'px;}';
+				$css .= '#site-header.top-header #site-navigation-wrap .dropdown-menu > li > a,#site-header.top-header #kindling-mobile-menu-icon a{line-height:'. $mobile_top_height .'px;}';
+			}
+
+# $mobile_header_top_padding
+			// Header top padding
+			if ( ! empty( $mobile_header_top_padding ) && '0' != $mobile_header_top_padding ) {
+				$css .= '#site-header-inner{padding-top:'. $mobile_header_top_padding .'px;}';
+			}
+
+# $mobile_header_bottom_padding
+			// Header bottom padding
+			if ( ! empty( $mobile_header_bottom_padding ) && '0' != $mobile_header_bottom_padding ) {
+				$css .= '#site-header-inner{padding-bottom:'. $mobile_header_bottom_padding .'px;}';
+			}
+
+# $mobile_logo_height
+			# Header logo max height
+			if ( !empty( $mobile_logo_height ) ) {
+				# Center and Top Menu should always use logo height
+				if ( $header_style == 'center' ) {
+					$css .= '#site-header.center-header #site-navigation .middle-site-logo a img{max-height:'. $mobile_logo_height .'px;}';
+				} else {
+					$css .= '#site-logo #site-logo-inner a img{max-height:'. $mobile_logo_height .'px;}';
+				}
+			}
+
+# $mobile_logo_top_margin
+			// Header logo top margin
+			if ( ! empty( $mobile_logo_top_margin ) && '0' != $mobile_logo_top_margin ) {
+				if ( 'center' != $header_style ) {
+					$css .= '#site-logo #site-logo-inner a img{margin-top:'. $mobile_logo_top_margin .'px;}';
+				} else {
+					$css .= '#site-header.center-header #site-navigation .middle-site-logo a img{margin-top:'. $mobile_logo_top_margin .'px;}';
+				}
+			}
+
+# $mobile_logo_bottom_margin
+			// Header logo bottom margin
+			if ( ! empty( $mobile_logo_bottom_margin ) && '0' != $mobile_logo_bottom_margin ) {
+				if ( 'center' != $header_style ) {
+					$css .= '#site-logo #site-logo-inner a img{margin-bottom:'. $mobile_logo_bottom_margin .'px;}';
+				} else {
+					$css .= '#site-header.center-header #site-navigation .middle-site-logo a img{margin-bottom:'. $mobile_logo_bottom_margin .'px;}';
+				}
+			}
+
+# Close Media Query
+			$css .= '}'; 
+##############################################################
+#################   END BREAKPOINT: <960px   #################
+##############################################################
+			
 			// Return CSS
 			if ( ! empty( $css ) ) {
 				$output .= '/* Header CSS */'. $css;

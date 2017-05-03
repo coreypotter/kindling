@@ -24,7 +24,6 @@
 
 #kindling-mobile-menu-icon {
 	display: none;
-	float: right;
 	position: relative;
 	right: -15px;
 
@@ -58,6 +57,16 @@
 		letter-spacing: 2px;
 		text-transform: uppercase;
 	}
+}
+
+@media only screen and (max-width: 959px) {
+  #kindling-mobile-menu-icon,
+  #site-header-inner,
+  #site-logo-inner {
+    display: block !important;
+    text-align: center;
+    width: 100%;
+  }
 }
 
 /*------------------------------------*
@@ -195,7 +204,7 @@ only screen and (                min-resolution: 2dppx) {
 	
 	/* header > navbar */
 	#site-navigation-wrap, #kindling-social-menu {
-		display: none;
+		display: none !important;
 	}
 
 	#kindling-mobile-menu-icon {
