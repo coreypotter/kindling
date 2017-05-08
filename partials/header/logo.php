@@ -11,16 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 # Vars
-$retina_logo 		= get_theme_mod( 'kindling_retina_logo' );
-$transparent_logo 	= get_theme_mod( 'kindling_transparent_header_logo' );
-$full_screen_logo 	= get_theme_mod( 'kindling_full_screen_header_logo' ); ?>
+$full_screen_logo = get_theme_mod( 'kindling_full_screen_header_logo' ); ?>
 
 <?php do_action( 'kindling_before_logo' ); ?>
-
 <div id="site-logo" class="<?php echo kindling_header_logo_classes(); ?>" itemscope itemtype="http:#schema.org/Brand">
 
 	<?php do_action( 'kindling_before_logo_inner' ); ?>
-
 	<div id="site-logo-inner" class="clr">
 
 		<?php
@@ -29,16 +25,6 @@ $full_screen_logo 	= get_theme_mod( 'kindling_full_screen_header_logo' ); ?>
 
 			# Default logo
 			the_custom_logo();
-
-			# Retina logo
-			if ( $retina_logo ) {
-				the_custom_retina_logo();
-			}
-
-			# Transparent logo
-			if ( $transparent_logo ) {
-				the_custom_transparent_logo();
-			}
 
 			# Full screen logo
 			if ( $full_screen_logo ) {
@@ -52,9 +38,7 @@ $full_screen_logo 	= get_theme_mod( 'kindling_full_screen_header_logo' ); ?>
 		<?php } ?>
 
 	</div><!-- #site-logo-inner -->
-
 	<?php do_action( 'kindling_after_logo_inner' ); ?>
 
 </div><!-- #site-logo -->
-
 <?php do_action( 'kindling_after_logo' ); ?>

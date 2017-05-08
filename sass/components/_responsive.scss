@@ -15,17 +15,9 @@
 /*------------------------------------*
 	Mobile Menu
 *------------------------------------*/
-#site-logo {
-	.retina-logo-link,
-	.transparent-retina-logo-link {
-		display: none;
-	}
-}
-
 #kindling-mobile-menu-icon {
 	display: none;
 	position: relative;
-	right: -15px;
 
 	a {
 		font-size: 13px;
@@ -47,7 +39,6 @@
 /* Top Menu header*/
 #site-header.top-header #kindling-mobile-menu-icon {
 	float: none;
-	left: -15px;
 	right: auto;
 
 	a {
@@ -63,61 +54,11 @@
   #kindling-mobile-menu-icon,
   #site-header-inner,
   #site-logo-inner {
-    display: block !important;
     text-align: center;
     width: 100%;
   }
 }
 
-/*------------------------------------*
-	Retina Logo
-*------------------------------------*/
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (   -moz-min-device-pixel-ratio: 2),
-only screen and (     -o-min-device-pixel-ratio: 2/1),
-only screen and (        min-device-pixel-ratio: 2),
-only screen and (                min-resolution: 192dpi),
-only screen and (                min-resolution: 2dppx) {
-  
-	/* logo */
-	#site-logo.has-retina-logo {
-		.custom-logo-link {
-			display: none;
-		}
-
-		.retina-logo-link {
-			display: block;
-		}
-	}
-
-	/* Transparent logo */
-	#site-header.transparent-header #site-logo.has-transparent-logo .transparent-logo-link,
-	.is-sticky #site-header.transparent-header #site-logo.has-transparent-logo .custom-logo-link {
-		display: none;
-	}
-
-	#site-logo.has-transparent-logo {
-		.retina-logo-link {
-			display: none;
-		}
-
-		.transparent-retina-logo-link {
-			display: block;
-		}
-	}
-
-	.is-sticky #site-header.transparent-header #site-logo.has-transparent-logo {
-		.retina-logo-link {
-			display: block;
-		}
-
-		.transparent-retina-logo-link {
-			display: none;
-		}
-	}
-
-}
 
 /*------------------------------------*
 	Tablet & Small Desktop Widths
@@ -411,42 +352,12 @@ only screen and (                min-resolution: 2dppx) {
 	#site-logo {
 		margin-top: 0px !important;
 		margin-bottom: 0px !important;
-
-		&.has-retina-logo {
-			.custom-logo-link {
-				display: none;
-			}
-
-			.retina-logo-link {
-				display: block;
-			}
-		}
 	}
 
 	/* Transparent logo */
 	#site-header.transparent-header #site-logo.has-transparent-logo .transparent-logo-link,
 	.is-sticky #site-header.transparent-header #site-logo.has-transparent-logo .custom-logo-link {
 		display: none;
-	}
-
-	#site-logo.has-transparent-logo {
-		.retina-logo-link {
-			display: none;
-		}
-
-		.transparent-retina-logo-link {
-			display: block;
-		}
-	}
-
-	.is-sticky #site-header.transparent-header #site-logo.has-transparent-logo {
-		.retina-logo-link {
-			display: block;
-		}
-
-		.transparent-retina-logo-link {
-			display: none;
-		}
 	}
 	
 	/* page header */

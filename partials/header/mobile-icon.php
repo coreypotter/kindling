@@ -23,17 +23,16 @@ $ms_global_menu = apply_filters( 'kindling_ms_global_menu', false );
 if ( has_nav_menu( $menu_location ) || $ms_global_menu ) :
 
 	# Get menu icon
-	$icon = apply_filters( 'kindling_mobile_menu_navbar_open_icon', '<i class="fa fa-bars"></i>' );
+	$icon_class = get_theme_mod( 'kindling_mobile_menu_icon', 'bars' );
+	$icon = '<i class="fa fa-'.$icon_class.'"></i>';
 
 	# Get menu text
-	$text = esc_html__( 'Menu', 'kindling' );
-	$text = apply_filters( 'kindling_mobile_menu_text', $text );
+	$text = get_theme_mod( 'kindling_mobile_menu_text', 'Menu' );
 
 	if ( KINDLING_WOOCOMMERCE_ACTIVE ) {
 
 		# Cart icon
 		$cart_icon = '<i class="icon-handbag"></i>';
-		$cart_icon = apply_filters( 'kindling_menu_cart_icon_html', $cart_icon );
 
 	} ?>
 

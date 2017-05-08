@@ -28,8 +28,7 @@
 }
 
 #site-logo #site-logo-inner {
-	display: table-cell;
-    vertical-align: middle;
+	margin: 0 auto;
 
     a {
     	background-color: transparent !important;
@@ -646,12 +645,19 @@ body.has-transparent-header .kindling-sticky-header-holder {
 /**
  * Logo Left header
  */
-#site-header.minimal-header {
-	#site-header-inner {
-		display: flex;
-		flex-flow: row nowrap;
-	}
-	#site-logo {
-		flex-grow: 1;
+@media only screen and (min-width: 959px) {
+	#site-header.minimal-header {
+		#site-header-inner {
+			display: flex;
+			flex-flow: row nowrap;
+		}
+		#site-logo {
+			flex-grow: 1;
+			
+			#site-logo-inner {
+			    display: inline-flex;
+				align-items: center;
+			}
+		}
 	}
 }

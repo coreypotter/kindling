@@ -177,6 +177,7 @@
 		});
 	});
 
+/***********************************************************************
 	// Header Height
 	api( 'kindling_header_height', function( value ) {
 		value.bind( function( to ) {
@@ -208,6 +209,7 @@
 			}
 		} );
 	} );
+***********************************************************************/
 
 	// Header Border Bottom
 	api('kindling_has_header_border_bottom', function( value ) {
