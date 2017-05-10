@@ -94,53 +94,16 @@ if ( ! class_exists( 'Kindling_Typography_Customizer' ) ) :
 						'line-height' 		=> '1.4',
 					),
 				),
-				'logo' 						=> array(
-					'label' 				=> esc_html__( 'Logo', 'kindling' ),
-					'target' 				=> '#site-logo a.site-logo-text',
-					'exclude' 				=> array( 'font-color' ),
-					'defaults' 				=> array(
-						'font-size' 		=> '24',
-						'line-height'	 	=> '1.8',
-					),
-				),
-#				'top_menu' 					=> array(
-#					'label' 				=> esc_html__( 'Top Bar', 'kindling' ),
-#					'target' 				=> '#top-bar-content,#top-bar-social-alt',
-#					'exclude' 				=> array( 'font-color' ),
-#					'defaults' 				=> array(
-#						'font-size' 		=> '12',
-#						'line-height' 		=> '1.8',
-#					),
-#					'active_callback' 		=> 'kindling_cac_has_topbar',
-#				),
-				'menu' 						=> array(
-					'label' 				=> esc_html__( 'Main Menu', 'kindling' ),
-					'target' 				=> '#site-navigation-wrap .dropdown-menu > li > a,#site-header.full_screen-header .fs-dropdown-menu > li > a,#site-header.top-header #site-navigation-wrap .dropdown-menu > li > a,#site-header.center-header #site-navigation-wrap .dropdown-menu > li > a,#kindling-mobile-menu-icon a',
-					'exclude' 				=> array( 'font-color', 'line-height' ),
-					'defaults' 				=> array(
-						'font-size' 		=> '13',
-						'letter-spacing' 	=> '0.6',
-					),
-				),
-				'menu_dropdown' 			=> array(
-					'label' 				=> esc_html__( 'Main Menu: Dropdowns', 'kindling' ),
-					'target' 				=> '.dropdown-menu ul li a.menu-link,#site-header.full_screen-header .fs-dropdown-menu ul.sub-menu li a',
-					'exclude' 				=> array( 'font-color' ),
-					'defaults' 				=> array(
-						'font-size' 		=> '12',
-						'line-height' 		=> '1.2',
-						'letter-spacing' 	=> '0.6',
-					),
-				),
-				'mobile_menu_dropdown' 		=> array(
-					'label' 				=> esc_html__( 'Mobile Menu: Dropdowns', 'kindling' ),
-					'target' 				=> '.sidr-class-dropdown-menu li a, a.sidr-class-toggle-sidr-close',
-					'exclude' 				=> array( 'font-color' ),
-					'defaults' 				=> array(
-						'font-size' 		=> '15',
-						'line-height' 		=> '1.8',
-					),
-				),
+##				'top_menu' 					=> array(
+##					'label' 				=> esc_html__( 'Top Bar', 'kindling' ),
+##					'target' 				=> '#top-bar-content,#top-bar-social-alt',
+##					'exclude' 				=> array( 'font-color' ),
+##					'defaults' 				=> array(
+##						'font-size' 		=> '12',
+##						'line-height' 		=> '1.8',
+##					),
+##					'active_callback' 		=> 'kindling_cac_has_topbar',
+##				),
 				'page_title' 				=> array(
 					'label' 				=> esc_html__( 'Page Title', 'kindling' ),
 					'target' 				=> '.page-header .page-header-title, .page-header.background-image-page-header .page-header-title',
@@ -200,37 +163,27 @@ if ( ! class_exists( 'Kindling_Typography_Customizer' ) ) :
 					),
 					'margin' => true,
 				),
-				'footer_widget_title' 		=> array(
-					'label' 				=> esc_html__( 'Footer Widget Heading', 'kindling' ),
-					'target' 				=> '#footer-widgets .footer-box .widget-title',
-					'defaults' 				=> array(
-						'font-size' 		=> '13',
-						'color' 			=> '#ffffff',
-						'line-height' 		=> '1',
-						'letter-spacing' 	=> '1',
-					),
-					'active_callback' 		=> 'kindling_cac_has_footer_widgets',
-				),
-				'copyright' 				=> array(
-					'label' 				=> esc_html__( 'Footer Copyright', 'kindling' ),
-					'target' 				=> '#footer-bottom #copyright',
-					'exclude' 				=> array( 'font-color' ),
-					'defaults' 				=> array(
-						'font-size' 		=> '12',
-						'line-height' 		=> '1',
-					),
-					'active_callback' 		=> 'kindling_cac_has_footer_bottom',
-				),
-				'footer_menu' 				=> array(
-					'label' 				=> esc_html__( 'Footer Menu', 'kindling' ),
-					'target' 				=> '#footer-bottom #footer-bottom-menu',
-					'exclude' 				=> array( 'font-color' ),
-					'defaults' 				=> array(
-						'font-size' 		=> '12',
-						'line-height'		=> '1',
-					),
-					'active_callback' 		=> 'kindling_cac_has_footer_bottom',
-				),
+##				'footer_widget_title' 		=> array(
+##					'label' 				=> esc_html__( 'Footer Widget Heading', 'kindling' ),
+##					'target' 				=> '#footer-widgets .footer-box .widget-title',
+##					'defaults' 				=> array(
+##						'font-size' 		=> '13',
+##						'color' 			=> '#ffffff',
+##						'line-height' 		=> '1',
+##						'letter-spacing' 	=> '1',
+##					),
+##					'active_callback' 		=> 'kindling_cac_has_footer_widgets',
+##				),
+##				'footer_menu' 				=> array(
+##					'label' 				=> esc_html__( 'Footer Menu', 'kindling' ),
+##					'target' 				=> '#footer-bottom #footer-bottom-menu',
+##					'exclude' 				=> array( 'font-color' ),
+##					'defaults' 				=> array(
+##						'font-size' 		=> '12',
+##						'line-height'		=> '1',
+##					),
+##					'active_callback' 		=> 'kindling_cac_has_footer_bottom',
+##				),
 			) );
 
 		}
@@ -256,7 +209,7 @@ if ( ! class_exists( 'Kindling_Typography_Customizer' ) ) :
 				'priority' 			=> 9,
 			) );
 
-			// Lopp through elements
+			// Loop through elements
 			$count = '1';
 			foreach( $elements as $element => $array ) {
 				$count++;

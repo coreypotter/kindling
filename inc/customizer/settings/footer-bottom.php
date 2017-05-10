@@ -126,6 +126,149 @@ if ( ! class_exists( 'Kindling_Footer_Bottom_Customizer' ) ) :
 			) ) );
 
 			/**
+			 * Font Family
+			 */
+			$wp_customize->add_setting( 'kindling_copyright_font_family', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Typography_Control( $wp_customize, 'kindling_copyright_font_family', array(
+				'label' 			=> esc_html__( 'Copyright Font Family', 'kindling' ),
+				'section' 			=> $section,
+				'settings' 			=> 'kindling_copyright_font_family',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'active_callback'	=> 'kindling_cac_has_footer_bottom',
+			) ) );
+
+			/**
+			 * Font Weight
+			 */
+			$wp_customize->add_setting( 'kindling_copyright_font_weight', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_copyright_font_weight', array(
+				'label' 			=> esc_html__( 'Copyright Font Weight', 'kindling' ),
+				'description' 		=> esc_html__( 'Important: Not all fonts support every font-weight.', 'kindling' ),
+				'section' 			=> $section,
+				'settings' 			=> 'kindling_copyright_font_weight',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'active_callback'	=> 'kindling_cac_has_footer_bottom',
+				'choices' 			=> array(
+					'' 					=> esc_html__( 'Default', 'kindling' ),
+					'100'				=> esc_html__( 'Thin: 100', 'kindling' ),
+					'200'				=> esc_html__( 'Extra Light: 200', 'kindling' ),
+					'300'				=> esc_html__( 'Light: 300', 'kindling' ),
+					'400'				=> esc_html__( 'Normal: 400', 'kindling' ),
+					'500'				=> esc_html__( 'Medium: 500', 'kindling' ),
+					'600'				=> esc_html__( 'Semibold: 600', 'kindling' ),
+					'700'				=> esc_html__( 'Bold: 700', 'kindling' ),
+					'800'				=> esc_html__( 'Extra Bold: 800', 'kindling' ),
+					'900'				=> esc_html__( 'Black: 900', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Font Style
+			 */
+			$wp_customize->add_setting( 'kindling_copyright_font_style', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_copyright_font_style', array(
+				'label' 			=> esc_html__( 'Copyright Font Style', 'kindling' ),
+				'section' 			=> $section,
+				'settings' 			=> 'kindling_copyright_font_style',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'active_callback'	=> 'kindling_cac_has_footer_bottom',
+				'choices' 			=> array(
+					''					=> esc_html__( 'Default', 'kindling' ),
+					'normal'			=> esc_html__( 'Normal', 'kindling' ),
+					'italic'			=> esc_html__( 'Italic', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Text Transform
+			 */
+			$wp_customize->add_setting( 'kindling_copyright_text_transform', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_copyright_text_transform', array(
+				'label' 			=> esc_html__( 'Copyright Text Transform', 'kindling' ),
+				'section' 			=> $section,
+				'settings' 			=> 'kindling_copyright_text_transform',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'active_callback'	=> 'kindling_cac_has_footer_bottom',
+				'choices' 			=> array(
+					''					=> esc_html__( 'Default', 'kindling' ),
+					'capitalize'		=> esc_html__( 'Capitalize', 'kindling' ),
+					'lowercase'			=> esc_html__( 'Lowercase', 'kindling' ),
+					'uppercase'			=> esc_html__( 'Uppercase', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Font Size
+			 */
+			$wp_customize->add_setting( 'kindling_copyright_font_size', array(
+				'default' 			=> '12',
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_copyright_font_size', array(
+				'label' 			=> esc_html__( 'Copyright Font Size (px)', 'kindling' ),
+				'section' 			=> $section,
+				'settings' 			=> 'kindling_copyright_font_size',
+				'priority' 			=> 10,
+				'active_callback'	=> 'kindling_cac_has_footer_bottom',
+				'input_attrs' 		=> array(
+					'min'				=> 0,
+					'max'				=> 100,
+					'step'				=> 1,
+				),
+			) ) );
+
+			/**
+			 * Line Height
+			 */
+			$wp_customize->add_setting( 'kindling_copyright_line_height', array(
+				'default' 			=> '1',
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_copyright_line_height', array(
+				'label' 			=> esc_html__( 'Copyright Line Height', 'kindling' ),
+				'section' 			=> $section,
+				'settings' 			=> 'kindling_copyright_line_height',
+				'priority' 			=> 10,
+				'active_callback'	=> 'kindling_cac_has_footer_bottom',
+				'input_attrs' 		=> array(
+					'min'				=> 0,
+					'max'				=> 4,
+					'step'				=> 0.1,
+				),
+			) ) );
+
+			/**
+			 * Letter Spacing
+			 */
+			$wp_customize->add_setting( 'kindling_copyright_letter_spacing', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_copyright_letter_spacing', array(
+				'label' 			=> esc_html__( 'Copyright Letter Spacing (px)', 'kindling' ),
+				'section' 			=> $section,
+				'settings' 			=> 'kindling_copyright_letter_spacing',
+				'priority' 			=> 10,
+				'active_callback'	=> 'kindling_cac_has_footer_bottom',
+				'input_attrs' 		=> array(
+					'min'				=> 0,
+					'max'				=> 10,
+					'step'				=> 0.1,
+				),
+			) ) );			
+			
+			/**
 			 * Footer Bottom Background Color
 			 */
 			$wp_customize->add_setting( 'kindling_bottom_footer_background', array(
@@ -208,6 +351,13 @@ if ( ! class_exists( 'Kindling_Footer_Bottom_Customizer' ) ) :
 			$bottom_color 				= get_theme_mod( 'kindling_bottom_footer_color', '#929292' );
 			$bottom_link_color 			= get_theme_mod( 'kindling_bottom_footer_link_color', '#ffffff' );
 			$bottom_link_color_hover 	= get_theme_mod( 'kindling_bottom_footer_link_color_hover', '#13aff0' );
+			$copyright_font_family		= get_theme_mod( 'kindling_copyright_font_family' );
+			$copyright_font_weight		= get_theme_mod( 'kindling_copyright_font_weight' );
+			$copyright_font_style		= get_theme_mod( 'kindling_copyright_font_style' );
+			$copyright_text_transform	= get_theme_mod( 'kindling_copyright_text_transform' );
+			$copyright_font_size		= get_theme_mod( 'kindling_copyright_font_size', '12' );
+			$copyright_line_height		= get_theme_mod( 'kindling_copyright_line_height', '1' );
+			$copyright_letter_spacing	= get_theme_mod( 'kindling_copyright_letter_spacing' );
 
 			// Define css var
 			$css = '';
@@ -237,6 +387,32 @@ if ( ! class_exists( 'Kindling_Footer_Bottom_Customizer' ) ) :
 				$css .= '#footer-bottom a:hover,#footer-bottom #footer-bottom-menu a:hover{color:'. $bottom_link_color_hover .';}';
 			}
 				
+			## START: Copyright Typography
+			$css .= '#footer-bottom #copyright{';
+			if ( ! empty ( $copyright_font_family ) ) {
+				$css .= 'font-family:'. $copyright_font_family .';';
+			}
+			if ( ! empty ( $copyright_font_weight ) ) {
+				$css .= 'font-weight:'. $copyright_font_weight .';';
+			}
+			if ( ! empty ( $copyright_font_style ) ) {
+				$css .= 'font-style:'. $copyright_font_style .';';
+			}
+			if ( ! empty ( $copyright_text_transform ) ) {
+				$css .= 'text-transform:'. $copyright_text_transform .';';
+			}
+			if ( ! empty ( $copyright_font_size ) && ( $copyright_font_size != '12' ) ) {
+				$css .= 'font-size:'. $copyright_font_size .'px;';
+			}
+			if ( ! empty ( $copyright_line_height ) && ( $copyright_line_height != '1' ) ) {
+				$css .= 'line-height:'. $copyright_line_height .';';
+			}
+			if ( ! empty ( $copyright_letter_spacing ) ) {
+				$css .= 'letter-spacing:'. $copyright_letter_spacing .'px;';
+			}
+			$css .= '}';
+			## END: Copyright Typography
+
 			// Return CSS
 			if ( ! empty( $css ) ) {
 				$output .= '/* Footer Bottom CSS */'. $css;
