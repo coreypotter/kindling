@@ -64,9 +64,9 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				'priority' 				=> 10,
 				'choices' 				=> array(
 					'minimal' 		=> esc_html__( 'Logo Left', 'kindling' ),
-					'top'			=> esc_html__( 'Top Menu', 'kindling' ),
-					'full_screen'	=> esc_html__( 'Full Screen', 'kindling' ),
-					'center'		=> esc_html__( 'Center', 'kindling' ),
+					'top'			=> esc_html__( 'Logo Above/Below', 'kindling' ),
+#					'full_screen'	=> esc_html__( 'Full Screen', 'kindling' ),
+					'center'		=> esc_html__( 'Logo Inline Center', 'kindling' ),
 				),
 			) ) );
 
@@ -1354,14 +1354,16 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 #			) ) );
 /*  END REMOVED: DROPDOWN CATEGORIES POSTS  */
 
-			/**
-			 * Section
-			 */
-			$wp_customize->add_section( 'kindling_header_menu_social' , array(
-				'title' 			=> esc_html__( 'Menu Social', 'kindling' ),
-				'priority' 			=> 10,
-				'panel' 			=> $panel,
-			) );
+
+#### TODO: Re-enable Menu Social Section
+##			/**
+##			 * Section
+##			 */
+##			$wp_customize->add_section( 'kindling_header_menu_social' , array(
+##				'title' 			=> esc_html__( 'Menu Social', 'kindling' ),
+##				'priority' 			=> 10,
+##				'panel' 			=> $panel,
+##			) );
 
 			/**
 			 * Menu Social

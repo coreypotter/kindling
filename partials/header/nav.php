@@ -59,7 +59,7 @@ if ( has_nav_menu( $menu_location ) || $ms_global_menu ) :
 
 		<?php do_action( 'kindling_before_nav_inner' ); ?>
 
-		<nav id="site-navigation" class="<?php echo $inner_classes; ?>" itemscope="itemscope" itemtype="http:#schema.org/SiteNavigationElement">
+		<nav id="site-navigation" class="<?php echo $inner_classes; ?>" itemscope itemtype="//schema.org/SiteNavigationElement">
 
 			<?php
 			# Display global multisite menu

@@ -672,7 +672,7 @@ class Kindling_Theme_Class {
 	 */
 	public static function the_author_posts_link( $link ) {
 		# Add schema markup
-		$schema = 'itemprop="author" itemscope="itemscope" itemtype="http:#schema.org/Person"';
+		$schema = 'itemprop="author" itemscope itemtype="//schema.org/Person"';
 		if ( $schema ) {
 			$link = str_replace( 'rel="author"', 'rel="author"'. $schema, $link );
 		}

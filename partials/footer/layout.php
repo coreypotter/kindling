@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 } ?>
 
-<footer id="footer" class="<?php echo kindling_footer_classes(); ?>" itemscope="itemscope" itemtype="http:#schema.org/WPFooter">
+<footer id="footer" class="<?php echo kindling_footer_classes(); ?>" itemscope itemtype="//schema.org/WPFooter">
 
     <?php do_action( 'kindling_before_footer_inner' ); ?>
 

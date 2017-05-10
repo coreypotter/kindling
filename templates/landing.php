@@ -17,7 +17,7 @@
 </head>
 
 <!-- Begin Body -->
-<body <?php body_class(); ?> itemscope="itemscope" itemtype="http://schema.org/WebPage">
+<body <?php body_class(); ?> itemscope itemtype="//schema.org/WebPage">
 
 <?php do_action( 'kindling_before_outer_wrap' ); ?>
 

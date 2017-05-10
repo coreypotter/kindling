@@ -178,7 +178,7 @@ class Kindling_Breadcrumb_Trail {
 		if ( 0 < $item_count ) {
 
 			// Open the unordered list.
-			$breadcrumb .= '<ul class="trail-items" itemscope itemtype="http://schema.org/BreadcrumbList">';
+			$breadcrumb .= '<ul class="trail-items" itemscope itemtype="//schema.org/BreadcrumbList">';
 
 			// Add the number of items and item list order schema.
 			$breadcrumb .= sprintf( '<meta name="numberOfItems" content="%d" />', absint( $item_count ) );
@@ -206,7 +206,7 @@ class Kindling_Breadcrumb_Trail {
 					$item_class .= ' trail-end';
 
 				// Create list item attributes.
-				$attributes = 'itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="' . $item_class . '"';
+				$attributes = 'itemprop="itemListElement" itemscope itemtype="//schema.org/ListItem" class="' . $item_class . '"';
 
 				// Build the meta position HTML.
 				$meta = sprintf( '<meta itemprop="position" content="%s" />', absint( $item_position ) );

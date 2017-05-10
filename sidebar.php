@@ -9,7 +9,7 @@ if ( in_array( kindling_post_layout(), array( 'full-screen', 'full-width' ) ) ) 
 ?>
 
 <?php do_action( 'kindling_before_sidebar' ); ?>
-<aside id="sidebar" class="sidebar-container widget-area sidebar-primary" itemscope="itemscope" itemtype="http:#schema.org/WPSideBar">
+<aside id="sidebar" class="sidebar-container widget-area sidebar-primary" itemscope itemtype="//schema.org/WPSideBar">
 
 	<?php do_action( 'kindling_before_sidebar_inner' ); ?>
 	<div id="sidebar-inner" class="clr">

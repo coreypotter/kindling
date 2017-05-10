@@ -2793,15 +2793,15 @@ if ( ! function_exists( 'kindling_main_schema_markup' ) ) {
 
 	function kindling_main_schema_markup() {
 
-		$itemtype = 'http://schema.org/WebPageElement';
+		$itemtype = '//schema.org/WebPageElement';
 		$itemprop = 'mainContentOfPage';
 
 		if ( is_singular( 'post' ) ) {
 			$itemprop = '';
-			$itemtype = 'http://schema.org/Blog';
+			$itemtype = '//schema.org/Blog';
 		}
 
-		$schema = 'itemprop="'. $itemprop .'" itemscope="itemscope" itemtype="'. $itemtype .'"';
+		$schema = 'itemprop="'. $itemprop .'" itemscope itemtype="'. $itemtype .'"';
 
 		return $schema;
 

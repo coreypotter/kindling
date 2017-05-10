@@ -5,6 +5,8 @@
  * @package Kindling Theme
  */
 
+## TODO: Decide what to do with leftovers from sticky header, transparent, fullscreen, etc. Are these coming back?
+ 
 # Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
@@ -36,7 +38,7 @@ if ( 'transparent' == $header_style ) { ?>
 <?php
 } ?>
 
-<header id="site-header" class="<?php echo kindling_header_classes(); ?>" itemscope="itemscope" itemtype="http:#schema.org/WPHeader" data-height="<?php echo esc_attr( $header_height ); ?>">
+<header id="site-header" class="<?php echo kindling_header_classes(); ?>" itemscope itemtype="//schema.org/WPHeader" data-height="<?php echo esc_attr( $header_height ); ?>">
 
 	<?php
 	# If top header style
@@ -59,7 +61,8 @@ if ( 'transparent' == $header_style ) { ?>
 			<?php get_template_part( 'partials/header/logo' ); ?>
 
 			<?php if ( true == get_theme_mod( 'kindling_menu_social', false ) ) {
-				get_template_part( 'partials/header/social' );
+## TODO: Re-enable Menu Social Section
+#				get_template_part( 'partials/header/social' );
 			} ?>
 
 			<?php get_template_part( 'partials/header/nav' ); ?>
