@@ -617,6 +617,162 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			) );
 
 			/**
+			 * Logo Font Heading
+			 */
+			$wp_customize->add_setting( 'kindling_logo_font_heading', array(
+				'sanitize_callback' 	=> false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Heading_Control( $wp_customize, 'kindling_logo_font_heading', array(
+				'label'    				=> esc_html__( 'Text Logo Font Styling', 'kindling' ),
+				'section'  				=> 'kindling_header_logo',
+				'priority' 				=> 10,
+				'active_callback'	=> 'kindling_cac_hasnt_custom_logo',
+			) ) );
+			
+			/**
+			 * Logo Font Family
+			 */
+			$wp_customize->add_setting( 'kindling_logo_font_family', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Typography_Control( $wp_customize, 'kindling_logo_font_family', array(
+				'label' 			=> esc_html__( 'Logo Font Family', 'kindling' ),
+				'section' 			=> 'kindling_header_logo',
+				'settings' 			=> 'kindling_logo_font_family',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'active_callback'	=> 'kindling_cac_hasnt_custom_logo',
+			) ) );
+
+			/**
+			 * Logo Font Weight
+			 */
+			$wp_customize->add_setting( 'kindling_logo_font_weight', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_logo_font_weight', array(
+				'label' 			=> esc_html__( 'Logo Font Weight', 'kindling' ),
+				'description' 		=> esc_html__( 'Important: Not all fonts support every font-weight.', 'kindling' ),
+				'section' 			=> 'kindling_header_logo',
+				'settings' 			=> 'kindling_logo_font_weight',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'active_callback'	=> 'kindling_cac_hasnt_custom_logo',
+				'choices' 			=> array(
+					'' 					=> esc_html__( 'Default', 'kindling' ),
+					'100'				=> esc_html__( 'Thin: 100', 'kindling' ),
+					'200'				=> esc_html__( 'Extra Light: 200', 'kindling' ),
+					'300'				=> esc_html__( 'Light: 300', 'kindling' ),
+					'400'				=> esc_html__( 'Normal: 400', 'kindling' ),
+					'500'				=> esc_html__( 'Medium: 500', 'kindling' ),
+					'600'				=> esc_html__( 'Semibold: 600', 'kindling' ),
+					'700'				=> esc_html__( 'Bold: 700', 'kindling' ),
+					'800'				=> esc_html__( 'Extra Bold: 800', 'kindling' ),
+					'900'				=> esc_html__( 'Black: 900', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Logo Font Style
+			 */
+			$wp_customize->add_setting( 'kindling_logo_font_style', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_logo_font_style', array(
+				'label' 			=> esc_html__( 'Logo Font Style', 'kindling' ),
+				'section' 			=> 'kindling_header_logo',
+				'settings' 			=> 'kindling_logo_font_style',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'active_callback'	=> 'kindling_cac_hasnt_custom_logo',
+				'choices' 			=> array(
+					''					=> esc_html__( 'Default', 'kindling' ),
+					'normal'			=> esc_html__( 'Normal', 'kindling' ),
+					'italic'			=> esc_html__( 'Italic', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Logo Text Transform
+			 */
+			$wp_customize->add_setting( 'kindling_logo_text_transform', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_logo_text_transform', array(
+				'label' 			=> esc_html__( 'Logo Text Transform', 'kindling' ),
+				'section' 			=> 'kindling_header_logo',
+				'settings' 			=> 'kindling_logo_text_transform',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'active_callback'	=> 'kindling_cac_hasnt_custom_logo',
+				'choices' 			=> array(
+					''					=> esc_html__( 'Default', 'kindling' ),
+					'capitalize'		=> esc_html__( 'Capitalize', 'kindling' ),
+					'lowercase'			=> esc_html__( 'Lowercase', 'kindling' ),
+					'uppercase'			=> esc_html__( 'Uppercase', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Logo Font Size
+			 */
+			$wp_customize->add_setting( 'kindling_logo_font_size', array(
+				'default' 			=> '24',
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_logo_font_size', array(
+				'label' 			=> esc_html__( 'Logo Font Size (px)', 'kindling' ),
+				'section' 			=> 'kindling_header_logo',
+				'settings' 			=> 'kindling_logo_font_size',
+				'priority' 			=> 10,
+				'active_callback'	=> 'kindling_cac_hasnt_custom_logo',
+				'input_attrs' 		=> array(
+					'min'				=> 0,
+					'max'				=> 100,
+					'step'				=> 1,
+				),
+			) ) );
+
+			/**
+			 * Logo Line Height
+			 */
+			$wp_customize->add_setting( 'kindling_logo_line_height', array(
+				'default' 			=> '1.8',
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_logo_line_height', array(
+				'label' 			=> esc_html__( 'Logo Line Height', 'kindling' ),
+				'section' 			=> 'kindling_header_logo',
+				'settings' 			=> 'kindling_logo_line_height',
+				'priority' 			=> 10,
+				'active_callback'	=> 'kindling_cac_hasnt_custom_logo',
+				'input_attrs' 		=> array(
+					'min'				=> 0,
+					'max'				=> 4,
+					'step'				=> 0.1,
+				),
+			) ) );
+
+			/**
+			 * Logo Letter Spacing
+			 */
+			$wp_customize->add_setting( 'kindling_logo_letter_spacing', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_logo_letter_spacing', array(
+				'label' 			=> esc_html__( 'Logo Letter Spacing', 'kindling' ),
+				'section' 			=> 'kindling_header_logo',
+				'settings' 			=> 'kindling_logo_letter_spacing',
+				'priority' 			=> 10,
+				'active_callback'	=> 'kindling_cac_hasnt_custom_logo',
+				'input_attrs' 		=> array(
+					'min'				=> 0,
+					'max'				=> 10,
+					'step'				=> 0.1,
+				),
+			) ) );
+			
+			/**
 			 * Header Logo Color
 			 */
 			$wp_customize->add_setting( 'kindling_logo_color', array(
@@ -784,6 +940,124 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			) ) );
 
 			/**
+			 * Font Family
+			 */
+			$wp_customize->add_setting( 'kindling_menu_font_family', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Typography_Control( $wp_customize, 'kindling_menu_font_family', array(
+				'label' 			=> esc_html__( 'Main Menu Font Family', 'kindling' ),
+				'section' 			=> 'kindling_header_menu',
+				'settings' 			=> 'kindling_menu_font_family',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+			) ) );
+
+			/**
+			 * Font Weight
+			 */
+			$wp_customize->add_setting( 'kindling_menu_font_weight', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_menu_font_weight', array(
+				'label' 			=> esc_html__( 'Main Menu Font Weight', 'kindling' ),
+				'description' 		=> esc_html__( 'Important: Not all fonts support every font-weight.', 'kindling' ),
+				'section' 			=> 'kindling_header_menu',
+				'settings' 			=> 'kindling_menu_font_weight',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'choices' 			=> array(
+					'' 					=> esc_html__( 'Default', 'kindling' ),
+					'100'				=> esc_html__( 'Thin: 100', 'kindling' ),
+					'200'				=> esc_html__( 'Extra Light: 200', 'kindling' ),
+					'300'				=> esc_html__( 'Light: 300', 'kindling' ),
+					'400'				=> esc_html__( 'Normal: 400', 'kindling' ),
+					'500'				=> esc_html__( 'Medium: 500', 'kindling' ),
+					'600'				=> esc_html__( 'Semibold: 600', 'kindling' ),
+					'700'				=> esc_html__( 'Bold: 700', 'kindling' ),
+					'800'				=> esc_html__( 'Extra Bold: 800', 'kindling' ),
+					'900'				=> esc_html__( 'Black: 900', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Font Style
+			 */
+			$wp_customize->add_setting( 'kindling_menu_font_style', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_menu_font_style', array(
+				'label' 			=> esc_html__( 'Main Menu Font Style', 'kindling' ),
+				'section' 			=> 'kindling_header_menu',
+				'settings' 			=> 'kindling_menu_font_style',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'choices' 			=> array(
+					''					=> esc_html__( 'Default', 'kindling' ),
+					'normal'			=> esc_html__( 'Normal', 'kindling' ),
+					'italic'			=> esc_html__( 'Italic', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Text Transform
+			 */
+			$wp_customize->add_setting( 'kindling_menu_text_transform', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_menu_text_transform', array(
+				'label' 			=> esc_html__( 'Main Menu Text Transform', 'kindling' ),
+				'section' 			=> 'kindling_header_menu',
+				'settings' 			=> 'kindling_menu_text_transform',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'choices' 			=> array(
+					''					=> esc_html__( 'Default', 'kindling' ),
+					'capitalize'		=> esc_html__( 'Capitalize', 'kindling' ),
+					'lowercase'			=> esc_html__( 'Lowercase', 'kindling' ),
+					'uppercase'			=> esc_html__( 'Uppercase', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Font Size
+			 */
+			$wp_customize->add_setting( 'kindling_menu_font_size', array(
+				'default' 			=> '13',
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_menu_font_size', array(
+				'label' 			=> esc_html__( 'Main Menu Font Size (px)', 'kindling' ),
+				'section' 			=> 'kindling_header_menu',
+				'settings' 			=> 'kindling_menu_font_size',
+				'priority' 			=> 10,
+				'input_attrs' 		=> array(
+					'min'				=> 0,
+					'max'				=> 100,
+					'step'				=> 1,
+				),
+			) ) );
+
+			/**
+			 * Letter Spacing
+			 */
+			$wp_customize->add_setting( 'kindling_menu_letter_spacing', array(
+				'default' 			=> '0.6',
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_menu_letter_spacing', array(
+				'label' 			=> esc_html__( 'Main Menu Letter Spacing', 'kindling' ),
+				'section' 			=> 'kindling_header_menu',
+				'settings' 			=> 'kindling_menu_letter_spacing',
+				'priority' 			=> 10,
+				'input_attrs' 		=> array(
+					'min'				=> 0,
+					'max'				=> 10,
+					'step'				=> 0.1,
+				),
+			) ) );
+
+			/**
 			 * Menu Link Color
 			 */
 			$wp_customize->add_setting( 'kindling_menu_link_color', array(
@@ -908,6 +1182,143 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			        'max'   => 500,
 			        'step'  => 1,
 			    ),
+			) ) );
+
+			/**
+			 * Font Family
+			 */
+			$wp_customize->add_setting( 'kindling_menu_dropdown_font_family', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Typography_Control( $wp_customize, 'kindling_menu_dropdown_font_family', array(
+				'label' 			=> esc_html__( 'Main Menu Dropdowns Font Family', 'kindling' ),
+				'section' 			=> 'kindling_header_menu',
+				'settings' 			=> 'kindling_menu_dropdown_font_family',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+			) ) );
+
+			/**
+			 * Font Weight
+			 */
+			$wp_customize->add_setting( 'kindling_menu_dropdown_font_weight', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_menu_dropdown_font_weight', array(
+				'label' 			=> esc_html__( 'Main Menu Dropdowns Font Weight', 'kindling' ),
+				'description' 		=> esc_html__( 'Important: Not all fonts support every font-weight.', 'kindling' ),
+				'section' 			=> 'kindling_header_menu',
+				'settings' 			=> 'kindling_menu_dropdown_font_weight',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'choices' 			=> array(
+					'' 					=> esc_html__( 'Default', 'kindling' ),
+					'100'				=> esc_html__( 'Thin: 100', 'kindling' ),
+					'200'				=> esc_html__( 'Extra Light: 200', 'kindling' ),
+					'300'				=> esc_html__( 'Light: 300', 'kindling' ),
+					'400'				=> esc_html__( 'Normal: 400', 'kindling' ),
+					'500'				=> esc_html__( 'Medium: 500', 'kindling' ),
+					'600'				=> esc_html__( 'Semibold: 600', 'kindling' ),
+					'700'				=> esc_html__( 'Bold: 700', 'kindling' ),
+					'800'				=> esc_html__( 'Extra Bold: 800', 'kindling' ),
+					'900'				=> esc_html__( 'Black: 900', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Font Style
+			 */
+			$wp_customize->add_setting( 'kindling_menu_dropdown_font_style', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_menu_dropdown_font_style', array(
+				'label' 			=> esc_html__( 'Main Menu Dropdowns Font Style', 'kindling' ),
+				'section' 			=> 'kindling_header_menu',
+				'settings' 			=> 'kindling_menu_dropdown_font_style',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'choices' 			=> array(
+					''					=> esc_html__( 'Default', 'kindling' ),
+					'normal'			=> esc_html__( 'Normal', 'kindling' ),
+					'italic'			=> esc_html__( 'Italic', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Text Transform
+			 */
+			$wp_customize->add_setting( 'kindling_menu_dropdown_text_transform', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_menu_dropdown_text_transform', array(
+				'label' 			=> esc_html__( 'Main Menu Dropdowns Text Transform', 'kindling' ),
+				'section' 			=> 'kindling_header_menu',
+				'settings' 			=> 'kindling_menu_dropdown_text_transform',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'choices' 			=> array(
+					''					=> esc_html__( 'Default', 'kindling' ),
+					'capitalize'		=> esc_html__( 'Capitalize', 'kindling' ),
+					'lowercase'			=> esc_html__( 'Lowercase', 'kindling' ),
+					'uppercase'			=> esc_html__( 'Uppercase', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Font Size
+			 */
+			$wp_customize->add_setting( 'kindling_menu_dropdown_font_size', array(
+				'default' 			=> '12',
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_menu_dropdown_font_size', array(
+				'label' 			=> esc_html__( 'Main Menu Dropdowns Font Size (px)', 'kindling' ),
+				'section' 			=> 'kindling_header_menu',
+				'settings' 			=> 'kindling_menu_dropdown_font_size',
+				'priority' 			=> 10,
+				'input_attrs' 		=> array(
+					'min'				=> 0,
+					'max'				=> 100,
+					'step'				=> 1,
+				),
+			) ) );
+
+			/**
+			 * Line Height
+			 */
+			$wp_customize->add_setting( 'kindling_menu_dropdown_line_height', array(
+				'default' 			=> '1.2',
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_menu_dropdown_line_height', array(
+				'label' 			=> esc_html__( 'Main Menu Dropdowns Line Height', 'kindling' ),
+				'section' 			=> 'kindling_header_menu',
+				'settings' 			=> 'kindling_menu_dropdown_line_height',
+				'priority' 			=> 10,
+				'input_attrs' 		=> array(
+					'min'				=> 0,
+					'max'				=> 4,
+					'step'				=> 0.1,
+				),
+			) ) );
+
+			/**
+			 * Letter Spacing
+			 */
+			$wp_customize->add_setting( 'kindling_menu_dropdown_letter_spacing', array(
+				'default' 			=> '0.6',
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_menu_dropdown_letter_spacing', array(
+				'label' 			=> esc_html__( 'Main Menu Dropdowns Letter Spacing', 'kindling' ),
+				'section' 			=> 'kindling_header_menu',
+				'settings' 			=> 'kindling_menu_dropdown_letter_spacing',
+				'priority' 			=> 10,
+				'input_attrs' 		=> array(
+					'min'				=> 0,
+					'max'				=> 10,
+					'step'				=> 0.1,
+				),
 			) ) );
 
 			/**
@@ -1822,6 +2233,142 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			) ) );
 
 			/**
+			 * Font Family
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_menu_dropdown_font_family', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Typography_Control( $wp_customize, 'kindling_mobile_menu_dropdown_font_family', array(
+				'label' 			=> esc_html__( 'Mobile Menu Dropdowns Font Family', 'kindling' ),
+				'section' 			=> 'kindling_header_mobile_menu',
+				'settings' 			=> 'kindling_mobile_menu_dropdown_font_family',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+			) ) );
+
+			/**
+			 * Font Weight
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_menu_dropdown_font_weight', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_mobile_menu_dropdown_font_weight', array(
+				'label' 			=> esc_html__( 'Mobile Menu Dropdowns Font Weight', 'kindling' ),
+				'description' 		=> esc_html__( 'Important: Not all fonts support every font-weight.', 'kindling' ),
+				'section' 			=> 'kindling_header_mobile_menu',
+				'settings' 			=> 'kindling_mobile_menu_dropdown_font_weight',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'choices' 			=> array(
+					'' 					=> esc_html__( 'Default', 'kindling' ),
+					'100'				=> esc_html__( 'Thin: 100', 'kindling' ),
+					'200'				=> esc_html__( 'Extra Light: 200', 'kindling' ),
+					'300'				=> esc_html__( 'Light: 300', 'kindling' ),
+					'400'				=> esc_html__( 'Normal: 400', 'kindling' ),
+					'500'				=> esc_html__( 'Medium: 500', 'kindling' ),
+					'600'				=> esc_html__( 'Semibold: 600', 'kindling' ),
+					'700'				=> esc_html__( 'Bold: 700', 'kindling' ),
+					'800'				=> esc_html__( 'Extra Bold: 800', 'kindling' ),
+					'900'				=> esc_html__( 'Black: 900', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Font Style
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_menu_dropdown_font_style', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_mobile_menu_dropdown_font_style', array(
+				'label' 			=> esc_html__( 'Mobile Menu Dropdowns Font Style', 'kindling' ),
+				'section' 			=> 'kindling_header_mobile_menu',
+				'settings' 			=> 'kindling_mobile_menu_dropdown_font_style',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'choices' 			=> array(
+					''					=> esc_html__( 'Default', 'kindling' ),
+					'normal'			=> esc_html__( 'Normal', 'kindling' ),
+					'italic'			=> esc_html__( 'Italic', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Text Transform
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_menu_dropdown_text_transform', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( 'kindling_mobile_menu_dropdown_text_transform', array(
+				'label' 			=> esc_html__( 'Mobile Menu Dropdowns Text Transform', 'kindling' ),
+				'section' 			=> 'kindling_header_mobile_menu',
+				'settings' 			=> 'kindling_mobile_menu_dropdown_text_transform',
+				'priority' 			=> 10,
+				'type' 				=> 'select',
+				'choices' 			=> array(
+					''					=> esc_html__( 'Default', 'kindling' ),
+					'capitalize'		=> esc_html__( 'Capitalize', 'kindling' ),
+					'lowercase'			=> esc_html__( 'Lowercase', 'kindling' ),
+					'uppercase'			=> esc_html__( 'Uppercase', 'kindling' ),
+				),
+			) );
+
+			/**
+			 * Font Size
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_menu_dropdown_font_size', array(
+				'default' 			=> '15',
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_mobile_menu_dropdown_font_size', array(
+				'label' 			=> esc_html__( 'Mobile Menu Dropdowns Font Size (px)', 'kindling' ),
+				'section' 			=> 'kindling_header_mobile_menu',
+				'settings' 			=> 'kindling_mobile_menu_dropdown_font_size',
+				'priority' 			=> 10,
+				'input_attrs' 		=> array(
+					'min'				=> 0,
+					'max'				=> 100,
+					'step'				=> 1,
+				),
+			) ) );
+
+			/**
+			 * Line Height
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_menu_dropdown_line_height', array(
+				'default' 			=> '1.8',
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_mobile_menu_dropdown_line_height', array(
+				'label' 			=> esc_html__( 'Mobile Menu Dropdowns Line Height', 'kindling' ),
+				'section' 			=> 'kindling_header_mobile_menu',
+				'settings' 			=> 'kindling_mobile_menu_dropdown_line_height',
+				'priority' 			=> 10,
+				'input_attrs' 		=> array(
+					'min'				=> 0,
+					'max'				=> 4,
+					'step'				=> 0.1,
+				),
+			) ) );
+
+			/**
+			 * Letter Spacing
+			 */
+			$wp_customize->add_setting( 'kindling_mobile_menu_dropdown_letter_spacing', array(
+				'sanitize_callback' => false,
+			) );
+			$wp_customize->add_control( new Kindling_Customizer_Range_Control( $wp_customize, 'kindling_mobile_menu_dropdown_letter_spacing', array(
+				'label' 			=> esc_html__( 'Mobile Menu Dropdowns Letter Spacing', 'kindling' ),
+				'section' 			=> 'kindling_header_mobile_menu',
+				'settings' 			=> 'kindling_mobile_menu_dropdown_letter_spacing',
+				'priority' 			=> 10,
+				'input_attrs' 		=> array(
+					'min'				=> 0,
+					'max'				=> 10,
+					'step'				=> 0.1,
+				),
+			) ) );
+
+			/**
 			 * Mobile Menu Close Button Background
 			 */
 			$wp_customize->add_setting( 'kindling_mobile_menu_sidr_close_button_background', array(
@@ -2111,7 +2658,37 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			$mobile_logo_height								= get_theme_mod( 'kindling_mobile_logo_height' );
 			$mobile_logo_top_margin							= get_theme_mod( 'kindling_mobile_header_logo_top_margin', '0' );
 			$mobile_logo_bottom_margin						= get_theme_mod( 'kindling_mobile_header_logo_bottom_margin', '0' );
-
+			### TYPOGRAPHY: LOGO ##
+			$logo_font_family								= get_theme_mod( 'kindling_logo_font_family' );
+			$logo_font_weight								= get_theme_mod( 'kindling_logo_font_weight' );
+			$logo_font_style								= get_theme_mod( 'kindling_logo_font_style' );
+			$logo_text_transform							= get_theme_mod( 'kindling_logo_text_transform' );
+			$logo_font_size									= get_theme_mod( 'kindling_logo_font_size', '24' );
+			$logo_line_height								= get_theme_mod( 'kindling_logo_line_height', '1.8' );
+			$logo_letter_spacing							= get_theme_mod( 'kindling_logo_letter_spacing' );
+			### TYPOGRAPHY: MAIN MENU ##
+			$menu_font_family								= get_theme_mod( 'kindling_menu_font_family' );
+			$menu_font_weight								= get_theme_mod( 'kindling_menu_font_weight' );
+			$menu_font_style								= get_theme_mod( 'kindling_menu_font_style' );
+			$menu_text_transform							= get_theme_mod( 'kindling_menu_text_transform' );
+			$menu_font_size									= get_theme_mod( 'kindling_menu_font_size', '13' );
+			$menu_letter_spacing							= get_theme_mod( 'kindling_menu_letter_spacing', '0.6' );
+			### TYPOGRAPHY: MAIN MENU DROPDOWNS ##
+			$menu_dropdown_font_family						= get_theme_mod( 'kindling_menu_dropdown_font_family' );
+			$menu_dropdown_font_weight						= get_theme_mod( 'kindling_menu_dropdown_font_weight' );
+			$menu_dropdown_font_style						= get_theme_mod( 'kindling_menu_dropdown_font_style' );
+			$menu_dropdown_text_transform					= get_theme_mod( 'kindling_menu_dropdown_text_transform' );
+			$menu_dropdown_font_size						= get_theme_mod( 'kindling_menu_dropdown_font_size', '12' );
+			$menu_dropdown_line_height						= get_theme_mod( 'kindling_menu_dropdown_line_height', '1.2' );
+			$menu_dropdown_letter_spacing					= get_theme_mod( 'kindling_menu_dropdown_letter_spacing', '0.6' );
+			### TYPOGRAPHY: MOBILE MENU DROPDOWNS ##
+			$mobile_menu_dropdown_font_family				= get_theme_mod( 'kindling_mobile_menu_dropdown_font_family' );
+			$mobile_menu_dropdown_font_weight				= get_theme_mod( 'kindling_mobile_menu_dropdown_font_weight' );
+			$mobile_menu_dropdown_font_style				= get_theme_mod( 'kindling_mobile_menu_dropdown_font_style' );
+			$mobile_menu_dropdown_text_transform			= get_theme_mod( 'kindling_mobile_menu_dropdown_text_transform' );
+			$mobile_menu_dropdown_font_size					= get_theme_mod( 'kindling_mobile_menu_dropdown_font_size', '15' );
+			$mobile_menu_dropdown_line_height				= get_theme_mod( 'kindling_mobile_menu_dropdown_line_height', '1.8' );
+			$mobile_menu_dropdown_letter_spacing			= get_theme_mod( 'kindling_mobile_menu_dropdown_letter_spacing' );
 			
 			// Define css var
 			$css = '';
@@ -2553,6 +3130,107 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				default:
 					/* Different Header, Do Nothing. */
 			}
+
+			## START: Logo Typography
+			$css .= '#site-logo a.site-logo-text{';
+			if ( ! empty ( $logo_font_family ) ) {
+				$css .= 'font-family:'. $logo_font_family .';';
+			}
+			if ( ! empty ( $logo_font_weight ) ) {
+				$css .= 'font-weight:'. $logo_font_weight .';';
+			}
+			if ( ! empty ( $logo_font_style ) ) {
+				$css .= 'font-style:'. $logo_font_style .';';
+			}
+			if ( ! empty ( $logo_text_transform ) ) {
+				$css .= 'text-transform:'. $logo_text_transform .';';
+			}
+			if ( ! empty ( $logo_font_size ) && ( $logo_font_size != '24' ) ) {
+				$css .= 'font-size:'. $logo_font_size .'px;';
+			}
+			if ( ! empty ( $logo_line_height ) && ( $logo_line_height != '1.8' ) ) {
+				$css .= 'line-height:'. $logo_line_height .';';
+			}
+			if ( ! empty ( $logo_letter_spacing ) ) {
+				$css .= 'letter-spacing:'. $logo_letter_spacing .'px;';
+			}
+			$css .= '}';
+			## END: Logo Typography
+			
+			## START: Main Menu Typography
+			$css .= '#site-navigation-wrap .dropdown-menu>li>a,#site-header.full_screen-header .fs-dropdown-menu>li>a,#site-header.top-header #site-navigation-wrap .dropdown-menu>li>a,#site-header.center-header #site-navigation-wrap .dropdown-menu>li>a,#kindling-mobile-menu-icon a{';
+			if ( ! empty ( $menu_font_family ) ) {
+				$css .= 'font-family:'. $menu_font_family .';';
+			}
+			if ( ! empty ( $menu_font_weight ) ) {
+				$css .= 'font-weight:'. $menu_font_weight .';';
+			}
+			if ( ! empty ( $menu_font_style ) ) {
+				$css .= 'font-style:'. $menu_font_style .';';
+			}
+			if ( ! empty ( $menu_text_transform ) ) {
+				$css .= 'text-transform:'. $menu_text_transform .';';
+			}
+			if ( ! empty ( $menu_font_size ) && ( $menu_font_size != '13' ) ) {
+				$css .= 'font-size:'. $menu_font_size .'px;';
+			}
+			if ( ! empty ( $menu_letter_spacing ) && ( $menu_letter_spacing != '0.6' ) ) {
+				$css .= 'letter-spacing:'. $menu_letter_spacing .'px;';
+			}
+			$css .= '}';
+			## END: Main Menu Typography
+			
+			## START: Main Menu Dropdowns Typography
+			$css .= '.dropdown-menu ul li a.menu-link,#site-header.full_screen-header .fs-dropdown-menu ul.sub-menu li a{';
+			if ( ! empty ( $menu_dropdown_font_family ) ) {
+				$css .= 'font-family:'. $menu_dropdown_font_family .';';
+			}
+			if ( ! empty ( $menu_dropdown_font_weight ) ) {
+				$css .= 'font-weight:'. $menu_dropdown_font_weight .';';
+			}
+			if ( ! empty ( $menu_dropdown_font_style ) ) {
+				$css .= 'font-style:'. $menu_dropdown_font_style .';';
+			}
+			if ( ! empty ( $menu_dropdown_text_transform ) ) {
+				$css .= 'text-transform:'. $menu_dropdown_text_transform .';';
+			}
+			if ( ! empty ( $menu_dropdown_font_size ) && ( $menu_dropdown_font_size != '12' ) ) {
+				$css .= 'font-size:'. $menu_dropdown_font_size .'px;';
+			}
+			if ( ! empty ( $menu_dropdown_line_height ) && ( $menu_dropdown_line_height != '1.2' ) ) {
+				$css .= 'line-height:'. $menu_dropdown_line_height .';';
+			}
+			if ( ! empty ( $menu_dropdown_letter_spacing ) && ( $menu_dropdown_letter_spacing != '0.6' ) ) {
+				$css .= 'letter-spacing:'. $menu_dropdown_letter_spacing .'px;';
+			}
+			$css .= '}';
+			## END: Main Menu Dropdowns Typography
+			
+			## START: Mobile Menu Dropdowns Typography
+			$css .= '.sidr-class-dropdown-menu li a, a.sidr-class-toggle-sidr-close{';
+			if ( ! empty ( $mobile_menu_dropdown_font_family ) ) {
+				$css .= 'font-family:'. $mobile_menu_dropdown_font_family .';';
+			}
+			if ( ! empty ( $mobile_menu_dropdown_font_weight ) ) {
+				$css .= 'font-weight:'. $mobile_menu_dropdown_font_weight .';';
+			}
+			if ( ! empty ( $mobile_menu_dropdown_font_style ) ) {
+				$css .= 'font-style:'. $mobile_menu_dropdown_font_style .';';
+			}
+			if ( ! empty ( $mobile_menu_dropdown_text_transform ) ) {
+				$css .= 'text-transform:'. $mobile_menu_dropdown_text_transform .';';
+			}
+			if ( ! empty ( $mobile_menu_dropdown_font_size ) && ( $mobile_menu_dropdown_font_size != '15' ) ) {
+				$css .= 'font-size:'. $mobile_menu_dropdown_font_size .'px;';
+			}
+			if ( ! empty ( $mobile_menu_dropdown_line_height ) && ( $mobile_menu_dropdown_line_height != '1.8' ) ) {
+				$css .= 'line-height:'. $mobile_menu_dropdown_line_height .';';
+			}
+			if ( ! empty ( $mobile_menu_dropdown_letter_spacing ) ) {
+				$css .= 'letter-spacing:'. $mobile_menu_dropdown_letter_spacing .'px;';
+			}
+			$css .= '}';
+			## END: Mobile Menu Dropdowns Typography
 
 ############################################################
 ###############   START BREAKPOINT: <960px   ###############
