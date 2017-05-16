@@ -82,14 +82,14 @@ if ( ! function_exists( 'kindling_body_classes' ) ) {
 		}
 
 		// Topbar
-		if ( kindling_display_topbar() ) {
-			$classes[] = 'has-topbar';
-		}
+##		if ( kindling_display_topbar() ) {
+##			$classes[] = 'has-topbar';
+##		}
 
 		// Transparent header style
-		if ( 'transparent' == kindling_header_style() ) {
-			$classes[] = 'has-transparent-header';
-		}
+##		if ( 'transparent' == kindling_header_style() ) {
+##			$classes[] = 'has-transparent-header';
+##		}
 
 		// If no header border bottom
 		if ( true != get_theme_mod( 'kindling_has_header_border_bottom', true ) ) {
