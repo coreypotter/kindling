@@ -3295,11 +3295,16 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				$output .= '/* Header CSS */'. $css;
 			}
 
+			# Load Google fonts via wp_enqueue_style
+			if ( ! empty( $logo_font_family ) )                 { kindling_enqueue_google_font( $logo_font_family ); }
+			if ( ! empty( $menu_font_family ) )                 { kindling_enqueue_google_font( $menu_font_family ); }
+			if ( ! empty( $menu_dropdown_font_family ) )        { kindling_enqueue_google_font( $menu_dropdown_font_family ); }
+			if ( ! empty( $mobile_menu_dropdown_font_family ) ) { kindling_enqueue_google_font( $mobile_menu_dropdown_font_family ); }
+			
+			
 			// Return output css
 			return $output;
-
 		}
-
 	}
 
 endif;
