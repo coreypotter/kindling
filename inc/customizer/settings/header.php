@@ -3108,7 +3108,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				# Top Menu
 				case "top":
 					if ( $top_menu_pos == 'center' ) {
-						$css .= '#site-header.top-header #site-navigation-wrap{display:inline-flex;justify-content:center;position:absolute;left:0}';
+						$css .= '#site-header.top-header #site-navigation-wrap{display:inline-flex;justify-content:center;position:absolute;left:0;right:0}';
 					} else if ( $top_menu_pos == 'right' ) {
 						$css .= '#site-header.top-header #site-navigation-wrap{order:2;display:inline-flex;justify-content:flex-end}';
 					}
