@@ -2720,23 +2720,17 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 
 			# Header logo max height
 			if ( !empty( $logo_height ) ) {
-				# Center and Top Menu should always use logo height
-				if ( $header_style == 'center' ) {
-					# Center Menu
-					$css .= '#site-header.center-header #site-navigation .middle-site-logo a img{max-height:'. $logo_height .'px;}';
-
-				} elseif ( $header_style == 'top' ) {
-					# Top Menu
+				# Top Menu should always use logo height
+				if ( $header_style == 'top' ) {
 					$css .= '#site-logo #site-logo-inner a img{max-height:'. $logo_height .'px;}';
-					
 				} else {
 					# Determine if we should use logo or header height
 					if ( $logo_height < $header_height ) {
 						# If logo height is specified and less than header_height, set it:
-						$css .= '#site-logo #site-logo-inner a img{max-height:'. $logo_height .'px;}';						
+						$css .= '#site-logo #site-logo-inner a img,#site-header.center-header #site-navigation .middle-site-logo a img{max-height:'. $logo_height .'px;}';
 					} else {
 						# If logo height is empty, or larger than menu, set it to menu:
-						$css .= '#site-logo #site-logo-inner a img{max-height:'. $header_height .'px;}';
+						$css .= '#site-logo #site-logo-inner a img,#site-header.center-header #site-navigation .middle-site-logo a img{max-height:'. $header_height .'px;}';
 					}
 				}
 			}
