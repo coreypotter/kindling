@@ -156,14 +156,14 @@
 		});
 	});
 
-	/******** Top Bar *********/
+	/******** Top Bar 
 	// Site title
 	api('kindling_top_bar_content', function( value ) {
 		value.bind( function( newval ) {
 			$( '#top-bar-content' ).html( newval );
 		});
 	});
-
+*********/
 	/******** Header *********/
 	// Custom Header add container class
 	api('kindling_add_custom_header_container', function( value ) {

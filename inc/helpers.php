@@ -416,154 +416,154 @@ if ( ! function_exists( 'kindling_get_attachment_data_from_url' ) ) {
  *
  * @since 1.1.2
  */
-if ( ! function_exists( 'kindling_display_topbar' ) ) {
-
-	function kindling_display_topbar() {
-
-		// Return true by default
-		$return = true;
-
-		// Return false if disabled via Customizer
-		if ( true != get_theme_mod( 'kindling_top_bar', true ) ) {
-			$return = false;
-		}
-
-		// Check meta
-		$meta = kindling_post_id() ? get_post_meta( kindling_post_id(), 'kindling_display_top_bar', true ) : '';
-
-		// Check if disabled via meta option
-		if ( 'on' == $meta ) {
-			$return = true;
-		} elseif ( 'off' == $meta ) {
-			$return = false;
-		}
-
-		// Apply filters and return
-		return apply_filters( 'kindling_display_top_bar', $return );
-
-	}
-
-}
-
-/**
- * Add classes to the top bar wrap
- *
- * @since 1.0.0
- */
-if ( ! function_exists( 'kindling_topbar_classes' ) ) {
-
-	function kindling_topbar_classes() {
-
-		// Setup classes array
-		$classes = array();
-
-		// Clearfix class
-		$classes[] = 'clr';
-
-		// Set keys equal to vals
-		$classes = array_combine( $classes, $classes );
-		
-		// Apply filters for child theming
-		$classes = apply_filters( 'kindling_topbar_classes', $classes );
-
-		// Turn classes into space seperated string
-		$classes = implode( ' ', $classes );
-
-		// return classes
-		return $classes;
-
-	}
-
-}
-
-/**
- * Topbar style
- *
- * @since 1.0.0
- */
-if ( ! function_exists( 'kindling_top_bar_style' ) ) {
-
-	function kindling_top_bar_style() {
-		$style = get_theme_mod( 'kindling_top_bar_style' );
-		$style = $style ? $style : 'one';
-		return apply_filters( 'kindling_top_bar_style', $style );
-	}
-
-
-}
-/**
- * Topbar Content classes
- *
- * @since 1.0.0
- */
-if ( ! function_exists( 'kindling_topbar_content_classes' ) ) {
-
-	function kindling_topbar_content_classes() {
-
-		// Define classes
-		$classes = array( 'clr' );
-
-		// Check for content
-		if ( get_theme_mod( 'kindling_top_bar_content' ) ) {
-			$classes[] = 'has-content';
-		}
-
-		// Get topbar style
-		$style = kindling_top_bar_style();
-
-		// Add classes based on top bar style only if social is enabled
-		if ( get_theme_mod( 'kindling_top_bar_social', true ) ) {
-			if ( 'one' == $style ) {
-				$classes[] = 'top-bar-left';
-			} elseif ( 'two' == $style ) {
-				$classes[] = 'top-bar-right';
-			} elseif ( 'three' == $style ) {
-				$classes[] = 'top-bar-centered';
-			}
-		}
-
-		// Apply filters for child theming
-		$classes = apply_filters( 'kindling_top_bar_classes', $classes );
-
-		// Turn classes array into space seperated string
-		$classes = implode( ' ', $classes );
-
-		// Return classes
-		return esc_attr( $classes );
-
-	}
-
-}
-
-/**
- * Returns topbar social alt
- *
- * @since 1.0.0
- */
-if ( ! function_exists( 'kindling_top_bar_social_alt' ) ) {
-
-	function kindling_top_bar_social_alt() {
-
-		// Get page ID from Customizer
-		$content = get_theme_mod( 'kindling_top_bar_social_alt' );
-
-		// Get page content
-		if ( ! empty( $content ) ) {
-
-			$page = get_post( $content );
-
-			if ( $page && ! is_wp_error( $page ) ) {
-				$content = $page->post_content;
-			}
-
-		}
-
-		// Return content
-		return $content;
-
-	}
-
-}
+##if ( ! function_exists( 'kindling_display_topbar' ) ) {
+##
+##	function kindling_display_topbar() {
+##
+##		// Return true by default
+##		$return = true;
+##
+##		// Return false if disabled via Customizer
+##		if ( true != get_theme_mod( 'kindling_top_bar', true ) ) {
+##			$return = false;
+##		}
+##
+##		// Check meta
+##		$meta = kindling_post_id() ? get_post_meta( kindling_post_id(), 'kindling_display_top_bar', true ) : '';
+##
+##		// Check if disabled via meta option
+##		if ( 'on' == $meta ) {
+##			$return = true;
+##		} elseif ( 'off' == $meta ) {
+##			$return = false;
+##		}
+##
+##		// Apply filters and return
+##		return apply_filters( 'kindling_display_top_bar', $return );
+##
+##	}
+##
+##}
+##
+##/**
+## * Add classes to the top bar wrap
+## *
+## * @since 1.0.0
+## */
+##if ( ! function_exists( 'kindling_topbar_classes' ) ) {
+##
+##	function kindling_topbar_classes() {
+##
+##		// Setup classes array
+##		$classes = array();
+##
+##		// Clearfix class
+##		$classes[] = 'clr';
+##
+##		// Set keys equal to vals
+##		$classes = array_combine( $classes, $classes );
+##		
+##		// Apply filters for child theming
+##		$classes = apply_filters( 'kindling_topbar_classes', $classes );
+##
+##		// Turn classes into space seperated string
+##		$classes = implode( ' ', $classes );
+##
+##		// return classes
+##		return $classes;
+##
+##	}
+##
+##}
+##
+##/**
+## * Topbar style
+## *
+## * @since 1.0.0
+## */
+##if ( ! function_exists( 'kindling_top_bar_style' ) ) {
+##
+##	function kindling_top_bar_style() {
+##		$style = get_theme_mod( 'kindling_top_bar_style' );
+##		$style = $style ? $style : 'one';
+##		return apply_filters( 'kindling_top_bar_style', $style );
+##	}
+##
+##
+##}
+##/**
+## * Topbar Content classes
+## *
+## * @since 1.0.0
+## */
+##if ( ! function_exists( 'kindling_topbar_content_classes' ) ) {
+##
+##	function kindling_topbar_content_classes() {
+##
+##		// Define classes
+##		$classes = array( 'clr' );
+##
+##		// Check for content
+##		if ( get_theme_mod( 'kindling_top_bar_content' ) ) {
+##			$classes[] = 'has-content';
+##		}
+##
+##		// Get topbar style
+##		$style = kindling_top_bar_style();
+##
+##		// Add classes based on top bar style only if social is enabled
+##		if ( get_theme_mod( 'kindling_top_bar_social', true ) ) {
+##			if ( 'one' == $style ) {
+##				$classes[] = 'top-bar-left';
+##			} elseif ( 'two' == $style ) {
+##				$classes[] = 'top-bar-right';
+##			} elseif ( 'three' == $style ) {
+##				$classes[] = 'top-bar-centered';
+##			}
+##		}
+##
+##		// Apply filters for child theming
+##		$classes = apply_filters( 'kindling_top_bar_classes', $classes );
+##
+##		// Turn classes array into space seperated string
+##		$classes = implode( ' ', $classes );
+##
+##		// Return classes
+##		return esc_attr( $classes );
+##
+##	}
+##
+##}
+##
+##/**
+## * Returns topbar social alt
+## *
+## * @since 1.0.0
+## */
+##if ( ! function_exists( 'kindling_top_bar_social_alt' ) ) {
+##
+##	function kindling_top_bar_social_alt() {
+##
+##		// Get page ID from Customizer
+##		$content = get_theme_mod( 'kindling_top_bar_social_alt' );
+##
+##		// Get page content
+##		if ( ! empty( $content ) ) {
+##
+##			$page = get_post( $content );
+##
+##			if ( $page && ! is_wp_error( $page ) ) {
+##				$content = $page->post_content;
+##			}
+##
+##		}
+##
+##		// Return content
+##		return $content;
+##
+##	}
+##
+##}
 
 /*-------------------------------------------------------------------------------*/
 /* [ Header ]

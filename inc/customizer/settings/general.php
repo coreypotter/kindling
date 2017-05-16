@@ -1376,7 +1376,7 @@ if ( ! class_exists( 'Kindling_General_Customizer' ) ) :
 				.content-left-sidebar .content-area',
 
 				// Top bar
-				'#top-bar-wrap',
+##				'#top-bar-wrap',
 
 				// Header
 				'#site-header',
