@@ -60,12 +60,7 @@ class KINDLING_Admin_Pages {
 			<h1> Kindling v<?php echo KINDLING_THEME_VERSION ?> </h1>
 		</section>
 		<section id="theme-settings-page-content">
-			<p> Yup, this works. Put your content here. </p>
-			
-			<?php # Embed Theme Updater (License Key Input Field) 
-				include( KINDLING_INC_DIR .'updater/theme-updater.php' );
-				$updater->license_page();
-			?>
+			<p>Thanks for using Kindling!</p>
 		</section>
 	<?php }
 

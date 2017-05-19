@@ -1,8 +1,8 @@
-=== Kindling ===
+=== Kindling Theme ===
 Contributors: coreypotter, delster
 Requires at least: WordPress 4.5
 Tested up to: WordPress 4.7
-Version: 0.2
+Version: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, right-sidebar, footer-widgets, blog, news, custom-background, custom-menu, post-formats, sticky-post, editor-style, threaded-comments, translation-ready
@@ -26,9 +26,9 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 Kindling is a fork of:
-KindlingWP, Copyright 2016 WordPress.org
+OceanWP, Copyright 2016 WordPress.org
 License: GPLv2
-Source: https://github.com/kindling/kindling
+Source: https://github.com/oceanwp/oceanwp
 
 Kindling bundles the following third-party resources:
 
@@ -102,24 +102,5 @@ Source: https://pixabay.com/en/underwater-sunbeams-ocean-sea-698671/
 
 == Changelog ==
 
-### *2017.03.20* - 0.2
-* Integrated GitHub Updater 6.2.2.16
-
-### *2017.03.20* - 0.1.1
-* Customizer Export/Import
-* Bugfixes
-* Misc
-
-### *2017.02.16* - 0.1
-* Initial Re/De-brand
-* Plugin Nags: Elementor, TSEOF
-* WP-Updater Configured
-* TODO: Replace with GitHub-based Updater
-* TODO: Pull WIP completed features into Kindling
-
-### *2017.02.16* - 0.1
-* Initial Re/De-brand
-* Plugin Nags: Elementor, TSEOF
-* WP-Updater Configured
-* TODO: Replace with GitHub-based Updater
-* TODO: Pull WIP completed features into Kindling
+### *2017.05.19* - 1.0.0
+* Initial Launch
