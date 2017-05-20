@@ -16,9 +16,9 @@ $updater = new EDD_Theme_Updater_Admin(
 	// Config settings
 	$config = array(
 		'remote_api_url' => 'https://www.fuelyourphotos.com', // Site where EDD is hosted
-		'item_id'        => '3393', // ID of theme in EDD
+		'item_name'      => 'Kindling', // Name of theme
 		'theme_slug'     => 'kindling', // Theme slug
-		'version'        => '1.0.2', // The current version of this theme
+		'version'        => '1.1.0', // The current version of this theme
 		'author'         => 'Corey Potter', // The author of this theme
 		'download_id'    => '', // Optional, used for generating a license renewal link
 		'renew_url'      => '', // Optional, allows for a custom license renewal link
