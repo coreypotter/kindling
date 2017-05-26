@@ -273,10 +273,11 @@ final class CEI_Core {
 			$cei_error = __( 'Error importing settings! Please check that you uploaded a customizer export file.', 'customizer-export-import' );
 			return;
 		}
-		if ( $data['template'] != $template ) {
-			$cei_error = __( 'Error importing settings! The settings you uploaded are not for the current theme.', 'customizer-export-import' );
-			return;
-		}
+## Nope. We're going to trust users. Never smart, but easier than the alternative.
+##		if ( $data['template'] != $template ) {
+##			$cei_error = __( 'Error importing settings! The settings you uploaded are not for the current theme.', 'customizer-export-import' );
+##			return;
+##		}
 		
 		// Import images.
 		if ( isset( $_REQUEST['cei-import-images'] ) ) {
