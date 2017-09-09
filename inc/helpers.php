@@ -81,16 +81,6 @@ if ( ! function_exists( 'kindling_body_classes' ) ) {
 			$classes[] = 'landing-page';
 		}
 
-		// Topbar
-##		if ( kindling_display_topbar() ) {
-##			$classes[] = 'has-topbar';
-##		}
-
-		// Transparent header style
-##		if ( 'transparent' == kindling_header_style() ) {
-##			$classes[] = 'has-transparent-header';
-##		}
-
 		// If no header border bottom
 		if ( true != get_theme_mod( 'kindling_has_header_border_bottom', true ) ) {
 			$classes[] = 'no-header-border';
@@ -406,164 +396,6 @@ if ( ! function_exists( 'kindling_get_attachment_data_from_url' ) ) {
 	}
 
 }
-
-/*-------------------------------------------------------------------------------*/
-/* [ Top Bar ]
-/*-------------------------------------------------------------------------------*/
-
-/**
- * Display top bar
- *
- * @since 1.1.2
- */
-##if ( ! function_exists( 'kindling_display_topbar' ) ) {
-##
-##	function kindling_display_topbar() {
-##
-##		// Return true by default
-##		$return = true;
-##
-##		// Return false if disabled via Customizer
-##		if ( true != get_theme_mod( 'kindling_top_bar', true ) ) {
-##			$return = false;
-##		}
-##
-##		// Check meta
-##		$meta = kindling_post_id() ? get_post_meta( kindling_post_id(), 'kindling_display_top_bar', true ) : '';
-##
-##		// Check if disabled via meta option
-##		if ( 'on' == $meta ) {
-##			$return = true;
-##		} elseif ( 'off' == $meta ) {
-##			$return = false;
-##		}
-##
-##		// Apply filters and return
-##		return apply_filters( 'kindling_display_top_bar', $return );
-##
-##	}
-##
-##}
-##
-##/**
-## * Add classes to the top bar wrap
-## *
-## * @since 1.0.0
-## */
-##if ( ! function_exists( 'kindling_topbar_classes' ) ) {
-##
-##	function kindling_topbar_classes() {
-##
-##		// Setup classes array
-##		$classes = array();
-##
-##		// Clearfix class
-##		$classes[] = 'clr';
-##
-##		// Set keys equal to vals
-##		$classes = array_combine( $classes, $classes );
-##		
-##		// Apply filters for child theming
-##		$classes = apply_filters( 'kindling_topbar_classes', $classes );
-##
-##		// Turn classes into space seperated string
-##		$classes = implode( ' ', $classes );
-##
-##		// return classes
-##		return $classes;
-##
-##	}
-##
-##}
-##
-##/**
-## * Topbar style
-## *
-## * @since 1.0.0
-## */
-##if ( ! function_exists( 'kindling_top_bar_style' ) ) {
-##
-##	function kindling_top_bar_style() {
-##		$style = get_theme_mod( 'kindling_top_bar_style' );
-##		$style = $style ? $style : 'one';
-##		return apply_filters( 'kindling_top_bar_style', $style );
-##	}
-##
-##
-##}
-##/**
-## * Topbar Content classes
-## *
-## * @since 1.0.0
-## */
-##if ( ! function_exists( 'kindling_topbar_content_classes' ) ) {
-##
-##	function kindling_topbar_content_classes() {
-##
-##		// Define classes
-##		$classes = array( 'clr' );
-##
-##		// Check for content
-##		if ( get_theme_mod( 'kindling_top_bar_content' ) ) {
-##			$classes[] = 'has-content';
-##		}
-##
-##		// Get topbar style
-##		$style = kindling_top_bar_style();
-##
-##		// Add classes based on top bar style only if social is enabled
-##		if ( get_theme_mod( 'kindling_top_bar_social', true ) ) {
-##			if ( 'one' == $style ) {
-##				$classes[] = 'top-bar-left';
-##			} elseif ( 'two' == $style ) {
-##				$classes[] = 'top-bar-right';
-##			} elseif ( 'three' == $style ) {
-##				$classes[] = 'top-bar-centered';
-##			}
-##		}
-##
-##		// Apply filters for child theming
-##		$classes = apply_filters( 'kindling_top_bar_classes', $classes );
-##
-##		// Turn classes array into space seperated string
-##		$classes = implode( ' ', $classes );
-##
-##		// Return classes
-##		return esc_attr( $classes );
-##
-##	}
-##
-##}
-##
-##/**
-## * Returns topbar social alt
-## *
-## * @since 1.0.0
-## */
-##if ( ! function_exists( 'kindling_top_bar_social_alt' ) ) {
-##
-##	function kindling_top_bar_social_alt() {
-##
-##		// Get page ID from Customizer
-##		$content = get_theme_mod( 'kindling_top_bar_social_alt' );
-##
-##		// Get page content
-##		if ( ! empty( $content ) ) {
-##
-##			$page = get_post( $content );
-##
-##			if ( $page && ! is_wp_error( $page ) ) {
-##				$content = $page->post_content;
-##			}
-##
-##		}
-##
-##		// Return content
-##		return $content;
-##
-##	}
-##
-##}
 
 /*-------------------------------------------------------------------------------*/
 /* [ Header ]
@@ -2850,8 +2682,7 @@ if ( ! function_exists( 'kindling_register_tm_strings' ) ) {
 	function kindling_register_tm_strings() {
 
 		return apply_filters( 'kindling_register_tm_strings', array(
-			'kindling_top_bar_content' 			=> '<i class="icon-phone"></i> 1-555-645-324 <i class="icon-user"></i> <a href="#">Sign in</a>',
-			'kindling_footer_copyright_text' 		=> 'Copyright - Kindling Theme by Nick Powered by <a href="https://wordpress.org/" title="WordPress" target="_blank">WordPress</a>',
+			'kindling_footer_copyright_text' 		=> 'Copyright - Kindling Theme by <a href="https://www.fuelyourphotos.com/" title="Fuel Your Photos" target="_blank">Fuel Your Photos</a>.',
 			'kindling_woo_menu_icon_custom_link' 	=> '',
 		) );
 

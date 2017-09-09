@@ -1256,8 +1256,6 @@ if ( ! class_exists( 'Kindling_General_Customizer' ) ) :
 				'a:hover',
 				'a.light:hover',
 				'.theme-heading .text::before',
-				'#top-bar-content > a:hover',
-				'#top-bar-social li.kindling-email a:hover',
 				'#site-navigation-wrap .dropdown-menu > li > a:hover',
 				'#kindling-mobile-menu-icon a:hover',
 				'.blog-entry.post .blog-entry-header h2 a:hover',
@@ -1374,9 +1372,6 @@ if ( ! class_exists( 'Kindling_General_Customizer' ) ) :
 				'.content-area',
 				'body.content-left-sidebar #content-wrap .content-area,
 				.content-left-sidebar .content-area',
-
-				// Top bar
-##				'#top-bar-wrap',
 
 				// Header
 				'#site-header',

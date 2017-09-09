@@ -11,7 +11,6 @@
 
 	# Core
 	# Background
-	# Topbar
 	# Header
 	# Logo
 	# Menu
@@ -81,23 +80,6 @@ function kindling_cac_has_footer_bottom() {
 
 function kindling_cac_has_background_image() {
 	if ( '' != get_theme_mod( 'kindling_background_image' ) ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/*-------------------------------------------------------------------------------*/
-/* [ Topbar ]
-/*-------------------------------------------------------------------------------*/
-function kindling_cac_has_topbar() {
-	return get_theme_mod( 'kindling_top_bar', true );
-}
-
-function kindling_cac_has_topbar_social() {
-	if ( kindling_cac_has_topbar()
-		&& get_theme_mod( 'kindling_top_bar_social' )
-		&& ! get_theme_mod( 'kindling_top_bar_social_alt' ) ) {
 		return true;
 	} else {
 		return false;

@@ -5,7 +5,7 @@
  * Author: 			Corey Potter
  * Author URI: 		https://github.com/coreypotter/
  * Description: 	Kindling is the first and leading fork of OceanWP. Everything you need in a base theme in one place.
- * Version: 		1.1.0
+ * Version: 		1.1.1
  * Tags: 			two-columns, right-sidebar, footer-widgets, blog, news, custom-background, custom-menu, post-formats, sticky-post, editor-style, threaded-comments, translation-ready
  * Text Domain: 	kindling
  *
@@ -32,7 +32,6 @@
  * - FORMS
  *
  * COMPONENTS
- * - TOP BAR
  * - HEADER
  * - NAVIGATIONS
  * - PAGE HEADER
@@ -84,16 +83,6 @@
 	$FORMS
 *------------------------------------*/
 @import "base/form";
-
-/*------------------------------------*
-	$TOP BAR
-*------------------------------------*/
-/*
-	@import "components/topbar/topbar";
-	@import "components/topbar/topbar-content";
-	@import "components/topbar/topbar-menu";
-	@import "components/topbar/topbar-social";
-*/
 
 /*------------------------------------*
 	$HEADER

@@ -24,17 +24,11 @@
 		<div id="wrap" class="clr">
 
 			<?php 
-			# Top Bar
-##			if ( kindling_display_topbar() ) {
-##				get_template_part( 'partials/topbar/layout' );
-##			}
-
-			# Header
 			if ( kindling_display_header() ) {
 				get_template_part( 'partials/header/layout' );
-			} ?>
+			}
 
-			<?php do_action( 'kindling_before_main' ); ?>
+			do_action( 'kindling_before_main' ); ?>
 			<main id="main" class="site-main clr" <?php echo kindling_main_schema_markup(); ?>>
 
 				<?php

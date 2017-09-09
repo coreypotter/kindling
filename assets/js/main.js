@@ -1002,12 +1002,11 @@ function scrollEffect() {
 				    $hrefHash 				= $href.substr( $href.indexOf( '#' ) ).slice( 1 ),
 				    $target   				= $j( '#' + $hrefHash ),
 					$adminbarHeight        	= getAdminbarHeight(),
-					$topbarHeight        	= getTopbarHeight(),
 					$stickyHeaderHeight    	= getStickyHeaderHeight(),
 				    $scrollPosition;
 
 				if ( $target.length && '' !== $hrefHash ) {
-					$scrollPosition     	= $target.offset().top - $adminbarHeight - $topbarHeight - $stickyHeaderHeight;
+					$scrollPosition     	= $target.offset().top - $adminbarHeight - $stickyHeaderHeight;
 
 	                $j( 'html, body' ).stop().animate( {
 						 scrollTop: Math.round( $scrollPosition )
@@ -1034,19 +1033,6 @@ function getAdminbarHeight() {
 	}
 
 	return $adminbarHeight;
-}
-
-function getTopbarHeight() {
-	"use strict"
-
-	var $topbarHeight = 0;
-
-	if ( $j( '#top-bar-wrap' ).hasClass( 'kindling-top-bar-sticky' )
-		&& $j( '#top-bar-wrap' ).length ) {
-		$topbarHeight = parseInt( $j( '#top-bar-wrap' ).outerHeight() );
-	}
-
-	return $topbarHeight;
 }
 
 function getStickyHeaderHeight() {

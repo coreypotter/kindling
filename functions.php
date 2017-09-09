@@ -218,9 +218,7 @@ class Kindling_Theme_Class {
 		}
 		# Register navigation menus
 		register_nav_menus( array(
-##			'topbar_menu'     => esc_html__( 'Top Bar', 'kindling' ),
 			'main_menu'       => esc_html__( 'Main', 'kindling' ),
-##			'footer_menu'     => esc_html__( 'Footer', 'kindling' )
 		) );
 		# Enable support for Post Formats
 		add_theme_support( 'post-formats', array( 'video', 'gallery', 'audio', 'quote', 'link' ) );

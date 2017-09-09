@@ -136,10 +136,6 @@ if ( ! class_exists( 'Kindling_Customizer' ) ) :
 				require_once( $dir .'typography.php' );
 			}
 
-#			if ( get_theme_mod( 'oe_topbar_panel_enable', true ) ) {
-#				require_once( $dir .'topbar.php' );
-#			}
-
 			if ( get_theme_mod( 'oe_header_panel_enable', true ) ) {
 				require_once( $dir .'header.php' );
 			}
@@ -151,10 +147,6 @@ if ( ! class_exists( 'Kindling_Customizer' ) ) :
 			if ( get_theme_mod( 'oe_sidebar_panel_enable', true ) ) {
 				require_once( $dir .'sidebar.php' );
 			}
-
-#			if ( get_theme_mod( 'oe_footer_widgets_panel_enable', true ) ) {
-#				require_once( $dir .'footer-widgets.php' );
-#			}
 
 			if ( get_theme_mod( 'oe_footer_bottom_panel_enable', true ) ) {
 				require_once( $dir .'footer-bottom.php' );
