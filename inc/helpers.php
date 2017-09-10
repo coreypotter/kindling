@@ -11,7 +11,6 @@
 /*-------------------------------------------------------------------------------*
 
 	# General
-	# Top Bar
 	# Header
 	# Page Header
 	# Blog
@@ -709,11 +708,6 @@ if ( ! function_exists( 'kindling_header_logo_classes' ) ) {
 
 		// Define classes array
 		$classes = array( 'clr' );
-
-		// If retina logo
-		if ( '' != get_theme_mod( 'kindling_retina_logo' ) ) {
-			$classes[] = 'has-retina-logo';
-		}
 
 		// Get custom transparent logo
 		if ( 'transparent' == kindling_header_style()
