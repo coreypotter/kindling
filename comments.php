@@ -23,7 +23,7 @@ if ( 'full-screen' == kindling_post_layout() ) { $classes .= ' container'; }
 <section id="comments" class="<?php echo esc_attr( $classes ); ?>">
 	<?php if ( have_comments() ) : ?>
 		<h2 class="theme-heading comments-title">
-			<span class="text"><?php printf( _nx( 'This Post Has One Comment', 'This Post Has %1$s Comments', get_comments_number(), 'comments title', 'kindling' ), number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' ); ?></span>
+			<span class="text"><?php printf( _nx( 'This Post Has One Comment', 'This Post Has %1$s Comments', get_comments_number(), 'comments title', 'kindling' ), esc_html( number_format_i18n( get_comments_number() ) ), '<span>' . get_the_title() . '</span>' ); ?></span>
 		</h2>
 		<ol class="comment-list">
 			<?php # List comments

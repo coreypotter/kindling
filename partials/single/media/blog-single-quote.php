@@ -19,7 +19,7 @@ if ( ! class_exists( 'Kindling_Extra' ) ) {
 
 	<div class="post-quote-content">
 
-		<?php echo get_post_meta( get_the_ID(), 'kindling_quote_format', true ); ?>
+		<?php echo wp_kses_post( get_post_meta( get_the_ID(), 'kindling_quote_format', true ) ); ?>
 
 		<span class="post-quote-icon icon-speech"></span>
 

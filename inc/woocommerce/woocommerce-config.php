@@ -140,14 +140,18 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 			// Remove category descriptions, these are added already by the theme
 			remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
 			
-			// Alter cross-sells display
-			remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
-			add_action( 'woocommerce_cart_collaterals', array( $this, 'cross_sell_display' ) );
-
 			// Alter upsells display
 			remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
-			add_action( 'woocommerce_after_single_product_summary', array( $this, 'upsell_display' ), 15 );
-
+			if ( '0' != get_theme_mod( 'kindling_woocommerce_upsells_count', '3' ) ) {
+				add_action( 'woocommerce_after_single_product_summary', array( $this, 'upsell_display' ), 15 );
+			}
+			
+			// Alter cross-sells display
+			remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+			if ( '0' != get_theme_mod( 'kindling_woocommerce_cross_sells_count', '2' ) ) {
+				add_action( 'woocommerce_cart_collaterals', array( $this, 'cross_sell_display' ) );
+			}
+			
 			// Remove loop product thumbnail function and add our own that pulls from template parts
 			remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 );
 			add_action( 'woocommerce_before_shop_loop_item_title', array( $this, 'loop_product_thumbnail' ), 10 );
@@ -157,19 +161,9 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 				remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 			}
 
-			// Remove upsells if set to 0
-			if ( '0' == get_theme_mod( 'kindling_woocommerce_upsells_count', '3' ) ) {
-				remove_action( 'woocommerce_after_single_product_summary', 'kindling_woocommerce_output_upsells', 15 );
-			}
-
 			// Remove related products if count is set to 0
 			if ( '0' == get_theme_mod( 'kindling_woocommerce_related_count', '3' ) ) {
 				remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20 );
-			}
-
-			// Remove crossells if set to 0
-			if ( '0' == get_theme_mod( 'kindling_woocommerce_cross_sells_count', '2' ) ) {
-				remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
 			}
 
 			// Remove orderby if disabled
@@ -199,7 +193,17 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 			}
 
 		}
-
+		
+		/**
+		 * Helper method to get the version of the currently installed WooCommerce.
+		 *
+		 * @since 1.1.7
+		 * @return string woocommerce version number or null.
+		 */
+		public static function get_wc_version() {
+			return defined( 'WC_VERSION' ) && WC_VERSION ? WC_VERSION : null;
+		}
+		
 		/**
 		 * Remove general settings from Woo Admin panel.
 		 *
@@ -370,9 +374,9 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 				$list = '';
 			}
 
-			$output = sprintf( '<nav class="kindling-grid-list"><a href="#" id="kindling-grid" title="%1$s" class="%2$sgrid-btn"><span class="icon-grid"></span></a><a href="#" id="kindling-list" title="%3$s" class="%4$slist-btn"><span class="icon-list"></span></a></nav>', $grid_view, $grid, $list_view, $list );
+			$output = sprintf( '<nav class="kindling-grid-list"><a href="#" id="kindling-grid" title="%1$s" class="%2$sgrid-btn"><span class="icon-grid"></span></a><a href="#" id="kindling-list" title="%3$s" class="%4$slist-btn"><span class="icon-list"></span></a></nav>', esc_html( $grid_view ), esc_attr( $grid ), esc_html( $list_view ), esc_attr( $list ) );
 
-			echo apply_filters( 'kindling_grid_list_buttons_output', $output, $grid_view, $list_view );
+			echo wp_kses_post( apply_filters( 'kindling_grid_list_buttons_output', $output );
 		}
 
 		/**
@@ -403,7 +407,7 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 		 */
 		public static function loop_shop_per_page() {
 			if ( get_theme_mod( 'kindling_woo_shop_result_count', true ) ) {
-				$posts_per_page = ( isset( $_GET['products-per-page'] ) ) ? $_GET['products-per-page'] : get_theme_mod( 'kindling_woo_shop_posts_per_page', '12' );
+				$posts_per_page = ( isset( $_GET['products-per-page'] ) ) ? sanitize_text_field( wp_unslash( $_GET['products-per-page'] ) ) : get_theme_mod( 'kindling_woo_shop_posts_per_page', '12' );
 
 			    if ( $posts_per_page == 'all' ) {
 			        $posts_per_page = wp_count_posts( 'product' )->publish;
@@ -421,7 +425,7 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 		 * @since 1.0.0
 		 */
 		public static function loop_shop_columns() {
-			$columns = get_theme_mod( 'kindling_woocommerce_shop_columns' );
+			$columns = get_theme_mod( 'kindling_woocommerce_shop_columns', '3' );
 			$columns = $columns ? $columns : '3';
 			return $columns;
 		}
@@ -433,11 +437,13 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 		 */
 		public static function upsell_display() {
 			// Get count
-			$count = get_theme_mod( 'kindling_woocommerce_upsells_count' );
-			$count = $count ? $count : '4';
+			$count = get_theme_mod( 'kindling_woocommerce_upsells_count', '3' );
+			$count = $count ? $count : '3';
+			
 			// Get columns
-			$columns = get_theme_mod( 'kindling_woocommerce_upsells_columns' );
+			$columns = get_theme_mod( 'kindling_woocommerce_upsells_columns', '3' );
 			$columns = $columns ? $columns : '3';
+
 			// Alter upsell display
 			woocommerce_upsell_display( $count, $columns );
 		}
@@ -449,11 +455,13 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 		 */
 		public static function cross_sell_display() {
 			// Get count
-			$count = get_theme_mod( 'kindling_woocommerce_cross_sells_count' );
+			$count = get_theme_mod( 'kindling_woocommerce_cross_sells_count', '2' );
 			$count = $count ? $count : '2';
+			
 			// Get columns
-			$columns = get_theme_mod( 'kindling_woocommerce_cross_sells_columns' );
+			$columns = get_theme_mod( 'kindling_woocommerce_cross_sells_columns', '2' );
 			$columns = $columns ? $columns : '2';
+			
 			// Alter cross-sell display
 			woocommerce_cross_sell_display( $count, $columns );
 		}
@@ -466,12 +474,15 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 		public static function related_product_args() {
 			// Get global vars
 			global $product, $orderby, $related;
+			
 			// Get posts per page
-			$posts_per_page = get_theme_mod( 'kindling_woocommerce_related_count' );
+			$posts_per_page = get_theme_mod( 'kindling_woocommerce_related_count', '3' );
 			$posts_per_page = $posts_per_page ? $posts_per_page : '3';
+			
 			// Get columns
-			$columns = get_theme_mod( 'kindling_woocommerce_related_columns' );
+			$columns = get_theme_mod( 'kindling_woocommerce_related_columns', '3' );
 			$columns = $columns ? $columns : '3';
+			
 			// Return array
 			return array(
 				'posts_per_page' => $posts_per_page,
@@ -488,99 +499,97 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 			echo '<div class="product-inner clr">';
 		}
 
+		
+		/**
+		 * Archive add to cart button.
+		 *
+		 * @since 1.1.7
+		 */
+		public static function archive_add_to_cart_btn( $args = array() ) {
+			global $product;
+
+			if ( $product && ( ( $product->is_purchasable() && $product->is_in_stock() ) || $product->is_type( 'external' ) ) ) {
+
+				if ( version_compare( self::get_wc_version(), '2.5', '>=' ) ) {
+
+					$defaults = array(
+						'quantity' => 1,
+						'class'    => implode( ' ', array_filter( array(
+							'button',
+							$product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
+							$product->supports( 'ajax_add_to_cart' ) ? 'ajax_add_to_cart' : '',
+						) ) ),
+					);
+
+				}
+
+				$args = apply_filters( 'woocommerce_loop_add_to_cart_args', wp_parse_args( $args, $defaults ), $product );
+
+				wc_get_template( 'loop/add-to-cart.php' , $args );
+			}
+		}
+
 		/**
 		 * Archive product div wrap.
 		 *
 		 * @since 1.1.4
 		 */
-		public static function archive_product_add_div_wrap() {
-			echo '<div class="woo-entry-inner">';
-		}
+		public static function archive_product_content() {
+			global $product, $post;
 
-		/**
-		 * Archive product category.
-		 *
-		 * @since 1.1.4
-		 */
-		public static function archive_product_category() {
-			global $product;
+			echo '<div class="woo-entry-inner clr">';
 
-			// Category
-			echo $product->get_categories( ', ', '<span class="category">', '</span>' );
+				do_action( 'kindling_before_archive_product_categories' );
 
-		}
+				// Category
+				if ( version_compare( self::get_wc_version(), '2.7', '>=' ) ) {
+					echo wp_kses_post( wc_get_product_category_list( $product->get_id(), ', ', '<span class="category">', '</span>' ) );
+				} else {
+					echo wp_kses_post( $product->get_categories( ', ', '<span class="category">', '</span>' ) );
+				}
 
-		/**
-		 * Archive product title.
-		 *
-		 * @since 1.1.4
-		 */
-		public static function archive_product_title() {
+				do_action( 'kindling_before_archive_product_title' );
 
-			// Title
-			echo '<a href="'. esc_url( get_the_permalink() ) .'" class="title">'. get_the_title() .'</a>';
+				// Title
+				echo '<a href="'. esc_url( get_the_permalink() ) .'" class="title">'. get_the_title() .'</a>';
 
-		}
+				do_action( 'kindling_before_archive_product_inner' );
 
-		/**
-		 * Archive product price/rating.
-		 *
-		 * @since 1.1.4
-		 */
-		public static function archive_product_price_rating() {
-
-			// Price/Rating
-			echo '<div class="inner">';
-				woocommerce_template_loop_price();
-				woocommerce_template_loop_rating();
-			echo '</div>';
-
-		}
-
-		/**
-		 * Archive product excerpt.
-		 *
-		 * @since 1.1.4
-		 */
-		public static function archive_product_excerpt() {
-			global $post;
-
-			// Description
-			if ( ( kindling_is_woo_shop() || kindling_is_woo_tax() )
-				&& get_theme_mod( 'kindling_woo_grid_list', true ) ) {
-				$length = get_theme_mod( 'kindling_woo_list_excerpt_length', '60' );
-				echo '<div class="woo-desc">';
-					if ( ! $length ) {
-						echo strip_shortcodes( $post->post_excerpt );
-					} else {
-						echo wp_trim_words( strip_shortcodes( $post->post_excerpt ), $length );
-					}
+				// Price/Rating
+				echo '<div class="inner">';
+					do_action( 'kindling_before_archive_product_price' );
+					woocommerce_template_loop_price();
+					do_action( 'kindling_before_archive_product_rating' );
+					woocommerce_template_loop_rating();
+					do_action( 'kindling_after_archive_product_rating' );
 				echo '</div>';
-			}
 
-		}
+				do_action( 'kindling_before_archive_product_description' );
 
-		/**
-		 * Archive product add to cart.
-		 *
-		 * @since 1.1.4
-		 */
-		public static function archive_product_add_to_cart() {
-			
-			// Button add to cart
-			woocommerce_template_loop_add_to_cart();
+				// Description
+				if ( ( kindling_is_woo_shop() || kindling_is_woo_tax() )
+					&& get_theme_mod( 'kindling_woo_grid_list', true ) ) {
+					$length = get_theme_mod( 'kindling_woo_list_excerpt_length', '60' );
+					echo '<div class="woo-desc">';
+						if ( ! $length ) {
+							echo wp_kses_post( strip_shortcodes( $post->post_excerpt ) );
+						} else {
+							echo wp_kses_post( wp_trim_words( strip_shortcodes( $post->post_excerpt ), $length ) );
+						}
+					echo '</div>';
+				}
 
-		}
+				do_action( 'kindling_before_archive_product_add_to_cart' );
 
-		/**
-		 * Archive product close div wrap.
-		 *
-		 * @since 1.1.4
-		 */
-		public static function archive_product_close_div_wrap() {
+				// Button add to cart
+				self::archive_add_to_cart_btn();
+
+				do_action( 'kindling_after_archive_product_add_to_cart' );
+
 			echo '</div>';
-		}
 
+		}
+		
 		/**
 		 * Closes the "product-inner" div around product entries.
 		 *
@@ -642,9 +651,10 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 		 * @since 1.0.0
 		 */
 		public static function add_shop_loop_item_out_of_stock_badge() {
-			if ( function_exists( 'kindling_woo_product_instock' ) && ! kindling_woo_product_instock() ) { ?>
+			if ( function_exists( 'kindling_woo_product_instock' ) && ! kindling_woo_product_instock() ) {
+				$label = esc_html__( 'Out of Stock', 'kindling' );  ?>
 				<div class="outofstock-badge">
-					<?php echo apply_filters( 'kindling_woo_outofstock_text', esc_html__( 'Out of Stock', 'kindling' ) ); ?>
+					<?php echo esc_html( apply_filters( 'kindling_woo_outofstock_text', $label ) ); ?>
 				</div><!-- .product-entry-out-of-stock-badge -->
 			<?php }
 		}
@@ -665,7 +675,7 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 		 */
 		public static function add_div_before_category_thumbnail( $category ) {
 			echo '<div class="woo-entry-image clr">';
-				echo '<a href="' . get_term_link( $category, 'product_cat' ) . '">';
+				echo '<a href="' . esc_url( get_term_link( $category, 'product_cat' ) ) . '">';
 		}
 
 		/**
@@ -685,7 +695,7 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 		 */
 		public static function add_div_before_category_title( $category ) {
 			echo '<div class="woo-entry-inner clr">';
-				echo '<a href="' . get_term_link( $category, 'product_cat' ) . '">';
+				echo '<a href="' . esc_url( get_term_link( $category, 'product_cat' ) ) . '">';
 		}
 
 		/**
@@ -705,7 +715,7 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 			if ( get_theme_mod( 'kindling_woo_grid_list', true )
 				&& $description ) {
 				echo '<div class="woo-desc">';
-					echo '<div class="description">' . $description . '</div>';
+					echo '<div class="description">' . wp_kses_post( $description ) . '</div>';
 				echo '</div>';
 			}
 		}
@@ -778,7 +788,7 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 		 * @since 1.0.0
 		 */
 		public static function continue_shopping_redirect( $return_to ) {
-			$shop_id = woocommerce_get_page_id( 'shop' );
+			$shop_id = wc_get_page_id( 'shop' );
 			if ( function_exists( 'icl_object_id' ) ) {
 				$shop_id = icl_object_id( $shop_id, 'page' );
 			}
@@ -796,7 +806,7 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 		public static function add_product_entry_classes( $classes, $class = '', $post_id = '' ) {
 			global $product, $woocommerce_loop;
 			if ( $product && ! empty( $woocommerce_loop['columns'] ) ) {
-				if ( $product->get_rating_html() ) {
+				if ( $product->get_rating_count() ) {
 					$classes[] = 'has-rating';
 				}
 				$classes[] = 'col';

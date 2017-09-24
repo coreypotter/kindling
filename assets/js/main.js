@@ -1,5 +1,8 @@
 var $j = jQuery.noConflict();
-
+	$window 			= $j( window ),
+	$lastWindowWidth 	= $window.width(),
+	$lastWindowHeight 	= $window.height();
+	
 $j( document ).on( 'ready', function() {
 	"use strict";
 	// Superfish menus
@@ -8,12 +11,12 @@ $j( document ).on( 'ready', function() {
 	navNoClick();
 	// Full Screen header menu
 	fullScreenMenu();
+	// Header search form label
+	headerSearchForm();
 	// Mega menu
 	megaMenu();
 	// Menu search
 	menuSearch();
-	// Menu cart
-	menuCart();
 	// Mobile menu
 	mobileMenu();
     // Smooth comment scroll
@@ -22,12 +25,6 @@ $j( document ).on( 'ready', function() {
 	initCarousel();
 	// Custom select
 	customSelects();
-    // Woo catalog view
-    wooGridList();
-    // Woo reviews scroll
-    wooReviewsScroll();
-	// Woo categories widget
-	wooCategoriesWidget();
     // Auto lightbox
     autoLightbox();
     // Lightbox
@@ -46,7 +43,7 @@ $j( document ).on( 'ready', function() {
 	scrollTop();
 } );
 
-$j( window ).on( 'load', function() {
+$window.on( 'load', function() {
 	"use strict";
 	if ( $j.fn.infinitescroll !== undefined && $j( 'div.infinite-scroll-nav' ).length ) {
 		// Infinite scroll
@@ -54,7 +51,7 @@ $j( window ).on( 'load', function() {
 	}
 } );
 
-$j( window ).on( 'orientationchange', function() {
+$window.on( 'orientationchange', function() {
 	"use strict";
 	// Masonry grids
 	masonryGrids();
@@ -152,28 +149,36 @@ function fullScreenMenu() {
             return false;
         } );
 
-		// Add class when the search input is not empty
-		$j( '#site-header.full_screen-header .fs-dropdown-menu form.header-searchform' ).each( function() {
-
-			var form 		= $j( this ),
-				listener	= form.find( 'input' ),
-				$label 		= form.find( 'label' );
-
-			if ( listener.val().length ) {
-				form.addClass( 'search-filled' );
-			}
-
-			listener.on( 'keyup blur', function() {
-				if ( listener.val().length > 0 ) {
-				  form.addClass( 'search-filled' );
-				} else {
-				  form.removeClass( 'search-filled' );
-				}
-			} );
-
-	    } );
-
 	}
+
+}
+
+/* ==============================================
+HEADER SEARCH Form LABEL
+============================================== */
+function headerSearchForm() {
+	"use strict"
+
+	// Add class when the search input is not empty
+	$j( 'form.header-searchform' ).each( function() {
+
+		var form 		= $j( this ),
+			listener	= form.find( 'input' ),
+			$label 		= form.find( 'label' );
+
+		if ( listener.val().length ) {
+			form.addClass( 'search-filled' );
+		}
+
+		listener.on( 'keyup blur', function() {
+			if ( listener.val().length > 0 ) {
+			  form.addClass( 'search-filled' );
+			} else {
+			  form.removeClass( 'search-filled' );
+			}
+		} );
+
+    } );
 
 }
 
@@ -184,10 +189,19 @@ function megaMenu() {
 	"use strict"
 
     $j( '#site-navigation .megamenu-li.full-mega' ).hover( function() {
-        var menuWidth           = $j( '#site-header-inner' ).width(),
-            menuPosition        = $j( '#site-header-inner' ).offset(),     
+        var siteHeader          = $j( '#site-header-inner' ),
+            menuWidth        	= siteHeader.width(),     
+            menuPosition        = siteHeader.offset(),     
             menuItemPosition    = $j( this ).offset(),
             PositionLeft        = menuItemPosition.left-menuPosition.left+1;
+
+        if ( $j( '#site-header' ).hasClass( 'medium-header' ) ) {
+        	siteHeader          = $j( '#site-navigation-wrap > .container' ),
+        	menuWidth           = siteHeader.width(),
+        	menuPosition        = siteHeader.offset(),     
+            PositionLeft        = menuItemPosition.left-menuPosition.left+1;
+		}
+
         $j( this ).find( '.megamenu' ).css( { left: '-'+PositionLeft+'px', width: menuWidth } );
     } );
 
@@ -197,13 +211,13 @@ function megaMenu() {
         var liOffset            = li.offset().left;
         var liOffsetTop         = li.offset().top;
         var liWidth             = $j( this ).parent().width();
-        var dropdowntMarginLeft = liWidth/2;
+        var dropdownMarginLeft = liWidth/2;
         var dropdownWidth       = $j( this ).outerWidth();
-        var dropdowntLeft       = liOffset - dropdownWidth/2;
+        var dropdownLeft       = liOffset - dropdownWidth/2;
         
-        if ( dropdowntLeft < 0 ) {
+        if ( dropdownLeft < 0 ) {
             var left            = liOffset - 10;
-            dropdowntMarginLeft = 0;
+            dropdownMarginLeft = 0;
         } else {
             var left            = dropdownWidth/2;
             
@@ -212,21 +226,21 @@ function megaMenu() {
         if ( kindlingLocalize.isRTL ) {
             $j( this ).css( {
                 'right': - left,
-                'marginRight': dropdowntMarginLeft
+                'marginRight': dropdownMarginLeft
             } );
         } else {
             $j( this ).css( {
                 'left': - left,
-                'marginLeft': dropdowntMarginLeft
+                'marginLeft': dropdownMarginLeft
             } );
         }
         
-        var dropdownRight = ( $j( window ).width() ) - ( liOffset - left + dropdownWidth + dropdowntMarginLeft );
+        var dropdownRight = ( $window.width() ) - ( liOffset - left + dropdownWidth + dropdownMarginLeft );
         
         if ( dropdownRight < 0 ) {
             $j( this ).css( {
                 'left': 'auto',
-                'right': - ( $j( window ).width() - liOffset - liWidth - 10 )
+                'right': - ( $window.width() - liOffset - liWidth - 10 )
             } );
         }
         
@@ -410,62 +424,6 @@ function menuSearch() {
 			}
 		} );
 
-		// Add class when the search input is not empty
-		$j( '#searchform-overlay .header-searchform' ).each( function() {
-
-			var form 		= $j( this ),
-				listener	= form.find( 'input' ),
-				$label 		= form.find( 'label' );
-				
-			if ( listener.val().length ) {
-				form.addClass( 'search-filled' );
-			}
-
-			listener.on( 'keyup blur', function() {
-				if ( listener.val().length > 0 ) {
-				  form.addClass( 'search-filled' );
-				} else {
-				  form.removeClass( 'search-filled' );
-				}
-			} );
-
-	    } );
-
-	}
-
-}
-
-/* ==============================================
-MENU CART
-============================================== */
-function menuCart() {
-	"use strict"
-
-	if ( $j( 'a.wcmenucart' ).hasClass( 'go-to-shop' ) ) {
-		return;
-	}
-
-	// Drop-down
-	if ( 'drop_down' == kindlingLocalize.wooCartStyle ) {
-
-		// Display cart dropdown
-		$j( '.toggle-cart-widget' ).click( function( event ) {
-			$j( '#searchform-dropdown' ).removeClass( 'show' );
-			$j( 'a.search-dropdown-toggle' ).parent( 'li' ).removeClass( 'active' );
-			$j( 'div#current-shop-items-dropdown' ).toggleClass( 'show' );
-			$j( this ).toggleClass( 'active' );
-			return false;
-		} );
-
-		// Hide cart dropdown
-		$j( 'div#current-shop-items-dropdown' ).click( function( event ) {
-			event.stopPropagation(); 
-		} );
-		$j( document ).click( function() {
-			$j( 'div#current-shop-items-dropdown' ).removeClass( 'show' );
-			$j( 'li.wcmenucart-toggle-dropdown' ).removeClass( 'active' );
-		} );
-
 	}
 
 }
@@ -541,8 +499,8 @@ function mobileMenu( event ) {
 				} );
 
 				// Close on resize
-				$j( window ).resize( function() {
-					if ( $j( window ).width() >= 960 ) {
+				$window.resize( function() {
+					if ( $window.width() >= 960 ) {
 						$j.sidr( 'close', 'sidr' );
 					}
 				} );
@@ -680,101 +638,6 @@ function customSelects() {
 		customClass: 'theme-select'
 	} );
 
-}
-
-/* ==============================================
-WOOCOMMERCE GRID LIST VIEW
-============================================== */
-function wooGridList() {
-	"use strict"
-
-	var kindlingCookie = Cookies.noConflict();
-
-	if ( $j( 'body' ).hasClass( 'has-grid-list' ) ) {
-
-		$j( '#kindling-grid' ).on( 'click', function() {
-			$j( this ).addClass( 'active' );
-			$j( '#kindling-list' ).removeClass( 'active' );
-			kindlingCookie.set( 'gridcookie', 'grid', { path: '' } );
-			$j( '.archive.woocommerce ul.products' ).fadeOut( 300, function() {
-				$j( this ).addClass( 'grid' ).removeClass( 'list' ).fadeIn( 300 );
-			} );
-			return false;
-		} );
-
-		$j( '#kindling-list' ).on( 'click', function() {
-			$j( this ).addClass( 'active' );
-			$j( '#kindling-grid' ).removeClass( 'active' );
-			kindlingCookie.set( 'gridcookie', 'list', { path: '' } );
-			$j( '.archive.woocommerce ul.products' ).fadeOut( 300, function() {
-				$j( this ).addClass( 'list' ).removeClass( 'grid' ).fadeIn( 300 );
-			} );
-			return false;
-		} );
-
-		if ( kindlingCookie.get( 'gridcookie' ) == 'grid' ) {
-	        $j( '.kindling-grid-list #kindling-grid' ).addClass( 'active' );
-	        $j( '.kindling-grid-list #kindling-list' ).removeClass( 'active' );
-	        $j( '.archive.woocommerce ul.products' ).addClass( 'grid' ).removeClass( 'list' );
-	    }
-
-	    if ( kindlingCookie.get( 'gridcookie' ) == 'list' ) {
-	        $j( '.kindling-grid-list #kindling-list' ).addClass( 'active' );
-	        $j( '.kindling-grid-list #kindling-grid' ).removeClass( 'active' );
-	        $j( '.archive.woocommerce ul.products' ).addClass( 'list' ).removeClass( 'grid' );
-	    }
-
-	} else {
-
-		kindlingCookie.remove( 'gridcookie', { path: '' } );
-
-	}
-
-}
-
-/* ==============================================
-WOOCOMMERCE REVIEWS SCROLL
-============================================== */
-function wooReviewsScroll() {
-	"use strict"
-
-	$j( '.woocommerce div.product .woocommerce-review-link' ).click( function( event ) {
-		$j( '.woocommerce-tabs .description_tab' ).removeClass( 'active' );
-      	$j( '.woocommerce-tabs .reviews_tab' ).addClass( 'active' );
-		$j( '.woocommerce-tabs #tab-description' ).css( 'display', 'none' );
-      	$j( '.woocommerce-tabs #tab-reviews' ).css( 'display', 'block' );
-
-		$j( 'html, body' ).stop(true,true).animate( {
-			scrollTop: $j( this.hash ).offset().top -120
-		}, 'normal' );
-		return false;
-	} );
-
-}
-
-/* ==============================================
-WOOCOMMERCE CATEGORIES WIDGET
-============================================== */
-function wooCategoriesWidget() {
-	"use strict"
-
-	$j( '.product-categories' ).each( function() {
-
-		var IconDown 	= '<i class="fa fa-angle-down"></i>';
-		var IconUp 		= '<i class="fa fa-angle-up"></i>';
-
-		$j( this ).find( 'li' ).has( '.children' ).has( 'li' ).prepend( '<div class="open-this">'+ IconDown +'</div>' );
-
-		$j( this ).find( '.open-this' ).on( 'click', function(){
-	        if ( $j( this ).parent().hasClass( 'opened' ) ) {
-	            $j( this ).html( IconDown ).parent().removeClass( 'opened' ).find( '> ul' ).slideUp( 200 );
-	        } else {
-	            $j( this ).html( IconUp ).parent().addClass( 'opened' ).find( '> ul' ).slideDown( 200 );
-	        }
-	    } );
-
-	} );
-	
 }
 
 /* ==============================================
@@ -1023,6 +886,7 @@ function scrollEffect() {
 
 }
 
+// Admin Bar Height
 function getAdminbarHeight() {
 	"use strict"
 
@@ -1035,6 +899,7 @@ function getAdminbarHeight() {
 	return $adminbarHeight;
 }
 
+// Header Height
 function getStickyHeaderHeight() {
 	"use strict"
 
@@ -1045,7 +910,7 @@ function getStickyHeaderHeight() {
 		$stickyHeaderHeight = $j( '#site-header' ).attr( 'data-height' );
 	}
 
-	if ( $j( window ).width() <= 960
+	if ( $window.width() <= 960
 		&& ! $j( '#site-header' ).hasClass( 'has-sticky-mobile' )
 		&& $j( '#site-header' ).length ) {
 		$stickyHeaderHeight = 0;
@@ -1066,7 +931,7 @@ function scrollTop() {
 		slashTopLink 	: 'body.home a[href="/#go-top"]'
 	}
 
-	$j( window ).on( 'scroll', function() {
+	$window.on( 'scroll', function() {
 		if ( $j( this ).scrollTop() > 100 ) {
 			$j( '#scroll-top' ).fadeIn();
 		} else {

@@ -2988,12 +2988,12 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 
 			// Dropdown menu link active color
 			if ( ! empty( $dropdown_menu_link_color_active ) ) {
-				$css .= '.dropdown-menu ul > .current-menu-item > a{color:'. $dropdown_menu_link_color_active .';}';
+				$css .= '.dropdown-menu ul > .current-menu-item > a > span {color:'. $dropdown_menu_link_color_active .';}';
 			}
 
 			// Dropdown menu link active background color
 			if ( ! empty( $dropdown_menu_link_bg_active ) ) {
-				$css .= '.dropdown-menu ul > .current-menu-item > a{background-color:'. $dropdown_menu_link_bg_active .';}';
+				$css .= '.dropdown-menu ul > .current-menu-item > a.menu-link{background-color:'. $dropdown_menu_link_bg_active .';}';
 			}
 
 			// Dropdown menu link active background color

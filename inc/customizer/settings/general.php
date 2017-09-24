@@ -351,7 +351,7 @@ if ( ! class_exists( 'Kindling_General_Customizer' ) ) :
 				'active_callback' 		=> 'kindling_cac_has_boxed_layout',
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
-			        'max'   => 1900,
+			        'max'   => 4000,
 			        'step'  => 1,
 			    ),
 			) ) );
@@ -407,7 +407,7 @@ if ( ! class_exists( 'Kindling_General_Customizer' ) ) :
 				'active_callback' 		=> 'kindling_cac_hasnt_boxed_layout',
 			    'input_attrs' 			=> array(
 			        'min'   => 0,
-			        'max'   => 1980,
+			        'max'   => 4096,
 			        'step'  => 1,
 			    ),
 			) ) );

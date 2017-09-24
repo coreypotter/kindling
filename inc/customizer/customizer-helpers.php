@@ -17,6 +17,7 @@
 	# Page Header
 	# Blog
 	# WooCommerce
+	# Footer
 
 /*-------------------------------------------------------------------------------*/
 /* [ Core ]
@@ -60,18 +61,6 @@ function kindling_cac_enabled_not_yoast() {
 	} else {
 		return kindling_cac_has_breadcrumbs();
 	}
-}
-
-function kindling_cac_has_scrolltop() {
-	return get_theme_mod( 'kindling_scroll_top', true );
-}
-
-function kindling_cac_has_footer_widgets() {
-	return get_theme_mod( 'kindling_footer_widgets', true );
-}
-
-function kindling_cac_has_footer_bottom() {
-	return get_theme_mod( 'kindling_footer_bottom', true );
 }
 
 /*-------------------------------------------------------------------------------*/
@@ -265,4 +254,19 @@ function kindling_cac_has_grid_list_buttons() {
 	} else {
 		return false;
 	}
+}
+
+/*-------------------------------------------------------------------------------*/
+/* [ Footer ]
+/*-------------------------------------------------------------------------------*/
+function kindling_cac_has_scrolltop() {
+	return get_theme_mod( 'kindling_scroll_top', true );
+}
+
+function kindling_cac_has_footer_widgets() {
+	return get_theme_mod( 'kindling_footer_widgets', true );
+}
+
+function kindling_cac_has_footer_bottom() {
+	return get_theme_mod( 'kindling_footer_bottom', true );
 }

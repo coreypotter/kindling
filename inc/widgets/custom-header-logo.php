@@ -102,9 +102,9 @@ if ( ! class_exists( 'Kindling_Custom_Header_Logo_Widget' ) ) {
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_id('position'); ?>"><?php esc_html_e( 'Position:', 'kindling' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id('position') ); ?>"><?php esc_html_e( 'Position:', 'kindling' ); ?></label>
 				<br />
-				<select class='widget-select widefat' name="<?php echo $this->get_field_name('position'); ?>" id="<?php echo $this->get_field_id('position'); ?>">
+				<select class='widget-select widefat' name="<?php echo esc_attr( $this->get_field_name('position') ); ?>" id="<?php echo esc_attr( $this->get_field_id('position') ); ?>">
 					<option value="left" <?php selected( $instance['position'], 'left' ) ?>><?php esc_html_e( 'Left', 'kindling' ); ?></option>
 					<option value="right" <?php selected( $instance['position'], 'right' ) ?>><?php esc_html_e( 'Right', 'kindling' ); ?></option>
 					<option value="center" <?php selected( $instance['position'], 'center' ) ?>><?php esc_html_e( 'Center', 'kindling' ); ?></option>

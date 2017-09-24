@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $full_screen_logo = get_theme_mod( 'kindling_full_screen_header_logo' ); ?>
 
 <?php do_action( 'kindling_before_logo' ); ?>
-<div id="site-logo" class="<?php echo kindling_header_logo_classes(); ?>" itemscope itemtype="//schema.org/Brand">
+<div id="site-logo" class="<?php echo esc_attr( kindling_header_logo_classes() ); ?>" itemscope itemtype="//schema.org/Brand">
 
 	<?php do_action( 'kindling_before_logo_inner' ); ?>
 	<div id="site-logo-inner" class="clr">

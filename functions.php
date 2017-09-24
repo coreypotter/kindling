@@ -263,7 +263,7 @@ class Kindling_Theme_Class {
 	 */
 	public static function pingback_header() {
 		if ( is_singular() && pings_open() ) {
-			printf( '<link rel="pingback" href="%s">' . "\n", get_bloginfo( 'pingback_url' ) );
+			printf( '<link rel="pingback" href="%s">' . "\n", esc_url( get_bloginfo( 'pingback_url' ) ) );
 		}
 	}
 
@@ -273,8 +273,9 @@ class Kindling_Theme_Class {
 	 * @since 1.0.0
 	 */
 	public static function meta_viewport() {
+		// Meta viewport
 		$viewport = '<meta name="viewport" content="width=device-width, initial-scale=1">';
-		# Apply filters to the meta viewport for child theme tweaking
+		# Apply filters for child theme tweaking
 		echo apply_filters( 'kindling_meta_viewport', $viewport );
 	}
 
@@ -327,9 +328,9 @@ class Kindling_Theme_Class {
 		}
 		# Register nicescroll script to use it in some extensions
 		wp_register_script( 'nicescroll', $dir .'dynamic/nicescroll.min.js', array( 'jquery' ), $theme_version, true );
-		# WooCommerce quantity buttons
+		# WooCommerce scripts
 		if ( KINDLING_WOOCOMMERCE_ACTIVE ) {
-			wp_enqueue_script( 'wc-quantity-increment', $dir .'dynamic/wc-quantity-increment.js', array( 'jquery' ), $theme_version, true );
+			wp_enqueue_script( 'kindling-woocommerce', $dir .'dynamic/woo-scripts.min.js', array( 'jquery' ), $theme_version, true );
 		}
 		# Load minified js
 		wp_enqueue_script( 'kindling-main', $dir .'main.min.js', array( 'jquery' ), $theme_version, true );
@@ -398,6 +399,10 @@ class Kindling_Theme_Class {
 	 * @since 1.0.0
 	 */
 	public static function custom_widgets() {
+		if( ! version_compare( PHP_VERSION, '5.2', '>=' ) ) {
+			return;
+		}
+		
 		# Define directory for widgets
 		$dir = KINDLING_INC_DIR .'widgets/';
 		# Define array of custom widgets for the theme
@@ -407,7 +412,6 @@ class Kindling_Theme_Class {
 			'custom-links',
 			'custom-menu',
 			'facebook',
-			'flickr',
 			'instagram',
 			'mailchimp',
 			'recent-posts',

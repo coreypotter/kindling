@@ -43,6 +43,13 @@ if ( ! function_exists( 'kindling_body_classes' ) ) {
 		// Main class
 		$classes[] = 'kindling-theme';
 
+		// If video header
+		if (function_exists( 'has_header_video' )
+			&& has_header_video() ) {
+			$classes[] = 'has-header-video';
+
+		}
+
 		// Boxed layout
 		if ( 'boxed' == get_theme_mod( 'kindling_main_layout_style', 'wide' ) ) {
 			$classes[] = 'boxed-main-layout';
@@ -101,7 +108,8 @@ if ( ! function_exists( 'kindling_body_classes' ) ) {
 		}
 
 		// Disabled margins
-		if ( 'on' == get_post_meta( get_the_ID(), 'kindling_disable_margins', true ) ) {
+		if ( 'on' == get_post_meta( get_the_ID(), 'kindling_disable_margins', true )
+			&& ! is_search() ) {
 			$classes[] = 'no-margins';
 		}
 
@@ -167,7 +175,7 @@ if ( ! function_exists( 'kindling_post_layout' ) ) {
 
 		// Check URL
 		if ( ! empty( $_GET['post_layout'] ) ) {
-			return $_GET['post_layout'];
+			return sanitize_text_field( wp_unslash( $_GET['post_layout'] ) );
 		}
 
 		// Define variables
@@ -854,7 +862,7 @@ if ( ! function_exists( 'kindling_top_header_search' ) ) {
 
 		// Add search item to menu
 		echo '<div id="search-toggle">';
-			echo '<a href="#" class="site-search-toggle'. $class .'">';
+			echo '<a href="#" class="site-search-toggle'. esc_attr( $class ) .'">';
 				echo '<span class="icon-magnifier"></span>';
 			echo '</a>';
 		echo '</div>';
@@ -1210,7 +1218,7 @@ if ( ! function_exists( 'kindling_page_header_overlay' ) ) {
 		$return = apply_filters( 'kindling_page_header_overlay', $return );
 
 		// Return
-		echo $return;
+		echo wp_kses_post( $return );
 	}
 
 }
@@ -1698,13 +1706,13 @@ if ( ! function_exists( 'kindling_gallery_is_lightbox_enabled' ) ) {
 }
 
 /**
- * Returns post video
+ * Returns post media
  *
  * @since 1.0.0
  */
-if ( ! function_exists( 'kindling_get_post_video' ) ) {
+if ( ! function_exists( 'kindling_get_post_media' ) ) {
 
-	function kindling_get_post_video( $post_id = '' ) {
+	function kindling_get_post_media( $post_id = '' ) {
 
 		// Define video variable
 		$video = '';
@@ -1738,19 +1746,6 @@ if ( ! function_exists( 'kindling_get_post_video' ) ) {
 }
 
 /**
- * Echo post video HTML
- *
- * @since 1.0.0
- */
-if ( ! function_exists( 'kindling_post_video_html' ) ) {
-
-	function kindling_post_video_html( $video = '' ) {
-		echo kindling_get_post_video_html( $video );
-	}
-
-}
-
-/**
  * Returns post video HTML
  *
  * @since 1.0.0
@@ -1760,7 +1755,7 @@ if ( ! function_exists( 'kindling_get_post_video_html' ) ) {
 	function kindling_get_post_video_html( $video = '' ) {
 
 		// Get video
-		$video = $video ? $video : kindling_get_post_video();
+		$video = $video ? $video : kindling_get_post_media();
 
 		// Return if video is empty
 		if ( empty( $video ) ) {
@@ -1771,8 +1766,6 @@ if ( ! function_exists( 'kindling_get_post_video_html' ) ) {
 		if ( 'post' == get_post_type() && 'video' != get_post_format() ) {
 			return;
 		}
-
-		// Check if it's an embed or iframe
 
 		// Get oembed code and return
 		if ( ! is_wp_error( $oembed = wp_oembed_get( $video ) ) && $oembed ) {
@@ -1805,66 +1798,39 @@ if ( ! function_exists( 'kindling_get_post_video_html' ) ) {
  *
  * @since 1.0.0
  */
-if ( ! function_exists( 'kindling_get_post_audio' ) ) {
-
-	function kindling_get_post_audio( $id = '' ) {
-
-		// Define video variable
-		$audio = '';
-
-		// Get correct ID
-		$id = $id ? $id : get_the_ID();
-
-		// Check for self-hosted first
-		if ( $self_hosted = get_post_meta( $id, 'kindling_post_self_hosted_media', true ) ) {
-			$audio = $self_hosted;
-		}
-
-		// Check for kindling_post_audio custom field
-		elseif ( $post_video = get_post_meta( $id, 'kindling_post_audio', true ) ) {
-			$audio = $post_video;
-		}
-
-		// Check for post oembed
-		elseif ( $post_oembed = get_post_meta( $id, 'kindling_post_oembed', true ) ) {
-			$audio = $post_oembed;
-		}
-
-		// Apply filters for child theming
-		$audio = apply_filters( 'kindling_get_post_audio', $audio );
-
-		// Return data
-		return $audio;
-
-	}
-
-}
-
-/**
- * Returns post audio
- *
- * @since 1.0.0
- */
 if ( ! function_exists( 'kindling_get_post_audio_html' ) ) {
 
 	function kindling_get_post_audio_html( $audio = '' ) {
 
-		// Get video
-		$audio = $audio ? $audio : kindling_get_post_audio();
+		// Get audio
+		$audio = $audio ? $audio : kindling_get_post_media();
 
-		// Return if video is empty
+		// Return if audio is empty
 		if ( empty( $audio ) ) {
+			return;
+		}
+
+		// Check post format for standard post type
+		if ( 'post' == get_post_type() && 'audio' != get_post_format() ) {
 			return;
 		}
 
 		// Get oembed code and return
 		if ( ! is_wp_error( $oembed = wp_oembed_get( $audio ) ) && $oembed ) {
-			return '<div class="responsive-audio-wrap">'. $oembed .'</div>';
+			return '<div class="responsive-video-wrap">'. $oembed .'</div>';
 		}
 
 		// Display using apply_filters if it's self-hosted
 		else {
-			return apply_filters( 'the_content', $audio );
+			$audio = apply_filters( 'the_content', $audio );
+			// Add responsive audio wrap for youtube/vimeo embeds
+			if ( strpos( $audio, 'youtube' ) || strpos( $audio, 'vimeo' ) ) {
+				return '<div class="responsive-video-wrap">'. $audio .'</div>';
+			}
+			// Else return without responsive wrap
+			else {
+				return $audio;
+			}
 		}
 
 	}
@@ -2007,6 +1973,7 @@ if ( ! function_exists( 'kindling_excerpt' ) ) {
 		// Get post data
 		$id			= $post->ID;
 		$excerpt	= $post->post_excerpt;
+		$content    = $post->post_content;
 
 		// Display custom excerpt
 		if ( $excerpt ) {
@@ -2014,9 +1981,8 @@ if ( ! function_exists( 'kindling_excerpt' ) ) {
 		}
 
 		// Check for more tag
-		elseif ( strpos( $post->post_content, '<!--more-->' ) ) {
-			$kindling_more_tag	= apply_filters( 'kindling_more_tag', null );
-			$output				= get_the_content( $kindling_more_tag );
+		elseif ( strpos( $content, '<!--more-->' ) ) {
+			$output = get_the_content( $excerpt );
 		}
 
 		// Generate auto excerpt
@@ -2025,7 +1991,7 @@ if ( ! function_exists( 'kindling_excerpt' ) ) {
 		}
 
 		// Echo output
-		echo $output;
+		echo wp_kses_post( $output );
 
 	}
 
@@ -2069,7 +2035,7 @@ if ( ! function_exists( 'kindling_comment' ) ) {
 
 		            <div class="comment-content">
 		                <div class="comment-author">
-		                    <h3 class="comment-link"><?php printf( __( '%s ', 'kindling' ), sprintf( '%s', get_comment_author_link() ) ); ?></h3>
+		                    <h3 class="comment-link"><?php printf( esc_html__( '%s ', 'kindling' ), sprintf( '%s', get_comment_author_link() ) ); ?></h3>
 
 		                    <span class="comment-meta commentmetadata">
 		                    	<?php if ( ! is_RTL() ) { ?>
@@ -2231,9 +2197,9 @@ if ( ! function_exists( 'kindling_pagination') ) {
 
 			// Output pagination
 			if ( $echo ) {
-				echo '<div class="kindling-pagination clr kindling-'. $align .'">'. paginate_links( $args ) .'</div>';
+				echo '<div class="kindling-pagination clr kindling-'. esc_attr( $align ) .'">'. wp_kses_post( paginate_links( $args ) ) .'</div>';
 			} else {
-				return '<div class="kindling-pagination clr kindling-'. $align .'">'. paginate_links( $args ) .'</div>';
+				return '<div class="kindling-pagination clr kindling-'. esc_attr( $align ) .'">'. wp_kses_post( paginate_links( $args ) ) .'</div>';
 			}
 		}
 	}
@@ -2250,26 +2216,11 @@ if ( ! function_exists( 'kindling_pagejump' ) ) {
 	function kindling_pagejump( $pages = '', $range = 4, $echo = true ) {
 
 		// Vars
-		$output     = '';
-		$showitems  = ($range * 2)+1; 
-
-		// Set correct paged var
-		global $paged;
-		if ( empty( $paged ) ) {
-			$paged = 1;
-		}
-
-		// Get pages var
-		if ( $pages == '' ) {
-			global $wp_query;
-			$pages = $wp_query->max_num_pages;
-			if ( ! $pages ) {
-				$pages = 1;
-			}
-		}
-
+		global $wp_query;
+		$output = '';
+		
 		// Display next/previous pagination
-		if ( 1 != $pages ) {
+		if ( $wp_query->max_num_pages > 1 ) {
 
 			$output .= '<div class="page-jump clr">';
 				$output .= '<div class="alignleft newer-posts">';
@@ -2281,7 +2232,7 @@ if ( ! function_exists( 'kindling_pagejump' ) ) {
 			$output .= '</div>';
 
 			if ( $echo ) {
-				echo $output;
+				echo wp_kses_post( $output );
 			} else {
 				return $output;
 			}
@@ -2325,7 +2276,7 @@ if ( ! function_exists( 'kindling_infinite_scroll' ) ) {
 			$output .= '</div>';
 		$output .= '</div>';
 
-		echo $output;
+		echo wp_kses_post( $output );
 
 	}
 
@@ -2609,31 +2560,6 @@ if ( ! function_exists( 'kindling_is_woo_single' ) ) {
 /*-------------------------------------------------------------------------------*/
 /* [ Other ]
 /*-------------------------------------------------------------------------------*/
-
-/**
- * Main schema markup
- *
- * @since 1.0.0
- */
-if ( ! function_exists( 'kindling_main_schema_markup' ) ) {
-
-	function kindling_main_schema_markup() {
-
-		$itemtype = '//schema.org/WebPageElement';
-		$itemprop = 'mainContentOfPage';
-
-		if ( is_singular( 'post' ) ) {
-			$itemprop = '';
-			$itemtype = '//schema.org/Blog';
-		}
-
-		$schema = 'itemprop="'. $itemprop .'" itemscope itemtype="'. $itemtype .'"';
-
-		return $schema;
-
-	}
-
-}
 
 /**
  * Translation support

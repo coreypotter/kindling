@@ -27,13 +27,16 @@ if ( has_nav_menu( $menu_location ) || $ms_global_menu ) :
 	$inner_classes = kindling_header_menu_classes( 'inner' );
 
 	# Get menu classes
-	$menu_classes  = 'main-menu ';
+	$menu_classes = array( 'main-menu' );
 	if ( 'full_screen' == $header_style ) {
-		$menu_classes  .= 'fs-dropdown-menu';
+		$menu_classes[] = 'fs-dropdown-menu';
 	} else {
-		$menu_classes  .= 'dropdown-menu sf-menu';
+		$menu_classes[] = 'dropdown-menu sf-menu';
 	}
 
+	// Turn menu classes into space seperated string
+ 	$menu_classes = implode( ' ', $menu_classes );
+ 
 	# Menu arguments
 	$menu_args = array(
 		'theme_location' => $menu_location,
@@ -54,12 +57,12 @@ if ( has_nav_menu( $menu_location ) || $ms_global_menu ) :
 
 	# If is not full screen header style
 	if ( 'full_screen' != $header_style ) { ?>
-		<div id="site-navigation-wrap" class="<?php echo $wrap_classes; ?>">
+		<div id="site-navigation-wrap" class="<?php echo $esc_attr( $wrap_classes ); ?>">
 	<?php } ?>
 
 		<?php do_action( 'kindling_before_nav_inner' ); ?>
 
-		<nav id="site-navigation" class="<?php echo $inner_classes; ?>" itemscope itemtype="//schema.org/SiteNavigationElement">
+		<nav id="site-navigation" class="<?php echo esc_attr( $inner_classes ); ?>" itemscope itemtype="//schema.org/SiteNavigationElement">
 
 			<?php
 			# Display global multisite menu

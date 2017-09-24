@@ -38,7 +38,7 @@ if ( 'transparent' == $header_style ) { ?>
 <?php
 } ?>
 
-<header id="site-header" class="<?php echo kindling_header_classes(); ?>" itemscope itemtype="//schema.org/WPHeader" data-height="<?php echo esc_attr( $header_height ); ?>">
+<header id="site-header" class="<?php echo esc_attr( kindling_header_classes() ); ?>" itemscope itemtype="//schema.org/WPHeader" data-height="<?php echo esc_attr( $header_height ); ?>">
 
 	<?php
 	# If top header style

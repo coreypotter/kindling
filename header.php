@@ -4,7 +4,15 @@
  *
  * @package Kindling Theme
  */
-?>
+ 
+ // Main schema markup
+if ( is_singular( 'post' ) ) {
+	$itemprop = '';
+	$itemtype = 'http://schema.org/Blog';
+} else {
+	$itemtype = 'http://schema.org/WebPageElement';
+	$itemprop = 'mainContentOfPage';
+} ?>
 
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -29,7 +37,7 @@
 			}
 
 			do_action( 'kindling_before_main' ); ?>
-			<main id="main" class="site-main clr" <?php echo kindling_main_schema_markup(); ?>>
+			<main id="main" class="site-main clr" itemprop="<?php echo esc_attr( $itemprop ); ?>" itemscope="itemscope" itemtype="<?php echo esc_attr( $itemtype ); ?>">
 
 				<?php
 				// Display shortcode if there is one

@@ -11,7 +11,7 @@
         <?php do_action( 'kindling_before_footer' ); ?>
 
         <?php # Display the footer if the footer widgets and bottom are enabled
-        if ( kindling_display_footer_widgets() || kindling_display_footer_bottom() ) {
+        if ( kindling_display_footer_bottom() ) {
         	get_template_part( 'partials/footer/layout' );
         } ?>
 
