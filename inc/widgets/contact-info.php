@@ -318,22 +318,23 @@ if ( ! class_exists( 'Kindling_Contact_Info_Widget' ) ) {
 				</p>
 			</div>
 
+
 			<div class="kindling-infos">
 				<h2><?php esc_html_e('Fax:', 'kindling'); ?></h2>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('fax_icon'); ?>"><?php esc_html_e('Icon Class', 'kindling'); ?></label>
-					<input class="widefat" type="text" id="<?php echo $this->get_field_id('fax_icon'); ?>" name="<?php echo $this->get_field_name('fax_icon'); ?>" value="<?php echo esc_attr( $instance['fax_icon'] ); ?>" />
+					<label for="<?php echo esc_attr( $this->get_field_id('fax_icon') ); ?>"><?php esc_html_e('Icon Class', 'kindling'); ?></label>
+					<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('fax_icon') ); ?>" name="<?php echo esc_attr( $this->get_field_name('fax_icon') ); ?>" value="<?php echo esc_attr( $instance['fax_icon'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('fax_text'); ?>"><?php esc_html_e('Title', 'kindling'); ?></label>
-					<input class="widefat" type="text" id="<?php echo $this->get_field_id('fax_text'); ?>" name="<?php echo $this->get_field_name('fax_text'); ?>" value="<?php echo esc_attr( $instance['fax_text'] ); ?>" />
+					<label for="<?php echo esc_attr( $this->get_field_id('fax_text') ); ?>"><?php esc_html_e('Title', 'kindling'); ?></label>
+					<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('fax_text') ); ?>" name="<?php echo $this->get_field_name('fax_text') ); ?>" value="<?php echo esc_attr( $instance['fax_text'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('fax'); ?>"><?php esc_html_e('Content', 'kindling'); ?></label>
-					<input class="widefat" type="text" id="<?php echo $this->get_field_id('fax'); ?>" name="<?php echo $this->get_field_name('fax'); ?>" value="<?php echo esc_attr( $instance['fax'] ); ?>" />
+					<label for="<?php echo esc_attr( $this->get_field_id('fax') ); ?>"><?php esc_html_e('Content', 'kindling'); ?></label>
+					<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('fax') ); ?>" name="<?php echo esc_attr( $this->get_field_name('fax') ); ?>" value="<?php echo esc_attr( $instance['fax'] ); ?>" />
 				</p>
 			</div>
 
@@ -341,23 +342,23 @@ if ( ! class_exists( 'Kindling_Contact_Info_Widget' ) ) {
 				<h2><?php esc_html_e('Email:', 'kindling'); ?></h2>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('email_icon'); ?>"><?php esc_html_e('Icon Class', 'kindling'); ?></label>
-					<input class="widefat" type="text" id="<?php echo $this->get_field_id('email_icon'); ?>" name="<?php echo $this->get_field_name('email_icon'); ?>" value="<?php echo esc_attr( $instance['email_icon'] ); ?>" />
+					<label for="<?php echo esc_attr( $this->get_field_id('email_icon') ); ?>"><?php esc_html_e('Icon Class', 'kindling'); ?></label>
+					<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('email_icon') ); ?>" name="<?php echo esc_attr( $this->get_field_name('email_icon') ); ?>" value="<?php echo esc_attr( $instance['email_icon'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('email_text'); ?>"><?php esc_html_e('Title', 'kindling'); ?></label>
-					<input class="widefat" type="text" id="<?php echo $this->get_field_id('email_text'); ?>" name="<?php echo $this->get_field_name('email_text'); ?>" value="<?php echo esc_attr( $instance['email_text'] ); ?>" />
+					<label for="<?php echo esc_attr( $this->get_field_id('email_text') ); ?>"><?php esc_html_e('Title', 'kindling'); ?></label>
+					<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('email_text') ); ?>" name="<?php echo esc_attr( $this->get_field_name('email_text') ); ?>" value="<?php echo esc_attr( $instance['email_text'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('email'); ?>"><?php esc_html_e('URL', 'kindling'); ?></label>
-					<input class="widefat" type="text" id="<?php echo $this->get_field_id('email'); ?>" name="<?php echo $this->get_field_name('email'); ?>" value="<?php echo esc_attr( $instance['email'] ); ?>" />
+					<label for="<?php echo esc_attr( $this->get_field_id('email') ); ?>"><?php esc_html_e('URL', 'kindling'); ?></label>
+					<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('email') ); ?>" name="<?php echo esc_attr( $this->get_field_name('email') ); ?>" value="<?php echo esc_attr( $instance['email'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('emailtxt'); ?>"><?php esc_html_e('URL Text', 'kindling'); ?></label>
-					<input class="widefat" type="text" id="<?php echo $this->get_field_id('emailtxt'); ?>" name="<?php echo $this->get_field_name('emailtxt'); ?>" value="<?php echo esc_attr( $instance['emailtxt'] ); ?>" />
+					<label for="<?php echo esc_attr( $this->get_field_id('emailtxt') ); ?>"><?php esc_html_e('URL Text', 'kindling'); ?></label>
+					<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('emailtxt') ); ?>" name="<?php echo esc_attr( $this->get_field_name('emailtxt') ); ?>" value="<?php echo esc_attr( $instance['emailtxt'] ); ?>" />
 				</p>
 			</div>
 
@@ -365,23 +366,23 @@ if ( ! class_exists( 'Kindling_Contact_Info_Widget' ) ) {
 				<h2><?php esc_html_e('Website:', 'kindling'); ?></h2>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('web_icon'); ?>"><?php esc_html_e('Icon Class', 'kindling'); ?></label>
-					<input class="widefat" type="text" id="<?php echo $this->get_field_id('web_icon'); ?>" name="<?php echo $this->get_field_name('web_icon'); ?>" value="<?php echo esc_attr( $instance['web_icon'] ); ?>" />
+					<label for="<?php echo esc_attr( $this->get_field_id('web_icon') ); ?>"><?php esc_html_e('Icon Class', 'kindling'); ?></label>
+					<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('web_icon') ); ?>" name="<?php echo esc_attr( $this->get_field_name('web_icon') ); ?>" value="<?php echo esc_attr( $instance['web_icon'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('web_text'); ?>"><?php esc_html_e('Title', 'kindling'); ?></label>
-					<input class="widefat" type="text" id="<?php echo $this->get_field_id('web_text'); ?>" name="<?php echo $this->get_field_name('web_text'); ?>" value="<?php echo esc_attr( $instance['web_text'] ); ?>" />
+					<label for="<?php echo esc_attr( $this->get_field_id('web_text') ); ?>"><?php esc_html_e('Title', 'kindling'); ?></label>
+					<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('web_text') ); ?>" name="<?php echo esc_attr( $this->get_field_name('web_text') ); ?>" value="<?php echo esc_attr( $instance['web_text'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('web'); ?>"><?php esc_html_e('URL (with HTTP)', 'kindling'); ?></label>
-					<input class="widefat" type="text" id="<?php echo $this->get_field_id('web'); ?>" name="<?php echo $this->get_field_name('web'); ?>" value="<?php echo esc_attr( $instance['web'] ); ?>" />
+					<label for="<?php echo esc_attr( $this->get_field_id('web') ); ?>"><?php esc_html_e('URL (with HTTP)', 'kindling'); ?></label>
+					<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('web') ); ?>" name="<?php echo esc_attr( $this->get_field_name('web') ); ?>" value="<?php echo esc_attr( $instance['web'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('webtxt'); ?>"><?php esc_html_e('URL Text', 'kindling'); ?></label>
-					<input class="widefat" type="text" id="<?php echo $this->get_field_id('webtxt'); ?>" name="<?php echo $this->get_field_name('webtxt'); ?>" value="<?php echo esc_attr( $instance['webtxt'] ); ?>" />
+					<label for="<?php echo esc_attr( $this->get_field_id('webtxt') ); ?>"><?php esc_html_e('URL Text', 'kindling'); ?></label>
+					<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('webtxt') ); ?>" name="<?php echo esc_attr( $this->get_field_name('webtxt') ); ?>" value="<?php echo esc_attr( $instance['webtxt'] ); ?>" />
 				</p>
 			</div>
 
@@ -389,13 +390,13 @@ if ( ! class_exists( 'Kindling_Contact_Info_Widget' ) ) {
 				<h2><?php esc_html_e('Skype:', 'kindling'); ?></h2>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('skype'); ?>"><?php esc_html_e('Username', 'kindling'); ?></label>
-					<input class="widefat" type="text" id="<?php echo $this->get_field_id('skype'); ?>" name="<?php echo $this->get_field_name('skype'); ?>" value="<?php echo esc_attr( $instance['skype'] ); ?>" />
+					<label for="<?php echo esc_attr( $this->get_field_id('skype') ); ?>"><?php esc_html_e('Username', 'kindling'); ?></label>
+					<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('skype') ); ?>" name="<?php echo esc_attr( $this->get_field_name('skype') ); ?>" value="<?php echo esc_attr( $instance['skype'] ); ?>" />
 				</p>
 
 				<p>
-					<label for="<?php echo $this->get_field_id('skypetxt'); ?>"><?php esc_html_e('Text', 'kindling'); ?></label>
-					<input class="widefat" type="text" id="<?php echo $this->get_field_id('skypetxt'); ?>" name="<?php echo $this->get_field_name('skypetxt'); ?>" value="<?php echo esc_attr( $instance['skypetxt'] ); ?>" />
+					<label for="<?php echo esc_attr( $this->get_field_id('skypetxt') ); ?>"><?php esc_html_e('Text', 'kindling'); ?></label>
+					<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('skypetxt') ); ?>" name="<?php echo esc_attr( $this->get_field_name('skypetxt') ); ?>" value="<?php echo esc_attr( $instance['skypetxt'] ); ?>" />
 				</p>
 			</div>
 
