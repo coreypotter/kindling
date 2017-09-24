@@ -196,17 +196,6 @@
 		width: 100%;
 	}
 		
-	/* make footer columns 1 column */
-	#footer-widgets {
-		.col {
-			width: 100%;
-			margin-bottom: 30px;
-
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
-	}
 
 	/* center footer bottom */
 	#footer-bottom {

@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div id="footer-inner" class="clr">
 
         <?php
-        # Display the footer widgets if enabled
-        if ( kindling_display_footer_widgets() && kindling_footer_page_id() ) {
+        # Display the footer page id if enabled
+        if ( kindling_footer_page_id() ) {
         	get_template_part( 'partials/footer/widgets' );
         }
 
@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         	get_template_part( 'partials/footer/copyright' );
         } ?>
         
-    </div><!-- #footer-widgets -->
+    </div>
 
     <?php do_action( 'kindling_after_footer_inner' ); ?>
 

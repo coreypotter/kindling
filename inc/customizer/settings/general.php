@@ -1273,7 +1273,6 @@ if ( ! class_exists( 'Kindling_General_Customizer' ) ) :
 				'.social-widget li.kindling-email a:hover',
 				'.comment-author .comment-meta .comment-reply-link',
 				'#respond #cancel-comment-reply-link:hover',
-				'#footer-widgets .footer-box a:hover',
 				'#footer-bottom a:hover',
 				'#footer-bottom #footer-bottom-menu a:hover',
 				'.sidr a:hover',
@@ -1313,7 +1312,6 @@ if ( ! class_exists( 'Kindling_General_Customizer' ) ) :
 				'.kindling-newsletter-form-wrap input[type="email"]:focus',
 				'.social-widget li.kindling-email a:hover',
 				'#respond #cancel-comment-reply-link:hover',
-				'#footer-widgets .kindling-newsletter-form-wrap input[type="email"]:focus',
 				'#kindling-post-list.one .readmore:hover',
 			) );
 
