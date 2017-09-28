@@ -89,7 +89,7 @@
 	}
 	
 	/* container */
-	.container, body.content-full-screen .elementor-section.elementor-section-boxed > .elementor-container {
+	.container {
 		max-width: 90%;
 	}
 	
@@ -124,17 +124,6 @@
 		width: auto !important;
 	}
 	
-	/* header > logo */
-	#site-header.full_screen-header #site-logo.has-full-screen-logo.opened {
-		.custom-logo-link {
-			display: block;
-		}
-
-		.full-screen-logo-link {
-			display: none;
-		}
-	}
-
 	#site-header.center-header #site-logo {
 		display: block;
 	}

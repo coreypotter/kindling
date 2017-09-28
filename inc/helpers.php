@@ -553,79 +553,6 @@ if ( ! function_exists( 'kindling_header_page_id' ) ) {
 }
 
 /**
- * Returns full screen header logo
- *
- * @since 1.0.4
- */
-if ( ! function_exists( 'kindling_header_full_screen_logo' ) ) {
-
-	function kindling_header_full_screen_logo() {
-
-		// Return false if disabled
-		if ( 'full_screen' != kindling_header_style() ) {
-			return false;
-		}
-
-		$html = '';
-
-		// Get logo
-		$logo_url 		= get_theme_mod( 'kindling_full_screen_header_logo' );
-
-		// Logo data
-		$logo_data = array(
-			'url'    	=> '',
-			'width'  	=> '',
-			'height' 	=> '',
-			'alt' 		=> '',
-		);
-
-		if ( $logo_url ) {
-
-			// Logo url
-			$logo_data['url'] 			= $logo_url;
-
-			// Logo data
-			$logo_attachment_data 		= kindling_get_attachment_data_from_url( $logo_url );
-
-			// Get logo data
-			if ( $logo_attachment_data ) {
-				$logo_data['width']  	= $logo_attachment_data['width'];
-				$logo_data['height'] 	= $logo_attachment_data['height'];
-				$logo_data['alt'] 		= $logo_attachment_data['alt'];
-			}
-
-			// Output image
-			$html = sprintf( '<a href="%1$s" class="full-screen-logo-link" rel="home" itemprop="url"><img src="%2$s" class="full-screen-logo" width="%3$s" height="%4$s" alt="%5$s" itemprop="url" /></a>',
-				esc_url( home_url( '/' ) ),
-				esc_url( $logo_data['url'] ),
-				esc_attr( $logo_data['width'] ),
-				esc_attr( $logo_data['height'] ),
-				esc_attr( $logo_data['alt'] )
-			);
-
-		}
-
-		// Return logo
-		return apply_filters( 'kindling_full_screen_header_logo', $html );
-
-	}
-
-}
-
-/**
- * Echo full_screen header logo
- *
- * @since 1.1.1
- */
-if ( ! function_exists( 'the_custom_full_screen_logo' ) ) {
-
-	function the_custom_full_screen_logo() {
-		echo kindling_header_full_screen_logo();
-	}
-
-}
-
-/**
  * Returns correct menu classes
  *
  * @since 1.0.0
@@ -717,18 +644,6 @@ if ( ! function_exists( 'kindling_header_logo_classes' ) ) {
 		// Define classes array
 		$classes = array( 'clr' );
 
-		// Get custom transparent logo
-		if ( 'transparent' == kindling_header_style()
-			&& kindling_header_transparent_logo() ) {
-			$classes[] = 'has-transparent-logo';
-		}
-
-		// Get custom full screen logo
-		if ( 'full_screen' == kindling_header_style()
-			&& kindling_header_full_screen_logo() ) {
-			$classes[] = 'has-full-screen-logo';
-		}
-
 		// Apply filters for child theming
 		$classes = apply_filters( 'kindling_header_logo_classes', $classes );
 
@@ -805,20 +720,17 @@ if ( ! function_exists( 'kindling_add_search_to_menu' ) ) {
 
 		// Add search item to menu
 		$items .= '<li class="search-toggle-li">';
-			if ( 'full_screen' == $header_style ) {
-				$items .= '<form method="get" action="'. esc_url( home_url( '/' ) ) .'" class="header-searchform">';
-					$items .= '<input type="search" name="s" value="" autocomplete="off" />';
-					$items .= '<label>'. esc_html__( 'Type your search', 'kindling' ) .'<span><i></i><i></i><i></i></span></label>';
-				$items .= '</form>';
-			} else {
-				$items .= '<a href="#" class="site-search-toggle'. $class .'">';
-					if ( 'center' == $header_style ) {
-						$items .= '<span>'. esc_html__( 'Search', 'kindling' ) .'</span>';
-					} else {
-						$items .= '<span class="icon-magnifier"></span>';
-					}
-				$items .= '</a>';
-			}
+			$items .= '<form method="get" action="'. esc_url( home_url( '/' ) ) .'" class="header-searchform">';
+				$items .= '<input type="search" name="s" value="" autocomplete="off" />';
+				$items .= '<label>'. esc_html__( 'Type your search', 'kindling' ) .'<span><i></i><i></i><i></i></span></label>';
+			$items .= '</form>';
+			$items .= '<a href="#" class="site-search-toggle'. $class .'">';
+				if ( 'center' == $header_style ) {
+					$items .= '<span>'. esc_html__( 'Search', 'kindling' ) .'</span>';
+				} else {
+					$items .= '<span class="icon-magnifier"></span>';
+				}
+			$items .= '</a>';
 		$items .= '</li>';
 		
 		// Return nav $items

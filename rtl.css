@@ -44,13 +44,6 @@ blockquote { padding-right: 20px; padding-left: 0; border-right-width: 3px; bord
 #site-header.top-header #site-navigation-wrap { right: -15px !important; left: auto !important; }
 #site-header.top-header #kindling-mobile-menu-icon { right: -15px; left: auto; }
 
-/* Full Screen header */
-#site-header.full_screen-header #site-navigation-wrap { right: auto; left: 0; }
-#site-header.full_screen-header .menu-bar { float: left; }
-#site-header.full_screen-header #full-screen-menu { left: auto; right: 0; }
-#site-header.full_screen-header .fs-dropdown-menu li > a > .nav-arrow { padding-left: 0; padding-right: 5px; }
-#site-header.full_screen-header .fs-dropdown-menu > li.search-toggle-li label i  { margin-left: 0; margin-right: 3px; }
-
 /* Center header */
 #site-header.center-header.is-search-icon #site-navigation { right: auto; left: -43px; }
 #site-header.center-header.is-cart-icon #site-navigation { right: auto; left: -68px; }
@@ -87,12 +80,6 @@ blockquote { padding-right: 20px; padding-left: 0; border-right-width: 3px; bord
 
 .minimal-header.left-menu #site-logo,
 .transparent-header.left-menu #site-logo { padding-left: 20px; padding-right: 0; }
-
-/* Social menu */
-#kindling-social-menu { float: left; }
-#kindling-social-menu.simple-social { right: auto; left: -8px; }
-#kindling-social-menu.social-with-style { right: auto; left: -2px; }
-#kindling-social-menu ul li { float: right; }
 
 /*------------------------------------*
 	Mobile Navigation
@@ -414,18 +401,15 @@ p.stars span a:after { right: 0; left: auto; }
 All Devices Under 992px
 --------------------------------------------------------------*/
 @media only screen and (max-width: 992px) {
-	
 	/* account page */
 	.woocommerce #customer_login .form-row label[for="rememberme"],
 	.woocommerce .kindling-loginform-wrap .form-row label[for="rememberme"] { margin: 0 4px 0 0; }
-
 }
 
 /*------------------------------------------------------------------
 Phone Portrait & Landscape
 -------------------------------------------------------------------*/
 @media only screen and (max-width: 767px) {
-
     /* shop list */
     .woocommerce .products.list .product .woo-entry-image { margin: 0 0 20px; }
 
@@ -434,15 +418,12 @@ Phone Portrait & Landscape
 
     /* cart collaterals */
     .woocommerce-cart .cart-collaterals .cart_totals table td { text-align: left; }
-
 }
 
 /*------------------------------------------------------------------
 Phone Portrait
 -------------------------------------------------------------------*/
 @media only screen and (max-width: 480px) {
-
 	/* shop toolbar */
 	.woocommerce .kindling-grid-list { margin: 0 0 0 10px; }
-
 }

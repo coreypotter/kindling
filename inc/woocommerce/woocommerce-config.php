@@ -1010,11 +1010,7 @@ if ( ! class_exists( 'Kindling_WooCommerce_Config' ) ) {
 			$classes = implode( ' ', $classes );
 			
 			// Add cart link to menu items
-			if ( 'full_screen' == $header_style ) {
-				$items .= '<li class="woo-cart-link"><a href="'. esc_url( WC()->cart->get_cart_url() ) .'">'. esc_html__( 'Your cart', 'kindling' ) .'</a></li>';
-			} else {
-				$items .= '<li class="'. $classes .'">'. kindling_wcmenucart_menu_item() .'</li>';
-			}
+			$items .= '<li class="'. $classes .'">'. kindling_wcmenucart_menu_item() .'</li>';
 			
 			// Return menu items
 			return $items;

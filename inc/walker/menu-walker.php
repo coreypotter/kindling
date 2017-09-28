@@ -37,7 +37,7 @@ if ( ! class_exists( 'Kindling_Custom_Nav_Walker' ) ) {
 	        // Megamenu columns
 	        $col = ! empty( $this->megamenu_col ) ? ( 'col-'. $this->megamenu_col .'' ) : 'col-2';
 
-	        if( $depth === 0 && $this->megamenu != '' && 'full_screen' != kindling_header_style() ) {
+	        if( $depth === 0 && $this->megamenu != '' ) {
 	        	$output .= "\n$indent<ul class=\"megamenu ". $col ." sub-menu\">\n";
 	         } else {
 	         	$output .= "\n$indent<ul class=\"sub-menu\">\n";
@@ -229,8 +229,7 @@ if ( ! class_exists( 'Kindling_Custom_Nav_Walker' ) ) {
 
 			}
 
-			if ( $depth === 0 && $item->category_post != ''
-				&& 'full_screen' != $header_style && 'center' != $header_style ) {
+			if ( $depth === 0 && $item->category_post != '' && 'center' != $header_style ) {
 				global $post;
 
 				$output .= "\n<ul class=\"megamenu col-4 sub-menu\">\n";
@@ -349,8 +348,8 @@ if ( ! class_exists( 'Kindling_Custom_Nav_Walker' ) ) {
 			// Down Arrows
 			if ( ! empty( $children_elements[$element->$id_field] ) && ( $depth == 0 )
 				|| $element->category_post != '' && $element->object == 'category'
-				&& 'full_screen' != $header_style && 'center' != $header_style ) {
-				$element->classes[] = 'dropdown';
+				&& 'center' != $header_style ) {
+					$element->classes[] = 'dropdown';
 				if ( true == get_theme_mod( 'kindling_menu_arrow_down', true ) ) {
 					$element->title .= ' <span class="nav-arrow fa fa-angle-down"></span>';
 				}

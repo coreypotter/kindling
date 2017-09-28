@@ -28,11 +28,7 @@ if ( has_nav_menu( $menu_location ) || $ms_global_menu ) :
 
 	# Get menu classes
 	$menu_classes = array( 'main-menu' );
-	if ( 'full_screen' == $header_style ) {
-		$menu_classes[] = 'fs-dropdown-menu';
-	} else {
-		$menu_classes[] = 'dropdown-menu sf-menu';
-	}
+	$menu_classes[] = 'dropdown-menu sf-menu';
 
 	// Turn menu classes into space seperated string
  	$menu_classes = implode( ' ', $menu_classes );
@@ -53,14 +49,10 @@ if ( has_nav_menu( $menu_location ) || $ms_global_menu ) :
 		$menu_args['menu']  = $menu;
 	}
 
-	do_action( 'kindling_before_nav' );
-
-	# If is not full screen header style
-	if ( 'full_screen' != $header_style ) { ?>
+	do_action( 'kindling_before_nav' );	?>
 		<div id="site-navigation-wrap" class="<?php echo $esc_attr( $wrap_classes ); ?>">
-	<?php } ?>
-
-		<?php do_action( 'kindling_before_nav_inner' ); ?>
+	<?php
+	do_action( 'kindling_before_nav_inner' ); ?>
 
 		<nav id="site-navigation" class="<?php echo esc_attr( $inner_classes ); ?>" itemscope itemtype="//schema.org/SiteNavigationElement">
 
@@ -80,8 +72,7 @@ if ( has_nav_menu( $menu_location ) || $ms_global_menu ) :
 			endif;
 
 			# If is not top menu header style
-			if ( 'top' != $header_style
-				&& 'full_screen' != $header_style ) {
+			if ( 'top' != $header_style ) {
 
 				# Header search
 				if ( 'drop_down' == kindling_menu_search_style() ) {
@@ -95,26 +86,16 @@ if ( has_nav_menu( $menu_location ) || $ms_global_menu ) :
 			}
 
 			# WooCommerce cart
-			if ( 'drop_down' == kindling_menu_cart_style()
-				&& 'full_screen' != $header_style ) {
+			if ( 'drop_down' == kindling_menu_cart_style() ) {
 				get_template_part( 'partials/cart/cart-dropdown' );
 			}
-
-			# Social links if full screen header style
-			if ( 'full_screen' == $header_style
-				&& true == get_theme_mod( 'kindling_menu_social', false ) ) {
-				get_template_part( 'partials/header/social' );
-			} ?>
+			?>
 
 		</nav><!-- #site-navigation -->
 
 		<?php do_action( 'kindling_after_nav_inner' ); ?>
 
-	<?php
-	# If is not full screen header style
-	if ( 'full_screen' != $header_style ) { ?>
 		</div><!-- #site-navigation-wrap -->
-	<?php } ?>
 
 	<?php do_action( 'kindling_after_nav' ); ?>
 
