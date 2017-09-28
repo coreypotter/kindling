@@ -75,11 +75,9 @@ blockquote { padding-right: 20px; padding-left: 0; border-right-width: 3px; bord
 .has-social #site-navigation-wrap { left: 0; right: auto; }
 
 /* If left menu */
-.minimal-header.left-menu #site-navigation-wrap,
-.transparent-header.left-menu #site-navigation-wrap { float: right; left: 0; right: auto; }
+.minimal-header.left-menu #site-navigation-wrap { float: right; left: 0; right: auto; }
 
-.minimal-header.left-menu #site-logo,
-.transparent-header.left-menu #site-logo { padding-left: 20px; padding-right: 0; }
+.minimal-header.left-menu #site-logo { padding-left: 20px; padding-right: 0; }
 
 /*------------------------------------*
 	Mobile Navigation

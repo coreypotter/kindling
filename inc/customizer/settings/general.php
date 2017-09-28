@@ -1632,12 +1632,12 @@ if ( ! class_exists( 'Kindling_General_Customizer' ) ) :
 
 			// Page header top padding
 			if ( ! empty( $page_header_top_padding ) && '34' != $page_header_top_padding ) {
-				$css .= '.page-header, .has-transparent-header .page-header{padding-top:'. $page_header_top_padding .'px;}';
+				$css .= '.page-header{padding-top:'. $page_header_top_padding .'px;}';
 			}
 
 			// Page header bottom padding
 			if ( ! empty( $page_header_bottom_padding ) && '34' != $page_header_bottom_padding ) {
-				$css .= '.page-header, .has-transparent-header .page-header{padding-bottom:'. $page_header_bottom_padding .'px;}';
+				$css .= '.page-header{padding-bottom:'. $page_header_bottom_padding .'px;}';
 			}
 
 			// Page header background

@@ -482,11 +482,6 @@ if ( ! function_exists( 'kindling_header_classes' ) ) {
 			$classes[] = 'search-overlay';
 		}
 
-		// Add class if social menu is enabled
-		if ( true == get_theme_mod( 'kindling_menu_social', false ) ) {
-			$classes[] = 'has-social';
-		}
-
 		// Menu position
 		if ( 'left-menu' == get_theme_mod( 'kindling_menu_position', 'right-menu' )
 			&& ( 'top' != $header_style ) ) {
@@ -2570,10 +2565,6 @@ if ( ! function_exists( 'kindling_social_options' ) ) {
 			'github'  => array(
 				'label' => 'Github',
 				'icon_class' => 'fa fa-github-alt',
-			),
-			'flickr'  => array(
-				'label' => 'Flickr',
-				'icon_class' => 'fa fa-flickr',
 			),
 			'skype' => array(
 				'label' => 'Skype',

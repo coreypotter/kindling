@@ -2018,7 +2018,6 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			$header_border_bottom 							= get_theme_mod( 'kindling_header_border_bottom', '#f1f1f1' );
 			$header_top_padding								= get_theme_mod( 'kindling_header_top_padding', '0' );
 			$header_bottom_padding							= get_theme_mod( 'kindling_header_bottom_padding', '0' );
-			$ransparent_header_bg							= get_theme_mod( 'kindling_transparent_header_bg' );
 			$top_header_menu_background 					= get_theme_mod( 'kindling_top_header_menu_background', '#ffffff' );
 			$top_header_search_button_border_color 			= get_theme_mod( 'kindling_top_header_search_button_border_color', '#f1f1f1' );
 			$top_header_search_button_color 				= get_theme_mod( 'kindling_top_header_search_button_color', '#333333' );
@@ -2055,13 +2054,6 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			$dropdown_menu_link_hover_bg 					= get_theme_mod( 'kindling_dropdown_menu_link_hover_bg', '#f8f8f8' );
 			$dropdown_menu_link_color_active 				= get_theme_mod( 'kindling_dropdown_menu_link_color_active' );
 			$dropdown_menu_link_bg_active 					= get_theme_mod( 'kindling_dropdown_menu_link_bg_active' );
-			$dropdown_category_title_bg 					= get_theme_mod( 'kindling_dropdown_category_title_bg', '#f8f8f8' );
-			$dropdown_category_title_color 					= get_theme_mod( 'kindling_dropdown_category_title_color', '#222222' );
-			$dropdown_category_links_color 					= get_theme_mod( 'kindling_dropdown_category_links_color', '#555555' );
-			$dropdown_category_links_hover_color 			= get_theme_mod( 'kindling_dropdown_category_links_hover_color', '#333333' );
-			$dropdown_category_date_color 					= get_theme_mod( 'kindling_dropdown_category_date_color', '#bbbbbb' );
-			$menu_social_links_color 						= get_theme_mod( 'kindling_menu_social_links_color' );
-			$menu_social_hover_links_color 					= get_theme_mod( 'kindling_menu_social_hover_links_color' );
 			$mobile_menu_sidr_close_button_bg 				= get_theme_mod( 'kindling_mobile_menu_sidr_close_button_background', '#f8f8f8' );
 			$mobile_menu_sidr_background 					= get_theme_mod( 'kindling_mobile_menu_sidr_background', '#ffffff' );
 			$mobile_menu_sidr_borders 						= get_theme_mod( 'kindling_mobile_menu_sidr_borders', 'rgba(0,0,0,0.035)' );
@@ -2074,11 +2066,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			$mobile_menu_sidr_search_border_color_focus 	= get_theme_mod( 'kindling_mobile_menu_sidr_search_border_color_focus', '#bbbbbb' );
 			$mobile_menu_sidr_search_button_color 			= get_theme_mod( 'kindling_mobile_menu_sidr_search_button_color', '#555555' );
 			$mobile_menu_sidr_search_button_hover_color 	= get_theme_mod( 'kindling_mobile_menu_sidr_search_button_hover_color', '#222222' );
-			$minimal_social_menu_pos						= get_theme_mod( 'kindling_minimal_social_menu_position', 'right' );
 			$top_menu_pos									= get_theme_mod( 'kindling_top_header_menu_position', 'left' );
-			$top_social_menu_pos							= get_theme_mod( 'kindling_top_social_menu_position', 'right' );
-			$center_social_menu_pos							= get_theme_mod( 'kindling_center_social_menu_position', 'center' );
-			$center_social_menu_vpos						= get_theme_mod( 'kindling_center_social_menu_vertical_position', 'before' );
 			$mobile_header_height 							= get_theme_mod( 'kindling_mobile_header_height', '74' );
 			$mobile_top_height 								= get_theme_mod( 'kindling_mobile_top_header_height', '40' );
 			$mobile_header_top_margin						= get_theme_mod( 'kindling_mobile_header_top_margin', '0' );
@@ -2126,13 +2114,13 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 
 			// Add header height
 			if ( ( ! empty( $header_height ) && 'top' != $header_style ) ) {
-				$css .= '#site-logo #site-logo-inner,#kindling-social-menu .social-menu-inner{height:'. $header_height .'px;}';
+				$css .= '#site-logo #site-logo-inner{height:'. $header_height .'px;}';
 				$css .= '#site-navigation-wrap .dropdown-menu > li > a,#kindling-mobile-menu-icon a{line-height:'. $header_height .'px;}';
 			}
 
 			// Add header height for top header style
 			if ( ! empty( $top_height ) && 'top' == $header_style  ) {
-				$css .= '#site-header.top-header #kindling-social-menu,#site-header.top-header #search-toggle{height:'. $top_height .'px;}';
+				$css .= '#site-header.top-header #search-toggle{height:'. $top_height .'px;}';
 				$css .= '#site-header.top-header #site-navigation-wrap .dropdown-menu > li > a,#site-header.top-header #kindling-mobile-menu-icon a{line-height:'. $top_height .'px;}';
 			}
 
@@ -2186,17 +2174,12 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			
 			// Header background color
 			if ( ! empty( $header_background ) && '#ffffff' != $header_background ) {
-				$css .= '#site-header,.is-sticky #site-header.transparent-header,#searchform-header-replace{background-color:'. $header_background .';}';
+				$css .= '#site-header,#searchform-header-replace{background-color:'. $header_background .';}';
 			}
 
 			// Header border color
 			if ( ! empty( $header_border_bottom ) && '#f1f1f1' != $header_border_bottom ) {
 				$css .= '#site-header{border-color:'. $header_border_bottom .';}';
-			}
-
-			// Transparent header background color
-			if ( ! empty( $ransparent_header_bg ) ) {
-				$css .= '#site-header.transparent-header{background-color:'. $ransparent_header_bg .';}';
 			}
 
 			// Top menu header menu background color
@@ -2389,16 +2372,6 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 				$css .= '#site-navigation li.mega-cat ul li .mega-post-date{color:'. $dropdown_category_date_color .';}';
 			}
 			
-			// Menu social links color
-			if ( ! empty( $menu_social_links_color ) ) {
-				$css .= '#kindling-social-menu ul li a,{color:'. $menu_social_links_color .';}';
-			}
-
-			// Menu social links hover color
-			if ( ! empty( $menu_social_hover_links_color ) ) {
-				$css .= '#kindling-social-menu ul li a:hover{color:'. $menu_social_hover_links_color .'!important;}';
-			}
-
 			// Mobile menu sidr close button background
 			if ( ! empty( $mobile_menu_sidr_close_button_bg ) && '#f8f8f8' != $mobile_menu_sidr_close_button_bg ) {
 				$css .= 'a.sidr-class-toggle-sidr-close{background-color:'. $mobile_menu_sidr_close_button_bg .';}';
@@ -2457,40 +2430,6 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			// Mobile menu search border color
 			if ( ! empty( $mobile_menu_sidr_search_button_hover_color ) && '#222222' != $mobile_menu_sidr_search_button_hover_color ) {
 				$css .= '.sidr-class-mobile-searchform button:hover{color:'. $mobile_menu_sidr_search_button_hover_color .';}';
-			}
-
-			# All the new Nav/Social Positioning Stuff
-			switch( $header_style ) {
-				# Logo Left
-				case "minimal":
-					if ( $minimal_social_menu_pos == 'left' ) {
-						$css .= '#site-header.minimal-header #site-logo{flex-grow:0}#site-header.minimal-header #site-navigation-wrap{flex-grow:1;display:inline-flex;justify-content:flex-end}';
-					}
-					break;
-				# Top Menu
-				case "top":
-					if ( $top_menu_pos == 'center' ) {
-						$css .= '#site-header.top-header #site-navigation-wrap{display:inline-flex;justify-content:center;position:absolute;left:0;right:0}';
-					} else if ( $top_menu_pos == 'right' ) {
-						$css .= '#site-header.top-header #site-navigation-wrap{order:2;display:inline-flex;justify-content:flex-end}';
-					}
-					if ( $top_social_menu_pos == 'left' ) {
-						$css .= '#site-header.top-header #kindling-social-menu{order:1}#site-header.top-header #site-header-inner{justify-content:flex-start}';
-					}
-					break;
-				# Center Menu
-				case "center":
-					if ( $center_social_menu_pos == 'left' ) {
-						$css .= '#site-header.center-header #kindling-social-menu{align-self:flex-start}';
-					} else if ( $center_social_menu_pos == 'right' ) {
-						$css .= '#site-header.center-header #kindling-social-menu {align-self:flex-end}';
-					}
-					if ( $center_social_menu_vpos == 'after' ) {
-						$css .= '#site-header.center-header #kindling-social-menu{order:1}';
-					}
-					break;
-				default:
-					/* Different Header, Do Nothing. */
 			}
 
 			## START: Logo Typography
@@ -2607,7 +2546,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			# $mobile_top_height
 			// Add header height for top header style
 			if ( ! empty( $mobile_top_height ) && 'top' == $header_style  ) {
-				$css .= '#site-header.top-header #kindling-social-menu,#site-header.top-header #search-toggle{height:'. $mobile_top_height .'px;}';
+				$css .= '#site-header.top-header #search-toggle{height:'. $mobile_top_height .'px;}';
 				$css .= '#site-header.top-header #site-navigation-wrap .dropdown-menu > li > a,#site-header.top-header #kindling-mobile-menu-icon a{line-height:'. $mobile_top_height .'px;}';
 			}
 

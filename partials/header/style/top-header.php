@@ -36,24 +36,20 @@ if ( 'after' == $position ) { ?>
 		# Search header replace
 		if ( 'header_replace' == $search ) {
 			get_template_part( 'partials/header/search-replace' );
+		}
+
+		get_template_part( 'partials/header/nav' );
+
+		get_template_part( 'partials/header/mobile-icon' );
+
+		kindling_top_header_search();
+
+		# Search style
+		if ( 'drop_down' == $search ) {
+			get_template_part( 'partials/header/search-dropdown' );
+		} else if ( 'overlay' == $search ) {
+			get_template_part( 'partials/header/search-overlay' );
 		} ?>
-
-		<?php get_template_part( 'partials/header/nav' ); ?>
-
-		<?php get_template_part( 'partials/header/mobile-icon' ); ?>
-
-		<?php if ( true == get_theme_mod( 'kindling_menu_social', false ) ) {
-					get_template_part( 'partials/header/social' );
-				}
-
-				kindling_top_header_search();
-
-				# Search style
-				if ( 'drop_down' == $search ) {
-					get_template_part( 'partials/header/search-dropdown' );
-				} else if ( 'overlay' == $search ) {
-					get_template_part( 'partials/header/search-overlay' );
-				} ?>
 
 	</div><!-- #site-header-inner -->
 
