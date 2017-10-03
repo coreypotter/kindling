@@ -172,6 +172,7 @@ if ( ! class_exists( 'Kindling_Header_Customizer' ) ) :
 			 * Header Logo Max Height
 			 */
 			$wp_customize->add_setting( 'kindling_logo_height', array(
+				'default'				=> '74',
 				'sanitize_callback' 	=> false,
 			) );
 
